@@ -16,12 +16,15 @@
         <![endif]-->
     </head>
     <body>
-    	<div class="notice">
-    		<h1 class="uptime"></h1>
-    	</div>
-		
+        <div class="container">
+            <div class="quote"></div>
+            <div class="notice">
+                <h1><span class="fa fa-clock-o"></span>Your server's uptime until now...</h1>
+                <section class="uptime"></section>
+            </div>
+        </div>
+		<footer id="copy"></footer>
 		<!-- Javascript-->
-		
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="script/base.js" type="text/javascript"></script>
     </body>

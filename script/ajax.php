@@ -3,7 +3,7 @@
 if($_GET['type'] == 'image'){
     
     $bingImage = simplexml_load_file('http://www.bing.com/HPImageArchive.aspx?format=xml&idx=0&n=1&mkt=en-US');
-    echo 'http://www.bing.com' . $bingImage->image->urlBase. '_1366x768.jpg';
+    echo 'http://www.bing.com' . $bingImage->image->urlBase. '_1366x768.jpg;' . $bingImage->image->copyright;
     
 } else {
     $totalSeconds = shell_exec("/usr/bin/cut -d. -f1 /proc/uptime");
@@ -16,19 +16,24 @@ if($_GET['type'] == 'image'){
     
     $formatUptime = '';
     if ($days != 0) {
-        $formatUptime .= "$days days";
+        $formatUptime .= $days . ";";
+    } else {
+        $formatUptime .= "0;";
     }
     
     if ($hours != 0) {
-        $formatUptime .= "$hours hours";
+        $formatUptime .= $hours . ";";
+    } else {
+        $formatUptime .= "0;";
     }
     
     if ($min != 0) {
-        $formatUptime .= "$min minutes";
+        $formatUptime .= $min . ";";
+    } else {
+        $formatUptime .= "0;";
     }
     
-    header('Content-Type: application/json; charset=UTF-8');
-    echo json_encode($formatUptime);
+    echo $formatUptime;
 }
 
 ?>
