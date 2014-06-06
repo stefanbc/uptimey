@@ -1,8 +1,12 @@
-* {
-	font-family: 'Raleway', sans-serif;
+html {
+    height: 100%;
 }
 body {
-	background: #222;
+    background-color: #222;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    font-family: 'Raleway', sans-serif;
 }
 .notice {
 	background: #fff;

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Uptimey - Clean Server Uptime Monitor</title>
+        <title>Uptimey - Beautiful Server Uptime Monitor</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <meta name="description" content="Monitor your Linux server through a simple web dashboard. Open source and free!">
         <meta name="apple-mobile-web-app-capable" content="yes">
@@ -21,8 +21,8 @@
     	</div>
 		
 		<!-- Javascript-->
+		
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="script/cross-ajax.js" type="text/javascript"></script>
         <script src="script/base.js" type="text/javascript"></script>
     </body>
 </html>
