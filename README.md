@@ -1,4 +1,4 @@
 uptimey
 =======
 
-Clean Server Uptime Monitor
+Beautiful Server Uptime Monitor
