@@ -6,6 +6,7 @@ function getUptime() {
         output += "<div class='col'><span class='val'>" + data[1] + "</span><span class='label'>hours</span></div>";
         output += "<div class='col'><span class='val'>" + data[2] + "</span><span class='label'>minutes</span></div>";
         
+        $('.notice section').addClass('animated fadeInDown');
         $('.notice section').html(output);
     });
 }

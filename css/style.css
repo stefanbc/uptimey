@@ -8,6 +8,8 @@ body {
     background-position: center;
     background-size: 100%;
     font-family: 'Raleway', sans-serif;
+    font-weight: 200;
+    color: #fff;
 }
 .container {
     background: rgba(0,0,0,.6);
@@ -15,7 +17,6 @@ body {
     width: 100%;
 }
 .notice {
-    color: #fff;
     text-align: center;
     position: absolute;
     bottom: 150px;
@@ -46,7 +47,6 @@ body {
 .notice section .col .val {
     display: block;
     font-size: 6em;
-    font-weight: lighter;
     padding-bottom: 10px;
 }
 .notice section .col .label {
