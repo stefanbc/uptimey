@@ -1,0 +1,26 @@
+* {
+	font-family: 'Raleway', sans-serif;
+}
+body {
+	background: #222;
+}
+.notice {
+	background: #fff;
+	text-align: center;
+	margin: 0 auto;
+	max-width: 600px;
+	padding: 50px;
+}
+.notice h1 {
+	margin: 0;
+	padding: 0;
+	font-weight: normal;
+}
+.notice h1:before {
+	padding-right: 20px;
+}
+.notice h1 span:first-child {
+	font-size: 3em;
+	display: block;
+	margin-bottom: 15px;
+}
