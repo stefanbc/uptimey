@@ -26,50 +26,86 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+// Check if it is an ajax request
+if (!isset($_SERVER['HTTP_X_REQUESTED_WITH']) || strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) !== 'xmlhttprequest')
+    die('no direct access allowed');
+
 /* Get the type of request */
 $type = $_GET['type'];
+
+// If it's been less than a minute between request, kill the execution but display last saved uptime or picture
+session_start();
+if (!empty($_SESSION['last']) && time()-$_SESSION['last']<60)
+{
+    if ($type=='uptime')
+        echo $_SESSION['uptime'];
+    elseif ($type=='image')
+        echo $_SESSION['image'];
+    die();
+}
 
 switch($type){
     case 'image':
         // Load the XML file from Bing
         $bingImage = simplexml_load_file('http://www.bing.com/HPImageArchive.aspx?format=xml&idx=0&n=1&mkt=en-US');
-        // Return the image and copyrightto jQuery
+        // Return the image and copyright to jQuery
         echo 'http://www.bing.com' . $bingImage->image->urlBase. '_1366x768.jpg;' . $bingImage->image->copyright;
+        // Set session
+        $_SESSION['image'] = 'http://www.bing.com' . $bingImage->image->urlBase. '_1366x768.jpg;' . $bingImage->image->copyright;
     break;
     case 'uptime':
-        /* Based on linux-dashboard (https://github.com/afaqurk/linux-dash) */
         // Execute the uptime command
         // Get the seconds, minutes, hours
-        $totalSeconds = shell_exec("/usr/bin/cut -d. -f1 /proc/uptime");
+        // Different methods of getting uptime based on OS
+        switch(PHP_OS)
+        {
+            case 'Linux':
+                /* Based on linux-dashboard (https://github.com/afaqurk/linux-dash) */
+                $totalSeconds = trim(shell_exec('/usr/bin/cut -d. -f1 /proc/uptime'));
+                break;
+            case 'Darwin':
+                $totalSeconds = time()-shell_exec('sysctl -n kern.boottime | cut -d \',\' -f1 | cut -d \'=\' -f2');
+                break;
+            case 'WINNT':
+                $statistics = shell_exec('net statistics workstation');
+                $statistics = strtotime(substr($statistics,strpos($statistics,'Statistics since ')+17,19));
+                $totalSeconds = time()-$statistics;
+                break;
+            default:
+                $totalSeconds = 0;
+        }
+        
         $totalMin   = $totalSeconds / 60;
         $totalHours = $totalMin / 60;
         
-        // Calculte the proper times
+        // Calculate the proper times
         $days  = floor($totalHours / 24);
         $hours = floor($totalHours - ($days * 24));
         $min   = floor($totalMin - ($days * 60 * 24) - ($hours * 60));
         
         // OUtput each of them
         $formatUptime = '';
-        if ($days != 0) {
+        if ($days != 0)
             $formatUptime .= $days . ";";
-        } else {
+        else
             $formatUptime .= "0;";
-        }
         
-        if ($hours != 0) {
+        if ($hours != 0)
             $formatUptime .= $hours . ";";
-        } else {
+        else
             $formatUptime .= "0;";
-        }
         
-        if ($min != 0) {
+        if ($min != 0)
             $formatUptime .= $min . ";";
-        } else {
+        else
             $formatUptime .= "0;";
-        }
-        
+
         echo $formatUptime;
+
+        // Set last time the request for uptime was sent
+        $_SESSION['last'] = time();
+        // Set last response
+        $_SESSION['uptime'] = $formatUptime;
     break;
 }
 ?>
