@@ -20,7 +20,20 @@
         <div class="container">
             <div class="notice">
                 <h1><span class="fa fa-clock-o"></span>Your server's uptime until now...</h1>
-                <section class="uptime"></section>
+                <section class="uptime">
+                    <div class="col">
+                        <span class="val" id="days"></span>
+                        <span class="label">days</span>
+                    </div>
+                    <div class="col">
+                        <span class="val" id="hours"></span>
+                        <span class="label">hours</span>
+                    </div>
+                    <div class="col">
+                        <span class="val" id="minutes"></span>
+                        <span class="label">minutes</span>
+                    </div>
+                </section>
             </div>
         </div>
 		<footer id="copy"></footer>

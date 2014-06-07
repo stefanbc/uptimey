@@ -11,6 +11,14 @@ body {
     font-weight: 200;
     color: #fff;
 }
+a {
+    color: #fff;
+    text-decoration: none;
+}
+a:hover,
+a:focus {
+    text-decoration: underline;
+}
 .container {
     background: rgba(0,0,0,.6);
     height: 100%;

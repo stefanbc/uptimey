@@ -2,12 +2,13 @@ function getUptime() {
     $.get('script/ajax.php?type=time', function(data) {
         data = data.split(";");
         
-        var output = "<div class='col'><span class='val'>" + data[0] + "</span><span class='label'>days</span></div>";
-        output += "<div class='col'><span class='val'>" + data[1] + "</span><span class='label'>hours</span></div>";
-        output += "<div class='col'><span class='val'>" + data[2] + "</span><span class='label'>minutes</span></div>";
+        $('#days').text(data[0]);
+        $('#hours').text(data[1]);
+        $('#minutes').text(data[2]);
         
-        $('.notice section').addClass('animated fadeInDown');
-        $('.notice section').html(output);
+        $('.val').addClass('animated fadeInDown');
+        $('.notice').addClass('animated fadeInDown');
+
     });
 }
 
@@ -15,7 +16,7 @@ function getImage() {
     $.get('script/ajax.php?type=image', function(image) {
         image = image.split(";");
         $('body').css('backgroundImage','url(' + image[0] + ')');
-        $('#copy').html(image[1]);
+        $('#copy').html("Powered by Uptimey. Fork on <a href='https://github.com/stefanbc/uptimey'>github</a> | Image - " + image[1]);
     });
 }
 
