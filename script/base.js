@@ -1,30 +1,37 @@
 function getUptime() {
     
-    $('.val').addClass('animated');
-    
-    $.get('script/ajax.php?type=time', function(data) {
-        data = data.split(";");
-        
-       
-        $('#days').text(data[0]).addClass('fadeInDown');
-        $('#hours').text(data[1]).addClass('fadeInDown');
-        $('#minutes').text(data[2]).addClass('fadeInDown');
-        
-        $('.notice').addClass('animated fadeInDown');
+    $.get('script/ajax.php', { type: "time" })
+        .done(function(data) {
+            data = data.split(";");
+            
+            $('#days').text(data[0]).addClass('fadeInDown');
+            $('#hours').text(data[1]).addClass('fadeInDown');
+            $('#minutes').text(data[2]).addClass('fadeInDown');
+            
+            $(".val").each(function(){
+                $(this).on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
+                    $(this).removeClass("fadeInDown");
+                });
+            });
+            
+            $('.notice').addClass('fadeInDown');
     });
     
 }
 
 function getImage() {
-    $.get('script/ajax.php?type=image', function(image) {
-        image = image.split(";");
-        $('body').css('backgroundImage','url(' + image[0] + ')');
-        $('#copy').html("Powered by Uptimey. Fork on <a href='https://github.com/stefanbc/uptimey'>github</a> | Image - " + image[1]);
+    $.get('script/ajax.php', { type: "image" })
+        .done(function(image) {
+            image = image.split(";");
+            $('body').css('backgroundImage','url(' + image[0] + ')');
+            $('#copy').html("Powered by Uptimey. Fork on <a href='https://github.com/stefanbc/uptimey'>Github</a> | Image - " + image[1]);
     });
 }
 
 $(document).ready(function() {
-
+    
+    $('.notice').addClass('animated');
+    $('.val').addClass('animated');
     getImage();
     
     // Initial show
