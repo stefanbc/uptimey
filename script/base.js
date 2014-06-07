@@ -1,15 +1,18 @@
 function getUptime() {
+    
+    $('.val').addClass('animated');
+    
     $.get('script/ajax.php?type=time', function(data) {
         data = data.split(";");
         
-        $('#days').text(data[0]);
-        $('#hours').text(data[1]);
-        $('#minutes').text(data[2]);
+       
+        $('#days').text(data[0]).addClass('fadeInDown');
+        $('#hours').text(data[1]).addClass('fadeInDown');
+        $('#minutes').text(data[2]).addClass('fadeInDown');
         
-        $('.val').addClass('animated fadeInDown');
         $('.notice').addClass('animated fadeInDown');
-
     });
+    
 }
 
 function getImage() {
