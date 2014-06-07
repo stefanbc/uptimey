@@ -28,18 +28,17 @@ SOFTWARE.
 
 // Check if it is an ajax request
 if (!isset($_SERVER['HTTP_X_REQUESTED_WITH']) || strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) !== 'xmlhttprequest')
-    die('no direct access allowed');
+    die('No direct access allowed!');
 
-/* Get the type of request */
+// Get the type of request
 $type = $_GET['type'];
 
 // If it's been less than a minute between request, kill the execution but display last saved uptime or picture
 session_start();
-if (!empty($_SESSION['last']) && time()-$_SESSION['last']<60)
-{
-    if ($type=='uptime')
+if (!empty($_SESSION['last']) && time() - $_SESSION['last'] < 60) {
+    if ($type == 'uptime')
         echo $_SESSION['uptime'];
-    elseif ($type=='image')
+    elseif ($type == 'image')
         echo $_SESSION['image'];
     die();
 }
@@ -54,23 +53,22 @@ switch($type){
         $_SESSION['image'] = 'http://www.bing.com' . $bingImage->image->urlBase. '_1366x768.jpg;' . $bingImage->image->copyright;
     break;
     case 'uptime':
+        /* Initialy Based on linux-dashboard (https://github.com/afaqurk/linux-dash) */
         // Execute the uptime command
         // Get the seconds, minutes, hours
         // Different methods of getting uptime based on OS
-        switch(PHP_OS)
-        {
+        switch(PHP_OS) {
             case 'Linux':
-                /* Based on linux-dashboard (https://github.com/afaqurk/linux-dash) */
                 $totalSeconds = trim(shell_exec('/usr/bin/cut -d. -f1 /proc/uptime'));
-                break;
+            break;
             case 'Darwin':
                 $totalSeconds = time()-shell_exec('sysctl -n kern.boottime | cut -d \',\' -f1 | cut -d \'=\' -f2');
-                break;
+            break;
             case 'WINNT':
                 $statistics = shell_exec('net statistics workstation');
                 $statistics = strtotime(substr($statistics,strpos($statistics,'Statistics since ')+17,19));
                 $totalSeconds = time()-$statistics;
-                break;
+            break;
             default:
                 $totalSeconds = 0;
         }
