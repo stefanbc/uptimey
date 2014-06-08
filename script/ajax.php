@@ -62,12 +62,12 @@ switch($type){
                 $totalSeconds = trim(shell_exec('/usr/bin/cut -d. -f1 /proc/uptime'));
             break;
             case 'Darwin':
-                $totalSeconds = time()-shell_exec('sysctl -n kern.boottime | cut -d \',\' -f1 | cut -d \'=\' -f2');
+                $totalSeconds = time() - shell_exec('sysctl -n kern.boottime | cut -d \',\' -f1 | cut -d \'=\' -f2');
             break;
             case 'WINNT':
                 $statistics = shell_exec('net statistics workstation');
-                $statistics = strtotime(substr($statistics,strpos($statistics,'Statistics since ')+17,19));
-                $totalSeconds = time()-$statistics;
+                $statistics = strtotime(substr($statistics,strpos($statistics,'Statistics since ') + 17, 19));
+                $totalSeconds = time() - $statistics;
             break;
             default:
                 $totalSeconds = 0;
