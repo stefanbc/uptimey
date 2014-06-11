@@ -28,7 +28,7 @@ SOFTWARE.
 $color_0: #222;
 $color_1: #fff;
 $color_2: rgba(0,0,0,.6);
-$color_3: #dadada;
+$color_3: #ddd;
 
 // Fonts
 $font_0: Raleway;
@@ -107,4 +107,5 @@ footer {
 	right: 20px;
 	color: $color_3;
 	font-size: 0.7em;
+	text-align: right;
 }

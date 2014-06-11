@@ -56,7 +56,7 @@ function getImage() {
             // Add the image as background-image on body
             $('body').css('backgroundImage','url(' + image[0] + ')');
             // Set the copyright
-            $('#copy').html("Powered by Uptimey. Fork on <a href='https://github.com/stefanbc/uptimey'>Github</a> | Image - " + image[1]);
+            $('#copy').html("Powered by Uptimey. Fork on <a href='https://github.com/stefanbc/uptimey'>Github</a> <br> Image - " + image[1]);
     });
 }
 
