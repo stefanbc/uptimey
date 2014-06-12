@@ -83,6 +83,7 @@ $(document).ready(function() {
         $('.notice').addClass('animated');
         $('.val').addClass('animated');
         $('.time h2').addClass('animated');
+        $('.active-since h2').addClass('animated');
         // Get the time
         output('time');
         // Get the image

@@ -53,7 +53,7 @@ switch($action){
         $current = date("F j, Y, g:i a", strtotime($time));
         // What's the date the server went online
         $uptime = explode(';', $_SESSION['uptime']);
-        $since = date("F j, Y, g:i a", strtotime('-' . $uptime[0]));
+        $since = date("F j, Y, g:i a", strtotime('-' . $uptime[0] . ' days ago'));
         // Return the server time
         echo  $current . ';' . $since;
         // Set the session
