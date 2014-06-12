@@ -24,51 +24,57 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-/* Get the server time */
-function getTime() {
-    $.get('script/ajax.php', { type: "time" })
-        .done(function(time) {
-            // Set the time
-            $('.time h2').text(time).addClass('fadeInDown');
-            $('.time h2').on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
-                $(this).removeClass("fadeInDown");
+/* Output the data requested */
+function output(type){
+    switch(type){
+        case 'time':
+            $.get('script/ajax.php', { action: type })
+                .done(function(time) {
+                    // Split the output
+                    time = time.split(";");
+                    // Set the time
+                    $('.time h2').text(time[0]).addClass('fadeInDown');
+                    $('.time h2').on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
+                        $(this).removeClass("fadeInDown");
+                    });
+                    $('.active-since h2').text(time[1]).addClass('fadeInDown');
+                    $('.active-since h2').on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
+                        $(this).removeClass("fadeInDown");
+                    });
             });
-    });
-}
-
-/* Get the image from Bing and add the copyright to it */
-function getImage() {
-    $.get('script/ajax.php', { type: "image" })
-        .done(function(image) {
-            // Split the info
-            image = image.split(";");
-            // Add the image as background-image on body
-            $('body').css('backgroundImage','url(' + image[0] + ')');
-            // Set the copyright
-            $('#copy').html("Powered by Uptimey. Fork on <a href='https://github.com/stefanbc/uptimey'>Github</a> <br> Image - " + image[1]);
-    });
-}
-
-/* Gets the uptime from the server using an sh command */
-function getUptime() {
-    $.get('script/ajax.php', { type: "uptime" })
-        .done(function(uptime) {
-            // Split the output
-            uptime = uptime.split(";");
-            // Add it to each element with an animation
-            $('#days').text(uptime[0]).addClass('fadeInDown');
-            $('#hours').text(uptime[1]).addClass('fadeInDown');
-            $('#minutes').text(uptime[2]).addClass('fadeInDown');
-            // After the animation is done remove the class so
-            // we can animate again on next iteration
-            $(".val").each(function(){
-                $(this).on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
-                    $(this).removeClass("fadeInDown");
-                });
+        break;
+        case 'image':
+            $.get('script/ajax.php', { action: type })
+                .done(function(image) {
+                    // Split the output
+                    image = image.split(";");
+                    // Add the image as background-image on body
+                    $('body').css('backgroundImage','url(' + image[0] + ')');
+                    // Set the copyright
+                    $('#copy').html("Powered by Uptimey. Fork on <a href='https://github.com/stefanbc/uptimey'>Github</a> <br> Image - " + image[1]);
             });
-            // We only adnimate the whole container once
-            $('.notice').addClass('fadeInDown');
-    });
+        break;
+        case 'uptime':
+            $.get('script/ajax.php', { action: type })
+                .done(function(uptime) {
+                    // Split the output
+                    uptime = uptime.split(";");
+                    // Add it to each element with an animation
+                    $('#days').text(uptime[0]).addClass('fadeInDown');
+                    $('#hours').text(uptime[1]).addClass('fadeInDown');
+                    $('#minutes').text(uptime[2]).addClass('fadeInDown');
+                    // After the animation is done remove the class so
+                    // we can animate again on next iteration
+                    $(".val").each(function(){
+                        $(this).on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
+                            $(this).removeClass("fadeInDown");
+                        });
+                    });
+                    // We only adnimate the whole container once
+                    $('.notice').addClass('fadeInDown');
+            });
+        break;
+    }
 }
 
 $(document).ready(function() {
@@ -78,15 +84,15 @@ $(document).ready(function() {
         $('.val').addClass('animated');
         $('.time h2').addClass('animated');
         // Get the time
-        getTime();
+        output('time');
         // Get the image
-        getImage();
+        output('image');
         // Get the uptime
-        getUptime();
+        output('uptime');
     /* End initial load */
 
     /* At an interval of 1 min we refresh the uptime */
     setInterval(function() {
-        getUptime();
+        output('uptime');
     }, 1000 * 60);
 });

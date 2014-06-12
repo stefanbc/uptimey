@@ -31,26 +31,31 @@ if (!isset($_SERVER['HTTP_X_REQUESTED_WITH']) || strtolower($_SERVER['HTTP_X_REQ
     die('No direct access allowed!');
 
 // Get the type of request
-$type = $_GET['type'];
+$action = $_GET['action'];
 
 // If it's been less than a minute between request, kill the execution but display last saved uptime or picture
 session_start();
 // if (!empty($_SESSION['last']) && time() - $_SESSION['last'] < 60) {
-//     if ($type == 'uptime')
+//     if ($action == 'uptime')
 //         echo $_SESSION['uptime'];
-//     elseif ($type == 'image')
+//     elseif ($action == 'image')
 //         echo $_SESSION['image'];
-//     elseif ($type == 'time')
+//     elseif ($action == 'time')
 //         echo $_SESSION['time'];
 //     die();
 // }
 
-switch($type){
+switch($action){
     case 'time':
         // Execute the shell command that tells the time
         $time = shell_exec('/bin/date');
+        // Pretty server time
+        $current = date("F j, Y, g:i a", strtotime($time));
+        // What's the date the server went online
+        $uptime = explode(';', $_SESSION['uptime']);
+        $since = date("F j, Y, g:i a", strtotime('-' . $uptime[0]));
         // Return the server time
-        echo date("F j, Y, g:i a", strtotime($time));
+        echo  $current . ';' . $since;
         // Set the session
         $_SESSION['time'] = $time;
     break;
