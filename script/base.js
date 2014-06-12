@@ -24,26 +24,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-
-/* Gets the uptime from the server using an sh command */
-function getUptime() {
-    $.get('script/ajax.php', { type: "uptime" })
-        .done(function(data) {
-            // Split the output
-            data = data.split(";");
-            // Add it to each element with an animation
-            $('#days').text(data[0]).addClass('fadeInDown');
-            $('#hours').text(data[1]).addClass('fadeInDown');
-            $('#minutes').text(data[2]).addClass('fadeInDown');
-            // After the animation is done remove the class so
-            // we can animate again on next iteration
-            $(".val").each(function(){
-                $(this).on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
-                    $(this).removeClass("fadeInDown");
-                });
+/* Get the server time */
+function getTime() {
+    $.get('script/ajax.php', { type: "time" })
+        .done(function(time) {
+            // Set the time
+            $('.time h2').text(time).addClass('fadeInDown');
+            $('.time h2').on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
+                $(this).removeClass("fadeInDown");
             });
-            // We only adnimate the whole container once
-            $('.notice').addClass('fadeInDown');
     });
 }
 
@@ -60,11 +49,36 @@ function getImage() {
     });
 }
 
+/* Gets the uptime from the server using an sh command */
+function getUptime() {
+    $.get('script/ajax.php', { type: "uptime" })
+        .done(function(uptime) {
+            // Split the output
+            uptime = uptime.split(";");
+            // Add it to each element with an animation
+            $('#days').text(uptime[0]).addClass('fadeInDown');
+            $('#hours').text(uptime[1]).addClass('fadeInDown');
+            $('#minutes').text(uptime[2]).addClass('fadeInDown');
+            // After the animation is done remove the class so
+            // we can animate again on next iteration
+            $(".val").each(function(){
+                $(this).on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
+                    $(this).removeClass("fadeInDown");
+                });
+            });
+            // We only adnimate the whole container once
+            $('.notice').addClass('fadeInDown');
+    });
+}
+
 $(document).ready(function() {
     /* Start initial load */
         // Add the animation base class
         $('.notice').addClass('animated');
         $('.val').addClass('animated');
+        $('.time h2').addClass('animated');
+        // Get the time
+        getTime();
         // Get the image
         getImage();
         // Get the uptime

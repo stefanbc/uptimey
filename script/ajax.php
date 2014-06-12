@@ -35,15 +35,25 @@ $type = $_GET['type'];
 
 // If it's been less than a minute between request, kill the execution but display last saved uptime or picture
 session_start();
-if (!empty($_SESSION['last']) && time() - $_SESSION['last'] < 60) {
-    if ($type == 'uptime')
-        echo $_SESSION['uptime'];
-    elseif ($type == 'image')
-        echo $_SESSION['image'];
-    die();
-}
+// if (!empty($_SESSION['last']) && time() - $_SESSION['last'] < 60) {
+//     if ($type == 'uptime')
+//         echo $_SESSION['uptime'];
+//     elseif ($type == 'image')
+//         echo $_SESSION['image'];
+//     elseif ($type == 'time')
+//         echo $_SESSION['time'];
+//     die();
+// }
 
 switch($type){
+    case 'time':
+        // Execute the shell command that tells the time
+        $time = shell_exec('/bin/date');
+        // Return the server time
+        echo date("F j, Y, g:i a", strtotime($time));
+        // Set the session
+        $_SESSION['time'] = $time;
+    break;
     case 'image':
         // Load the XML file from Bing
         $bingImage = simplexml_load_file('http://www.bing.com/HPImageArchive.aspx?format=xml&idx=0&n=1&mkt=en-US');
