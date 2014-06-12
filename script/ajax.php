@@ -57,7 +57,7 @@ switch($action){
         // Return the server times
         echo  $current . ';' . $since;
         // Set the session
-        $_SESSION['time'] = $time;
+        $_SESSION['time'] = $current . ';' . $since;
     break;
     case 'image':
         // Load the XML file from Bing
