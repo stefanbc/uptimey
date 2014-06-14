@@ -48,7 +48,18 @@ if (!empty($_SESSION['last']) && time() - $_SESSION['last'] < 60) {
 switch($action){
     case 'time':
         // Execute the shell command that tells the time
-        $time = shell_exec('/bin/date');
+        // Different methods of getting uptime based on OS
+        switch(PHP_OS) {
+            case 'Linux':
+                $time = shell_exec('/bin/date');
+            break;
+            case 'Darwin':
+                $time = time();
+            break;
+            case 'WINNT':
+                $time = time();
+            break;
+        }
         // Pretty server time
         $current = date("F j, Y, g:i a", strtotime($time));
         // What's the date the server went online
