@@ -33,14 +33,16 @@ function output(type){
                     // Split the output
                     time = time.split(";");
                     // Set the time
-                    $('.time h2').text(time[0]).addClass('fadeInDown');
-                    $('.time h2').on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
+                    $('#current').text(time[0]).addClass('fadeInDown');
+                    $('#current').on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
                         $(this).removeClass("fadeInDown");
                     });
-                    $('.active-since h2').text(time[1]).addClass('fadeInDown');
-                    $('.active-since h2').on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
+                    $('#since').text(time[1]).addClass('fadeInDown');
+                    $('#since').on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
                         $(this).removeClass("fadeInDown");
                     });
+                    // We only animate the whole container once
+                    $('.time-container').addClass('fadeInDown');
             });
         break;
         case 'image':
@@ -70,8 +72,8 @@ function output(type){
                             $(this).removeClass("fadeInDown");
                         });
                     });
-                    // We only adnimate the whole container once
-                    $('.notice').addClass('fadeInDown');
+                    // We only animate the whole container once
+                    $('.uptime-container').addClass('fadeInDown');
             });
         break;
     }
@@ -80,10 +82,9 @@ function output(type){
 $(document).ready(function() {
     /* Start initial load */
         // Add the animation base class
-        $('.notice').addClass('animated');
+        $('.time-container').addClass('animated');
+        $('.uptime-container').addClass('animated');
         $('.val').addClass('animated');
-        $('.time h2').addClass('animated');
-        $('.active-since h2').addClass('animated');
         // Get the time
         output('time');
         // Get the image

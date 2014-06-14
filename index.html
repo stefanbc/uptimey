@@ -16,15 +16,19 @@
     </head>
     <body>
         <div class="container">
-            <div class="notice">
+            <div class="time-container">
                 <section class="time">
-                    <span class="label">Current time on server</span>
-                    <h2></h2>
+                    <div class="row">
+                        <span class="label">Current time on server</span>
+                        <span class="val" id="current"></span>
+                    </div>
+                    <div class="row">
+                        <span class="label">Server is active since</span>
+                        <span class="val" id="since"></span>
+                    </div>
                 </section>
-                <section class="active-since">
-                    <span class="label">Server is active since</span>
-                    <h2></h2>
-                </section>
+            </div>
+            <div class="uptime-container">
                 <h2>
                     <span class="fa fa-clock-o"></span>
                     Your server's uptime until now...
