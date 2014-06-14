@@ -60,15 +60,17 @@ switch($action){
                 $time = time();
             break;
         }
+        // Pretty server date
+        $currentDate = date("F j, Y", strtotime($time));
         // Pretty server time
-        $current = date("F j, Y, g:i a", strtotime($time));
+        $currentTime = date("g:i a", strtotime($time));
         // What's the date the server went online
         $uptime = explode(';', $_SESSION['uptime']);
-        $since = date("F j, Y", strtotime('-' . $uptime[0] . ' days'));
+        $sinceDate = date("F j, Y", strtotime('-' . $uptime[0] . ' days'));
         // Return the server times
-        echo  $current . ';' . $since;
+        echo $currentDate . ';' . $sinceDate . ';' . $currentTime;
         // Set the session
-        $_SESSION['time'] = $current . ';' . $since;
+        $_SESSION['time'] = $currentDate . ';' . $sinceDate . ';' . $currentTime;
     break;
     case 'image':
         // Load the XML file from Bing

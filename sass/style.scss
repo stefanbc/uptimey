@@ -71,6 +71,7 @@ a {
     section {
         width: 960px;
         margin: 0 auto;
+        position: relative;
         .row {
             display: block;
             margin-bottom: 20px;
@@ -79,6 +80,16 @@ a {
 				font-size: 2.5em;
 				padding-bottom: 10px;
 			}
+        }
+        .right {
+            position: absolute;
+            top: 0;
+            right: 20px;
+            padding: 40px 0;
+            .val {
+                font-size: 5em;
+                text-transform: uppercase;
+            }
         }
     }
     h2 {

@@ -41,6 +41,10 @@ function output(type){
                     $('#since').on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
                         $(this).removeClass("fadeInDown");
                     });
+                    $('#time').text(time[2]).addClass('fadeInDown');
+                    $('#time').on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
+                        $(this).removeClass("fadeInDown");
+                    });
                     // We only animate the whole container once
                     $('.time-container').addClass('fadeInDown');
             });

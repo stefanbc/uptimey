@@ -17,14 +17,17 @@
     <body>
         <div class="container">
             <div class="time-container">
-                <section class="time">
+                <section class="time-inner">
                     <div class="row">
-                        <span class="label">Current time on server</span>
+                        <span class="label">Current date on server</span>
                         <span class="val" id="current"></span>
                     </div>
                     <div class="row">
                         <span class="label">Server is active since</span>
                         <span class="val" id="since"></span>
+                    </div>
+                    <div class="right">
+                        <span class="val" id="time"></span>
                     </div>
                 </section>
             </div>
@@ -33,7 +36,7 @@
                     <span class="fa fa-clock-o"></span>
                     Your server's uptime until now...
                 </h2>
-                <section class="uptime">
+                <section class="uptime-inner">
                     <div class="col">
                         <span class="val" id="days"></span>
                         <span class="label">days</span>
