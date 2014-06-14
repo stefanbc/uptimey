@@ -95,6 +95,7 @@ $(document).ready(function() {
 
     /* At an interval of 1 min we refresh the uptime */
     setInterval(function() {
+        output('time');
         output('uptime');
     }, 1000 * 60);
 });

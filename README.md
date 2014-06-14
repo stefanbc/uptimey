@@ -12,6 +12,6 @@ Just fork the repo on your web server and then access `/uptimey` in your browser
 * Background image is the Bing image of the day and it changes automatically!
 * Works on Linux, Windows, Mac OS servers
 
-![Screenshot](http://i.imgur.com/XFkztiQ.png)
+![Screenshot](http://i.imgur.com/lL0neJy.png)
 
 Made by [Stefan Cosma](http://coderbits.com/stefanbc)
