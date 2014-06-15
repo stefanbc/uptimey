@@ -36,24 +36,21 @@ $action = $_GET['action'];
 // If it's been less than a minute between request, kill the execution but display last saved uptime or picture
 session_start();
 if (!empty($_SESSION['last']) && time() - $_SESSION['last'] < 60) {
-    // if ($action == 'uptime')
-    //     echo $_SESSION['uptime'];
-    // elseif ($action == 'image')
-    //     echo $_SESSION['image'];
-    // elseif ($action == 'time')
-    //     echo $_SESSION['time'];
-    // die();
+    if ($action == 'uptime')
+        echo $_SESSION['uptime'];
+    elseif ($action == 'image')
+        echo $_SESSION['image'];
+    elseif ($action == 'time')
+        echo $_SESSION['time'];
+    die();
 }
 
 switch($action){
     case 'time':
-        // Execute the shell command that tells the time
-        $time = shell_exec('/bin/date');
         // Pretty server time
-        $current = date("F j, Y, g:i a", strtotime($time));
+        $current = date("F j, Y, g:i a");
         // What's the date the server went online
-        $uptime = explode(';', $_SESSION['uptime']);
-        $since = date("F j, Y", strtotime('-' . $uptime[0] . ' days'));
+        $since = date("F j, Y", time()-$_SESSION['uptimeSeconds']);
         // Return the server times
         echo  $current . ';' . $since;
         // Set the session
@@ -119,6 +116,7 @@ switch($action){
         $_SESSION['last'] = time();
         // Set last response
         $_SESSION['uptime'] = $formatUptime;
+        $_SESSION['uptimeSeconds'] = $totalSeconds;
     break;
 }
 ?>

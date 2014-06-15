@@ -85,12 +85,12 @@ $(document).ready(function() {
         $('.time-container').addClass('animated');
         $('.uptime-container').addClass('animated');
         $('.val').addClass('animated');
-        // Get the time
-        output('time');
         // Get the image
         output('image');
         // Get the uptime
         output('uptime');
+        // Get the time (let uptime be the first request so that the session updates needed values for time)
+        output('time');
     /* End initial load */
 
     /* At an interval of 1 min we refresh the uptime */
