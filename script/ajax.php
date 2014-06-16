@@ -54,9 +54,9 @@ switch($action){
         // What's the date the server went online
         $sinceDate = date("F j, Y", time() - $_SESSION['uptimeSeconds']);
         // Return the server times
-        echo $currentDate . ';' . $sinceDate . ';' . $currentTime;
+        echo $currentDate . ';' . $currentTime . ';' . $sinceDate;
         // Set the session
-        $_SESSION['time'] = $currentDate . ';' . $sinceDate . ';' . $currentTime;
+        $_SESSION['time'] = $currentDate . ';' . $currentTime . ';' . $sinceDate;
     break;
     case 'image':
         // Load the XML file from Bing

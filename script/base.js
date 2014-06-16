@@ -37,12 +37,12 @@ function output(type){
                     $('#current').on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
                         $(this).removeClass("fadeInDown");
                     });
-                    $('#since').text(time[1]).addClass('fadeInDown');
-                    $('#since').on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
+                    $('#time').text(time[1]).addClass('fadeInDown');
+                    $('#time').on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
                         $(this).removeClass("fadeInDown");
                     });
-                    $('#time').text(time[2]).addClass('fadeInDown');
-                    $('#time').on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
+                    $('#since').text(time[2]).addClass('fadeInDown');
+                    $('#since').on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
                         $(this).removeClass("fadeInDown");
                     });
                     // We only animate the whole container once
