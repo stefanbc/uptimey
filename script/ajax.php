@@ -36,37 +36,23 @@ $action = $_GET['action'];
 // If it's been less than a minute between request, kill the execution but display last saved uptime or picture
 session_start();
 if (!empty($_SESSION['last']) && time() - $_SESSION['last'] < 60) {
-    // if ($action == 'uptime')
-    //     echo $_SESSION['uptime'];
-    // elseif ($action == 'image')
-    //     echo $_SESSION['image'];
-    // elseif ($action == 'time')
-    //     echo $_SESSION['time'];
-    // die();
+    if ($action == 'uptime')
+        echo $_SESSION['uptime'];
+    elseif ($action == 'image')
+        echo $_SESSION['image'];
+    elseif ($action == 'time')
+        echo $_SESSION['time'];
+    die();
 }
 
 switch($action){
     case 'time':
-        // Execute the shell command that tells the time
-        // Different methods of getting uptime based on OS
-        switch(PHP_OS) {
-            case 'Linux':
-                $time = shell_exec('/bin/date');
-            break;
-            case 'Darwin':
-                $time = time();
-            break;
-            case 'WINNT':
-                $time = time();
-            break;
-        }
         // Pretty server date
-        $currentDate = date("F j, Y", strtotime($time));
+        $currentDate = date("F j, Y");
         // Pretty server time
-        $currentTime = date("g:i a", strtotime($time));
+        $currentTime = date("g:i a");
         // What's the date the server went online
-        $uptime = explode(';', $_SESSION['uptime']);
-        $sinceDate = date("F j, Y", strtotime('-' . $uptime[0] . ' days'));
+        $sinceDate = date("F j, Y", time() - $_SESSION['uptimeSeconds']);
         // Return the server times
         echo $currentDate . ';' . $sinceDate . ';' . $currentTime;
         // Set the session
@@ -132,6 +118,7 @@ switch($action){
         $_SESSION['last'] = time();
         // Set last response
         $_SESSION['uptime'] = $formatUptime;
+        $_SESSION['uptimeSeconds'] = $totalSeconds;
     break;
 }
 ?>
