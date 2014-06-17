@@ -32,18 +32,16 @@ function output(type){
                 .done(function(time) {
                     // Split the output
                     time = time.split(";");
-                    // Set the time
+                    // Set the times
                     $('#current').text(time[0]).addClass('fadeInDown');
-                    $('#current').on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
-                        $(this).removeClass("fadeInDown");
-                    });
                     $('#time').text(time[1]).addClass('fadeInDown');
-                    $('#time').on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
-                        $(this).removeClass("fadeInDown");
-                    });
                     $('#since').text(time[2]).addClass('fadeInDown');
-                    $('#since').on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
-                        $(this).removeClass("fadeInDown");
+                    // After the animation is done remove the class so
+                    // we can animate again on next iteration
+                    $(".val").each(function(){
+                        $(this).on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
+                            $(this).removeClass("fadeInDown");
+                        });
                     });
                     // We only animate the whole container once
                     $('.time-container').addClass('fadeInDown');
@@ -99,7 +97,7 @@ $(document).ready(function() {
 
     /* At an interval of 1 min we refresh the uptime */
     setInterval(function() {
-        output('time');
         output('uptime');
+        output('time');
     }, 1000 * 60);
 });
