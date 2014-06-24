@@ -111,11 +111,31 @@ a {
 			width: 33%;
 			display: inline-block;
 			padding-top: 15px;
-			&:first-child {
-				border-top: 1px solid $color_1;
+			&:first-child:before {
+                content: "";
+                height: 1px;
+                background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(147,147,147,1) 50%, rgba(0,0,0,0) 100%);
+                background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0)), color-stop(50%,rgba(147,147,147,1)), color-stop(100%,rgba(0,0,0,0)));
+                background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(147,147,147,1) 50%,rgba(0,0,0,0) 100%);
+                background: -o-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(147,147,147,1) 50%,rgba(0,0,0,0) 100%);
+                background: -ms-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(147,147,147,1) 50%,rgba(0,0,0,0) 100%);
+                background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(147,147,147,1) 50%,rgba(0,0,0,0) 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#00000000',GradientType=1 );
+                display: block;
+                margin-bottom: 25px;
 			}
-			&:nth-child(3) {
-				border-top: 1px solid $color_1;
+			&:nth-child(3):before {
+                content: "";
+                height: 1px;
+                background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(147,147,147,1) 50%, rgba(0,0,0,0) 100%);
+                background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0)), color-stop(50%,rgba(147,147,147,1)), color-stop(100%,rgba(0,0,0,0)));
+                background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(147,147,147,1) 50%,rgba(0,0,0,0) 100%);
+                background: -o-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(147,147,147,1) 50%,rgba(0,0,0,0) 100%);
+                background: -ms-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(147,147,147,1) 50%,rgba(0,0,0,0) 100%);
+                background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(147,147,147,1) 50%,rgba(0,0,0,0) 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#00000000',GradientType=1 );
+                display: block;
+                margin-bottom: 25px;
 			}
 			.val {
 				display: block;
@@ -130,7 +150,7 @@ a {
 	h2 {
 		font-weight: lighter;
 		font-size: 1.1em;
-		margin-bottom: -10px;
+		margin-bottom: -25px;
 		span:before {
 			padding-right: 10px;
 		}
