@@ -84,19 +84,22 @@ a {
         .right {
             position: absolute;
             top: 0;
-            right: 20px;
+            right: 30px;
             padding: 40px 0;
             .fa {
                 font-size: 3em;
                 margin-right: 15px;
-                margin-top: 25px;
+                margin-top: 15px;
                 vertical-align: top;
             }
             .fa-sun-o {
                 color: #ffd900;
             }
+            .fa-moon-o {
+                color: #3498db;
+            }
             .val {
-                font-size: 5em;
+                font-size: 4em;
             }
         }
     }
