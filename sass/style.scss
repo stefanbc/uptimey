@@ -171,4 +171,7 @@ footer {
 	color: $color_3;
 	font-size: 0.7em;
 	text-align: right;
+	a {
+	    text-decoration: underline;
+	}
 }
