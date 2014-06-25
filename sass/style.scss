@@ -86,9 +86,17 @@ a {
             top: 0;
             right: 20px;
             padding: 40px 0;
+            .fa {
+                font-size: 3em;
+                margin-right: 15px;
+                margin-top: 25px;
+                vertical-align: top;
+            }
+            .fa-sun-o {
+                color: #ffd900;
+            }
             .val {
                 font-size: 5em;
-                text-transform: uppercase;
             }
         }
     }
@@ -151,9 +159,6 @@ a {
 		font-weight: lighter;
 		font-size: 1.1em;
 		margin-bottom: -25px;
-		span:before {
-			padding-right: 10px;
-		}
 	}
 }
 footer {

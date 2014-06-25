@@ -36,6 +36,12 @@ function output(type){
                     $('#current').text(time[0]).addClass('fadeInDown');
                     $('#time').text(time[1]).addClass('fadeInDown');
                     $('#since').text(time[2]).addClass('fadeInDown');
+                    // Set the icon for AM or PM
+                    if(time[1].indexOf("am") >= 0) {
+                        $(".right .fa").addClass("fa-sun-o");
+                    } else {
+                        $(".right .fa").addClass("fa-moon-o");
+                    }
                     // After the animation is done remove the class so
                     // we can animate again on next iteration
                     $(".val").each(function(){
