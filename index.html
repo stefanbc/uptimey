@@ -16,7 +16,7 @@
     </head>
     <body>
         <div class="container">
-            <div class="time-container">
+            <div class="top-container">
                 <section class="time-inner">
                     <div class="row">
                         <span class="label">Current date on server</span>
@@ -26,13 +26,19 @@
                         <span class="label">Server is active since</span>
                         <span class="val" id="since"></span>
                     </div>
-                    <div class="right">
+                    <div class="block-right time">
                         <span class="fa"></span>
                         <span class="val" id="time"></span>
                     </div>
                 </section>
+                <section class="location-inner">
+                    <div class="block-right">
+                        <span class="fa fa-map-marker"></span>
+                        <span class="val" id="location"></span>
+                    </div>
+                </section>
             </div>
-            <div class="uptime-container">
+            <div class="bottom-container">
                 <h2>Your server's uptime until now...</h2>
                 <section class="uptime-inner">
                     <div class="col">

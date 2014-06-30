@@ -38,19 +38,12 @@ function output(type){
                     $('#since').text(time[2]).addClass('fadeInDown');
                     // Set the icon for AM or PM
                     if(time[1].indexOf("am") >= 0) {
-                        $(".right .fa").addClass("fa-sun-o");
+                        $(".time .fa").addClass("fa-sun-o");
                     } else {
-                        $(".right .fa").addClass("fa-moon-o");
+                        $(".time .fa").addClass("fa-moon-o");
                     }
-                    // After the animation is done remove the class so
-                    // we can animate again on next iteration
-                    $(".val").each(function(){
-                        $(this).on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
-                            $(this).removeClass("fadeInDown");
-                        });
-                    });
                     // We only animate the whole container once
-                    $('.time-container').addClass('fadeInDown');
+                    $('.top-container').addClass('fadeInDown');
             });
         break;
         case 'image':
@@ -73,28 +66,44 @@ function output(type){
                     $('#days').text(uptime[0]).addClass('fadeInDown');
                     $('#hours').text(uptime[1]).addClass('fadeInDown');
                     $('#minutes').text(uptime[2]).addClass('fadeInDown');
-                    // After the animation is done remove the class so
-                    // we can animate again on next iteration
-                    $(".val").each(function(){
-                        $(this).on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
-                            $(this).removeClass("fadeInDown");
-                        });
-                    });
                     // We only animate the whole container once
-                    $('.uptime-container').addClass('fadeInDown');
+                    $('.bottom-container').addClass('fadeInDown');
+            });
+        break;
+        case 'location':
+            $.get('script/ajax.php', { action: type })
+                .done(function(location) {
+                    // Set up the URL for location call using ipinfo.io
+                    var ip_call = "http://ipinfo.io/" + location + "/geo";
+                    // Get the response and set the value
+                    $.get(ip_call, function(response) {
+                        // Add it to the element with an animation
+                        $('#location').text(response.city + ", " + response.region + ", " + response.country).addClass('fadeInDown');
+                    }, "jsonp");
+                    // We only animate the whole container once
+                    $('.location-inner').addClass('fadeInDown');
             });
         break;
     }
+    // After the animation is done remove the class so
+    // we can animate again on next iteration
+    $(".val").each(function(){
+        $(this).on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
+            $(this).removeClass("fadeInDown");
+        });
+    });
 }
 
 $(document).ready(function() {
     /* Start initial load */
         // Add the animation base class
-        $('.time-container').addClass('animated');
-        $('.uptime-container').addClass('animated');
+        $('.top-container').addClass('animated');
+        $('.bottom-container').addClass('animated');
         $('.val').addClass('animated');
         // Get the image
         output('image');
+        // Get the location
+        output('location');
         // Get the uptime
         output('uptime');
         // Get the time (let uptime be the first request so that the session updates needed values for time)
