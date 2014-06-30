@@ -42,6 +42,8 @@ if (!empty($_SESSION['last']) && time() - $_SESSION['last'] < 60) {
         echo $_SESSION['image'];
     elseif ($action == 'time')
         echo $_SESSION['time'];
+    elseif ($action == 'location')
+        echo $_SESSION['location'];
     die();
 }
 
@@ -89,13 +91,11 @@ switch($action){
         
         $totalMin   = $totalSeconds / 60;
         $totalHours = $totalMin / 60;
-        
         // Calculate the proper times
         $days  = floor($totalHours / 24);
         $hours = floor($totalHours - ($days * 24));
         $min   = floor($totalMin - ($days * 60 * 24) - ($hours * 60));
-        
-        // OUtput each of them
+        // Output each of them
         $formatUptime = '';
         if ($days != 0)
             $formatUptime .= $days . ";";
@@ -111,9 +111,8 @@ switch($action){
             $formatUptime .= $min . ";";
         else
             $formatUptime .= "0;";
-
+        // Return the formated tim
         echo $formatUptime;
-
         // Set last time the request for uptime was sent
         $_SESSION['last'] = time();
         // Set last response
@@ -121,7 +120,12 @@ switch($action){
         $_SESSION['uptimeSeconds'] = $totalSeconds;
     break;
     case 'location':
-        echo gethostbyname($_SERVER["SERVER_NAME"]);
+        // Get the IP
+        $location = gethostbyname($_SERVER["SERVER_NAME"]);
+        // Return it
+        echo $location;
+        // Set the session for location
+        $_SESSION['location'] = $location;
     break;
 }
 ?>
