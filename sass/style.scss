@@ -87,6 +87,7 @@ a {
             right: 30px;
         }
         .time{
+            padding: 20px 0;
             .fa {
                 font-size: 3em;
                 margin-right: 15px;
@@ -101,6 +102,13 @@ a {
             }
             .val {
                 font-size: 4em;
+            }
+        }
+        .location {
+            top: -80px;
+            font-size: 1.5em;
+            .fa {
+                margin-right: 15px;
             }
         }
     }
