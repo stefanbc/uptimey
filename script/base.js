@@ -73,6 +73,7 @@ function output(type){
         case 'location':
             $.get('script/ajax.php', { action: type })
                 .done(function(location) {
+                    console.log(location);
                     // Set up the URL for location call using ipinfo.io
                     var ip_call = "http://ipinfo.io/" + location + "/geo";
                     // Get the response and set the value

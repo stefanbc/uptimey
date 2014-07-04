@@ -36,15 +36,15 @@ $action = $_GET['action'];
 // If it's been less than a minute between request, kill the execution but display last saved uptime or picture
 session_start();
 if (!empty($_SESSION['last']) && time() - $_SESSION['last'] < 60) {
-    if ($action == 'uptime')
-        echo $_SESSION['uptime'];
-    elseif ($action == 'image')
-        echo $_SESSION['image'];
-    elseif ($action == 'time')
-        echo $_SESSION['time'];
-    elseif ($action == 'location')
-        echo $_SESSION['location'];
-    die();
+    // if ($action == 'uptime')
+    //     echo $_SESSION['uptime'];
+    // elseif ($action == 'image')
+    //     echo $_SESSION['image'];
+    // elseif ($action == 'time')
+    //     echo $_SESSION['time'];
+    // elseif ($action == 'location')
+    //     echo $_SESSION['location'];
+    // die();
 }
 
 switch($action){
@@ -121,11 +121,16 @@ switch($action){
     break;
     case 'location':
         // Get the IP
-        $location = gethostbyname($_SERVER["SERVER_NAME"]);
+        $getIP = "#1: " . trim(shell_exec('curl ifconfig.me'));
+        if(empty($getIP)) {
+            $getIP = "#2: " . trim(shell_exec('dig +short myip.opendns.com @resolver1.opendns.com'));
+        } else {
+            $getIP = "#3: " . gethostbyname($_SERVER["SERVER_NAME"]);
+        }
         // Return it
-        echo $location;
+        echo $getIP;
         // Set the session for location
-        $_SESSION['location'] = $location;
+        $_SESSION['location'] = $getIP;
     break;
 }
 ?>
