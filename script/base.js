@@ -25,10 +25,12 @@ SOFTWARE.
 */
 
 /* Output the data requested */
-function output(type){
-    switch(type){
+function output(type) {
+    switch (type) {
         case 'time':
-            $.get('script/ajax.php', { action: type })
+            $.get('script/ajax.php', {
+                action: type
+            })
                 .done(function(time) {
                     // Split the output
                     time = time.split(";");
@@ -37,28 +39,32 @@ function output(type){
                     $('#time').text(time[1]).addClass('fadeInDown');
                     $('#since').text(time[2]).addClass('fadeInDown');
                     // Set the icon for AM or PM
-                    if(time[1].indexOf("am") >= 0) {
+                    if (time[1].indexOf("am") >= 0) {
                         $(".time .fa").addClass("fa-sun-o");
                     } else {
                         $(".time .fa").addClass("fa-moon-o");
                     }
                     // We only animate the whole container once
                     $('.top-container').addClass('fadeInDown');
-            });
-        break;
+                });
+            break;
         case 'image':
-            $.get('script/ajax.php', { action: type })
+            $.get('script/ajax.php', {
+                action: type
+            })
                 .done(function(image) {
                     // Split the output
                     image = image.split(";");
                     // Add the image as background-image on body
-                    $('body').css('backgroundImage','url(' + image[0] + ')');
+                    $('body').css('backgroundImage', 'url(' + image[0] + ')');
                     // Set the copyright
                     $('#copy').html("Powered by Uptimey. Fork on <a href='https://github.com/stefanbc/uptimey'>Github</a> <br> Image - " + image[1]);
-            });
-        break;
+                });
+            break;
         case 'uptime':
-            $.get('script/ajax.php', { action: type })
+            $.get('script/ajax.php', {
+                action: type
+            })
                 .done(function(uptime) {
                     // Split the output
                     uptime = uptime.split(";");
@@ -68,12 +74,13 @@ function output(type){
                     $('#minutes').text(uptime[2]).addClass('fadeInDown');
                     // We only animate the whole container once
                     $('.bottom-container').addClass('fadeInDown');
-            });
-        break;
+                });
+            break;
         case 'location':
-            $.get('script/ajax.php', { action: type })
+            $.get('script/ajax.php', {
+                action: type
+            })
                 .done(function(location) {
-                    console.log(location);
                     // Set up the URL for location call using ipinfo.io
                     var ip_call = "http://ipinfo.io/" + location + "/geo";
                     // Get the response and set the value
@@ -83,12 +90,12 @@ function output(type){
                     }, "jsonp");
                     // We only animate the whole container once
                     $('.location-inner').addClass('fadeInDown');
-            });
-        break;
+                });
+            break;
     }
     // After the animation is done remove the class so
     // we can animate again on next iteration
-    $(".val").each(function(){
+    $(".val").each(function() {
         $(this).on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
             $(this).removeClass("fadeInDown");
         });
@@ -97,18 +104,18 @@ function output(type){
 
 $(document).ready(function() {
     /* Start initial load */
-        // Add the animation base class
-        $('.top-container').addClass('animated');
-        $('.bottom-container').addClass('animated');
-        $('.val').addClass('animated');
-        // Get the image
-        output('image');
-        // Get the location
-        output('location');
-        // Get the uptime
-        output('uptime');
-        // Get the time (let uptime be the first request so that the session updates needed values for time)
-        output('time');
+    // Add the animation base class
+    $('.top-container').addClass('animated');
+    $('.bottom-container').addClass('animated');
+    $('.val').addClass('animated');
+    // Get the image
+    output('image');
+    // Get the location
+    output('location');
+    // Get the uptime
+    output('uptime');
+    // Get the time (let uptime be the first request so that the session updates needed values for time)
+    output('time');
     /* End initial load */
 
     /* At an interval of 1 min we refresh the uptime */
