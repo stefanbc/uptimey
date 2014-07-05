@@ -36,15 +36,15 @@ $action = $_GET['action'];
 // If it's been less than a minute between request, kill the execution but display last saved uptime or picture
 session_start();
 if (!empty($_SESSION['last']) && time() - $_SESSION['last'] < 60) {
-    if ($action == 'uptime')
-        echo $_SESSION['uptime'];
-    elseif ($action == 'image')
-        echo $_SESSION['image'];
-    elseif ($action == 'time')
-        echo $_SESSION['time'];
-    elseif ($action == 'location')
-        echo $_SESSION['location'];
-    die();
+    // if ($action == 'uptime')
+    //     echo $_SESSION['uptime'];
+    // elseif ($action == 'image')
+    //     echo $_SESSION['image'];
+    // elseif ($action == 'time')
+    //     echo $_SESSION['time'];
+    // elseif ($action == 'location')
+    //     echo $_SESSION['location'];
+    // die();
 }
 
 switch($action){
@@ -120,8 +120,12 @@ switch($action){
         $_SESSION['uptimeSeconds'] = $totalSeconds;
     break;
     case 'location':
-        // Get the IP
-        $getIP = gethostbyname($_SERVER['SERVER_NAME']);
+        if(function_exists('curl_version')) {
+            $getIP = shell_exec('curl http://ipecho.net/plain; echo');
+        } else {
+            // Get the IP
+            $getIP = gethostbyname($_SERVER['SERVER_NAME']);
+        }
         // Check for localhost
         if ($getIP == "127.0.0.1") {
             // Execute command that feteches IP without sudo
@@ -130,7 +134,7 @@ switch($action){
         // Return it
         echo $getIP;
         // Set the session for location
-        $_SESSION['location'] = $getIP;
+        // $_SESSION['location'] = $getIP;
     break;
 }
 ?>
