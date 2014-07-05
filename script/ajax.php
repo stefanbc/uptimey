@@ -120,10 +120,12 @@ switch($action){
         $_SESSION['uptimeSeconds'] = $totalSeconds;
     break;
     case 'location':
+        // Get the IP
         if(function_exists('curl_version')) {
+            // From third party
             $getIP = shell_exec('curl http://ipecho.net/plain; echo');
         } else {
-            // Get the IP
+            // Using PHP var
             $getIP = gethostbyname($_SERVER['SERVER_NAME']);
         }
         // Check for localhost
