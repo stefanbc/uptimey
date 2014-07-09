@@ -61,6 +61,7 @@ a {
 	background: $color_2;
 	height: 100%;
 	width: 100%;
+	position: relative;
 }
 .top-container {
     margin: 0 auto;
@@ -172,6 +173,17 @@ a {
 		font-size: 1.1em;
 		margin-bottom: -25px;
 	}
+}
+.button-container {
+    position: absolute;
+    bottom: 70px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 2em;
+    .button {
+        cursor: pointer;
+    }
 }
 footer {
 	position: absolute;
