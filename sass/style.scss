@@ -34,6 +34,7 @@ $color_3: #ddd;
 $font_0: Raleway, sans-serif;
 
 @charset "UTF-8";
+
 html {
 	height: 100%;
 }
@@ -56,6 +57,19 @@ a {
 	&:focus {
 		text-decoration: underline;
 	}
+}
+.border-top {
+    content: "";
+    height: 1px;
+    background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(147,147,147,1) 50%, rgba(0,0,0,0) 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0)), color-stop(50%,rgba(147,147,147,1)), color-stop(100%,rgba(0,0,0,0)));
+    background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(147,147,147,1) 50%,rgba(0,0,0,0) 100%);
+    background: -o-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(147,147,147,1) 50%,rgba(0,0,0,0) 100%);
+    background: -ms-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(147,147,147,1) 50%,rgba(0,0,0,0) 100%);
+    background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(147,147,147,1) 50%,rgba(0,0,0,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#00000000',GradientType=1 );
+    display: block;
+    margin-bottom: 25px;
 }
 .container {
 	background: $color_2;
@@ -136,30 +150,10 @@ a {
 			display: inline-block;
 			padding-top: 15px;
 			&:first-child:before {
-                content: "";
-                height: 1px;
-                background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(147,147,147,1) 50%, rgba(0,0,0,0) 100%);
-                background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0)), color-stop(50%,rgba(147,147,147,1)), color-stop(100%,rgba(0,0,0,0)));
-                background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(147,147,147,1) 50%,rgba(0,0,0,0) 100%);
-                background: -o-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(147,147,147,1) 50%,rgba(0,0,0,0) 100%);
-                background: -ms-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(147,147,147,1) 50%,rgba(0,0,0,0) 100%);
-                background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(147,147,147,1) 50%,rgba(0,0,0,0) 100%);
-                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#00000000',GradientType=1 );
-                display: block;
-                margin-bottom: 25px;
+                @extend .border-top;
 			}
 			&:nth-child(3):before {
-                content: "";
-                height: 1px;
-                background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(147,147,147,1) 50%, rgba(0,0,0,0) 100%);
-                background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0)), color-stop(50%,rgba(147,147,147,1)), color-stop(100%,rgba(0,0,0,0)));
-                background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(147,147,147,1) 50%,rgba(0,0,0,0) 100%);
-                background: -o-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(147,147,147,1) 50%,rgba(0,0,0,0) 100%);
-                background: -ms-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(147,147,147,1) 50%,rgba(0,0,0,0) 100%);
-                background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(147,147,147,1) 50%,rgba(0,0,0,0) 100%);
-                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#00000000',GradientType=1 );
-                display: block;
-                margin-bottom: 25px;
+                @extend .border-top;
 			}
 			.val {
 				display: block;
@@ -178,15 +172,22 @@ a {
 	}
 }
 .button-container {
+    &:before {
+        @extend .border-top;  
+    }
     position: absolute;
-    bottom: 70px;
-    left: 0;
-    width: 100%;
+    bottom: 60px;
+    left: 50%;
+    width: 600px;
     text-align: center;
     font-size: 2em;
+    margin-left: -300px;
     .button {
         cursor: pointer;
-        margin: 0 10px;
+        margin: 0 30px;
+    }
+    .refresh-button {
+        color: #82b541;
     }
     .twitter-button {
         color: #55acee;

@@ -101,6 +101,38 @@ function output(type) {
         });
     });
 }
+/* Button action */
+function action(type) {
+    switch (type) {
+        case 'adv':
+            // Animated it
+            $(".adv-button").addClass('pulse');
+            $(".adv-button").on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
+                $(this).removeClass("pulse");
+            });
+            // Get the status of the button
+            var status = $(".adv-button").attr("data-status");
+            // Check the state
+            if (status == "default") {
+                // Show the correct panel and set the button state
+                $(".adv-button").attr("data-status", "advanced");
+                $(".default-panel").fadeOut(500);
+                $(".advanced-panel").fadeIn(500);
+            } else if (status == "advanced") {
+                // Show the correct panel and set the button state
+                $(".adv-button").attr("data-status", "default");
+                $(".advanced-panel").fadeOut(500);
+                $(".default-panel").fadeIn(500);
+            }
+            break;
+        case 'refresh':
+            $(".refresh-button").addClass('rotateIn');
+            $(".refresh-button").on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
+                $(this).removeClass("rotateIn");
+            });
+            break;
+    }
+}
 
 $(document).ready(function() {
     /* Start initial load */
@@ -108,6 +140,7 @@ $(document).ready(function() {
     $('.top-container').addClass('animated');
     $('.bottom-container').addClass('animated');
     $('.val').addClass('animated');
+    $('.button').addClass('animated');
     // Get the image
     output('image');
     // Get the location
@@ -123,23 +156,15 @@ $(document).ready(function() {
         output('uptime');
         output('time');
     }, 1000 * 60);
-    
-    /* On click on the more button */
-    $(".adv-button").on("click", function(){
-        // Get the status of the button
-        var status = $(this).attr("data-status");
-        // Check the state
-        if (status == "default"){
-            // Show the correct panel and set the button state
-            $(this).attr("data-status", "advanced");
-            $(".default-panel").fadeOut(500);
-            $(".advanced-panel").fadeIn(500);
-        } else if (status == "advanced") {
-            // Show the correct panel and set the button state
-            $(this).attr("data-status", "default");
-            $(".advanced-panel").fadeOut(500);
-            $(".default-panel").fadeIn(500);
-        }
+
+    /* Click action on the advanced button */
+    $(".adv-button").on("click", function() {
+        action('adv');
     });
-    
+
+    /* Click action on the refresh button */
+    $(".refresh-button").on("click", function() {
+        action('refresh');
+    });
+
 });
