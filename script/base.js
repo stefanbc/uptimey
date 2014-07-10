@@ -131,6 +131,24 @@ function action(type) {
                 $(this).removeClass("rotateIn");
             });
             break;
+        case 'twitter':
+            // Animated it
+            $(".twitter-button").addClass('pulse');
+            $(".twitter-button").on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
+                $(this).removeClass("pulse");
+            });
+        // The action
+            // Set the URL
+            var url = "https://github.com/stefanbc/uptimey";
+            // Get the current uptime
+            var uptime = $("#days").text() + " days " + $("#hours").text() + " hours " + $("#minutes").text() + " minutes";
+            // Set the tweet
+            var text = "My server has been online for " + uptime + ". Can you beat this uptime?";
+            // Set the hashtag
+            var hashtag = "uptimey";
+            // Open the Twitter share window
+            window.open('http://twitter.com/share?url=' + url + '&text=' + text + '&hashtags=' + hashtag + '&', 'twitterwindow', 'height=450, width=550, top=' + ($(window).height() / 2 - 225) + ', left=' + $(window).width() / 2 + ', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
+            break;
     }
 }
 
@@ -167,4 +185,8 @@ $(document).ready(function() {
         action('refresh');
     });
 
+    /* Click action on the twitter share button */
+    $(".twitter-button").on("click", function() {
+        action('twitter');
+    });
 });
