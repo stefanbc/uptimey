@@ -126,10 +126,10 @@ function action(type) {
             }
             break;
         case 'refresh':
-            $(".refresh-button").addClass('rotateIn');
-            $(".refresh-button").on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
-                $(this).removeClass("rotateIn");
-            });
+            $(".refresh-button").addClass('fa-spin');
+            setTimeout(function() {
+                $(".refresh-button").removeClass("fa-spin");
+            }, 1000);
             break;
         case 'twitter':
             // Animated it
@@ -137,13 +137,13 @@ function action(type) {
             $(".twitter-button").on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
                 $(this).removeClass("pulse");
             });
-        // The action
+            // The action
             // Set the URL
             var url = "https://github.com/stefanbc/uptimey";
             // Get the current uptime
             var uptime = $("#days").text() + " days " + $("#hours").text() + " hours " + $("#minutes").text() + " minutes";
             // Set the tweet
-            var text = "My server has been online for " + uptime + ". Can you beat this uptime?";
+            var text = "My server has been online for " + uptime + ". Can you beat this uptime? via";
             // Set the hashtag
             var hashtag = "uptimey";
             // Open the Twitter share window
