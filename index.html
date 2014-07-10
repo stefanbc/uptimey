@@ -16,47 +16,52 @@
     </head>
     <body>
         <div class="container">
-            <div class="top-container">
-                <section class="time-inner">
-                    <div class="row">
-                        <span class="label">Current date on server</span>
-                        <span class="val" id="current"></span>
-                    </div>
-                    <div class="row">
-                        <span class="label">Server is active since</span>
-                        <span class="val" id="since"></span>
-                    </div>
-                    <div class="block-right time">
-                        <span class="fa"></span>
-                        <span class="val" id="time"></span>
-                    </div>
-                </section>
-                <section class="location-inner">
-                    <div class="block-right location">
-                        <span class="fa fa-map-marker"></span>
-                        <span class="val" id="location"></span>
-                    </div>
-                </section>
-            </div>
-            <div class="bottom-container">
-                <h2>Your server's uptime until now...</h2>
-                <section class="uptime-inner">
-                    <div class="col">
-                        <span class="val" id="days"></span>
-                        <span class="label">days</span>
-                    </div>
-                    <div class="col">
-                        <span class="val" id="hours"></span>
-                        <span class="label">hours</span>
-                    </div>
-                    <div class="col">
-                        <span class="val" id="minutes"></span>
-                        <span class="label">minutes</span>
-                    </div>
-                </section>
-            </div>
+            <section class="default-panel">
+                <div class="top-container">
+                    <section class="time-inner">
+                        <div class="row">
+                            <span class="label">Current date on server</span>
+                            <span class="val" id="current"></span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Server is active since</span>
+                            <span class="val" id="since"></span>
+                        </div>
+                        <div class="block-right time">
+                            <span class="fa"></span>
+                            <span class="val" id="time"></span>
+                        </div>
+                    </section>
+                    <section class="location-inner">
+                        <div class="block-right location">
+                            <span class="fa fa-map-marker"></span>
+                            <span class="val" id="location"></span>
+                        </div>
+                    </section>
+                </div>
+                <div class="bottom-container">
+                    <h2>Your server's uptime until now...</h2>
+                    <section class="uptime-inner">
+                        <div class="col">
+                            <span class="val" id="days"></span>
+                            <span class="label">days</span>
+                        </div>
+                        <div class="col">
+                            <span class="val" id="hours"></span>
+                            <span class="label">hours</span>
+                        </div>
+                        <div class="col">
+                            <span class="val" id="minutes"></span>
+                            <span class="label">minutes</span>
+                        </div>
+                    </section>
+                </div>
+            </section>
+            <section class="advanced-panel">
+                This is a the advanced section.
+            </section>
             <div class="button-container">
-                <span class="button adv-button fa fa-ellipsis-h"></span>
+                <span class="button adv-button fa fa-ellipsis-h" data-status="default"></span>
             </div>
         </div>
 		<footer id="copy"></footer>

@@ -123,4 +123,23 @@ $(document).ready(function() {
         output('uptime');
         output('time');
     }, 1000 * 60);
+    
+    /* On click on the more button */
+    $(".adv-button").on("click", function(){
+        // Get the status of the button
+        var status = $(this).attr("data-status");
+        // Check the state
+        if (status == "default"){
+            // Show the correct panel and set the button state
+            $(this).attr("data-status", "advanced");
+            $(".default-panel").fadeOut(500);
+            $(".advanced-panel").fadeIn(500);
+        } else if (status == "advanced") {
+            // Show the correct panel and set the button state
+            $(this).attr("data-status", "default");
+            $(".advanced-panel").fadeOut(500);
+            $(".default-panel").fadeIn(500);
+        }
+    });
+    
 });
