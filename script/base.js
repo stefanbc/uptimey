@@ -126,7 +126,9 @@ function action(type) {
             }
             break;
         case 'refresh':
+            // Animated it
             $(".refresh-button").addClass('fa-spin');
+            // Stop animation after 1s
             setTimeout(function() {
                 $(".refresh-button").removeClass("fa-spin");
             }, 1000);
@@ -145,7 +147,7 @@ function action(type) {
             // Set the tweet
             var text = "My server has been online for " + uptime + ". Can you beat this uptime? via";
             // Set the hashtag
-            var hashtag = "uptimey";
+            var hashtag = "uptimey,devbranch";
             // Open the Twitter share window
             window.open('http://twitter.com/share?url=' + url + '&text=' + text + '&hashtags=' + hashtag + '&', 'twitterwindow', 'height=450, width=550, top=' + ($(window).height() / 2 - 225) + ', left=' + $(window).width() / 2 + ', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
             break;
@@ -175,18 +177,11 @@ $(document).ready(function() {
         output('time');
     }, 1000 * 60);
 
-    /* Click action on the advanced button */
-    $(".adv-button").on("click", function() {
-        action('adv');
-    });
-
-    /* Click action on the refresh button */
-    $(".refresh-button").on("click", function() {
-        action('refresh');
-    });
-
-    /* Click action on the twitter share button */
-    $(".twitter-button").on("click", function() {
-        action('twitter');
+    /* Click action on each button */
+    $(".button").each(function() {
+        $(this).on("click", function() {
+            var buttonAction = $(this).attr("data-action");
+            action(buttonAction);
+        });
     });
 });
