@@ -138,5 +138,8 @@ switch($action){
         // Set the session for location
         // $_SESSION['location'] = $getIP;
     break;
+    case 'advanced':
+        echo "This is the advanced section.";
+    break;
 }
 ?>

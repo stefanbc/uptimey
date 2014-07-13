@@ -118,6 +118,13 @@ function action(type) {
                 $(".adv-button").attr("data-status", "advanced");
                 $(".default-panel").fadeOut(500);
                 $(".advanced-panel").fadeIn(500);
+                // Get the data for this panel
+                $.get('script/ajax.php', {
+                    action: "advanced"
+                })
+                    .done(function(data) {
+                        $(".advanced-panel .top-container").text(data);
+                    });
             } else if (status == "advanced") {
                 // Show the correct panel and set the button state
                 $(".adv-button").attr("data-status", "default");
@@ -128,6 +135,9 @@ function action(type) {
         case 'refresh':
             // Animated it
             $(".refresh-button").addClass('fa-spin');
+            // Refresh the values
+            output('uptime');
+            output('time');
             // Stop animation after 1s
             setTimeout(function() {
                 $(".refresh-button").removeClass("fa-spin");
