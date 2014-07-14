@@ -1,3 +1,4 @@
 .sass-cache
 config.rb
 .vagrant
+node_modules
