@@ -58,7 +58,7 @@ a {
 		text-decoration: underline;
 	}
 }
-.border-top {
+.border {
     content: "";
     height: 1px;
     background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(147,147,147,1) 50%, rgba(0,0,0,0) 100%);
@@ -69,7 +69,6 @@ a {
     background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(147,147,147,1) 50%,rgba(0,0,0,0) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#00000000',GradientType=1 );
     display: block;
-    margin-bottom: 25px;
 }
 .container {
 	background: $color_2;
@@ -150,10 +149,12 @@ a {
 			display: inline-block;
 			padding-top: 15px;
 			&:first-child:before {
-                @extend .border-top;
+                @extend .border;
+                margin-bottom: 25px;
 			}
 			&:nth-child(3):before {
-                @extend .border-top;
+                @extend .border;
+                margin-bottom: 25px;
 			}
 			.val {
 				display: block;
@@ -172,16 +173,20 @@ a {
 	}
 }
 .button-container {
-    &:before {
-        @extend .border-top;  
-    }
     position: absolute;
-    bottom: 60px;
+    top: -80px;
     left: 50%;
     width: 600px;
     text-align: center;
     font-size: 1.5em;
     margin-left: -300px;
+    .button-block {
+        margin-top: 25px;
+        &:after {
+            @extend .border;
+            margin-top: 25px;  
+        }
+    }
     .button {
         cursor: pointer;
         margin: 0 30px;

@@ -104,6 +104,24 @@ function output(type) {
 /* Button action */
 function action(type) {
     switch (type) {
+        case 'toggle':
+            var status = $(".toggle-button").attr("data-status");
+            if (status == "closed") {
+                $(".button-container").animate({
+                    top: 0
+                });
+                $(".toggle-button").attr("data-status", "open");
+                $(".toggle-button").removeClass("fa-angle-double-down");
+                $(".toggle-button").addClass("fa-angle-double-up");
+            } else if (status == "open") {
+                $(".button-container").animate({
+                    top: "-80px"
+                });
+                $(".toggle-button").attr("data-status", "closed");
+                $(".toggle-button").removeClass("fa-angle-double-up");
+                $(".toggle-button").addClass("fa-angle-double-down");
+            }
+            break;
         case 'adv':
             // Animated it
             $(".adv-button").addClass('pulse');
