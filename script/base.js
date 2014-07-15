@@ -24,11 +24,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+/* Set the global Ajax file */
+var globalFile = 'script/ajax.php';
+
 /* Output the data requested */
 function output(type) {
     switch (type) {
         case 'time':
-            $.get('script/ajax.php', {
+            $.get(globalFile, {
                 action: type
             })
                 .done(function(time) {
@@ -49,7 +52,7 @@ function output(type) {
                 });
             break;
         case 'image':
-            $.get('script/ajax.php', {
+            $.get(globalFile, {
                 action: type
             })
                 .done(function(image) {
@@ -62,7 +65,7 @@ function output(type) {
                 });
             break;
         case 'uptime':
-            $.get('script/ajax.php', {
+            $.get(globalFile, {
                 action: type
             })
                 .done(function(uptime) {
@@ -77,7 +80,7 @@ function output(type) {
                 });
             break;
         case 'location':
-            $.get('script/ajax.php', {
+            $.get(globalFile, {
                 action: type
             })
                 .done(function(location) {
@@ -145,7 +148,7 @@ function action(type) {
                 $(".default-panel").fadeOut(500);
                 $(".advanced-panel").fadeIn(500);
                 // Get the data for this panel
-                $.get('script/ajax.php', {
+                $.get(globalFile, {
                     action: "advanced"
                 })
                     .done(function(data) {
