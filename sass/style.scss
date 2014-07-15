@@ -76,6 +76,33 @@ a {
 	width: 100%;
 	position: relative;
 }
+.button-container {
+    position: absolute;
+    top: -80px;
+    left: 50%;
+    width: 600px;
+    text-align: center;
+    font-size: 1.5em;
+    margin-left: -300px;
+    z-index: 10;
+    .button-block {
+        margin-top: 25px;
+        &:after {
+            @extend .border;
+            margin-top: 25px;  
+        }
+    }
+    .button {
+        cursor: pointer;
+        margin: 0 30px;
+    }
+    .refresh-button {
+        color: #82b541;
+    }
+    .twitter-button {
+        color: #55acee;
+    }
+}
 .advanced-panel {
     display: none;
 }
@@ -171,32 +198,6 @@ a {
 		font-size: 1.1em;
 		margin-bottom: -25px;
 	}
-}
-.button-container {
-    position: absolute;
-    top: -80px;
-    left: 50%;
-    width: 600px;
-    text-align: center;
-    font-size: 1.5em;
-    margin-left: -300px;
-    .button-block {
-        margin-top: 25px;
-        &:after {
-            @extend .border;
-            margin-top: 25px;  
-        }
-    }
-    .button {
-        cursor: pointer;
-        margin: 0 30px;
-    }
-    .refresh-button {
-        color: #82b541;
-    }
-    .twitter-button {
-        color: #55acee;
-    }
 }
 footer {
 	position: absolute;
