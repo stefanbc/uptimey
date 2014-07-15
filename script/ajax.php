@@ -36,15 +36,15 @@ $action = $_GET['action'];
 // If it's been less than a minute between request, kill the execution but display last saved uptime or picture
 session_start();
 if (!empty($_SESSION['last']) && time() - $_SESSION['last'] < 60) {
-    // if ($action == 'uptime')
-    //     echo $_SESSION['uptime'];
-    // elseif ($action == 'image')
-    //     echo $_SESSION['image'];
-    // elseif ($action == 'time')
-    //     echo $_SESSION['time'];
-    // elseif ($action == 'location')
-    //     echo $_SESSION['location'];
-    // die();
+    if ($action == 'uptime')
+        echo $_SESSION['uptime'];
+    elseif ($action == 'image')
+        echo $_SESSION['image'];
+    elseif ($action == 'time')
+        echo $_SESSION['time'];
+    elseif ($action == 'location')
+        echo $_SESSION['location'];
+    die();
 }
 
 switch($action){
@@ -136,10 +136,11 @@ switch($action){
         // Return it
         echo $getIP;
         // Set the session for location
-        // $_SESSION['location'] = $getIP;
+        $_SESSION['location'] = $getIP;
     break;
     case 'advanced':
-        echo "This is the advanced section.";
+        // Set a notification for in dev section
+        echo "<span class='notif fa fa-warning'>This section is in development. Checkout the <a href='https://github.com/stefanbc/uptimey/tree/dev' target='_blank'>dev branch</a> for more info.</span>";
     break;
 }
 ?>

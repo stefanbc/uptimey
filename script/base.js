@@ -105,19 +105,27 @@ function output(type) {
 function action(type) {
     switch (type) {
         case 'toggle':
+            // Get the status of the button
             var status = $(".toggle-button").attr("data-status");
+            // Check the status
             if (status == "closed") {
+                // Animate the container (bring it down)
                 $(".button-container").animate({
                     top: 0
                 });
+                // Change the button status
                 $(".toggle-button").attr("data-status", "open");
+                // Change the icon
                 $(".toggle-button").removeClass("fa-angle-double-down");
                 $(".toggle-button").addClass("fa-angle-double-up");
             } else if (status == "open") {
+                // Animate the container (bring it up)
                 $(".button-container").animate({
                     top: "-80px"
                 });
+                // Change the button status
                 $(".toggle-button").attr("data-status", "closed");
+                // Change the icon
                 $(".toggle-button").removeClass("fa-angle-double-up");
                 $(".toggle-button").addClass("fa-angle-double-down");
             }
@@ -141,7 +149,8 @@ function action(type) {
                     action: "advanced"
                 })
                     .done(function(data) {
-                        $(".advanced-panel .top-container").text(data);
+                        // Set the data from ajax
+                        $(".advanced-panel .top-container").html(data);
                     });
             } else if (status == "advanced") {
                 // Show the correct panel and set the button state

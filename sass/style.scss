@@ -161,6 +161,19 @@ a {
         font-weight: lighter;
 		font-size: 1.1em;
     }
+    .notif {
+        width: 960px;
+        margin: 0 auto;
+        position: relative;
+        display: block;
+        padding-bottom: 200px;
+        &:before {
+            padding-right: 10px;
+        }
+        a {
+    	    text-decoration: underline;
+    	}
+    }
 }
 .bottom-container {
 	text-align: center;
