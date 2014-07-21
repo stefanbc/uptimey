@@ -1,7 +1,7 @@
 uptimey
 =======
 
-Are you proud of you server uptime because you put a lot of time into configuring it?
+Are you proud of your server uptime because you put a lot of time into configuring it?
 
 Showcase your server uptime with **uptimey** - a beautiful Server Uptime Monitor!
 
