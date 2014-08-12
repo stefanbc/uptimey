@@ -145,6 +145,7 @@ function action(type) {
             if (status == "default") {
                 // Show the correct panel and set the button state
                 $(".adv-button").attr("data-status", "advanced");
+                $(".adv-button").addClass('active');
                 $(".default-panel").fadeOut(500);
                 $(".advanced-panel").fadeIn(500);
                 // Get the data for this panel
@@ -158,6 +159,7 @@ function action(type) {
             } else if (status == "advanced") {
                 // Show the correct panel and set the button state
                 $(".adv-button").attr("data-status", "default");
+                $(".adv-button").removeClass('active');
                 $(".advanced-panel").fadeOut(500);
                 $(".default-panel").fadeIn(500);
             }
