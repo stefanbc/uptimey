@@ -28,11 +28,12 @@ SOFTWARE.
 var globalFile = 'script/ajax.php';
 
 /* Output the data requested */
-function output(type) {
+function output(type, setFlag) {
     switch (type) {
         case 'time':
             $.get(globalFile, {
-                action: type
+                action: type,
+                flag: setFlag
             })
                 .done(function(time) {
                     // Split the output
@@ -53,7 +54,8 @@ function output(type) {
             break;
         case 'image':
             $.get(globalFile, {
-                action: type
+                action: type,
+                flag: setFlag
             })
                 .done(function(image) {
                     // Split the output
@@ -168,8 +170,8 @@ function action(type) {
             // Animated it
             $(".refresh-button").addClass('fa-spin');
             // Refresh the values
-            output('uptime');
-            output('time');
+            output('uptime', 'refresh');
+            output('time', 'refresh');
             // Stop animation after 1s
             setTimeout(function() {
                 $(".refresh-button").removeClass("fa-spin");
@@ -194,6 +196,10 @@ function action(type) {
             window.open('http://twitter.com/share?url=' + url + '&text=' + text + '&hashtags=' + hashtag + '&', 'twitterwindow', 'height=450, width=550, top=' + ($(window).height() / 2 - 225) + ', left=' + $(window).width() / 2 + ', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
             break;
     }
+}
+
+window.onbeforeunload = function () {
+
 }
 
 $(document).ready(function() {
