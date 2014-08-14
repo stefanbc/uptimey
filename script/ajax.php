@@ -32,6 +32,7 @@ if (!isset($_SERVER['HTTP_X_REQUESTED_WITH']) || strtolower($_SERVER['HTTP_X_REQ
 
 // Get the type of request
 $action = $_GET['action'];
+// Get flag if it's set for exception
 $flag = $_GET['flag'];
 
 // If it's been less than a minute between request, kill the execution but display last saved uptime or picture
