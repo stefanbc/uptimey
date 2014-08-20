@@ -24,34 +24,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-/* Set the global Ajax file */
+/* Set the global vars*/
 var globalFile = 'script/ajax.php';
+var globalLocation, globalSunrise, globalSunset;
 
 /* Output the data requested */
 function output(type, setFlag) {
     switch (type) {
-        case 'time':
-            $.get(globalFile, {
-                action: type,
-                flag: setFlag
-            })
-                .done(function(time) {
-                    // Split the output
-                    time = time.split(";");
-                    // Set the times
-                    $('#current').text(time[0]).addClass('fadeInDown');
-                    $('#time').text(time[1]).addClass('fadeInDown');
-                    $('#since').text(time[2]).addClass('fadeInDown');
-                    // Set the icon for AM or PM
-                    if (time[1].indexOf("am") >= 0) {
-                        $(".time .fa").addClass("fa-sun-o");
-                    } else {
-                        $(".time .fa").addClass("fa-moon-o");
-                    }
-                    // We only animate the whole container once
-                    $('.top-container').addClass('fadeInDown');
-                });
-            break;
         case 'image':
             $.get(globalFile, {
                 action: type,
@@ -64,6 +43,32 @@ function output(type, setFlag) {
                     $('body').css('backgroundImage', 'url(' + image[0] + ')');
                     // Set the copyright
                     $('#copy').html("Powered by Uptimey. Fork on <a href='https://github.com/stefanbc/uptimey'>Github</a> <br> Image - " + image[1]);
+                });
+            break;
+        case 'location':
+            $.get(globalFile, {
+                action: type
+            })
+                .done(function(location) {
+                    // Set up the URL for location call using ipinfo.io
+                    var ip_call = "http://ipinfo.io/" + location + "/geo";
+                    // Get the response and set the value
+                    $.get(ip_call, function(response) {
+                        // Add it to the element with an animation
+                        $('#location').text(response.city + ", " + response.region + ", " + response.country).addClass('fadeInDown');
+                        // Set the global location
+                        globalLocation = response.city + ", " + response.region + ", " + response.country;
+                        // Set the sunrise/sunset times
+                        $.simpleWeather({
+                            location: globalLocation,
+                            success: function(weather) {
+                                globalSunrise = weather.sunrise;
+                                globalSunset = weather.sunset;
+                            }
+                        });
+                    }, "jsonp");
+                    // We only animate the whole container once
+                    $('.location-inner').addClass('fadeInDown');
                 });
             break;
         case 'uptime':
@@ -81,22 +86,36 @@ function output(type, setFlag) {
                     $('.bottom-container').addClass('fadeInDown');
                 });
             break;
-        case 'location':
+        case 'time':
             $.get(globalFile, {
-                action: type
+                action: type,
+                flag: setFlag
             })
-                .done(function(location) {
-                    // Set up the URL for location call using ipinfo.io
-                    var ip_call = "http://ipinfo.io/" + location + "/geo";
-                    // Get the response and set the value
-                    $.get(ip_call, function(response) {
-                        // Add it to the element with an animation
-                        $('#location').text(response.city + ", " + response.region + ", " + response.country).addClass('fadeInDown');
-                    }, "jsonp");
+                .done(function(time) {
+                    // Split the output
+                    time = time.split(";");
+                    // Set the times
+                    $('#current').text(time[0]).addClass('fadeInDown');
+                    $('#time').text(time[1]).addClass('fadeInDown');
+                    $('#since').text(time[2]).addClass('fadeInDown');
+                    // Set the proper icon
+                    var sunrise = moment(globalSunrise, 'h:m a').format('X');
+                    var sunset = moment(globalSunset, 'h:m a').format('X');
+                    var ttime = moment(time[1], 'h:m a').format('X');
+
+                    console.log("Sunrise: " + sunrise);
+                    console.log("Sunset : " + sunset);
+                    console.log("Current: " + ttime);
+
+                    if (ttime >= sunrise && ttime <= sunset) {
+                        $(".time .fa").addClass("fa-sun-o");
+                    } else {
+                        $(".time .fa").addClass("fa-moon-o");
+                    }
                     // We only animate the whole container once
-                    $('.location-inner').addClass('fadeInDown');
+                    $('.top-container').addClass('fadeInDown');
                 });
-            break;
+            break;        
     }
     // After the animation is done remove the class so
     // we can animate again on next iteration
