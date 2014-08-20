@@ -98,15 +98,12 @@ function output(type, setFlag) {
                     $('#current').text(time[0]).addClass('fadeInDown');
                     $('#time').text(time[1]).addClass('fadeInDown');
                     $('#since').text(time[2]).addClass('fadeInDown');
-                    // Set the proper icon
+                    // Format the times
                     var sunrise = moment(globalSunrise, 'h:m a').format('X');
                     var sunset = moment(globalSunset, 'h:m a').format('X');
                     var ttime = moment(time[1], 'h:m a').format('X');
-
-                    console.log("Sunrise: " + sunrise);
-                    console.log("Sunset : " + sunset);
-                    console.log("Current: " + ttime);
-
+                    // Check if the current time is between sunset and sunrise
+                    // and set the icon
                     if (ttime >= sunrise && ttime <= sunset) {
                         $(".time .fa").addClass("fa-sun-o");
                     } else {
