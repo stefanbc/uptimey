@@ -51,13 +51,13 @@ function output(type, setFlag) {
             })
                 .done(function(location) {
                     // Set up the URL for location call using ipinfo.io
-                    var ip_call = "http://ipinfo.io/" + location + "/geo";
+                    var ip_geocode = "http://freegeoip.net/json/" + location;
                     // Get the response and set the value
-                    $.get(ip_call, function(response) {
+                    $.get(ip_geocode, function(response) {
                         // Add it to the element with an animation
-                        $('#location').text(response.city + ", " + response.region + ", " + response.country).addClass('fadeInDown');
+                        $('#location').text(response.city + ", " + response.region_name + ", " + response.country_code).addClass('fadeInDown');
                         // Set the global location
-                        globalLocation = response.city + ", " + response.region + ", " + response.country;
+                        globalLocation = response.city + ", " + response.region_name + ", " + response.country_code;
                         // Set the sunrise/sunset times
                         $.simpleWeather({
                             location: globalLocation,
