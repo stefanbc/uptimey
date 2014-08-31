@@ -99,16 +99,20 @@ function output(type, setFlag) {
                     $('#time').text(time[1]).addClass('fadeInDown');
                     $('#since').text(time[2]).addClass('fadeInDown');
                     // Format the times
-                    var sunrise = moment(globalSunrise, 'h:m a').format('X');
-                    var sunset = moment(globalSunset, 'h:m a').format('X');
-                    var ttime = moment(time[1], 'h:m a').format('X');
-                    // Check if the current time is between sunset and sunrise
-                    // and set the icon
-                    if (ttime >= sunrise && ttime <= sunset) {
-                        $(".time .fa").addClass("fa-sun-o");
-                    } else {
-                        $(".time .fa").addClass("fa-moon-o");
-                    }
+                    setTimeout(function(){
+                        console.log("Sunrise: " + globalSunrise + '\n' + "Time: " + time[1] + '\n' + "Sunset: " + globalSunset);
+                        var sunrise = moment(globalSunrise, 'h:m a').format('X');
+                        var sunset = moment(globalSunset, 'h:m a').format('X');
+                        var ttime = moment(time[1], 'h:m a').format('X');
+                        // Check if the current time is between sunset, sunrise and set the icon
+                        if (ttime >= sunrise && ttime <= sunset) {
+                            $(".time .fa").removeClass("fa-moon-o");
+                            $(".time .fa").addClass("fa-sun-o");
+                        } else {
+                            $(".time .fa").removeClass("fa-sun-o");
+                            $(".time .fa").addClass("fa-moon-o");
+                        }
+                    }, 3000);
                     // We only animate the whole container once
                     $('.top-container').addClass('fadeInDown');
                 });
