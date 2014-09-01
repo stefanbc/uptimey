@@ -32,10 +32,12 @@ if (!isset($_SERVER['HTTP_X_REQUESTED_WITH']) || strtolower($_SERVER['HTTP_X_REQ
 
 // Get the type of request
 $action = $_GET['action'];
+// Get flag if it's set for exception
+$flag = $_GET['flag'];
 
 // If it's been less than a minute between request, kill the execution but display last saved uptime or picture
 session_start();
-if (!empty($_SESSION['last']) && time() - $_SESSION['last'] < 60) {
+if (!empty($_SESSION['last']) && time() - $_SESSION['last'] < 60 && empty($flag)) {
     if ($action == 'uptime')
         echo $_SESSION['uptime'];
     elseif ($action == 'image')
@@ -114,7 +116,9 @@ switch($action){
         // Return the formated tim
         echo $formatUptime;
         // Set last time the request for uptime was sent
-        $_SESSION['last'] = time();
+        if (empty($flag)) {
+            $_SESSION['last'] = time();
+        }
         // Set last response
         $_SESSION['uptime'] = $formatUptime;
         $_SESSION['uptimeSeconds'] = $totalSeconds;
@@ -141,6 +145,10 @@ switch($action){
     case 'advanced':
         // Set a notification for in dev section
         echo "<span class='notif fa fa-warning'>This section is in development. Checkout the <a href='https://github.com/stefanbc/uptimey/tree/dev' target='_blank'>dev branch</a> for more info.</span>";
+    break;
+    case 'clear':
+        session_unset();
+        session_destroy();
     break;
 }
 ?>
