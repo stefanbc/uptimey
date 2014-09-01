@@ -116,7 +116,9 @@ switch($action){
         // Return the formated tim
         echo $formatUptime;
         // Set last time the request for uptime was sent
-        $_SESSION['last'] = time();
+        if (empty($flag)) {
+            $_SESSION['last'] = time();
+        }
         // Set last response
         $_SESSION['uptime'] = $formatUptime;
         $_SESSION['uptimeSeconds'] = $totalSeconds;

@@ -33,8 +33,7 @@ function output(type, setFlag) {
     switch (type) {
         case 'image':
             $.get(globalFile, {
-                action: type,
-                flag: setFlag
+                action: type
             })
                 .done(function(image) {
                     // Split the output
@@ -73,7 +72,8 @@ function output(type, setFlag) {
             break;
         case 'uptime':
             $.get(globalFile, {
-                action: type
+                action: type,
+                flag: setFlag
             })
                 .done(function(uptime) {
                     // Split the output
