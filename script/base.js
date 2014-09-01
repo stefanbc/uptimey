@@ -99,23 +99,23 @@ function output(type, setFlag) {
                     $('#time').text(time[1]).addClass('fadeInDown');
                     $('#since').text(time[2]).addClass('fadeInDown');
                     // Format the times
-                    setTimeout(function(){
+                    setTimeout(function() {
                         var sunrise = moment(globalSunrise, 'h:m a').format('X');
                         var sunset = moment(globalSunset, 'h:m a').format('X');
                         var ttime = moment(time[1], 'h:m a').format('X');
                         // Check if the current time is between sunset, sunrise and set the icon
                         if (ttime >= sunrise && ttime <= sunset) {
-                            $(".time .fa").removeClass("fa-moon-o fa-refresh fa-spin");
+                            $(".time .fa").removeClass("fa-moon-o fa-circle-o");
                             $(".time .fa").addClass("fa-sun-o");
                         } else {
-                            $(".time .fa").removeClass("fa-sun-o fa-refresh fa-spin");
+                            $(".time .fa").removeClass("fa-sun-o fa-circle-o");
                             $(".time .fa").addClass("fa-moon-o");
                         }
                     }, 3000);
                     // We only animate the whole container once
                     $('.top-container').addClass('fadeInDown');
                 });
-            break;        
+            break;
     }
     // After the animation is done remove the class so
     // we can animate again on next iteration
@@ -207,7 +207,10 @@ function action(type) {
             // Set the URL
             var url = "https://github.com/stefanbc/uptimey";
             // Get the current uptime
-            var uptime = $("#days").text() + " days " + $("#hours").text() + " hours " + $("#minutes").text() + " minutes";
+            var uptime = "";
+            if ($("#days").text() != 0) uptime += $("#days").text() + " days ";
+            if ($("#hours").text() != 0) uptime += $("#hours").text() + " hours ";
+            if ($("#minutes").text() != 0) uptime += $("#minutes").text() + " minutes";
             // Set the tweet
             var text = "My server has been online for " + uptime + ". Can you beat this uptime? via";
             // Set the hashtag
@@ -215,13 +218,21 @@ function action(type) {
             // Open the Twitter share window
             window.open('http://twitter.com/share?url=' + url + '&text=' + text + '&hashtags=' + hashtag + '&', 'twitterwindow', 'height=450, width=550, top=' + ($(window).height() / 2 - 225) + ', left=' + $(window).width() / 2 + ', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
             break;
+        case 'clear':
+            // Clear the session
+            $.get(globalFile, {
+                action: "clear"
+            });
+            break;
     }
 }
 
-window.onbeforeunload = function () {
+// Clear session on tab close
+$(window).bind('beforeunload', function() {
+    action('clear');
+});
 
-}
-
+// When the page finishes loading
 $(document).ready(function() {
     /* Start initial load */
     // Add the animation base class
@@ -239,7 +250,7 @@ $(document).ready(function() {
     output('time');
     /* End initial load */
 
-    /* At an interval of 1 min we refresh the uptime */
+    /* At an interval of 1 min we refresh the uptime and time */
     setInterval(function() {
         output('uptime');
         output('time');

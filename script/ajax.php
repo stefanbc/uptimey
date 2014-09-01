@@ -144,5 +144,9 @@ switch($action){
         // Set a notification for in dev section
         echo "<span class='notif fa fa-warning'>This section is in development. Checkout the <a href='https://github.com/stefanbc/uptimey/tree/dev' target='_blank'>dev branch</a> for more info.</span>";
     break;
+    case 'clear':
+        session_unset();
+        session_destroy();
+    break;
 }
 ?>
