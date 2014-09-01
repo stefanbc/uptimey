@@ -100,16 +100,15 @@ function output(type, setFlag) {
                     $('#since').text(time[2]).addClass('fadeInDown');
                     // Format the times
                     setTimeout(function(){
-                        console.log("Sunrise: " + globalSunrise + '\n' + "Time: " + time[1] + '\n' + "Sunset: " + globalSunset);
                         var sunrise = moment(globalSunrise, 'h:m a').format('X');
                         var sunset = moment(globalSunset, 'h:m a').format('X');
                         var ttime = moment(time[1], 'h:m a').format('X');
                         // Check if the current time is between sunset, sunrise and set the icon
                         if (ttime >= sunrise && ttime <= sunset) {
-                            $(".time .fa").removeClass("fa-moon-o");
+                            $(".time .fa").removeClass("fa-moon-o fa-refresh fa-spin");
                             $(".time .fa").addClass("fa-sun-o");
                         } else {
-                            $(".time .fa").removeClass("fa-sun-o");
+                            $(".time .fa").removeClass("fa-sun-o fa-refresh fa-spin");
                             $(".time .fa").addClass("fa-moon-o");
                         }
                     }, 3000);
@@ -128,10 +127,11 @@ function output(type, setFlag) {
 }
 /* Button action */
 function action(type) {
+    var status;
     switch (type) {
         case 'toggle':
             // Get the status of the button
-            var status = $(".toggle-button").attr("data-status");
+            status = $(".toggle-button").attr("data-status");
             // Check the status
             if (status == "closed") {
                 // Animate the container (bring it down)
@@ -162,7 +162,7 @@ function action(type) {
                 $(this).removeClass("pulse");
             });
             // Get the status of the button
-            var status = $(".adv-button").attr("data-status");
+            status = $(".adv-button").attr("data-status");
             // Check the state
             if (status == "default") {
                 // Show the correct panel and set the button state
