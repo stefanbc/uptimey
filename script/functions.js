@@ -55,6 +55,8 @@ function output(type, setFlag) {
                     $.get(ip_geocode, function(response) {
                         // Add it to the element with an animation
                         $('#location').text(response.city + ", " + response.region_name + ", " + response.country_code).addClass('fadeInDown');
+                        // Add latlong for maps href
+                        $('#location').attr('data-latlong', response.latitude + '+' + response.longitude);
                         // Set the global location
                         globalLocation = response.city + ", " + response.region_name + ", " + response.country_code;
                         // Set the sunrise/sunset times
@@ -208,9 +210,9 @@ function action(type) {
             var url = "https://github.com/stefanbc/uptimey";
             // Get the current uptime
             var uptime = "";
-            if ($("#days").text() != 0) uptime += $("#days").text() + " days ";
-            if ($("#hours").text() != 0) uptime += $("#hours").text() + " hours ";
-            if ($("#minutes").text() != 0) uptime += $("#minutes").text() + " minutes";
+            if ($("#days").text() !== 0) uptime += $("#days").text() + " days ";
+            if ($("#hours").text() !== 0) uptime += $("#hours").text() + " hours ";
+            if ($("#minutes").text() !== 0) uptime += $("#minutes").text() + " minutes";
             // Set the tweet
             var text = "My server has been online for " + uptime + ". Can you beat this uptime? via";
             // Set the hashtag

@@ -156,6 +156,10 @@ a {
         .location {
             top: -80px;
             font-size: 1.5em;
+            cursor: pointer;
+            &:hover {
+                text-decoration: underline;
+            }
             .fa {
                 margin-right: 15px;
             }

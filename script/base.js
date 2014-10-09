@@ -55,6 +55,11 @@ $(document).ready(function() {
             action(buttonAction);
         });
     });
+    /* Click action for location */
+    $('#location').on("click", function() {
+        var latlong = $(this).attr("data-latlong");
+        window.location.href = "https://www.google.com/maps/place/" + latlong; 
+    });
 });
 
 // Clear session on tab close
