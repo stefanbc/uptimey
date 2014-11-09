@@ -50,15 +50,16 @@ function output(type, setFlag) {
             })
                 .done(function(location) {
                     // Set up the URL for location call using ipinfo.io
-                    var ip_geocode = "http://freegeoip.net/json/" + location;
+                    // var ip_geocode = "http://freegeoip.net/json/" + location;
+                    var ip_geocode = "http://www.telize.com/geoip/" + location;
                     // Get the response and set the value
                     $.get(ip_geocode, function(response) {
                         // Add it to the element with an animation
-                        $('#location').text(response.city + ", " + response.region_name + ", " + response.country_code).addClass('fadeInDown');
+                        $('#location').text(response.city + ", " + response.region + ", " + response.country_code).addClass('fadeInDown');
                         // Add latlong for maps href
                         $('#location').attr('data-latlong', response.latitude + '+' + response.longitude);
                         // Set the global location
-                        globalLocation = response.city + ", " + response.region_name + ", " + response.country_code;
+                        globalLocation = response.city + ", " + response.region + ", " + response.country_code;
                         // Set the sunrise/sunset times
                         $.simpleWeather({
                             location: globalLocation,

@@ -1,17 +1,17 @@
-uptimey
-=======
+# Welcome to your new Koding workspace
 
-Are you proud of your server uptime because you put a lot of time into configuring it?
+This workspace, which lives inside the 'Workspaces' folder of your
+home directory, is the place where you can store all relevant and
+related files to this project.
 
-Showcase your server uptime with **uptimey** - a beautiful Server Uptime Monitor!
+Workspaces help keep your projects organized. You can create any
+number of sub-folders within this workspace in order to further
+organize your work.
 
-Just fork the repo on your web server and then access `/uptimey` in your browser. Simple as that!
+As you move back and forth between your workspaces, Koding will try
+and remember everything about each workspace. This includes things
+like IDE settings, files open, Terminals open, etc.
 
-**Features**
+You can create as many new workspaces as you need on your VM.
 
-* Background image is the Bing image of the day and it changes automatically!
-* Works on Linux, Windows, Mac OS servers
-
-![Screenshot](http://i.imgur.com/isg9t8n.png)
-
-Made by [Stefan Cosma](http://coderbits.com/stefanbc)
+Enjoy and Happy Koding!

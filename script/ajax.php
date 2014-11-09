@@ -61,6 +61,10 @@ switch($action){
         echo $currentDate . ';' . $currentTime . ';' . $sinceDate;
         // Set the session
         $_SESSION['time'] = $currentDate . ';' . $currentTime . ';' . $sinceDate;
+        // Set last time the request was sent
+        if (empty($flag)) {
+            $_SESSION['last'] = time();
+        }
     break;
     case 'image':
         // Load the XML file from Bing
@@ -115,10 +119,6 @@ switch($action){
             $formatUptime .= "0;";
         // Return the formated tim
         echo $formatUptime;
-        // Set last time the request for uptime was sent
-        if (empty($flag)) {
-            $_SESSION['last'] = time();
-        }
         // Set last response
         $_SESSION['uptime'] = $formatUptime;
         $_SESSION['uptimeSeconds'] = $totalSeconds;
