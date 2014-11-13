@@ -25,7 +25,7 @@ SOFTWARE.
 */
 
 /* Set the global vars*/
-var globalFile = 'core/handlers/corehandler.php';
+var globalFile = 'core/handlers/app.handler.php';
 var globalLocation, globalSunrise, globalSunset;
 
 /* Output the data requested */
@@ -87,6 +87,8 @@ function output(type, setFlag) {
                     $('#minutes').text(uptime[2]).addClass('fadeIn');
                     // We only animate the whole container once
                     $('.bottom-container').addClass('fadeIn');
+                }).fail(function(error) {
+                    console.log(error);
                 });
             break;
         case 'time':
