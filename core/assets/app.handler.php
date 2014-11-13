@@ -117,7 +117,7 @@ switch($action){
             $formatUptime .= $min . ";";
         else
             $formatUptime .= "0;";
-        // Return the formated tim
+        // Return the formated time
         echo $formatUptime;
         // Set last response
         $_SESSION['uptime'] = $formatUptime;
