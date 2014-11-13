@@ -31,9 +31,9 @@ if (!isset($_SERVER['HTTP_X_REQUESTED_WITH']) || strtolower($_SERVER['HTTP_X_REQ
     die('No direct access allowed!');
 
 // Get the type of request
-$action = $_GET['action'];
+$action = $_REQUEST['action'];
 // Get flag if it's set for exception
-$flag = $_GET['flag'];
+$flag = $_REQUEST['flag'];
 
 // If it's been less than a minute between request, kill the execution but display last saved uptime or picture
 session_start();

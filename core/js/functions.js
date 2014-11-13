@@ -25,7 +25,7 @@ SOFTWARE.
 */
 
 /* Set the global vars*/
-var globalFile = 'core/assets/app.handler.php';
+var globalFile = 'core/handlers/corehandler.php';
 var globalLocation, globalSunrise, globalSunset;
 
 /* Output the data requested */
