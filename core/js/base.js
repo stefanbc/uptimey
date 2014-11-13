@@ -48,7 +48,7 @@ $(document).ready(function() {
         output('time');
     }, 1000 * 60);
 
-    /* Click action on each button */
+    /* Click action on each top button */
     $(".button").each(function() {
         $(this).on("click", function() {
             var buttonAction = $(this).attr("data-action");

@@ -24,17 +24,24 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-// Colors
+@charset "UTF-8";
+
+//
+// Main colors
+// --------------------------------------------------
 $color_0: #222;
 $color_1: #fff;
 $color_2: rgba(0,0,0,.6);
 $color_3: #ddd;
 
-// Fonts
+//
+// Main fonts
+// --------------------------------------------------
 $font_0: Raleway, sans-serif;
 
-@charset "UTF-8";
-
+//
+// Global
+// --------------------------------------------------
 html {
 	height: 100%;
 }
@@ -58,6 +65,10 @@ a {
 		text-decoration: underline;
 	}
 }
+
+//
+// Mixins
+// --------------------------------------------------
 %border {
     content: "";
     height: 1px;
@@ -70,6 +81,10 @@ a {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#00000000',GradientType=1 );
     display: block;
 }
+
+//
+// Layout and UI
+// --------------------------------------------------
 .container {
 	background: $color_2;
 	height: 100%;

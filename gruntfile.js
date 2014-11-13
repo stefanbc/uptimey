@@ -6,30 +6,32 @@ module.exports = function(grunt) {
                 options: {
                     style: 'compressed'
                 },
-                files: [{
-                    expand: true,
-                    cwd: 'sass',
-                    src: ['*.scss'],
-                    dest: 'css',
-                    ext: '.min.css'
-                }]
+                files: {
+                    'core/dest/css/screen.min.css': 'core/sass/screen.scss'
+                }
             }
+        },
+        concat: {
+            dist: {
+                src: ['core/js/functions.js', 'core/js/base.js'],
+                dest: 'core/dest/js/app.min.js',
+            },
         },
         uglify: {
             js: {
                 files: {
-                    'script/base.min.js': ['script/base.js'],
-                    'script/functions.min.js': ['script/functions.js']
+                    'core/dest/js/app.min.js': ['core/dest/js/app.min.js']
                 }
             }
         },
         watch: {
-            files: ['sass/*', 'script/*'],
-            tasks: ['sass', 'uglify']
+            files: ['core/sass/*', 'core/js/*'],
+            tasks: ['sass', 'concat', 'uglify']
         }
     });
     grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.registerTask('default', ['sass', 'uglify:js']);
+    grunt.registerTask('default', ['sass', 'concat', 'uglify']);
 };

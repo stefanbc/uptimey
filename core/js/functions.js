@@ -25,7 +25,7 @@ SOFTWARE.
 */
 
 /* Set the global vars*/
-var globalFile = 'script/ajax.php';
+var globalFile = 'core/assets/app.handler.php';
 var globalLocation, globalSunrise, globalSunset;
 
 /* Output the data requested */
@@ -55,7 +55,7 @@ function output(type, setFlag) {
                     // Get the response and set the value
                     $.get(ip_geocode, function(response) {
                         // Add it to the element with an animation
-                        $('#location').text(response.city + ", " + response.region + ", " + response.country_code).addClass('fadeInDown');
+                        $('#location').text(response.city + ", " + response.region + ", " + response.country_code).addClass('fadeIn');
                         // Add latlong for maps href
                         $('#location').attr('data-latlong', response.latitude + '+' + response.longitude);
                         // Set the global location
@@ -70,7 +70,7 @@ function output(type, setFlag) {
                         });
                     }, "jsonp");
                     // We only animate the whole container once
-                    $('.location-inner').addClass('fadeInDown');
+                    $('.location-inner').addClass('fadeIn');
                 });
             break;
         case 'uptime':
@@ -82,11 +82,11 @@ function output(type, setFlag) {
                     // Split the output
                     uptime = uptime.split(";");
                     // Add it to each element with an animation
-                    $('#days').text(uptime[0]).addClass('fadeInDown');
-                    $('#hours').text(uptime[1]).addClass('fadeInDown');
-                    $('#minutes').text(uptime[2]).addClass('fadeInDown');
+                    $('#days').text(uptime[0]).addClass('fadeIn');
+                    $('#hours').text(uptime[1]).addClass('fadeIn');
+                    $('#minutes').text(uptime[2]).addClass('fadeIn');
                     // We only animate the whole container once
-                    $('.bottom-container').addClass('fadeInDown');
+                    $('.bottom-container').addClass('fadeIn');
                 });
             break;
         case 'time':
@@ -98,9 +98,9 @@ function output(type, setFlag) {
                     // Split the output
                     time = time.split(";");
                     // Set the times
-                    $('#current').text(time[0]).addClass('fadeInDown');
-                    $('#time').text(time[1]).addClass('fadeInDown');
-                    $('#since').text(time[2]).addClass('fadeInDown');
+                    $('#current').text(time[0]).addClass('fadeIn');
+                    $('#time').text(time[1]).addClass('fadeIn');
+                    $('#since').text(time[2]).addClass('fadeIn');
                     // Format the times
                     setTimeout(function() {
                         var sunrise = moment(globalSunrise, 'h:m a').format('X');
@@ -116,7 +116,7 @@ function output(type, setFlag) {
                         }
                     }, 3000);
                     // We only animate the whole container once
-                    $('.top-container').addClass('fadeInDown');
+                    $('.top-container').addClass('fadeIn');
                 });
             break;
     }
@@ -124,7 +124,7 @@ function output(type, setFlag) {
     // we can animate again on next iteration
     $(".val").each(function() {
         $(this).on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
-            $(this).removeClass("fadeInDown");
+            $(this).removeClass("fadeIn");
         });
     });
 }
