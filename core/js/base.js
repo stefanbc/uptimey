@@ -60,9 +60,8 @@ $(document).ready(function() {
         var latlong = $(this).attr("data-latlong");
         window.location.href = "https://www.google.com/maps/place/" + latlong; 
     });
-});
-
-// Clear session on tab close
-$(window).bind('beforeunload', function() {
-    action('clear');
+    /* Clear everything on refresh of close */
+    $(window).bind('beforeunload', function() {
+        action('clear');
+    });
 });

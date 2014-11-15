@@ -87,8 +87,6 @@ function output(type, setFlag) {
                     $('#minutes').text(uptime[2]).addClass('fadeIn');
                     // We only animate the whole container once
                     $('.bottom-container').addClass('fadeIn');
-                }).fail(function(error) {
-                    console.log(error);
                 });
             break;
         case 'time':
@@ -179,9 +177,9 @@ function action(type) {
                 $.get(globalFile, {
                     action: "advanced"
                 })
-                    .done(function(data) {
+                    .done(function(text) {
                         // Set the data from ajax
-                        $(".advanced-panel .top-container").html(data);
+                        $(".advanced-panel .top-container").html(text);
                     });
             } else if (status == "advanced") {
                 // Show the correct panel and set the button state

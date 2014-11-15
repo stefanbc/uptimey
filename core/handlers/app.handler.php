@@ -38,41 +38,44 @@ $flag = $_REQUEST['flag'];
 // If it's been less than a minute between request, kill the execution but display last saved uptime or picture
 session_start();
 if (!empty($_SESSION['last']) && time() - $_SESSION['last'] < 60 && empty($flag)) {
-    if ($action == 'uptime')
-        echo $_SESSION['uptime'];
-    elseif ($action == 'image')
+    if ($action == 'image')
         echo $_SESSION['image'];
-    elseif ($action == 'time')
-        echo $_SESSION['time'];
     elseif ($action == 'location')
         echo $_SESSION['location'];
+    elseif ($action == 'uptime')
+        echo $_SESSION['uptime'];
+    elseif ($action == 'time')
+        echo $_SESSION['time'];
     die();
 }
 
 switch($action){
-    case 'time':
-        // Pretty server date
-        $currentDate = date("F j, Y");
-        // Pretty server time
-        $currentTime = date("g:i a");
-        // What's the date the server went online
-        $sinceDate = date("F j, Y", time() - $_SESSION['uptimeSeconds']);
-        // Return the server times
-        echo $currentDate . ';' . $currentTime . ';' . $sinceDate;
-        // Set the session
-        $_SESSION['time'] = $currentDate . ';' . $currentTime . ';' . $sinceDate;
-        // Set last time the request was sent
-        if (empty($flag)) {
-            $_SESSION['last'] = time();
-        }
-    break;
     case 'image':
         // Load the XML file from Bing
         $bingImage = simplexml_load_file('http://www.bing.com/HPImageArchive.aspx?format=xml&idx=0&n=1&mkt=en-US');
         // Return the image and copyright to jQuery
         echo 'http://www.bing.com' . $bingImage->image->urlBase. '_1366x768.jpg;' . $bingImage->image->copyright;
         // Set session
-        $_SESSION['image'] = 'http://www.bing.com' . $bingImage->image->urlBase. '_1366x768.jpg;' . $bingImage->image->copyright;
+        $_SESSION['image'] = 'http://www.bing.com' . $bingImage->image->urlBase. '_1366x768.jpg;' . $bingImage->image->copyright  . ';session;';
+    break;
+    case 'location':
+        // Get the IP
+        if(function_exists('curl_version')) {
+            // From third party
+            $getIP = shell_exec('curl http://ipecho.net/plain; echo');
+        } else {
+            // Using PHP var
+            $getIP = gethostbyname($_SERVER['SERVER_NAME']);
+        }
+        // Check for localhost
+        if ($getIP == "127.0.0.1") {
+            // Execute command that feteches IP without sudo
+            $getIP = trim(shell_exec('dig +short myip.opendns.com @resolver1.opendns.com'));
+        }
+        // Return it
+        echo $getIP;
+        // Set the session for location
+        $_SESSION['location'] = $getIP;
     break;
     case 'uptime':
         /* Initialy Based on linux-dashboard (https://github.com/afaqurk/linux-dash) */
@@ -120,33 +123,33 @@ switch($action){
         // Return the formated time
         echo $formatUptime;
         // Set last response
-        $_SESSION['uptime'] = $formatUptime;
+        $_SESSION['uptime'] = $formatUptime . "session;";
         $_SESSION['uptimeSeconds'] = $totalSeconds;
     break;
-    case 'location':
-        // Get the IP
-        if(function_exists('curl_version')) {
-            // From third party
-            $getIP = shell_exec('curl http://ipecho.net/plain; echo');
-        } else {
-            // Using PHP var
-            $getIP = gethostbyname($_SERVER['SERVER_NAME']);
+    case 'time':
+        // Pretty server date
+        $currentDate = date("F j, Y");
+        // Pretty server time
+        $currentTime = date("g:i a");
+        // What's the date the server went online
+        $sinceDate = date("F j, Y", time() - $_SESSION['uptimeSeconds']);
+        // Return the server times
+        echo $currentDate . ';' . $currentTime . ';' . $sinceDate;
+        // Set the session
+        $_SESSION['time'] = $currentDate . ';' . $currentTime . ';' . $sinceDate . ';session;';
+        // Set last time the request was sent
+        if (empty($flag)) {
+            $_SESSION['last'] = time();
         }
-        // Check for localhost
-        if ($getIP == "127.0.0.1") {
-            // Execute command that feteches IP without sudo
-            $getIP = trim(shell_exec('dig +short myip.opendns.com @resolver1.opendns.com'));
-        }
-        // Return it
-        echo $getIP;
-        // Set the session for location
-        $_SESSION['location'] = $getIP;
-    break;
+    break;    
     case 'advanced':
         // Set a notification for in dev section
         echo "<span class='notif fa fa-warning'>This section is in development. Checkout the <a href='https://github.com/stefanbc/uptimey/tree/dev' target='_blank'>dev branch</a> for more info.</span>";
     break;
     case 'clear':
+        unset($_SESSION['last']);
+        unset($_SESSION['uptime']);
+        unset($_SESSION['time']);
         session_unset();
         session_destroy();
     break;
