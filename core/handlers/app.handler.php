@@ -46,7 +46,7 @@ if (!empty($_SESSION['last']) && time() - $_SESSION['last'] < 60 && empty($flag)
         echo $_SESSION['uptime'];
     elseif ($action == 'time')
         echo $_SESSION['time'];
-    die();
+    die("To early for a request! Try again in a minute");
 }
 
 switch($action){

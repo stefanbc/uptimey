@@ -83,8 +83,13 @@ function output(type, setFlag) {
                     uptime = uptime.split(";");
                     // Add it to each element with an animation
                     $('#days').text(uptime[0]).addClass('fadeIn');
+                    $('#days').attr('data-value', uptime[0]);
+                    
                     $('#hours').text(uptime[1]).addClass('fadeIn');
+                    $('#hours').attr('data-value', uptime[1]);
+
                     $('#minutes').text(uptime[2]).addClass('fadeIn');
+                    $('#minutes').attr('data-value', uptime[2]);
                     // We only animate the whole container once
                     $('.bottom-container').addClass('fadeIn');
                 });
@@ -175,11 +180,12 @@ function action(type) {
                 $(".advanced-panel").fadeIn(500);
                 // Get the data for this panel
                 $.get(globalFile, {
-                    action: "advanced"
+                    action: "advanced",
+                    flag: "advanced"
                 })
-                    .done(function(text) {
+                    .done(function(notice) {
                         // Set the data from ajax
-                        $(".advanced-panel .top-container").html(text);
+                        $(".advanced-panel .top-container").html(notice);
                     });
             } else if (status == "advanced") {
                 // Show the correct panel and set the button state
@@ -211,13 +217,13 @@ function action(type) {
             var url = "https://github.com/stefanbc/uptimey";
             // Get the current uptime
             var uptime = "";
-            if ($("#days").text() !== 0) uptime += $("#days").text() + " days ";
-            if ($("#hours").text() !== 0) uptime += $("#hours").text() + " hours ";
-            if ($("#minutes").text() !== 0) uptime += $("#minutes").text() + " minutes";
+            if ($("#days").attr('data-value') != 0) uptime += $("#days").attr('data-value') + " days ";
+            if ($("#hours").attr('data-value') != 0) uptime += $("#hours").attr('data-value') + " hours ";
+            if ($("#minutes").attr('data-value') != 0) uptime += $("#minutes").attr('data-value') + " minutes";
             // Set the tweet
-            var text = "My server has been online for " + uptime + ". Can you beat this uptime? via";
+            var text = uptime + " server uptime. Can you beat this? via";
             // Set the hashtag
-            var hashtag = "uptimey,devbranch";
+            var hashtag = "uptimey,devops";
             // Open the Twitter share window
             window.open('http://twitter.com/share?url=' + url + '&text=' + text + '&hashtags=' + hashtag + '&', 'twitterwindow', 'height=450, width=550, top=' + ($(window).height() / 2 - 225) + ', left=' + $(window).width() / 2 + ', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
             break;
