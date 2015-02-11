@@ -46,14 +46,14 @@ if (!empty($_SESSION['last']) && time() - $_SESSION['last'] < 60 && empty($flag)
         echo $_SESSION['uptime'];
     elseif ($action == 'time')
         echo $_SESSION['time'];
-    die("To early for a request! Try again in a minute");
+    die("early");
 }
 
 switch($action){
     case 'image':
         // Load the XML file from Bing
         $bingImage = simplexml_load_file('http://www.bing.com/HPImageArchive.aspx?format=xml&idx=0&n=1&mkt=en-US');
-        // Return the image and copyright to jQuery
+        // Return the image and copyright
         echo 'http://www.bing.com' . $bingImage->image->urlBase. '_1366x768.jpg;' . $bingImage->image->copyright;
         // Set session
         $_SESSION['image'] = 'http://www.bing.com' . $bingImage->image->urlBase. '_1366x768.jpg;' . $bingImage->image->copyright  . ';session;';
@@ -61,8 +61,10 @@ switch($action){
     case 'location':
         // Get the IP
         if(function_exists('curl_version')) {
+            // Set the header to properly return the json
+            header('Content-Type: application/json');
             // From third party
-            $getIP = shell_exec('curl http://ipecho.net/plain; echo');
+            $getIP = shell_exec('curl http://ipinfo.io/json');
         } else {
             // Using PHP var
             $getIP = gethostbyname($_SERVER['SERVER_NAME']);
@@ -78,7 +80,6 @@ switch($action){
         $_SESSION['location'] = $getIP;
     break;
     case 'uptime':
-        /* Initialy Based on linux-dashboard (https://github.com/afaqurk/linux-dash) */
         // Execute the uptime command
         // Get the seconds, minutes, hours
         // Different methods of getting uptime based on OS
@@ -106,16 +107,17 @@ switch($action){
         $min   = floor($totalMin - ($days * 60 * 24) - ($hours * 60));
         // Output each of them
         $formatUptime = '';
+        // Days
         if ($days != 0)
             $formatUptime .= $days . ";";
         else
             $formatUptime .= "0;";
-        
+        // Hours
         if ($hours != 0)
             $formatUptime .= $hours . ";";
         else
             $formatUptime .= "0;";
-        
+        // Minutes
         if ($min != 0)
             $formatUptime .= $min . ";";
         else

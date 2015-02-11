@@ -50,16 +50,16 @@ function output(type, setFlag) {
             })
                 .done(function(location) {
                     // Set up the URL for location call using ipinfo.io
-                    // var ip_geocode = "http://freegeoip.net/json/" + location;
-                    var ip_geocode = "http://www.telize.com/geoip/" + location;
+                    var ip_geocode = "http://ipinfo.io/" + location.ip + "/json";
                     // Get the response and set the value
                     $.get(ip_geocode, function(response) {
                         // Add it to the element with an animation
-                        $('#location').text(response.city + ", " + response.region + ", " + response.country_code).addClass('fadeIn');
+                        $('#location').text(response.city + ", " + response.region + ", " + response.country).addClass('fadeIn');
                         // Add latlong for maps href
-                        $('#location').attr('data-latlong', response.latitude + '+' + response.longitude);
+                        var latlong = response.loc.split(",");
+                        $('#location').attr('data-latlong', latlong[0] + '+' + latlong[1]);
                         // Set the global location
-                        globalLocation = response.city + ", " + response.region + ", " + response.country_code;
+                        globalLocation = response.city + ", " + response.region + ", " + response.country;
                         // Set the sunrise/sunset times
                         $.simpleWeather({
                             location: globalLocation,
@@ -217,9 +217,9 @@ function action(type) {
             var url = "https://github.com/stefanbc/uptimey";
             // Get the current uptime
             var uptime = "";
-            if ($("#days").attr('data-value') != 0) uptime += $("#days").attr('data-value') + " days ";
-            if ($("#hours").attr('data-value') != 0) uptime += $("#hours").attr('data-value') + " hours ";
-            if ($("#minutes").attr('data-value') != 0) uptime += $("#minutes").attr('data-value') + " minutes";
+            if ($("#days").attr('data-value') !== 0) uptime += $("#days").attr('data-value') + " days ";
+            if ($("#hours").attr('data-value') !== 0) uptime += $("#hours").attr('data-value') + " hours ";
+            if ($("#minutes").attr('data-value') !== 0) uptime += $("#minutes").attr('data-value') + " minutes";
             // Set the tweet
             var text = uptime + " server uptime. Can you beat this? via";
             // Set the hashtag
