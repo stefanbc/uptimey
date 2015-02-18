@@ -7,7 +7,7 @@ module.exports = function(grunt) {
                     style: 'compressed'
                 },
                 files: {
-                    'core/dest/css/screen.min.css': 'core/sass/screen.scss'
+                    'core/dest/css/screen.min.css' : 'core/sass/screen.scss'
                 }
             }
         },
