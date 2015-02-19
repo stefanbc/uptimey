@@ -228,11 +228,14 @@ function action(type) {
             window.open('http://twitter.com/share?url=' + url + '&text=' + text + '&hashtags=' + hashtag + '&', 'twitterwindow', 'height=450, width=550, top=' + ($(window).height() / 2 - 225) + ', left=' + $(window).width() / 2 + ', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
             break;
         case 'screenshot':
-            action('toggle');
+            var screenshotLink = $('.screenshot-button');
             html2canvas(document.body, {
               onrendered: function(canvas) {
                 var dataURL = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-                window.location.href = dataURL;
+                screenshotLink.attr('href', dataURL);
+                fileName = moment().format('DDMMYYYYHHmmss');
+                screenshotLink.attr('download', 'Screenshot_' + fileName + '.png');
+                // window.location.href = screenshotLink.attr('href');
               }
             });
             break;
