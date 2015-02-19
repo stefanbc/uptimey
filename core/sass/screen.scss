@@ -112,15 +112,19 @@ a {
         margin: 0 30px;
     }
     .refresh-button {
-        color: #82b541;
+        color: #00ac8a;
     }
     .adv-button {
         &.active {
-            color: #dd4b39;
+            color: #e74b3b;
         }
     }
     .twitter-button {
         color: #55acee;
+    }
+    .screenshot-button {
+        text-decoration: none;
+        color: #f7d61c;
     }
 }
 .advanced-panel {

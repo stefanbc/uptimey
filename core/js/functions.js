@@ -229,6 +229,11 @@ function action(type) {
             break;
         case 'screenshot':
             var screenshotLink = $('.screenshot-button');
+            // Animated it
+            screenshotLink.addClass('pulse');
+            screenshotLink.on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
+                $(this).removeClass("pulse");
+            });
             html2canvas(document.body, {
               onrendered: function(canvas) {
                 var dataURL = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
@@ -236,7 +241,7 @@ function action(type) {
                 fileName = moment().format('DDMMYYYYHHmmss');
                 screenshotLink.attr('download', 'Screenshot_' + fileName + '.png');
                 // window.location.href = screenshotLink.attr('href');
-              }
+              },
             });
             break;
         case 'clear':
