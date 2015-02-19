@@ -110,6 +110,37 @@ a {
     .button {
         cursor: pointer;
         margin: 0 30px;
+        position: relative;
+        span {
+            position: absolute;
+            width: 140px;
+            color: $color_1;
+            background: $color_2;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            visibility: hidden;
+            border-radius: 6px;
+            &:after {
+                content: '';
+                position: absolute;
+                bottom: 100%;
+                left: 50%;
+                margin-left: -8px;
+                width: 0; height: 0;
+                border-bottom: 8px solid #000000;
+                border-right: 8px solid transparent;
+                border-left: 8px solid transparent;
+            }
+        }
+        &:hover span {
+          visibility: visible;
+          opacity: 0.5;
+          top: 30px;
+          left: 50%;
+          margin-left: -76px;
+          z-index: 999;
+        }
     }
     .refresh-button {
         color: #00ac8a;
