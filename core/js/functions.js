@@ -228,21 +228,36 @@ function action(type) {
             window.open('http://twitter.com/share?url=' + url + '&text=' + text + '&hashtags=' + hashtag + '&', 'twitterwindow', 'height=450, width=550, top=' + ($(window).height() / 2 - 225) + ', left=' + $(window).width() / 2 + ', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
             break;
         case 'screenshot':
-            var screenshotLink = $('.screenshot-button');
+            var screenshotButton = $('.screenshot-button');
             // Animated it
-            screenshotLink.addClass('pulse');
-            screenshotLink.on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
+            screenshotButton.addClass('pulse');
+            screenshotButton.on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
                 $(this).removeClass("pulse");
             });
-            html2canvas(document.body, {
-              onrendered: function(canvas) {
-                var dataURL = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-                screenshotLink.attr('href', dataURL);
-                fileName = moment().format('DDMMYYYYHHmmss');
-                screenshotLink.attr('download', 'Screenshot_' + fileName + '.png');
-                // window.location.href = screenshotLink.attr('href');
-              },
-            });
+            // Check the button status
+            if (screenshotButton.hasClass('fa-camera')) {
+                // Change the button icon
+                screenshotButton.removeClass('fa-camera').addClass('fa-download');
+                // Create an image from canvas
+                html2canvas(document.body, {
+                    onrendered: function(canvas) {
+                        // Save the canvas to a data URL
+                        var dataURL = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+                        // Set the data url on the screenshot button
+                        screenshotButton.attr('href', dataURL);
+                        // Get the current date for the filename
+                        fileName = moment().format('DDMMYYYYHHmmss');
+                        // Set the filename on the screenshot button 
+                        screenshotButton.attr('download', 'Screenshot_' + fileName + '.png');
+                    }
+                });
+            } else {
+                // Change the button icon
+                screenshotButton.removeClass('fa-download').addClass('fa-camera');
+                // Clear the valu
+                screenshotButton.attr('href', "");
+                screenshotButton.attr('download', "");
+            }
             break;
         case 'clear':
             // Clear the session

@@ -113,7 +113,7 @@ a {
         position: relative;
         span {
             position: absolute;
-            width: 140px;
+            width: 100px;
             color: $color_1;
             background: $color_2;
             height: 30px;
@@ -121,6 +121,7 @@ a {
             text-align: center;
             visibility: hidden;
             border-radius: 6px;
+            font-size: 0.5em;
             &:after {
                 content: '';
                 position: absolute;
@@ -135,10 +136,10 @@ a {
         }
         &:hover span {
           visibility: visible;
-          opacity: 0.5;
-          top: 30px;
+          opacity: 1;
+          top: 35px;
           left: 50%;
-          margin-left: -76px;
+          margin-left: -50px;
           z-index: 999;
         }
     }
