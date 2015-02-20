@@ -1,6 +1,17 @@
 module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        htmlmin: {
+            dist: {
+                options: {
+                    collapseWhitespace: true,
+                    minifyJS: true
+                },
+                files: {
+                    'index.html': 'core/template/main.html'
+                }
+            }
+        },
         sass: {
             dist: {
                 options: {
@@ -25,13 +36,14 @@ module.exports = function(grunt) {
             }
         },
         watch: {
-            files: ['core/sass/*', 'core/js/*'],
-            tasks: ['sass', 'concat', 'uglify']
+            files: ['core/template/*', 'core/sass/*', 'core/js/*'],
+            tasks: ['htmlmin', 'sass', 'concat', 'uglify']
         }
     });
+    grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.registerTask('default', ['sass', 'concat', 'uglify']);
+    grunt.registerTask('default', ['htmlmin', 'sass', 'concat', 'uglify']);
 };

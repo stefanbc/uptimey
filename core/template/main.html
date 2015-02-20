@@ -1,0 +1,104 @@
+<!--
+Uptimey - https://github.com/stefanbc/uptimey
+
+Licensed under the MIT license
+
+Copyright (c) 2014 Stefan Cosma
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Uptimey | Beautiful Server Uptime Monitor</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="description" content="Showcase your server uptime with Uptimey!">
+        <link rel="shortcut icon" href="core/assets/img/favicon.ico?v=1" type="image/x-icon">
+        <link href='//fonts.googleapis.com/css?family=Raleway:400,300' rel='stylesheet' type='text/css'>
+        <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="core/dest/css/_normalize.min.css" rel="stylesheet" type="text/css">
+        <link href="core/dest/css/_animate.min.css" rel="stylesheet" type="text/css">
+        <link href="core/dest/css/screen.min.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="button-container">
+                <div class="button-block">
+                    <span class="button refresh-button fa fa-refresh" data-action="refresh"><span>refresh</span></span>
+                    <span class="button adv-button fa fa-dashboard" data-status="default" data-action="adv"><span>advanced</span></span>
+                    <span class="button twitter-button fa fa-twitter" data-action="twitter"><span>twitter</span></span>
+                    <a class="button screenshot-button fa fa-camera" data-action="screenshot"><span>screenshot</span></a>
+                </div>
+                <span class="button toggle-button fa fa-angle-double-down" data-status="closed" data-action="toggle"></span>
+            </div>
+            <section class="default-panel">
+                <div class="top-container">
+                    <section class="time-inner">
+                        <div class="row">
+                            <span class="label">Current date on server</span>
+                            <span class="val" id="current"></span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Server is active since</span>
+                            <span class="val" id="since"></span>
+                        </div>
+                        <div class="block-right time">
+                            <span class="fa fa-circle-o"></span>
+                            <span class="val" id="time"></span>
+                        </div>
+                    </section>
+                    <section class="location-inner">
+                        <div class="block-right location">
+                            <span class="fa fa-map-marker"></span>
+                            <span class="val" id="location"></span>
+                        </div>
+                    </section>
+                </div>
+                <div class="bottom-container">
+                    <h2>Your server's uptime until now...</h2>
+                    <section class="uptime-inner">
+                        <div class="col">
+                            <span class="val" id="days"></span>
+                            <span class="label">days</span>
+                        </div>
+                        <div class="col">
+                            <span class="val" id="hours"></span>
+                            <span class="label">hours</span>
+                        </div>
+                        <div class="col">
+                            <span class="val" id="minutes"></span>
+                            <span class="label">minutes</span>
+                        </div>
+                    </section>
+                </div>
+            </section>
+            <section class="advanced-panel">
+                <div class="top-container"></div>
+            </section>
+        </div>
+		<footer id="copy"></footer>
+        <!-- Load all scripts -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            require(['core/js/require.config'], function() {
+                require(['jQuery', 'moment', 'weather', 'app']);
+            });
+        </script>
+    </body>
+</html>
