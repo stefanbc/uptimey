@@ -252,11 +252,11 @@ function action(type) {
                     }
                 });
             } else {
-                // Change the button icon
-                screenshotButton.removeClass('fa-download').addClass('fa-camera');
-                // Clear the valu
-                screenshotButton.attr('href', "");
-                screenshotButton.attr('download', "");
+                setTimeout(function(){
+                    // Change the button icon
+                    screenshotButton.removeClass('fa-download').addClass('fa-camera');
+                    screenshotButton.removeAttr("href").removeAttr("download");
+                }, 3000);
             }
             break;
         case 'clear':
