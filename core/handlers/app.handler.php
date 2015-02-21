@@ -64,7 +64,7 @@ switch($action){
             // Set the header to properly return the json
             header('Content-Type: application/json');
             // From third party
-            $getIP = shell_exec('curl http://ipinfo.io/json');
+            $getIP = shell_exec('wget -qO- curlmyip.com');
         } else {
             // Using PHP var
             $getIP = gethostbyname($_SERVER['SERVER_NAME']);
@@ -98,7 +98,7 @@ switch($action){
             default:
                 $totalSeconds = 0;
         }
-        
+
         $totalMin   = $totalSeconds / 60;
         $totalHours = $totalMin / 60;
         // Calculate the proper times
@@ -143,9 +143,15 @@ switch($action){
         if (empty($flag)) {
             $_SESSION['last'] = time();
         }
-    break;    
+    break;
     case 'advanced':
         // Set a notification for in dev section
+        echo "<span class='notif'>";
+        echo "Hostname: " . shell_exec('/bin/hostname') . "<br>";
+        echo "OS: " . shell_exec('/usr/bin/lsb_release -ds;/bin/uname -r')  . "<br>";
+        echo "External IP: " . shell_exec('wget -qO- curlmyip.com') . "<br>";
+        echo "</span>";
+        echo "<br>";
         echo "<span class='notif fa fa-warning'>This section is in development. Checkout the <a href='https://github.com/stefanbc/uptimey/tree/dev' target='_blank'>dev branch</a> for more info.</span>";
     break;
     case 'clear':

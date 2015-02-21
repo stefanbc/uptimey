@@ -104,7 +104,7 @@ a {
         margin-top: 25px;
         &:after {
             @extend %border;
-            margin-top: 25px;  
+            margin-top: 25px;
         }
     }
     .button {
@@ -113,15 +113,17 @@ a {
         position: relative;
         span {
             position: absolute;
-            width: 100px;
+            visibility: hidden;
             color: $color_1;
-            background: $color_2;
-            height: 30px;
+            font-family: $font_0;
+            font-weight: 200;
+            font-size: 0.5em;
             line-height: 30px;
             text-align: center;
-            visibility: hidden;
+            background: $color_2;
+            width: 100px;
+            height: 30px;
             border-radius: 6px;
-            font-size: 0.5em;
             &:after {
                 content: '';
                 position: absolute;
@@ -226,7 +228,9 @@ a {
         margin: 0 auto;
         position: relative;
         display: block;
-        padding-bottom: 100px;
+        // padding-bottom: 100px;
+        font-family: FontAwesome, $font_0;
+        font-weight: 200;
         &:before {
             padding-right: 10px;
         }
