@@ -1,0 +1,20 @@
+{
+    "font"              : "",
+    "font_color"        : "",
+    "background_image"  : "",
+    "background_color"  : "",
+    "default_view"      : "uptime",
+    "show_menu_alwasys" : false,
+    "remove_menu"       : false,
+    "buttons"           :
+    [
+        {
+            "refresh"   : true,
+            "advanced"  : true,
+            "twitter"   : true,
+            "google"    : false,
+            "facebook"  : false,
+            "screenshot": true
+        }
+    ]
+}
