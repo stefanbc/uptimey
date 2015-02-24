@@ -4,7 +4,7 @@
     "background_image"  : "",
     "background_color"  : "",
     "default_view"      : "uptime",
-    "show_menu_alwasys" : false,
+    "show_menu_always": false,
     "remove_menu"       : false,
     "buttons"           :
     [
