@@ -24,14 +24,30 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+/* Set the global files */
+var globalFile      = 'core/handlers/app.handler.php';
+var globalConfig    = 'core/config.json';
 /* Set the global vars*/
-var globalFile = 'core/handlers/app.handler.php';
 var globalLocation, globalSunrise, globalSunset;
+
+/* Get config key value */
+function config(option, callback){
+    $.getJSON(globalConfig, function(data) {
+        // console.log(data[option]);
+        var config = data[option];
+        callback(config);
+    });
+}
 
 /* Output the data requested */
 function output(type, setFlag) {
     switch (type) {
         case 'image':
+
+            config("background_image", function(data){
+                console.log(data);
+            });
+            
             $.get(globalFile, {
                 action: type
             })
@@ -52,7 +68,7 @@ function output(type, setFlag) {
                     // Set up the URL for location call using ipinfo.io
                     var ip_geocode = "http://ipinfo.io/" + location.ip + "/json";
                     // Get the response and set the value
-                    $.get(ip_geocode, function(response) {
+                    $.getJSON(ip_geocode, function(response) {
                         // Add it to the element with an animation
                         $('#location').text(response.city + ", " + response.region + ", " + response.country).addClass('fadeIn');
                         // Add latlong for maps href
@@ -68,7 +84,7 @@ function output(type, setFlag) {
                                 globalSunset = weather.sunset;
                             }
                         });
-                    }, "jsonp");
+                    });
                     // We only animate the whole container once
                     $('.location-inner').addClass('fadeIn');
                 });
