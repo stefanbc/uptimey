@@ -33,9 +33,12 @@ var globalLocation, globalSunrise, globalSunset;
 /* Get config key value */
 function config(option, callback){
     $.getJSON(globalConfig, function(data) {
-        // console.log(data[option]);
-        var config = data[option];
-        callback(config);
+        if (data.length === 0) {
+            callback("empty");
+        } else {
+            var config = data[option];
+            callback(config);
+        }
     });
 }
 
@@ -43,22 +46,26 @@ function config(option, callback){
 function output(type, setFlag) {
     switch (type) {
         case 'image':
-
-            config("background_image", function(data){
-                console.log(data);
-            });
-            
-            $.get(globalFile, {
-                action: type
-            })
-                .done(function(image) {
-                    // Split the output
-                    image = image.split(";");
+            // Check the config value
+            config("background_image", function(configVal){
+                if(configVal === "empty"){
                     // Add the image as background-image on body
-                    $('body').css('backgroundImage', 'url(' + image[0] + ')');
+                    $('body').css('backgroundImage', 'url(' + configVal + ')');
                     // Set the copyright
-                    $('#copy').html("Powered by Uptimey. Fork on <a href='https://github.com/stefanbc/uptimey'>Github</a> <br> Image - " + image[1]);
-                });
+                    $('#copy').html("Powered by Uptimey. Fork on <a href='https://github.com/stefanbc/uptimey'>Github</a>");
+                } else {
+                    $.get(globalFile, {
+                        action: type
+                    }).done(function(image) {
+                        // Split the output
+                        image = image.split(";");
+                        // Add the image as background-image on body
+                        $('body').css('backgroundImage', 'url(' + image[0] + ')');
+                        // Set the copyright
+                        $('#copy').html("Powered by Uptimey. Fork on <a href='https://github.com/stefanbc/uptimey'>Github</a> <br> Image - " + image[1]);
+                    });
+                }
+            });
             break;
         case 'location':
             $.get(globalFile, {
