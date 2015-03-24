@@ -60,12 +60,10 @@ switch($action){
     break;
     case 'location':
         // Get the IP
-        if(function_exists('curl_version')) {
-            // Set the header to properly return the json
-            header('Content-Type: application/json');
-            // From third party
-            $getIP = shell_exec('wget -qO- curlmyip.com');
-        } else {
+        // From third party
+        $getIP = shell_exec('wget -qO- curlmyip.com');
+        // Backup
+        if (empty($getIP)) {
             // Using PHP var
             $getIP = gethostbyname($_SERVER['SERVER_NAME']);
         }

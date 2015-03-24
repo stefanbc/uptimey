@@ -15,5 +15,6 @@
             "facebook": false,
             "screenshot": true
         }
-    ]
+    ],
+    "display_timezone": ""
 }

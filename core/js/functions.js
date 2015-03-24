@@ -25,47 +25,24 @@ SOFTWARE.
 */
 
 /* Set the global files */
-var globalFile      = 'core/handlers/app.handler.php';
-var globalConfig    = 'core/config.json';
+var globalFile  = 'core/handlers/app.handler.php';
 /* Set the global vars*/
 var globalLocation, globalSunrise, globalSunset;
-
-/* Get config key value */
-function config(option, callback){
-    $.getJSON(globalConfig, function(data) {
-        if (data.length === 0) {
-            callback("empty");
-        } else {
-            var config = data[option];
-            callback(config);
-        }
-    });
-}
 
 /* Output the data requested */
 function output(type, setFlag) {
     switch (type) {
         case 'image':
-            // Check the config value
-            config("background_image", function(configVal){
-                if(configVal === "empty"){
+                $.get(globalFile, {
+                    action: type
+                }).done(function(image) {
+                    // Split the output
+                    image = image.split(";");
                     // Add the image as background-image on body
-                    $('body').css('backgroundImage', 'url(' + configVal + ')');
+                    $('body').css('backgroundImage', 'url(' + image[0] + ')');
                     // Set the copyright
-                    $('#copy').html("Powered by Uptimey. Fork on <a href='https://github.com/stefanbc/uptimey'>Github</a>");
-                } else {
-                    $.get(globalFile, {
-                        action: type
-                    }).done(function(image) {
-                        // Split the output
-                        image = image.split(";");
-                        // Add the image as background-image on body
-                        $('body').css('backgroundImage', 'url(' + image[0] + ')');
-                        // Set the copyright
-                        $('#copy').html("Powered by Uptimey. Fork on <a href='https://github.com/stefanbc/uptimey'>Github</a> <br> Image - " + image[1]);
-                    });
-                }
-            });
+                    $('#copy').html("Powered by Uptimey. Fork on <a href='https://github.com/stefanbc/uptimey'>Github</a> <br> Image - " + image[1]);
+                });
             break;
         case 'location':
             $.get(globalFile, {
@@ -73,7 +50,7 @@ function output(type, setFlag) {
             })
                 .done(function(location) {
                     // Set up the URL for location call using ipinfo.io
-                    var ip_geocode = "http://ipinfo.io/" + location.ip + "/json";
+                    var ip_geocode = "http://ipinfo.io/" + location + "/json";
                     // Get the response and set the value
                     $.getJSON(ip_geocode, function(response) {
                         // Add it to the element with an animation
