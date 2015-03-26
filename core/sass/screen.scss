@@ -40,6 +40,29 @@ $color_3: #ddd;
 $font_0: Raleway, sans-serif;
 
 //
+// Mixins
+// --------------------------------------------------
+%border {
+    content: "";
+    height: 1px;
+    background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(147,147,147,1) 50%, rgba(0,0,0,0) 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0)), color-stop(50%,rgba(147,147,147,1)), color-stop(100%,rgba(0,0,0,0)));
+    background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(147,147,147,1) 50%,rgba(0,0,0,0) 100%);
+    background: -o-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(147,147,147,1) 50%,rgba(0,0,0,0) 100%);
+    background: -ms-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(147,147,147,1) 50%,rgba(0,0,0,0) 100%);
+    background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(147,147,147,1) 50%,rgba(0,0,0,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#00000000',GradientType=1 );
+    display: block;
+}
+%transition {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+//
 // Global
 // --------------------------------------------------
 html {
@@ -58,28 +81,11 @@ body {
 a {
 	color: $color_1;
 	text-decoration: none;
-	&:hover {
-		text-decoration: underline;
-	}
+	@extend %transition;
+	&:hover,
 	&:focus {
 		text-decoration: underline;
 	}
-}
-
-//
-// Mixins
-// --------------------------------------------------
-%border {
-    content: "";
-    height: 1px;
-    background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(147,147,147,1) 50%, rgba(0,0,0,0) 100%);
-    background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0)), color-stop(50%,rgba(147,147,147,1)), color-stop(100%,rgba(0,0,0,0)));
-    background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(147,147,147,1) 50%,rgba(0,0,0,0) 100%);
-    background: -o-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(147,147,147,1) 50%,rgba(0,0,0,0) 100%);
-    background: -ms-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(147,147,147,1) 50%,rgba(0,0,0,0) 100%);
-    background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(147,147,147,1) 50%,rgba(0,0,0,0) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#00000000',GradientType=1 );
-    display: block;
 }
 
 //
@@ -111,6 +117,7 @@ a {
         cursor: pointer;
         margin: 0 30px;
         position: relative;
+        @extend %transition;
         span {
             position: absolute;
             visibility: hidden;
@@ -146,7 +153,9 @@ a {
         }
     }
     .refresh-button {
-        color: #00ac8a;
+        &:hover {
+            color: #00ac8a;
+        }
     }
     .adv-button {
         &.active {
@@ -154,11 +163,15 @@ a {
         }
     }
     .twitter-button {
-        color: #55acee;
+        &:hover {
+            color: #55acee;
+        }
     }
     .screenshot-button {
         text-decoration: none;
-        color: #f7d61c;
+        &:hover {
+            color: #f7d61c;
+        }
     }
 }
 .advanced-panel {
