@@ -23,11 +23,15 @@ module.exports = function(grunt) {
                 }
             }
         },
-        concat: {
-            dist: {
-                src: ['core/js/functions.js', 'core/js/base.js'],
-                dest: 'core/dest/js/app.min.js',
-            },
+        coffee: {
+            compileJoined: {
+                options: {
+                    join: true
+                },
+                files: {
+                    'core/dest/js/app.min.js': ['core/coffee/*.coffee']
+                }
+            }  
         },
         uglify: {
             js: {
@@ -37,14 +41,14 @@ module.exports = function(grunt) {
             }
         },
         watch: {
-            files: ['core/template/*', 'core/sass/*', 'core/js/*'],
-            tasks: ['htmlmin', 'sass', 'concat', 'uglify']
+            files: ['core/template/*', 'core/sass/*', 'core/coffee/*'],
+            tasks: ['htmlmin', 'sass', 'coffee', 'uglify']
         }
     });
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-contrib-sass');
-    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-coffee');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.registerTask('default', ['htmlmin', 'sass', 'concat', 'uglify']);
+    grunt.registerTask('default', ['htmlmin', 'sass', 'coffee', 'uglify']);
 };
