@@ -24,54 +24,53 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ###
 
-# When the page finishes loading
-$(document).ready ->
+output = require 'actions.coffee'
+action = require 'action.coffee'
 
-  ### Start initial load ###
+### Start initial load ###
 
-  # Add the animation base class
-  $('.top-container').addClass 'animated'
-  $('.bottom-container').addClass 'animated'
-  $('.val').addClass 'animated'
-  $('.button').addClass 'animated'
-  # Get the image
-  output 'image'
-  # Get the location
-  output 'location'
-  # Get the uptime
+# Add the animation base class
+$('.top-container').addClass 'animated'
+$('.bottom-container').addClass 'animated'
+$('.val').addClass 'animated'
+$('.button').addClass 'animated'
+# Get the image
+output 'image'
+# Get the location
+output 'location'
+# Get the uptime
+output 'uptime'
+# Get the time (let uptime be the first request so that the session updates needed values for time)
+output 'time'
+
+### End initial load ###
+
+### At an interval of 1 min we refresh the uptime and time ###
+
+setInterval (->
   output 'uptime'
-  # Get the time (let uptime be the first request so that the session updates needed values for time)
   output 'time'
-
-  ### End initial load ###
-
-  ### At an interval of 1 min we refresh the uptime and time ###
-
-  setInterval (->
-    output 'uptime'
-    output 'time'
-    return
-  ), 1000 * 60
-
-  ### Click action on each top button ###
-
-  $('.button').each ->
-    $(this).on 'click', ->
-      buttonAction = $(this).attr('data-action')
-      action buttonAction
-      return
-    return
-
-  ### Click action for location ###
-
-  $('#location').on 'click', ->
-    latlong = $(this).attr('data-latlong')
-    window.location.href = 'https://www.google.com/maps/place/' + latlong
-    return
-
-  ### Clear everything on refresh of close ###
-
-  $(window).bind 'beforeunload', ->
-    action 'clear'
-    return
   return
+), 1000 * 60
+
+### Click action on each top button ###
+
+$('.button').each ->
+  $(this).on 'click', ->
+    buttonAction = $(this).attr('data-action')
+    action buttonAction
+  return
+return
+
+### Click action for location ###
+
+$('#location').on 'click', ->
+  latlong = $(this).attr('data-latlong')
+  window.location.href = 'https://www.google.com/maps/place/' + latlong
+return
+
+### Clear everything on refresh of close ###
+
+$(window).bind 'beforeunload', ->
+  action 'clear'
+return

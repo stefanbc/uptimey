@@ -36,7 +36,7 @@ globalSunset = ''
 
 ### Output the data requested ###
 
-output = (type, setFlag) ->
+module.exports.output = (type, setFlag) ->
   switch type
     when 'image'
       $.get(globalFile, action: type).done (image) ->
@@ -125,7 +125,7 @@ output = (type, setFlag) ->
 
 ### Button action ###
 
-action = (type) ->
+module.exports.action = (type) ->
   status = ''
   switch type
     when 'toggle'
