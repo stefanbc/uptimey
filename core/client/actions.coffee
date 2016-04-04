@@ -24,19 +24,19 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ###
 
-### Set the global files ###
-
-globalFile = 'core/controllers/maincontroller.php'
-
-### Set the global vars ###
-
-globalLocation = ''
-globalSunrise = ''
-globalSunset = ''
-
 ### Output the data requested ###
-
 module.exports.output = (type, setFlag) ->
+  
+  ### Set the global files ###
+
+  globalFile = 'core/controllers/maincontroller.php'
+
+  ### Set the global vars ###
+
+  globalLocation = ''
+  globalSunrise = ''
+  globalSunset = ''
+
   switch type
     when 'image'
       $.get(globalFile, action: type).done (image) ->
