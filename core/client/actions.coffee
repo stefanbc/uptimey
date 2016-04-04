@@ -26,7 +26,7 @@ SOFTWARE.
 
 ### Set the global files ###
 
-globalFile = 'core/handlers/app.handler.php'
+globalFile = 'core/controllers/maincontroller.php'
 
 ### Set the global vars ###
 

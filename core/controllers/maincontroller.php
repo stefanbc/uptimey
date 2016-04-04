@@ -51,12 +51,12 @@ if (!empty($_SESSION['last']) && time() - $_SESSION['last'] < 60 && empty($flag)
 
 switch($action){
     case 'image':
-        // Load the XML file from Bing
-        $bingImage = simplexml_load_file('http://www.bing.com/HPImageArchive.aspx?format=xml&idx=0&n=1&mkt=en-US');
-        // Return the image and copyright
-        echo 'http://www.bing.com' . $bingImage->image->urlBase. '_1366x768.jpg;' . $bingImage->image->copyright;
-        // Set session
-        $_SESSION['image'] = 'http://www.bing.com' . $bingImage->image->urlBase. '_1366x768.jpg;' . $bingImage->image->copyright  . ';session;';
+        // Load random image from Unsplash
+        $getImage = 'https://source.unsplash.com/random/1366x768';
+        // Return the image
+        echo $getImage;
+        // Set the session image
+        $_SESSION['image'] = $getImage . ';session;';
     break;
     case 'location':
         // Get the IP

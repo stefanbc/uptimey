@@ -19,7 +19,7 @@ module.exports = function(grunt) {
                     style: 'compressed'
                 },
                 files: {
-                    'core/dest/css/screen.min.css' : 'core/sass/screen.scss'
+                    'core/dest/css/screen.min.css' : 'core/style/screen.scss'
                 }
             }
         },
@@ -29,7 +29,7 @@ module.exports = function(grunt) {
                     join: true
                 },
                 files: {
-                    'core/dest/js/app.min.js': ['core/coffee/*.coffee']
+                    'core/dest/js/app.min.js': ['core/client/*.coffee']
                 }
             }  
         },
@@ -41,7 +41,7 @@ module.exports = function(grunt) {
             }
         },
         watch: {
-            files: ['core/template/*', 'core/sass/*', 'core/coffee/*'],
+            files: ['core/template/*', 'core/style/*', 'core/client/*'],
             tasks: ['htmlmin', 'sass', 'coffee', 'uglify']
         }
     });
