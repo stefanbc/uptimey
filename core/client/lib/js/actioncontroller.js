@@ -25,7 +25,7 @@ SOFTWARE.
 */
 
 /* Set the global files */
-var globalFile  = 'core/handlers/app.handler.php';
+var globalFile  = 'core/client/lib/controllers/maincontroller.php';
 /* Set the global vars*/
 var globalLocation, globalSunrise, globalSunset;
 
@@ -33,97 +33,97 @@ var globalLocation, globalSunrise, globalSunset;
 function output(type, setFlag) {
     switch (type) {
         case 'image':
-                $.get(globalFile, {
-                    action: type
+                $.ajax({
+                    method: "GET",
+                    url: globalFile,
+                    data: { action: type }
                 }).done(function(image) {
                     // Split the output
                     image = image.split(";");
                     // Add the image as background-image on body
                     $('body').css('backgroundImage', 'url(' + image[0] + ')');
                     // Set the copyright
-                    $('#copy').html("Powered by Uptimey. Fork on <a href='https://github.com/stefanbc/uptimey'>Github</a> <br> Image - " + image[1]);
+                    var copyrightText = "Powered by Uptimey. Fork on <a href='https://github.com/stefanbc/uptimey'>Github</a>. Image by Unsplash";
+                    $('#copy').html(copyrightText);
                 });
-            break;
+        break;
         case 'location':
             $.get(globalFile, {
                 action: type
-            })
-                .done(function(location) {
-                    // Set up the URL for location call using ipinfo.io
-                    var ip_geocode = "http://ipinfo.io/" + location + "/json";
-                    // Get the response and set the value
-                    $.getJSON(ip_geocode, function(response) {
-                        // Add it to the element with an animation
-                        $('#location').text(response.city + ", " + response.region + ", " + response.country).addClass('fadeIn');
-                        // Add latlong for maps href
-                        var latlong = response.loc.split(",");
-                        $('#location').attr('data-latlong', latlong[0] + '+' + latlong[1]);
-                        // Set the global location
-                        globalLocation = response.city + ", " + response.region + ", " + response.country;
-                        // Set the sunrise/sunset times
-                        $.simpleWeather({
-                            location: globalLocation,
-                            success: function(weather) {
-                                globalSunrise = weather.sunrise;
-                                globalSunset = weather.sunset;
-                            }
-                        });
+            }).done(function(location) {
+                // Set up the URL for location call using ipinfo.io
+                var ip_geocode = "http://ipinfo.io/" + location;
+                // Get the response and set the value
+                $.getJSON(ip_geocode, function(response) {
+                    // Add it to the element with an animation
+                    $('#location').text(response.city + ", " + response.region + ", " + response.country).addClass('fadeIn');
+                    // Add latlong for maps href
+                    var latlong = response.loc.split(",");
+                    $('#location').attr('data-latlong', latlong[0] + '+' + latlong[1]);
+                    // Set the global location
+                    globalLocation = response.city + ", " + response.region + ", " + response.country;
+                    // Set the sunrise/sunset times
+                    $.simpleWeather({
+                        location: globalLocation,
+                        success: function(weather) {
+                            globalSunrise = weather.sunrise;
+                            globalSunset = weather.sunset;
+                        }
                     });
-                    // We only animate the whole container once
-                    $('.location-inner').addClass('fadeIn');
                 });
-            break;
+                // We only animate the whole container once
+                $('.location-inner').addClass('fadeIn');
+            });
+        break;
         case 'uptime':
             $.get(globalFile, {
                 action: type,
                 flag: setFlag
-            })
-                .done(function(uptime) {
-                    // Split the output
-                    uptime = uptime.split(";");
-                    // Add it to each element with an animation
-                    $('#days').text(uptime[0]).addClass('fadeIn');
-                    $('#days').attr('data-value', uptime[0]);
-                    
-                    $('#hours').text(uptime[1]).addClass('fadeIn');
-                    $('#hours').attr('data-value', uptime[1]);
+            }).done(function(uptime) {
+                // Split the output
+                uptime = uptime.split(";");
+                // Add it to each element with an animation
+                $('#days').text(uptime[0]).addClass('fadeIn');
+                $('#days').attr('data-value', uptime[0]);
+                
+                $('#hours').text(uptime[1]).addClass('fadeIn');
+                $('#hours').attr('data-value', uptime[1]);
 
-                    $('#minutes').text(uptime[2]).addClass('fadeIn');
-                    $('#minutes').attr('data-value', uptime[2]);
-                    // We only animate the whole container once
-                    $('.bottom-container').addClass('fadeIn');
-                });
-            break;
+                $('#minutes').text(uptime[2]).addClass('fadeIn');
+                $('#minutes').attr('data-value', uptime[2]);
+                // We only animate the whole container once
+                $('.bottom-container').addClass('fadeIn');
+            });
+        break;
         case 'time':
             $.get(globalFile, {
                 action: type,
                 flag: setFlag
-            })
-                .done(function(time) {
-                    // Split the output
-                    time = time.split(";");
-                    // Set the times
-                    $('#current').text(time[0]).addClass('fadeIn');
-                    $('#time').text(time[1]).addClass('fadeIn');
-                    $('#since').text(time[2]).addClass('fadeIn');
-                    // Format the times
-                    setTimeout(function() {
-                        var sunrise = moment(globalSunrise, 'h:m a').format('X');
-                        var sunset = moment(globalSunset, 'h:m a').format('X');
-                        var ttime = moment(time[1], 'h:m a').format('X');
-                        // Check if the current time is between sunset, sunrise and set the icon
-                        if (ttime >= sunrise && ttime <= sunset) {
-                            $(".time .fa").removeClass("fa-moon-o fa-circle-o");
-                            $(".time .fa").addClass("fa-sun-o");
-                        } else {
-                            $(".time .fa").removeClass("fa-sun-o fa-circle-o");
-                            $(".time .fa").addClass("fa-moon-o");
-                        }
-                    }, 3000);
-                    // We only animate the whole container once
-                    $('.top-container').addClass('fadeIn');
-                });
-            break;
+            }).done(function(time) {
+                // Split the output
+                time = time.split(";");
+                // Set the times
+                $('#current').text(time[0]).addClass('fadeIn');
+                $('#time').text(time[1]).addClass('fadeIn');
+                $('#since').text(time[2]).addClass('fadeIn');
+                // Format the times
+                setTimeout(function() {
+                    var sunrise = moment(globalSunrise, 'h:m a').format('X');
+                    var sunset = moment(globalSunset, 'h:m a').format('X');
+                    var ttime = moment(time[1], 'h:m a').format('X');
+                    // Check if the current time is between sunset, sunrise and set the icon
+                    if (ttime >= sunrise && ttime <= sunset) {
+                        $(".time .fa").removeClass("fa-moon-o fa-circle-o");
+                        $(".time .fa").addClass("fa-sun-o");
+                    } else {
+                        $(".time .fa").removeClass("fa-sun-o fa-circle-o");
+                        $(".time .fa").addClass("fa-moon-o");
+                    }
+                }, 3000);
+                // We only animate the whole container once
+                $('.top-container').addClass('fadeIn');
+            });
+        break;
     }
     // After the animation is done remove the class so
     // we can animate again on next iteration
@@ -133,6 +133,7 @@ function output(type, setFlag) {
         });
     });
 }
+
 /* Button action */
 function action(type) {
     var status;
@@ -162,7 +163,7 @@ function action(type) {
                 $(".toggle-button").removeClass("fa-angle-double-up");
                 $(".toggle-button").addClass("fa-angle-double-down");
             }
-            break;
+        break;
         case 'adv':
             // Animated it
             $(".adv-button").addClass('pulse');
@@ -182,11 +183,10 @@ function action(type) {
                 $.get(globalFile, {
                     action: "advanced",
                     flag: "advanced"
-                })
-                    .done(function(notice) {
-                        // Set the data from ajax
-                        $(".advanced-panel .top-container").html(notice);
-                    });
+                }).done(function(notice) {
+                    // Set the data from ajax
+                    $(".advanced-panel .top-container").html(notice);
+                });
             } else if (status == "advanced") {
                 // Show the correct panel and set the button state
                 $(".adv-button").attr("data-status", "default");
@@ -194,7 +194,7 @@ function action(type) {
                 $(".advanced-panel").fadeOut(500);
                 $(".default-panel").fadeIn(500);
             }
-            break;
+        break;
         case 'refresh':
             // Animated it
             $(".refresh-button").addClass('fa-spin');
@@ -205,7 +205,7 @@ function action(type) {
             setTimeout(function() {
                 $(".refresh-button").removeClass("fa-spin");
             }, 1000);
-            break;
+        break;
         case 'twitter':
             // Animated it
             $(".twitter-button").addClass('pulse');
@@ -226,7 +226,7 @@ function action(type) {
             var hashtag = "uptimey,devops";
             // Open the Twitter share window
             window.open('http://twitter.com/share?url=' + url + '&text=' + text + '&hashtags=' + hashtag + '&', 'twitterwindow', 'height=450, width=550, top=' + ($(window).height() / 2 - 225) + ', left=' + $(window).width() / 2 + ', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
-            break;
+        break;
         case 'screenshot':
             var screenshotButton = $('.screenshot-button');
             // Animated it
@@ -258,12 +258,10 @@ function action(type) {
                     screenshotButton.removeAttr("href").removeAttr("download");
                 }, 3000);
             }
-            break;
+        break;
         case 'clear':
             // Clear the session
-            $.get(globalFile, {
-                action: "clear"
-            });
-            break;
+            $.get(globalFile, { action: "clear" });
+        break;
     }
 }

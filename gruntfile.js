@@ -9,7 +9,7 @@ module.exports = function(grunt) {
                     removeComments: true
                 },
                 files: {
-                    'index.html': 'core/template/main.html'
+                    'index.html': 'core/client/lib/template/mainview.html'
                 }
             }
         },
@@ -19,19 +19,15 @@ module.exports = function(grunt) {
                     style: 'compressed'
                 },
                 files: {
-                    'core/dest/css/screen.min.css' : 'core/style/screen.scss'
+                    'core/dest/css/global.min.css' : 'core/client/lib/style/global.scss'
                 }
             }
         },
-        coffee: {
-            compileJoined: {
-                options: {
-                    join: true
-                },
-                files: {
-                    'core/dest/js/app.min.js': ['core/client/*.coffee']
-                }
-            }  
+        concat: {
+            dist: {
+                src  : ['core/client/lib/js/actioncontroller.js', 'core/client/lib/js/initcontroller.js'],
+                dest : 'core/dest/js/app.min.js'
+            }
         },
         uglify: {
             js: {
@@ -41,14 +37,14 @@ module.exports = function(grunt) {
             }
         },
         watch: {
-            files: ['core/template/*', 'core/style/*', 'core/client/*'],
-            tasks: ['htmlmin', 'sass', 'coffee', 'uglify']
+            files: ['core/client/lib/template/*.html', 'core/client/lib/style/*.scss', 'core/client/lib/js/*.js'],
+            tasks: ['htmlmin', 'sass', 'concat', 'uglify']
         }
     });
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-contrib-sass');
-    grunt.loadNpmTasks('grunt-contrib-coffee');
+    grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.registerTask('default', ['htmlmin', 'sass', 'coffee', 'uglify']);
+    grunt.registerTask('default', ['htmlmin', 'sass', 'concat', 'uglify']);
 };
