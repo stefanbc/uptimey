@@ -34,16 +34,16 @@ module.exports = function(grunt) {
                 }
             }  
         },
-        // uglify: {
-        //     js: {
-        //         files: {
-        //             'core/dest/js/app.min.js': ['core/dest/js/app.min.js']
-        //         }
-        //     }
-        // },
+        uglify: {
+            js: {
+                files: {
+                    'core/dest/js/app.min.js': ['core/dest/js/app.min.js']
+                }
+            }
+        },
         watch: {
             files: ['core/client/lib/view/*.html', 'core/client/lib/style/*.scss', 'core/client/lib/*.coffee'],
-            tasks: ['htmlmin', 'sass', 'coffee']
+            tasks: ['htmlmin', 'sass', 'coffee', 'uglify']
         }
     });
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
@@ -51,5 +51,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-coffee');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.registerTask('default', ['htmlmin', 'sass', 'coffee']);
+    grunt.registerTask('default', ['htmlmin', 'sass', 'coffee', 'uglify']);
 };
