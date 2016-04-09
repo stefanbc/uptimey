@@ -52,7 +52,7 @@ if (!empty($_SESSION['last']) && time() - $_SESSION['last'] < 60 && empty($flag)
 switch($action){
     case 'image':
         // Load random image from Unsplash
-        $getImage = 'https://source.unsplash.com/random/1366x768';
+        $getImage = 'https://source.unsplash.com/category/nature/1366x768';
         // Return the image
         echo $getImage;
         // Set the session image

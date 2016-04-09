@@ -9,7 +9,7 @@ module.exports = function(grunt) {
                     removeComments: true
                 },
                 files: {
-                    'index.html': 'core/client/lib/template/mainview.html'
+                    'index.html': 'core/client/lib/view/mainview.html'
                 }
             }
         },
@@ -23,28 +23,33 @@ module.exports = function(grunt) {
                 }
             }
         },
-        concat: {
-            dist: {
-                src  : ['core/client/lib/js/actioncontroller.js', 'core/client/lib/js/initcontroller.js'],
-                dest : 'core/dest/js/app.min.js'
-            }
-        },
-        uglify: {
-            js: {
+        coffee: {
+            compileJoined: {
+                options: {
+                    bare : true,
+                    join : true
+                },
                 files: {
-                    'core/dest/js/app.min.js': ['core/dest/js/app.min.js']
+                    'core/dest/js/app.min.js': ['core/client/lib/*.coffee']
                 }
-            }
+            }  
         },
+        // uglify: {
+        //     js: {
+        //         files: {
+        //             'core/dest/js/app.min.js': ['core/dest/js/app.min.js']
+        //         }
+        //     }
+        // },
         watch: {
-            files: ['core/client/lib/template/*.html', 'core/client/lib/style/*.scss', 'core/client/lib/js/*.js'],
-            tasks: ['htmlmin', 'sass', 'concat', 'uglify']
+            files: ['core/client/lib/view/*.html', 'core/client/lib/style/*.scss', 'core/client/lib/*.coffee'],
+            tasks: ['htmlmin', 'sass', 'coffee']
         }
     });
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-contrib-sass');
-    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-coffee');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.registerTask('default', ['htmlmin', 'sass', 'concat', 'uglify']);
+    grunt.registerTask('default', ['htmlmin', 'sass', 'coffee']);
 };
