@@ -24,10 +24,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ###
 
-# When the page finishes loading
-$(document).ready ->
-
-  ### Start initial load ###
+init = ->
   # Add the animation base class
   $('.top-container').addClass 'animated'
   $('.bottom-container').addClass 'animated'
@@ -41,6 +38,12 @@ $(document).ready ->
   output 'uptime'
   # Get the time (let uptime be the first request so that the session updates needed values for time)
   output 'time'
+
+# When the page finishes loading
+$ ->
+
+  ### Start initial load ###
+  init()
   ### End initial load ###
 
   ### At an interval of 1 min we refresh the uptime and time ###

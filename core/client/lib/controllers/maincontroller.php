@@ -61,7 +61,7 @@ switch($action){
     case 'location':
         // Get the IP
         // From third party
-        $getIP = shell_exec('wget -qO- curlmyip.com');
+        $getIP = shell_exec('wget -qO- ifconfig.co');
         // Backup
         if (empty($getIP)) {
             // Using PHP var

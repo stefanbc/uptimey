@@ -10,9 +10,9 @@ requirejs.config({
     shim: {
         'moment'    : ['jQuery'],
         'weather'   : ['jQuery'],
-        'app': {
+        'app'       : {
             deps    : ['jQuery', 'moment', 'weather', 'html2canvas']
         }
     },
-    waitSeconds: 15
+    waitSeconds: 5
 });

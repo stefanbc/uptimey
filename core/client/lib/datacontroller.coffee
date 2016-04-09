@@ -104,8 +104,8 @@ output = (type, setFlag) ->
           # Format the times
           setTimeout (->
             sunrise = moment(globalSunrise, 'h:m a').format('X')
-            sunset = moment(globalSunset, 'h:m a').format('X')
-            ttime = moment(time[1], 'h:m a').format('X')
+            sunset  = moment(globalSunset, 'h:m a').format('X')
+            ttime   = moment(time[1], 'h:m a').format('X')
             # Check if the current time is between sunset, sunrise and set the icon
             if ttime >= sunrise and ttime <= sunset
               $('.time .fa').removeClass 'fa-moon-o fa-circle-o'
