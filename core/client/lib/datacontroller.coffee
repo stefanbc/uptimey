@@ -38,7 +38,8 @@ output = (type, setFlag) ->
           # Add the image as background-image on body
           $('body').css 'backgroundImage', "url(#{image[0]})"
           # Set the copyright
-          copyrightText = "Built using Uptimey. Fork on <a href='#{projectLink}'>Github</a>. Image by Unsplash."
+          copyrightText = "Made with <a href='#{projectLink}' target='_blank'>Uptimey</a>."
+          copyrightText += "Image from <a href='http://unsplash.com' target='_blank'>Unsplash</a>."
           $('#copy').html copyrightText
           return
     when 'location'

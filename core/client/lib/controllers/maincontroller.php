@@ -147,7 +147,7 @@ switch($action){
         echo "<span class='notif'>";
         echo "Hostname: " . shell_exec('/bin/hostname') . "<br>";
         echo "OS: " . shell_exec('/usr/bin/lsb_release -ds;/bin/uname -r')  . "<br>";
-        echo "External IP: " . shell_exec('wget -qO- curlmyip.com') . "<br>";
+        echo "External IP: " . shell_exec('wget -qO- ifconfig.co') . "<br>";
         echo "</span>";
         echo "<br>";
         echo "<span class='notif fa fa-warning'>This section is in development. Checkout the <a href='https://github.com/stefanbc/uptimey/tree/dev' target='_blank'>dev branch</a> for more info.</span>";
