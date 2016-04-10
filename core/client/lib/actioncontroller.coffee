@@ -87,6 +87,7 @@ action = (type) ->
       # Refresh the values
       output 'uptime', 'refresh'
       output 'time', 'refresh'
+      output 'ping'
       # Stop animation after 1s
       setTimeout (->
         $('.refresh-button').removeClass 'fa-spin'
@@ -102,11 +103,11 @@ action = (type) ->
       # The action
       # Get the current uptime
       uptime = ''
-      if $('#days').attr('data-value') != 0
+      if $('#days').attr('data-value') isnt 0
         uptime += $('#days').attr('data-value') + ' days '
-      if $('#hours').attr('data-value') != 0
+      if $('#hours').attr('data-value') isnt 0
         uptime += $('#hours').attr('data-value') + ' hours '
-      if $('#minutes').attr('data-value') != 0
+      if $('#minutes').attr('data-value') isnt 0
         uptime += $('#minutes').attr('data-value') + ' minutes'
       # Set the tweet
       text = uptime + ' server uptime. Can you beat this? via'

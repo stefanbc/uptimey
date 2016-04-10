@@ -38,7 +38,7 @@ output = (type, setFlag) ->
           # Add the image as background-image on body
           $('body').css 'backgroundImage', "url(#{image[0]})"
           # Set the copyright
-          copyrightText = "Made with <a href='#{projectLink}' target='_blank'>Uptimey</a>."
+          copyrightText = "Made with <a href='#{projectLink}' target='_blank'>Uptimey</a>. "
           copyrightText += "Image from <a href='http://unsplash.com' target='_blank'>Unsplash</a>."
           $('#copy').html copyrightText
           return
@@ -100,7 +100,9 @@ output = (type, setFlag) ->
           time = time.split(';')
           # Set the times
           $('#current').text(time[0]).addClass 'fadeIn'
-          $('#time').text(time[1]).addClass 'fadeIn'
+          # Set blinking time
+          outputTime = time[1].split(':');
+          $('#time').html("#{outputTime[0]}<span class='blink'>:</span>#{outputTime[1]}").addClass 'fadeIn'
           $('#since').text(time[2]).addClass 'fadeIn'
           # Format the times
           setTimeout (->
@@ -118,6 +120,18 @@ output = (type, setFlag) ->
           ), 3000
           # We only animate the whole container once
           $('.top-container').addClass 'fadeIn'
+          return
+    when 'ping'
+      $.ajax globalFile,
+        method : 'GET'
+        data   :
+          action : type
+        success: (ping) ->
+          console.log ping
+          if ping is true
+            console.log "Online"
+          else
+            console.log "Offline"
           return
       break
   # After the animation is done remove the class so

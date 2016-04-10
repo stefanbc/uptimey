@@ -27,9 +27,9 @@ SOFTWARE.
 ### Project details ###
 projectLink = 'https://github.com/stefanbc/uptimey'
 
-### Set the global vars###
-{ globalLocation, globalSunrise, globalSunset } = ''
-moment      = require('moment');
-
 ### Set the global files ###
 globalFile  = './core/client/lib/controllers/maincontroller.php'
+
+### Set the global vars###
+moment      = require('moment');
+{ globalLocation, globalSunrise, globalSunset } = ''

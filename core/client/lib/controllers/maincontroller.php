@@ -159,5 +159,10 @@ switch($action){
         session_unset();
         session_destroy();
     break;
+    case 'ping':
+        $host = 'www.google.com';
+        exec(sprintf('ping -c 1 -W 5 %s', escapeshellarg($host)), $res, $rval);
+        echo $rval === 0;
+    break;
 }
 ?>
