@@ -1,15 +1,10 @@
 module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        htmlmin: {
-            dist: {
-                options: {
-                    collapseWhitespace: true,
-                    minifyJS: true,
-                    removeComments: true
-                },
+        jade: {
+            compile: {
                 files: {
-                    'index.html': 'core/client/lib/views/index.html'
+                    'index.html': 'core/client/lib/views/index.jade'
                 }
             }
         },
@@ -49,15 +44,15 @@ module.exports = function(grunt) {
                 'core/client/lib/controllers/*.coffee',
                 'core/client/lib/helpers/*coffee',
                 'core/client/lib/style/*.scss',
-                'core/client/lib/views/*.html'
+                'core/client/lib/views/*.jade'
             ],
-            tasks: ['htmlmin', 'sass', 'coffee', 'uglify']
+            tasks: ['jade', 'sass', 'coffee', 'uglify']
         }
     });
-    grunt.loadNpmTasks('grunt-contrib-htmlmin');
+    grunt.loadNpmTasks('grunt-contrib-jade');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-coffee');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.registerTask('default', ['htmlmin', 'sass', 'coffee', 'uglify']);
+    grunt.registerTask('default', ['jade', 'sass', 'coffee', 'uglify']);
 };
