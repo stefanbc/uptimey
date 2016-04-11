@@ -24,6 +24,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ###
 
+notice = (text) ->
+  $('.notice').remove()
+  $('body').append "<div class='fadeIn notice'>#{text}</div>"
+
 ### Output the data requested ###
 output = (type, setFlag) ->
   switch type
@@ -126,13 +130,10 @@ output = (type, setFlag) ->
         method : 'GET'
         data   :
           action : type
+        error  : (jqXHR, status) ->
+          notice status
         success: (ping) ->
-          console.log ping
-          if ping is true
-            console.log "Online"
-          else
-            console.log "Offline"
-          return
+          notice ping
       break
   # After the animation is done remove the class so
   # we can animate again on next iteration

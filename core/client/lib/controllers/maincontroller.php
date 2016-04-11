@@ -160,9 +160,20 @@ switch($action){
         session_destroy();
     break;
     case 'ping':
-        $host = 'www.google.com';
-        exec(sprintf('ping -c 1 -W 5 %s', escapeshellarg($host)), $res, $rval);
-        echo $rval === 0;
+        $server = 'localhost';
+        $port = '80';
+        $status = 'unavailable';
+        $fp = @fsockopen($server, $port, $errno, $errstr,5);
+        if ($fp) {
+            $status = 'alive, but not responding';
+            fwrite($fp, "HEAD / HTTP/1.0\r\n");
+            fwrite($fp, "Host: $server:$port\r\n\r\n");
+            if (strlen(@fread($fp, 1024)) > 0) {
+                $status = 'alive and kicking';
+            }
+            fclose($fp);
+        }
+        echo "The server is $status.";
     break;
 }
 ?>

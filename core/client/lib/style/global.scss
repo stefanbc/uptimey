@@ -119,6 +119,18 @@ a {
 .blink {
     @include animation('blink 2s infinite');
 }
+.notice {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    background: rgba(0,0,0,.7);
+    padding: 35px;
+}
 
 //
 // Layout and UI
