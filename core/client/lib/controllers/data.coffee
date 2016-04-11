@@ -24,6 +24,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ###
 
+### Show a notice upon request ###
 notice = (text) ->
   $('.notice').remove()
   $('body').append "<div class='fadeIn notice'>#{text}</div>"
