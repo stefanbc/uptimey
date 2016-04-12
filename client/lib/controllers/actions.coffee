@@ -23,19 +23,19 @@ action = (type) ->
         $('.toggle-button').removeClass 'fa-angle-double-up'
         $('.toggle-button').addClass 'fa-angle-double-down'
       return
-    when 'adv'
+    when 'advanced'
       # Animated it
-      $('.adv-button').addClass 'pulse'
-      $('.adv-button').on 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', ->
+      $('.advanced-button').addClass 'pulse'
+      $('.advanced-button').on 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', ->
         $(this).removeClass 'pulse'
         return
       # Get the status of the button
-      status = $('.adv-button').attr('data-status')
+      status = $('.advanced-button').attr('data-status')
       # Check the state
       if status is 'default'
         # Show the correct panel and set the button state
-        $('.adv-button').attr 'data-status', 'advanced'
-        $('.adv-button').addClass 'active'
+        $('.advanced-button').attr 'data-status', 'advanced'
+        $('.advanced-button').addClass 'active'
         $('.default-panel').fadeOut 500
         $('.advanced-panel').fadeIn 500
         # Get the data for this panel
@@ -50,8 +50,8 @@ action = (type) ->
             return
       else if status is 'advanced'
         # Show the correct panel and set the button state
-        $('.adv-button').attr 'data-status', 'default'
-        $('.adv-button').removeClass 'active'
+        $('.advanced-button').attr 'data-status', 'default'
+        $('.advanced-button').removeClass 'active'
         $('.advanced-panel').fadeOut 500
         $('.default-panel').fadeIn 500
       return

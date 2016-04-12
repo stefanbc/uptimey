@@ -136,7 +136,8 @@ a {
         margin: 0 30px;
         position: relative;
         @extend %transition;
-        span {
+        &:after {
+            content: attr(data-action);
             position: absolute;
             visibility: hidden;
             color: $color_1;
@@ -149,19 +150,19 @@ a {
             width: 100px;
             height: 30px;
             border-radius: 6px;
-            &:after {
-                content: '';
-                position: absolute;
-                bottom: 100%;
-                left: 50%;
-                margin-left: -8px;
-                width: 0; height: 0;
-                border-bottom: 8px solid #000000;
-                border-right: 8px solid transparent;
-                border-left: 8px solid transparent;
-            }
+            // &:after {
+            //     content: '';
+            //     position: absolute;
+            //     bottom: 100%;
+            //     left: 50%;
+            //     margin-left: -8px;
+            //     width: 0; height: 0;
+            //     border-bottom: 8px solid #000000;
+            //     border-right: 8px solid transparent;
+            //     border-left: 8px solid transparent;
+            // }
         }
-        &:hover span {
+        &:hover:after {
           visibility: visible;
           opacity: 1;
           top: 35px;
@@ -175,7 +176,7 @@ a {
             color: #00ac8a;
         }
     }
-    .adv-button {
+    .advanced-button {
         &.active {
             color: #e74b3b;
         }

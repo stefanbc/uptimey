@@ -1,5 +1,6 @@
 ### Init main function ###
 init = ->
+
   # Add the animation base class
   $('.top-container').addClass 'animated'
   $('.bottom-container').addClass 'animated'

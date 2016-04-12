@@ -4,17 +4,18 @@ module.exports = function(grunt) {
         jade: {
             compile: {
                 files: {
-                    'index.html': 'core/client/lib/views/index.jade'
+                    'index.html': 'client/lib/views/index.jade'
                 }
             }
         },
         sass: {
             dist: {
                 options: {
-                    style: 'compressed'
+                    style     : 'compressed',
+                    sourcemap : 'none'
                 },
                 files: {
-                    'core/build/css/global.min.css' : 'core/client/lib/style/global.scss'
+                    'client/bin/css/global.min.css' : 'client/lib/style/global.scss'
                 }
             }
         },
@@ -24,10 +25,10 @@ module.exports = function(grunt) {
                     join : true
                 },
                 files: {
-                    'core/build/app.min.js': 
+                    'client/bin/app.min.js': 
                     [
-                        'core/client/lib/helpers/*.coffee', 
-                        'core/client/lib/controllers/*.coffee'
+                        'client/lib/helpers/*.coffee', 
+                        'client/lib/controllers/*.coffee'
                     ]
                 }
             }  
@@ -35,16 +36,16 @@ module.exports = function(grunt) {
         uglify: {
             js: {
                 files: {
-                    'core/build/app.min.js': ['core/build/app.min.js']
+                    'client/bin/app.min.js': ['client/bin/app.min.js']
                 }
             }
         },
         watch: {
             files: [
-                'core/client/lib/controllers/*.coffee',
-                'core/client/lib/helpers/*coffee',
-                'core/client/lib/style/*.scss',
-                'core/client/lib/views/*.jade'
+                'client/lib/controllers/*.coffee',
+                'client/lib/helpers/*coffee',
+                'client/lib/style/*.scss',
+                'client/lib/views/*.jade'
             ],
             tasks: ['jade', 'sass', 'coffee', 'uglify']
         }

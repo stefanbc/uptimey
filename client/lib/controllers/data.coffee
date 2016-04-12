@@ -1,8 +1,3 @@
-### Show a notice upon request ###
-notice = (text) ->
-  $('.notice').remove()
-  $('body').append "<div class='fadeIn notice'>#{text}</div>"
-
 ### Output the data requested ###
 output = (type, setFlag) ->
   switch type
@@ -12,6 +7,8 @@ output = (type, setFlag) ->
         data   : 
           action : type
         success: (image) ->
+          # Get image from config
+          readConfig 'background_image'
           # Split the output
           image = image.split(';')
           # Add the image as background-image on body

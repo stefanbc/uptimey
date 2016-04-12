@@ -1,0 +1,21 @@
+{
+    "font"             : "",
+    "font_color"       : "",
+    "background_image" : "http://i.imgur.com/sKV54PO.jpg",
+    "background_color" : "",
+    "debug_mode"       : false,
+    "default_view"     : "uptime",
+    "show_menu_always" : false,
+    "remove_menu"      : false,
+    "buttons": [
+        {
+            "refresh"    : true,
+            "advanced"   : true,
+            "twitter"    : true,
+            "google"     : false,
+            "facebook"   : false,
+            "screenshot" : true
+        }
+    ],
+    "display_timezone" : ""
+}
