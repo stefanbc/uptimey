@@ -1,21 +1,22 @@
 {
-    "font_family"      : "",
-    "font_color"       : "",
-    "background_image" : "",
     "background_color" : "",
+    "background_image" : "",
+    "buttons": [{
+        "refresh"    : true,
+        "advanced"   : true,
+        "twitter"    : true,
+        "google"     : false,
+        "facebook"   : false,
+        "screenshot" : true
+    }],
     "debug_mode"       : false,
     "default_view"     : "uptime",
+    "display_timezone" : "Europe/Bucharest",
+    "font_color"       : "",
+    "font_family"      : "",
+    "remove_menu"      : false, 
+    "show_am_pm"       : true,
+    "show_location"    : true,
     "show_menu_always" : false,
-    "remove_menu"      : false,
-    "buttons": [
-        {
-            "refresh"    : true,
-            "advanced"   : true,
-            "twitter"    : true,
-            "google"     : false,
-            "facebook"   : false,
-            "screenshot" : true
-        }
-    ],
-    "display_timezone" : false
+    "use_24h_clock"    : false
 }

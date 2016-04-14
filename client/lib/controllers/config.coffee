@@ -42,6 +42,10 @@ config = ->
       if config.default_view is 'advanced'
         action 'advanced'
       
+      if config.show_location is false
+        locationRules = "display: none"
+        addCSSRule sheet, '.location-inner', locationRules, 0
+        
       if config.show_menu_always is true
         action 'toggle'
 

@@ -33,6 +33,11 @@ if (!empty($_SESSION['last']) && time() - $_SESSION['last'] < 60 && empty($flag)
     die();
 }
 
+$configTimezone = readConfig(false, 'display_timezone');
+if (isset($configTimezone) && !empty($configTimezone)) {
+    date_default_timezone_set($configTimezone);
+}
+
 switch($action){
     case 'override':
         $configObject = readConfig(true);
@@ -40,11 +45,11 @@ switch($action){
     break;
     case 'image':
         // Get image from config file
-        $configObject = readConfig(false, 'background_image');
+        $configImage = readConfig(false, 'background_image');
         // Check if it's set
-        if ( isset($configObject) && !empty($configObject) ) {
+        if (isset($configImage) && !empty($configImage)) {
             // Set it
-            $getImage = $configObject;
+            $getImage = $configImage;
         } else {
             // Load random image from Unsplash
             $getImage = 'https://source.unsplash.com/category/nature/1366x768';
@@ -123,10 +128,19 @@ switch($action){
         $_SESSION['uptimeSeconds'] = $totalSeconds;
     break;
     case 'time':
+        // Get time format from config file
+        $configTime = readConfig(true);
         // Pretty server date
         $currentDate = date("F j, Y");
         // Pretty server time
-        $currentTime = date("g:i a");
+        if ($configTime['use_24h_clock']) {
+            $currentTime = date("G:i ");
+        } else {
+            $currentTime = date("g:i ");
+        }
+        if ($configTime['show_am_pm']) {
+            $currentTime .= date("a");
+        }
         // What's the date the server went online
         $sinceDate = date("F j, Y", time() - $_SESSION['uptimeSeconds']);
         // Return the server times
