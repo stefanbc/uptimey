@@ -1,5 +1,5 @@
 ### Output the data requested ###
-output = (type, setFlag) ->
+output = (type, configProperty, setFlag) ->
   switch type
     when 'image'
       $.ajax globalFile,
@@ -7,17 +7,15 @@ output = (type, setFlag) ->
         data   : 
           action : type
         success: (image) ->
-          # Get image from config
-          readConfig 'background_image'
           # Split the output
           image = image.split(';')
           # Add the image as background-image on body
           $('body').css 'backgroundImage', "url(#{image[0]})"
-          # Set the copyright
-          copyrightText = "Made with <a href='#{projectLink}' target='_blank'>Uptimey</a>. "
-          copyrightText += "Image from <a href='http://unsplash.com' target='_blank'>Unsplash</a>."
-          $('#copy').html copyrightText
           return
+      # Set the copyright
+      copyrightText = "Made with <a href='#{projectLink}' target='_blank'>Uptimey</a>. "
+      copyrightText += "Image from <a href='http://unsplash.com' target='_blank'>Unsplash</a>."
+      $('#copy').html copyrightText   
     when 'location'
       $.ajax globalFile,
         method : 'GET'

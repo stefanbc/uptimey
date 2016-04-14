@@ -25,10 +25,7 @@ action = (type) ->
       return
     when 'advanced'
       # Animated it
-      $('.advanced-button').addClass 'pulse'
-      $('.advanced-button').on 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', ->
-        $(this).removeClass 'pulse'
-        return
+      animateElement '.advanced-button'
       # Get the status of the button
       status = $('.advanced-button').attr('data-status')
       # Check the state
@@ -70,10 +67,7 @@ action = (type) ->
       return
     when 'twitter'
       # Animated it
-      $('.twitter-button').addClass 'pulse'
-      $('.twitter-button').on 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', ->
-        $(this).removeClass 'pulse'
-        return
+      animateElement '.twitter-button'
       # The action
       # Get the current uptime
       uptime = ''
@@ -88,15 +82,12 @@ action = (type) ->
       # Set the hashtag
       hashtag = 'uptimey,devops'
       # Open the Twitter share window
-      window.open "http://twitter.com/share?url=#{projectLink}&text=#{text}&hashtags=#{hashtag}&", 'twitterwindow', 'height=450, width=550, top=' + $(window).height() / 2 - 225 + ', left=' + $(window).width() / 2 + ', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0'
+      window.open "http://twitter.com/share?url=#{projectLink}&text=#{text}&hashtags=#{hashtag}&", 'twitterwindow', "height=450, width=550, top=#{$(window).height() / 2 - 225}, left=#{$(window).width() / 2}, toolbar=0, location=0, menubar=0, directories=0, scrollbars=0"
       return
     when 'screenshot'
       screenshotButton = $('.screenshot-button')
       # Animated it
-      screenshotButton.addClass 'pulse'
-      screenshotButton.on 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', ->
-        $(this).removeClass 'pulse'
-        return
+      animateElement screenshotButton
       # Check the button status
       if screenshotButton.hasClass('fa-camera')
         # Change the button icon

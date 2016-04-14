@@ -6,6 +6,7 @@ init = ->
   $('.bottom-container').addClass 'animated'
   $('.val').addClass 'animated'
   $('.button').addClass 'animated'
+  
   # Get the image
   output 'image'
   # Get the location
