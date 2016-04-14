@@ -1,5 +1,5 @@
 ### Output the data requested ###
-output = (type, configProperty, setFlag) ->
+output = (type, setFlag) ->
   switch type
     when 'image'
       $.ajax globalFile,

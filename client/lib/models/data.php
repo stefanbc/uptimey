@@ -3,6 +3,17 @@
 if (!isset($_SERVER['HTTP_X_REQUESTED_WITH']) || strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) !== 'xmlhttprequest')
     die('No direct access allowed!');
 
+function readConfig($returnObject = false, $property){
+    $file       = file_get_contents('../../bin/config.json');
+    $jsonObject = json_decode($file, true);
+    
+    if ($returnObject) {
+        return $jsonObject;
+    } else {
+        return $jsonObject[$property];
+    }
+}
+
 // Get the type of request
 $action = $_REQUEST['action'];
 // Get flag if it's set for exception
@@ -23,9 +34,21 @@ if (!empty($_SESSION['last']) && time() - $_SESSION['last'] < 60 && empty($flag)
 }
 
 switch($action){
+    case 'override':
+        $configObject = readConfig(true);
+        echo json_encode($configObject);
+    break;
     case 'image':
-        // Load random image from Unsplash
-        $getImage = 'https://source.unsplash.com/category/nature/1366x768';
+        // Get image from config file
+        $configObject = readConfig(false, 'background_image');
+        // Check if it's set
+        if ( isset($configObject) && !empty($configObject) ) {
+            // Set it
+            $getImage = $configObject;
+        } else {
+            // Load random image from Unsplash
+            $getImage = 'https://source.unsplash.com/category/nature/1366x768';
+        }
         // Return the image
         echo $getImage;
         // Set the session image
@@ -123,7 +146,8 @@ switch($action){
         echo "External IP: " . shell_exec('wget -qO- ifconfig.co') . "<br>";
         echo "</span>";
         echo "<br>";
-        echo "<span class='notif fa fa-warning'>This section is in development. Checkout the <a href='https://github.com/stefanbc/uptimey/tree/dev' target='_blank'>dev branch</a> for more info.</span>";
+        echo "<span class='notif fa fa-warning'>This section is in development.";
+        echo "Checkout the <a href='https://github.com/stefanbc/uptimey/tree/dev' target='_blank'>dev branch</a> for more info.</span>";
     break;
     case 'clear':
         unset($_SESSION['last']);

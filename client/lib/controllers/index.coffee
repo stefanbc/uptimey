@@ -1,5 +1,7 @@
 ### Init main function ###
 init = ->
+  
+  config()
 
   # Add the animation base class
   $('.top-container').addClass 'animated'

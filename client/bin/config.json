@@ -1,12 +1,12 @@
 {
     "font_family"      : "",
     "font_color"       : "",
-    "background_image" : "http://i.imgur.com/sKV54PO.jpg",
-    "background_color" : "#000000",
+    "background_image" : "",
+    "background_color" : "",
     "debug_mode"       : false,
-    "default_view"     : "uptime", // Possible choices: uptime, advanced
-    "show_menu_always" : false,    // Turn off the toggle
-    "remove_menu"      : false,    // Don't show the menu at all
+    "default_view"     : "uptime",
+    "show_menu_always" : false,
+    "remove_menu"      : false,
     "buttons": [
         {
             "refresh"    : true,
@@ -17,5 +17,5 @@
             "screenshot" : true
         }
     ],
-    "display_timezone" : ""
+    "display_timezone" : false
 }

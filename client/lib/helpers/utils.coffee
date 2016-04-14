@@ -1,12 +1,3 @@
-### Get a value from the config file ###
-readConfig = (callback) ->
-  requestedProperty = $.getJSON "#{configFile}?v=#{moment().format('X')}", (configObject) ->
-    # Make sure the callback is a function​
-    if typeof callback == 'function'
-      callback configObject
-      return
-  return
-  
 ### Show a notice upon request ###
 notice = (text) ->
   $('.notice').remove()
