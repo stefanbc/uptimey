@@ -35,6 +35,14 @@ $font_0: Raleway, sans-serif;
     -ms-transition: all 0.5s ease;
     transition: all 0.5s ease;
 }
+%align-center {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
 @mixin keyframes($animation-name) {
     @-webkit-keyframes #{$animation-name} {
         @content;
@@ -96,12 +104,7 @@ a {
 .notice {
     position: absolute;
     bottom: 0;
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    transform: translateX(-50%);
+    @extend %align-center;
     background: rgba(0,0,0,.7);
     padding: 35px;
 }
@@ -118,11 +121,9 @@ a {
 .button-container {
     position: absolute;
     top: -80px;
-    left: 50%;
-    width: 400px;
+    @extend %align-center;
     text-align: center;
     font-size: 1.5em;
-    margin-left: -200px;
     z-index: 10;
     .button-block {
         margin-top: 25px;
@@ -184,6 +185,16 @@ a {
     .twitter-button {
         &:hover {
             color: #55acee;
+        }
+    }
+    .google-plus-button {
+        &:hover {
+            color: #dd4b39;
+        }
+    }
+    .facebook-button {
+        &:hover {
+            color: #3B5998;
         }
     }
     .screenshot-button {

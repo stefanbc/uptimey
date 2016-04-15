@@ -6,11 +6,11 @@ sheet = do ->
   document.head.appendChild style
   style.sheet
 
-addCSSRule = (sheet, selector, rules, index) ->
+addCSSRule = (sheet, selector, rules) ->
   if 'insertRule' of sheet
-    sheet.insertRule selector + '{' + rules + '}', index
+    sheet.insertRule selector + '{' + rules + '}', sheet.cssRules.length
   else if 'addRule' of sheet
-    sheet.addRule selector, rules, index
+    sheet.addRule selector, rules, sheet.cssRules.length
   return
 
 ### Get a value from the config file ###
@@ -33,18 +33,24 @@ config = ->
       if not empty config.font_color
         bodyRules += "color: #{config.font_color};"
       
-      addCSSRule sheet, 'body', bodyRules, 0
+      addCSSRule sheet, 'body', bodyRules
       
-      if config.remove_menu is true
-        menuRules = "display: none"
-        addCSSRule sheet, '.button-container', menuRules, 0
+      $.each config.buttons[0], (index, value) ->
+        if value is false
+          buttonRules = "display: none"
+          addCSSRule sheet, ".#{index}-button", buttonRules
+        return
       
       if config.default_view is 'advanced'
         action 'advanced'
       
+      if config.remove_menu is true
+        menuRules = "display: none"
+        addCSSRule sheet, '.button-container', menuRules
+        
       if config.show_location is false
         locationRules = "display: none"
-        addCSSRule sheet, '.location-inner', locationRules, 0
+        addCSSRule sheet, '.location-inner', locationRules
         
       if config.show_menu_always is true
         action 'toggle'
