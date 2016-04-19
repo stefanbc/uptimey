@@ -17,8 +17,6 @@ init = ->
   output 'uptime'
   # Get the time (let uptime be the first request so that the session updates needed values for time)
   output 'time'
-  # Check if server is online
-  output 'ping'
 
 ### When the page finishes loading ###
 $ ->
@@ -31,9 +29,13 @@ $ ->
   setInterval (->
     output 'uptime'
     output 'time'
-    output 'ping'
     return
   ), 1000 * 60
+  
+  setInterval (->
+    output 'ping'
+    return
+  ), 1000 * 60 * 5
 
   ### Click action on each top button ###
   $('.button').each ->

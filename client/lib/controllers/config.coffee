@@ -15,7 +15,7 @@ addCSSRule = (sheet, selector, rules) ->
 
 ### Get a value from the config file ###
 config = ->
-  $.ajax globalFile,
+  $.ajax data,
     method : 'GET'
     data   : 
       action : 'override',

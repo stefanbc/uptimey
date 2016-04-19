@@ -4,7 +4,7 @@ if (!isset($_SERVER['HTTP_X_REQUESTED_WITH']) || strtolower($_SERVER['HTTP_X_REQ
     die('No direct access allowed!');
 
 function readConfig($returnObject = false, $property){
-    $file       = file_get_contents('../../bin/config.json');
+    $file       = file_get_contents('../../bin/settings.json');
     $jsonObject = json_decode($file, true);
     
     if ($returnObject) {
@@ -174,7 +174,7 @@ switch($action){
         $server = 'localhost';
         $port = '80';
         $status = 'unavailable';
-        $fp = @fsockopen($server, $port, $errno, $errstr,5);
+        $fp = @fsockopen($server, $port, $errno, $errstr, 5);
         if ($fp) {
             $status = 'alive, but not responding';
             fwrite($fp, "HEAD / HTTP/1.0\r\n");

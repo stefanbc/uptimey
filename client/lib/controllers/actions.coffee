@@ -36,7 +36,7 @@ action = (type) ->
         $('.default-panel').fadeOut 500
         $('.advanced-panel').fadeIn 500
         # Get the data for this panel
-        $.ajax globalFile,
+        $.ajax data,
           method : 'GET'
           data   : 
             action : 'advanced',
@@ -84,6 +84,18 @@ action = (type) ->
       # Open the Twitter share window
       window.open "http://twitter.com/share?url=#{projectLink}&text=#{text}&hashtags=#{hashtag}&", 'twitterwindow', "height=450, width=550, top=#{$(window).height() / 2 - 225}, left=#{$(window).width() / 2}, toolbar=0, location=0, menubar=0, directories=0, scrollbars=0"
       return
+    when 'google-plus'
+      # Animated it
+      animateElement '.google-plus-button'
+      # The action
+      notice "Feature still in development"
+      return
+    when 'facebook'
+      # Animated it
+      animateElement '.facebook-button'
+      # The action
+      notice "Feature still in development"
+      return
     when 'screenshot'
       screenshotButton = $('.screenshot-button')
       # Animated it
@@ -112,7 +124,7 @@ action = (type) ->
       return
     when 'clear'
       # Clear the session
-      $.ajax globalFile,
+      $.ajax data,
         method : 'GET'
         data   : 
           action : 'clear'

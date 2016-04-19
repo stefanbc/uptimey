@@ -1,7 +1,15 @@
 ### Show a notice upon request ###
 notice = (text) ->
-  $('.notice').remove()
-  $('body').append "<div class='fadeIn notice'>#{text}</div>"
+  n = noty(
+    text      : text,
+    type      : 'alert',
+    layout    : 'topRight',
+    animation :
+      open   : 'animated fadeInRight',
+      close  : 'animated fadeOutRight',
+      easing : 'swing',
+      speed  : 500
+  )
 
 ### Animate element ###
 animateElement = (element) ->

@@ -2,7 +2,7 @@
 output = (type, setFlag) ->
   switch type
     when 'image'
-      $.ajax globalFile,
+      $.ajax data,
         method : 'GET'
         data   : 
           action : type
@@ -17,7 +17,7 @@ output = (type, setFlag) ->
       copyrightText += "Image from <a href='http://unsplash.com' target='_blank'>Unsplash</a>."
       $('#copy').html copyrightText   
     when 'location'
-      $.ajax globalFile,
+      $.ajax data,
         method : 'GET'
         data   : 
           action : type
@@ -32,20 +32,20 @@ output = (type, setFlag) ->
             latlong = response.loc.split(',')
             $('#location').attr 'data-latlong', "#{latlong[0]}+#{latlong[1]}"
             # Set the global location
-            globalLocation = "#{response.city}, #{response.region}, #{response.country}"
+            LOCATION = "#{response.city}, #{response.region}, #{response.country}"
             # Set the sunrise/sunset times
             $.simpleWeather
-              location: globalLocation
+              location: LOCATION
               success: (weather) ->
-                globalSunrise = weather.sunrise
-                globalSunset = weather.sunset
+                SUNRISE = weather.sunrise
+                SUNSET  = weather.sunset
                 return
             return
           # We only animate the whole container once
           $('.location-inner').addClass 'fadeIn'
           return
     when 'uptime'
-      $.ajax globalFile,
+      $.ajax data,
         method : 'GET'
         data   : 
           action : type,
@@ -64,7 +64,7 @@ output = (type, setFlag) ->
           $('.bottom-container').addClass 'fadeIn'
           return
     when 'time'
-      $.ajax globalFile,
+      $.ajax data,
         method : 'GET'
         data   : 
           action : type,
@@ -80,8 +80,8 @@ output = (type, setFlag) ->
           $('#since').text(time[2]).addClass 'fadeIn'
           # Format the times
           setTimeout (->
-            sunrise = moment(globalSunrise, 'h:m a').format('X')
-            sunset  = moment(globalSunset, 'h:m a').format('X')
+            sunrise = moment(SUNRISE, 'h:m a').format('X')
+            sunset  = moment(SUNSET, 'h:m a').format('X')
             ttime   = moment(time[1], 'h:m a').format('X')
             # Check if the current time is between sunset, sunrise and set the icon
             if ttime >= sunrise and ttime <= sunset
@@ -96,7 +96,7 @@ output = (type, setFlag) ->
           $('.top-container').addClass 'fadeIn'
           return
     when 'ping'
-      $.ajax globalFile,
+      $.ajax data,
         method : 'GET'
         data   :
           action : type

@@ -1,4 +1,7 @@
 module.exports = function(grunt) {
+
+    require('time-grunt')(grunt);
+
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         jade: {
@@ -15,7 +18,7 @@ module.exports = function(grunt) {
                     sourcemap : 'none'
                 },
                 files: {
-                    'client/bin/css/global.min.css' : 'client/lib/style/global.scss'
+                    'client/bin/css/global.min.css' : 'client/lib/style/*.scss'
                 }
             }
         },
