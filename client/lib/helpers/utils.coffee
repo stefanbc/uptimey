@@ -1,15 +1,9 @@
 ### Show a notice upon request ###
 notice = (text) ->
-  n = noty(
-    text      : text,
-    type      : 'alert',
-    layout    : 'topRight',
-    animation :
-      open   : 'animated fadeInRight',
-      close  : 'animated fadeOutRight',
-      easing : 'swing',
-      speed  : 500
-  )
+  humane.log text,
+    timeout      : 5000 * 60
+    baseCls      : 'humane-libnotify'
+    clickToClose : true
 
 ### Animate element ###
 animateElement = (element) ->

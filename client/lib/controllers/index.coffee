@@ -24,7 +24,7 @@ $ ->
   ### Start initial load ###
   init()
   ### End initial load ###
-
+  
   ### At an interval of 1 min we refresh the uptime and time ###
   setInterval (->
     output 'uptime'

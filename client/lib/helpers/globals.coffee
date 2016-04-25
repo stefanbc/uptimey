@@ -7,5 +7,6 @@ config   = './client/bin/config.js'
 settings = './client/bin/settings.json'
 
 ### Set the global vars###
-moment      = require('moment');
+moment   = require('moment');
+humane   = require('humane');
 { LOCATION, SUNRISE, SUNSET } = ''

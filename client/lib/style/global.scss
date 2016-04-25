@@ -1,17 +1,5 @@
 @charset "UTF-8";
-
-//
-// Main colors
-// --------------------------------------------------
-$color_0: #222;
-$color_1: #fff;
-$color_2: rgba(0,0,0,.6);
-$color_3: #ddd;
-
-//
-// Main fonts
-// --------------------------------------------------
-$font_0: Raleway, sans-serif;
+@import "./variables.scss";
 
 //
 // Mixins
@@ -329,4 +317,5 @@ footer {
 	}
 }
 
-@import "./media.scss"
+@import "./humane.scss";
+@import "./media.scss";

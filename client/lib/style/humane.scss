@@ -1,0 +1,135 @@
+@import "./variables.scss";
+//colors
+$color_0: #fff;
+$color_1: rgba(0,0,0,0.9);
+$color_2: rgba(50,50,50,0.9);
+$color_3: #000;
+$color_4: rgba(0,0,50,0.9);
+$color_5: rgba(0,0,100,0.9);
+$color_6: #030;
+$color_7: rgba(0,50,0,0.9);
+$color_8: rgba(0,100,0,0.9);
+$color_9: rgba(50,0,0,0.9);
+$color_10: rgba(100,0,0,0.9);
+$color_11: #300;
+
+//fonts
+$font_0: Ubuntu;
+$font_1: Arial;
+$font_2: sans-serif;
+
+//@extend-elements
+//original selectors
+//.humane, .humane-libnotify
+%extend_1 {
+	position: fixed;
+	-moz-transition: all 0.3s ease-out;
+	-webkit-transition: all 0.3s ease-out;
+	-ms-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	//Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+	transition: all 0.3s ease-out;
+	z-index: 100000;
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+	font-family: $font_0, $font_1, $font_2;
+	text-align: center;
+	font-size: 15px;
+	top: 10px;
+	right: 10px;
+	opacity: 0;
+	width: 150px;
+	color: $color_0;
+	padding: 10px;
+	background: linear-gradient(top, $color_1 0, $color_2 100%) no-repeat;
+	*background-color: $color_3;
+	-webkit-border-radius: 5px;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 5px;
+	-webkit-box-shadow: 0 4px 4px -4px $color_3;
+	//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+	box-shadow: 0 4px 4px -4px $color_3;
+	-moz-transform: translateY(-40px);
+	-webkit-transform: translateY(-40px);
+	-ms-transform: translateY(-40px);
+	-o-transform: translateY(-40px);
+	//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+	transform: translateY(-40px);
+}
+
+//original selectors
+//.humane.humane-animate, .humane-libnotify.humane-libnotify-animate
+%extend_2 {
+	opacity: 1;
+	-moz-transform: translateY(0);
+	-webkit-transform: translateY(0);
+	-ms-transform: translateY(0);
+	-o-transform: translateY(0);
+	//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+	transform: translateY(0);
+}
+
+//original selectors
+//.humane.humane-animate, .humane-libnotify.humane-libnotify-js-animate
+%extend_3 {
+	opacity: 1;
+	-moz-transform: translateY(0);
+	-webkit-transform: translateY(0);
+	-ms-transform: translateY(0);
+	-o-transform: translateY(0);
+	//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+	transform: translateY(0);
+}
+
+
+.humane {
+	@extend %extend_1;
+	&.humane-libnotify-info {
+		background: linear-gradient(top, $color_4 0, $color_5 100%) no-repeat;
+		*background-color: $color_6;
+	}
+	&.humane-libnotify-success {
+		background: linear-gradient(top, $color_7 0, $color_8 100%) no-repeat;
+		*background-color: $color_6;
+	}
+	&.humane-libnotify-error {
+		background: linear-gradient(top, $color_9 0, $color_10 100%) no-repeat;
+		*background-color: $color_11;
+	}
+	&.humane-animate {
+		@extend %extend_2;
+		@extend %extend_3;
+		&:hover {
+			opacity: 0.2;
+			opacity: 0.2;
+			filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=20);
+		}
+	}
+}
+.humane-libnotify {
+	@extend %extend_1;
+	&.humane-libnotify-info {
+		background: linear-gradient(top, $color_4 0, $color_5 100%) no-repeat;
+		*background-color: $color_6;
+	}
+	&.humane-libnotify-success {
+		background: linear-gradient(top, $color_7 0, $color_8 100%) no-repeat;
+		*background-color: $color_6;
+	}
+	&.humane-libnotify-error {
+		background: linear-gradient(top, $color_9 0, $color_10 100%) no-repeat;
+		*background-color: $color_11;
+	}
+	&.humane-libnotify-animate {
+		@extend %extend_2;
+		&:hover {
+			opacity: 0.2;
+		}
+	}
+	&.humane-libnotify-js-animate {
+		@extend %extend_3;
+		&:hover {
+			opacity: 0.2;
+			filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=20);
+		}
+	}
+}

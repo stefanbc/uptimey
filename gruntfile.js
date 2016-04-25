@@ -44,6 +44,9 @@ module.exports = function(grunt) {
             }
         },
         watch: {
+            options: {
+                atBegin: true
+            },
             files: [
                 'client/lib/controllers/*.coffee',
                 'client/lib/helpers/*coffee',

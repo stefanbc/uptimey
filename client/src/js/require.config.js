@@ -5,16 +5,14 @@ requirejs.config({
         moment      : '//cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min',
         weather     : '//cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min',
         html2canvas : '//cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min',
-        noty        : '/client/src/js/jquery.noty.packaged.min',
+        humane      : '//cdnjs.cloudflare.com/ajax/libs/humane-js/3.2.2/humane.min',
         app         : 'app.min'
     },
     shim: {
         'moment'    : ['jQuery'],
         'weather'   : ['jQuery'],
-        'noty'      : ['jQuery'],
         'app'       : {
-            deps    : ['jQuery', 'moment', 'weather', 'html2canvas', 'noty']
+            deps    : ['jQuery', 'moment', 'weather', 'html2canvas', 'humane']
         }
-    },
-    waitSeconds: 5
+    }
 });

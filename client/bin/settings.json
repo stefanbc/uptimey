@@ -5,8 +5,8 @@
         "refresh"     : true,
         "advanced"    : true,
         "twitter"     : true,
-        "google-plus" : false,
-        "facebook"    : false,
+        "google-plus" : true,
+        "facebook"    : true,
         "screenshot"  : true
     }],
     "debug_mode"       : false,
@@ -17,6 +17,6 @@
     "remove_menu"      : false, 
     "show_am_pm"       : true,
     "show_location"    : true,
-    "show_menu_always" : true,
+    "show_menu_always" : false,
     "use_24h_clock"    : false
 }
