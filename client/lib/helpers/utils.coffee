@@ -1,9 +1,8 @@
 ### Show a notice upon request ###
 notice = (text) ->
   humane.log text,
-    timeout      : 5000 * 60
+    timeout      : 2000
     baseCls      : 'humane-libnotify'
-    clickToClose : true
 
 ### Animate element ###
 animateElement = (element) ->

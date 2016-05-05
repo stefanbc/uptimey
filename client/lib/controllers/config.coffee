@@ -44,6 +44,9 @@ config = ->
       if config.default_view is 'advanced'
         action 'advanced'
       
+      if config.menu_placement isnt 'top'
+        $('.button-container').removeClass('top-menu').addClass("#{config.menu_placement}-menu")
+      
       if config.remove_menu is true
         menuRules = "display: none"
         addCSSRule sheet, '.button-container', menuRules
