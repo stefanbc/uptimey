@@ -1,4 +1,4 @@
-uptimey
+uptimey [![Build Status](https://travis-ci.org/stefanbc/uptimey.svg?branch=dev)](https://travis-ci.org/stefanbc/uptimey)
 =======
 
 Are you proud of your server uptime because you put a lot of time into configuring it?
