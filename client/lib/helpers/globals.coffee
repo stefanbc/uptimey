@@ -9,4 +9,6 @@ settings = './client/bin/settings.json'
 ### Set the global vars###
 moment   = require('moment');
 humane   = require('humane');
-{ LOCATION, SUNRISE, SUNSET } = ''
+LOCATION = ''
+SUNRISE  = ''
+SUNSET   = ''

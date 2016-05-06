@@ -43,6 +43,14 @@ module.exports = function(grunt) {
                 }
             }
         },
+        jshint: {
+            files: ['gruntfile.js', 'client/bin/app.min.js'],
+            options: {
+                globals: {
+                    jQuery: true
+                }
+            }
+        },
         watch: {
             options: {
                 atBegin: true
@@ -60,6 +68,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-coffee');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.registerTask('test', ['coffee', 'jshint', 'uglify']);
     grunt.registerTask('default', ['jade', 'sass', 'coffee', 'uglify']);
 };
