@@ -1,5 +1,7 @@
-uptimey [![Build Status](https://travis-ci.org/stefanbc/uptimey.svg?branch=dev)](https://travis-ci.org/stefanbc/uptimey)
+uptimey 
 =======
+
+[![Build Status](https://travis-ci.org/stefanbc/uptimey.svg?branch=dev)](https://travis-ci.org/stefanbc/uptimey) [![Dependency Status](https://www.versioneye.com/user/projects/572c7efaa0ca35004cf77288/badge.svg?style=flat)](https://www.versioneye.com/user/projects/572c7efaa0ca35004cf77288)
 
 Are you proud of your server uptime because you put a lot of time into configuring it?
 
