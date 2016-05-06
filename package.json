@@ -2,7 +2,7 @@
   "name": "Uptimey",
   "title": "uptimey",
   "description": "Beautiful Server Uptime Monitor",
-  "version": "0.9.5",
+  "version": "0.4.0",
   "author": "\"stefanbc\" Stefan Cosma (http://stefancosma.xyz/)",
   "repository": "stefanbc/uptimey",
   "license": "MIT",

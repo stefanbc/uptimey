@@ -64,12 +64,14 @@ module.exports = function(grunt) {
             tasks: ['jade', 'sass', 'coffee', 'uglify']
         }
     });
+    
     grunt.loadNpmTasks('grunt-contrib-jade');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-coffee');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    
     grunt.registerTask('test', ['coffee', 'jshint', 'uglify']);
-    grunt.registerTask('default', ['jade', 'sass', 'coffee', 'uglify']);
+    grunt.registerTask('default', ['jade', 'sass', 'coffee', 'jshint', 'uglify']);
 };
