@@ -1,7 +1,7 @@
 ### Show a notice upon request ###
 notice = (text) ->
   humane.log text,
-    timeout      : 2000
+    timeout      : 5000
     baseCls      : 'humane-libnotify'
 
 ### Animate element ###
