@@ -5,8 +5,8 @@
         "refresh"     : true,
         "advanced"    : true,
         "twitter"     : true,
-        "google-plus" : true,
-        "facebook"    : true,
+        "google-plus" : false,
+        "facebook"    : false,
         "screenshot"  : true
     }],
     "debug_mode"       : false,
