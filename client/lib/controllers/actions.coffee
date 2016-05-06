@@ -5,6 +5,7 @@ action = (type) ->
     when 'toggle'
       # Get the status of the button
       status = $('.toggle-button').attr('data-status')
+      buttonPlacement = $('.toggle-button').parent().attr("class").toString().split(' ');
       # Check the status
       if status is 'closed'
         # Animate the container (bring it down)

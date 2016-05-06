@@ -14,7 +14,7 @@
     "display_timezone" : "Europe/Bucharest",
     "font_color"       : "",
     "font_family"      : "",
-    "menu_placement"   : "top",
+    "menu_placement"   : "bottom",
     "remove_menu"      : false, 
     "show_am_pm"       : true,
     "show_location"    : true,

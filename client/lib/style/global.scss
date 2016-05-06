@@ -108,16 +108,28 @@ a {
 }
 .button-container {
     position: absolute;
-    top: -80px;
     @extend %align-center;
     text-align: center;
     font-size: 1.5em;
     z-index: 10;
-    .button-block {
-        margin-top: 25px;
-        &:after {
-            @extend %border;
+    &.top-menu {
+        top: -80px;
+        .button-block {
             margin-top: 25px;
+            &:after {
+                @extend %border;
+                margin-top: 25px;
+            }
+        }
+    }
+    &.bottom-menu {
+        bottom: -80px;
+        .button-block {
+            margin-bottom: 25px;
+            &:before {
+                @extend %border;
+                margin-bottom: 25px;
+            }
         }
     }
     .button {
