@@ -10,14 +10,14 @@ Just clone the repo on your web server and then access your server's host follow
 Features
 --
 
-* The background image is a random image from [Unsplash](http://unsplash.com)!
+* The background image is a random image from [Unsplash](https://unsplash.com)!
 * Works on Linux, Windows, Mac OS servers.
 * Automatically gathers data from the server.
 * Knows if it's nighttime or daytime.
-* Knows your aprox server location (based on IP).
+* Knows the aprox server location (based on IP).
 * Tweet your awesome uptime!
 * Screenshot the server uptime and show it to your devops buddies! :)
-* Configure it to your liking. You can modify the `client/bin/settings.json` file. Checkout the [SETTINGS.md](SETTINGS.md) file for more info.
+* Configure it to your liking. You can modify the `client/bin/settings.json` file. Checkout the [SETTINGS.md](SETTINGS.md) file for more info on how to change the parameters.
 
 ![Screenshot](https://i.imgur.com/sbvuMBB.png)
 
