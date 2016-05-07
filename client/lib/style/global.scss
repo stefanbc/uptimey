@@ -23,13 +23,21 @@
     -ms-transition: all 0.5s ease;
     transition: all 0.5s ease;
 }
-%align-center {
+%horizontal-align-center {
     left: 50%;
     -webkit-transform: translateX(-50%);
     -moz-transform: translateX(-50%);
     -o-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
     transform: translateX(-50%);
+}
+%vertical-align-center {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 @mixin keyframes($animation-name) {
     @-webkit-keyframes #{$animation-name} {
@@ -89,13 +97,6 @@ a {
 .blink {
     @include animation('blink 2s infinite');
 }
-.notice {
-    position: absolute;
-    bottom: 0;
-    @extend %align-center;
-    background: rgba(0,0,0,.7);
-    padding: 35px;
-}
 
 //
 // Layout and UI
@@ -108,16 +109,29 @@ a {
 }
 .button-container {
     position: absolute;
-    top: -80px;
-    @extend %align-center;
     text-align: center;
     font-size: 1.5em;
     z-index: 10;
-    .button-block {
-        margin-top: 25px;
-        &:after {
-            @extend %border;
+    &.top-menu {
+        @extend %horizontal-align-center;
+        top: -80px;
+        .button-block {
             margin-top: 25px;
+            &:after {
+                @extend %border;
+                margin-top: 25px;
+            }
+        }
+    }
+    &.bottom-menu {
+        @extend %horizontal-align-center;
+        bottom: -80px;
+        .button-block {
+            margin-bottom: 25px;
+            &:before {
+                @extend %border;
+                margin-bottom: 25px;
+            }
         }
     }
     .button {

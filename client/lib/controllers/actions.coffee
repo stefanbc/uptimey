@@ -5,23 +5,30 @@ action = (type) ->
     when 'toggle'
       # Get the status of the button
       status = $('.toggle-button').attr('data-status')
+      buttonPlacement = $('.toggle-button').parent().attr("data-position")
       # Check the status
       if status is 'closed'
         # Animate the container (bring it down)
-        $('.button-container').animate top: 0
+        $('.button-container').animate "#{buttonPlacement}": 0
         # Change the button status
         $('.toggle-button').attr 'data-status', 'open'
         # Change the icon
-        $('.toggle-button').removeClass 'fa-angle-double-down'
-        $('.toggle-button').addClass 'fa-angle-double-up'
+        switch buttonPlacement
+          when 'top'
+            changeIcon '.toggle-button', 'fa-angle-double-down', 'fa-angle-double-up'
+          when 'bottom'
+            changeIcon '.toggle-button', 'fa-angle-double-up', 'fa-angle-double-down'
       else if status is 'open'
         # Animate the container (bring it up)
-        $('.button-container').animate top: '-80px'
+        $('.button-container').animate "#{buttonPlacement}": '-80px'
         # Change the button status
         $('.toggle-button').attr 'data-status', 'closed'
         # Change the icon
-        $('.toggle-button').removeClass 'fa-angle-double-up'
-        $('.toggle-button').addClass 'fa-angle-double-down'
+        switch buttonPlacement
+          when 'top'
+            changeIcon '.toggle-button', 'fa-angle-double-up', 'fa-angle-double-down'
+          when 'bottom'
+            changeIcon '.toggle-button', 'fa-angle-double-down', 'fa-angle-double-up'
       return
     when 'advanced'
       # Animated it
