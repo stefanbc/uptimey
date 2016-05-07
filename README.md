@@ -19,7 +19,7 @@ Features
 * Screenshot the server uptime and show it to your devops buddies! :)
 * Configure it to your liking. You can modify the `client/bin/settings.json` file.
 
-![Screenshot](https://i.imgur.com/BdIzEkg.png)
+![Screenshot](https://i.imgur.com/sbvuMBB.png)
 
 Requirements
 --
