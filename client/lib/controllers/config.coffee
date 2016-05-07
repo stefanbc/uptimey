@@ -48,8 +48,11 @@ config = ->
         containerRules = "overflow: hidden";
         addCSSRule sheet, '.container', containerRules
         $('.button-container').removeClass('top-menu').addClass("#{config.menu_placement}-menu")
-        $('.button-container .toggle-button').removeClass('fa-angle-double-down').addClass("fa-angle-double-up")
-        $('.button-container .toggle-button').insertBefore('.button-container .button-block')
+        $('.button-container').attr 'data-position', "#{config.menu_placement}"
+        switch config.menu_placement
+          when 'bottom'
+            changeIcon '.toggle-button', 'fa-angle-double-down', 'fa-angle-double-up'
+            $('.button-container .toggle-button').insertBefore('.button-container .button-block')
       
       if config.remove_menu is true
         menuRules = "display: none"

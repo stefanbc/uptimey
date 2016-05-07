@@ -11,6 +11,10 @@ animateElement = (element) ->
     $(this).removeClass 'pulse'
     return
 
+### Change button icon ###
+changeIcon = (element, removedClass, addedClass) ->
+  $(element).removeClass(removedClass).addClass(addedClass)
+
 ### Check if variable is number ###
 isNumber = (obj) ->
   !isNaN(parseFloat(obj))
