@@ -3,7 +3,7 @@ uptimey
 
 [![Build Status](https://travis-ci.org/stefanbc/uptimey.svg?branch=master)](https://travis-ci.org/stefanbc/uptimey) [![Dependency Status](https://www.versioneye.com/user/projects/572c7efaa0ca35004cf77288/badge.svg?style=flat)](https://www.versioneye.com/user/projects/572c7efaa0ca35004cf77288)
 
-If you're proud of your server uptime, because you put a lot of time into configuring it, then you can showcase it with **uptimey** - a beautiful Server Uptime Monitor!
+If you're proud of your server uptime, because you put a lot of time into configuring it, then you can showcase it with **uptimey** - a beautiful server uptime monitor!
 
 Just clone the repo on your web server and then access your server's host followed by `/uptimey`, in your browser. Simple as that!
 
@@ -24,14 +24,13 @@ Features
 Requirements
 --
 
-* Apache server
-* PHP
-* Access to the Internet
+* PHP 5.5^
+* Internet enabled server
 
 Developers
 --
 
-Make sure you have Node and npm installed. You'll need to have Grunt and Sass installed. Use these commands:
+Make sure you have Node 0.10^ and npm installed. You'll need to have Grunt and Sass installed. Use these commands:
 
 ```
 npm install -g grunt-cli
