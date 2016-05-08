@@ -48,9 +48,10 @@ action = (type) ->
           data   : 
             action : 'advanced',
             flag   : 'advanced'
-          success: (notice) ->
+          success: (info) ->
             # Set the data from ajax
-            $('.advanced-panel .top-container').html notice
+            $('.advanced-panel .top-container').html info
+            notice "This section is still in development!"
             return
       else if status is 'advanced'
         # Show the correct panel and set the button state
