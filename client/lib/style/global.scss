@@ -176,17 +176,6 @@ header {
             width: 100px;
             height: 30px;
             border-radius: 6px;
-            // &:after {
-            //     content: '';
-            //     position: absolute;
-            //     bottom: 100%;
-            //     left: 50%;
-            //     margin-left: -8px;
-            //     width: 0; height: 0;
-            //     border-bottom: 8px solid #000000;
-            //     border-right: 8px solid transparent;
-            //     border-left: 8px solid transparent;
-            // }
         }
         &:hover:after {
           visibility: visible;
@@ -232,92 +221,103 @@ header {
 .panel {
     position: absolute;
     @extend %absolute-center;
-}
-#advanced-panel {
-    display: none;
-}
-.top-container {
-    section {
-        width: 960px;
-        margin: 0 auto;
-        position: relative;
-        .row {
-            display: block;
-            margin-bottom: 20px;
-            .val {
-				display: block;
-				font-size: 2.5em;
-				padding-bottom: 10px;
-			}
-        }
-        .block-right {
-            position: absolute;
-            top: 0;
-            right: 30px;
-        }
-        .time{
-            padding: 20px 0;
-            .fa {
-                font-size: 3em;
-                margin-right: 15px;
-            }
-            .fa-sun-o {
-                color: #ffd900;
-            }
-            .fa-moon-o {
-                color: #3498db;
-            }
-            .val {
-                font-size: 4em;
+    &#default-panel {
+        #date {
+            .row {
+                margin-bottom: 20px;
+                .val {
+                    display: block;
+                    font-size: 2.5em;
+                    padding-bottom: 10px;
+                }
             }
         }
-        .location {
-            top: -80px;
-            font-size: 1.5em;
-            cursor: pointer;
-            &:hover {
-                text-decoration: underline;
+        #time-location {
+            #time-wrapper {
+                .fa {
+                    font-size: 3em;
+                    margin-right: 15px;
+                }
+                .fa-sun-o {
+                    color: #ffd900;
+                }
+                .fa-moon-o {
+                    color: #3498db;
+                }
+                .val {
+                    font-size: 4em;
+                }
             }
-            .fa {
-                margin-right: 15px;
+            #location-wrapper {
+                font-size: 1.5em;
+                cursor: pointer;
+                &:hover {
+                    text-decoration: underline;
+                }
+                .fa {
+                    margin-right: 15px;
+                }
             }
+        }
+        #uptime {
+            h2 {
+                margin-bottom: -25px;
+            }
+            .col-md-4 {
+                padding-top: 15px;
+                &:first-child:before {
+                    @extend %border;
+                    margin-bottom: 25px;
+                }
+                &:nth-child(3):before {
+                    @extend %border;
+                    margin-bottom: 25px;
+                }
+                .val {
+                    display: block;
+                    font-size: 6em;
+                    padding-bottom: 10px;
+                }
+            }
+            
         }
     }
-    h2 {
-        margin: 0;
+    &#advanced-panel {
+        display: none;
     }
 }
-.bottom-container {
-	text-align: center;
-	section {
-		width: 960px;
-		margin: 0 auto;
-		.col {
-			width: 33%;
-			display: inline-block;
-			padding-top: 15px;
-			&:first-child:before {
-                @extend %border;
-                margin-bottom: 25px;
-			}
-			&:nth-child(3):before {
-                @extend %border;
-                margin-bottom: 25px;
-			}
-			.val {
-				display: block;
-				font-size: 6em;
-				padding-bottom: 10px;
-			}
-			.label {
-				text-transform: capitalize;
-			}
-		}
-	}
-	h2 {
-		margin-bottom: -25px;
-	}
-}
+
+// .bottom-container {
+// 	text-align: center;
+// 	section {
+// 		width: 960px;
+// 		margin: 0 auto;
+// 		.col {
+// 			width: 33%;
+// 			display: inline-block;
+// 			padding-top: 15px;
+// 			&:first-child:before {
+//                 @extend %border;
+//                 margin-bottom: 25px;
+// 			}
+// 			&:nth-child(3):before {
+//                 @extend %border;
+//                 margin-bottom: 25px;
+// 			}
+// 			.val {
+// 				display: block;
+// 				font-size: 6em;
+// 				padding-bottom: 10px;
+// 			}
+// 			.label {
+// 				text-transform: capitalize;
+// 			}
+// 		}
+// 	}
+// 	h2 {
+// 		margin-bottom: -25px;
+// 	}
+// }
 footer {
 	position: absolute;
 	bottom: 10px;

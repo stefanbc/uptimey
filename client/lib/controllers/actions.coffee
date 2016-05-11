@@ -32,16 +32,16 @@ action = (type) ->
       return
     when 'advanced'
       # Animated it
-      animateElement '.advanced-button'
+      animateElement '#advanced'
       # Get the status of the button
-      status = $('.advanced-button').attr('data-status')
+      status = $('#advanced').attr('data-status')
       # Check the state
       if status is 'default'
         # Show the correct panel and set the button state
-        $('.advanced-button').attr 'data-status', 'advanced'
-        $('.advanced-button').addClass 'active'
-        $('.default-panel').fadeOut 500
-        $('.advanced-panel').fadeIn 500
+        $('#advanced').attr 'data-status', 'advanced'
+        $('#advanced').addClass 'active'
+        $('#default-panel').fadeOut 500
+        $('#advanced-panel').fadeIn 500
         # Get the data for this panel
         $.ajax data,
           method : 'GET'
@@ -50,15 +50,15 @@ action = (type) ->
             flag   : 'advanced'
           success: (info) ->
             # Set the data from ajax
-            $('.advanced-panel .left-container').append info
+            $('#advanced-panel .left-container').append info
             notice "This section is still in development!"
             return
       else if status is 'advanced'
         # Show the correct panel and set the button state
-        $('.advanced-button').attr 'data-status', 'default'
-        $('.advanced-button').removeClass 'active'
-        $('.advanced-panel').fadeOut 500
-        $('.default-panel').fadeIn 500
+        $('#advanced').attr 'data-status', 'default'
+        $('#advanced').removeClass 'active'
+        $('#advanced-panel').fadeOut 500
+        $('#default-panel').fadeIn 500
       return
     when 'refresh'
       # Animated it

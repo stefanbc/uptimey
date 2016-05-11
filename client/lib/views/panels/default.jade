@@ -1,33 +1,33 @@
-section.panel#default-panel
+section.container.panel#default-panel
   .row
-    .col-md-6.col-xs-6#date
+    .col-md-6#date
       .row
-        .col-md-12.col-xs-12
+        .col-md-12
           span.label Current date on server
           span.val#current
       .row
-        .col-md-12.col-xs-12
+        .col-md-12
           span.label Server is active since
           span.val#since
-    .col-md-6.col-xs-6#time-location
+    .col-md-6.text-right#time-location
       .row
-        .col-md-12.col-xs-12
+        .col-md-12#time-wrapper
           span.fa.fa-circle-o
           span.val#time
       .row
-        .col-md-12.col-xs-12
+        .col-md-12#location-wrapper
           span.fa.fa-map-marker
           span.val#location
-  .row
+  .row.text-center
     h2 Your server's uptime until now...
-    .col-md-12.col-xs-12#uptime
+    .col-md-12#uptime
       .row
-        .col-md-3.col-xs-3
+        .col-md-4
           span.val#days
-          span.label days
-        .col-md-3.col-xs-3
+          span.label.text-uppercase days
+        .col-md-4
           span.val#hours
-          span.label hours
-        .col-md-3.col-xs-3
+          span.label.text-uppercase hours
+        .col-md-4
           span.val#minutes
-          span.label minutes
+          span.label.text-uppercase minutes
