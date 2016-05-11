@@ -59,7 +59,8 @@ module.exports = function(grunt) {
                 'client/lib/controllers/*.coffee',
                 'client/lib/helpers/*coffee',
                 'client/lib/style/*.scss',
-                'client/lib/views/*.jade'
+                'client/lib/views/*.jade',
+                'client/lib/views/panels/*.jade'
             ],
             tasks: ['jade', 'sass', 'coffee', 'uglify']
         }

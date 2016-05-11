@@ -103,6 +103,10 @@ a {
 		text-decoration: underline;
 	}
 }
+h2 {
+    font-weight: lighter;
+    font-size: 1.1em;
+}
 .blink {
     @include animation('blink 2s infinite');
 }
@@ -110,13 +114,13 @@ a {
 //
 // Layout and UI
 // --------------------------------------------------
-.container {
+#main-container {
 	background: $color_2;
 	height: 100%;
 	width: 100%;
 	position: relative;
 }
-.button-container {
+header {
     position: absolute;
     text-align: center;
     font-size: 1.5em;
@@ -140,6 +144,16 @@ a {
             &:before {
                 @extend %border;
                 margin-bottom: 25px;
+            }
+        }
+    }
+    nav {
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            li {
+                display: inline-block;
             }
         }
     }
@@ -182,47 +196,45 @@ a {
           margin-left: -50px;
           z-index: 999;
         }
-    }
-    .refresh-button {
-        &:hover {
-            color: #00ac8a;
+        &#refresh {
+            &:hover {
+                color: #00ac8a;
+            }
         }
-    }
-    .advanced-button {
-        &.active {
-            color: #e74b3b;
+        &#advanced {
+            &.active {
+                color: #e74b3b;
+            }
         }
-    }
-    .twitter-button {
-        &:hover {
-            color: #55acee;
+        &#twitter {
+            &:hover {
+                color: #55acee;
+            }
         }
-    }
-    .google-plus-button {
-        &:hover {
-            color: #dd4b39;
+        &#google-plus {
+            &:hover {
+                color: #dd4b39;
+            }
         }
-    }
-    .facebook-button {
-        &:hover {
-            color: #3B5998;
+        &#facebook {
+            &:hover {
+                color: #3B5998;
+            }
         }
-    }
-    .screenshot-button {
-        text-decoration: none;
-        &:hover {
-            color: #f7d61c;
+        &#screenshot {
+            text-decoration: none;
+            &:hover {
+                color: #f7d61c;
+            }
         }
     }
 }
-.default-panel {
+.panel {
     position: absolute;
     @extend %absolute-center;
 }
-.advanced-panel {
+#advanced-panel {
     display: none;
-    position: absolute;
-    @extend %absolute-center;
 }
 .top-container {
     section {
@@ -273,8 +285,6 @@ a {
     }
     h2 {
         margin: 0;
-        font-weight: lighter;
-		font-size: 1.1em;
     }
 }
 .bottom-container {
@@ -305,8 +315,6 @@ a {
 		}
 	}
 	h2 {
-		font-weight: lighter;
-		font-size: 1.1em;
 		margin-bottom: -25px;
 	}
 }

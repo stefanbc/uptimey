@@ -4,31 +4,31 @@ action = (type) ->
   switch type
     when 'toggle'
       # Get the status of the button
-      status = $('.toggle-button').attr('data-status')
-      buttonPlacement = $('.toggle-button').parent().attr("data-position")
+      status = $('#toggle').attr('data-status')
+      buttonPlacement = $('#toggle').parent().attr("data-position")
       # Check the status
       if status is 'closed'
         # Animate the container (bring it down)
         $('.button-container').animate "#{buttonPlacement}": 0
         # Change the button status
-        $('.toggle-button').attr 'data-status', 'open'
+        $('#toggle').attr 'data-status', 'open'
         # Change the icon
         switch buttonPlacement
           when 'top'
-            changeIcon '.toggle-button', 'fa-angle-double-down', 'fa-angle-double-up'
+            changeIcon '#toggle', 'fa-angle-double-down', 'fa-angle-double-up'
           when 'bottom'
-            changeIcon '.toggle-button', 'fa-angle-double-up', 'fa-angle-double-down'
+            changeIcon '#toggle', 'fa-angle-double-up', 'fa-angle-double-down'
       else if status is 'open'
         # Animate the container (bring it up)
         $('.button-container').animate "#{buttonPlacement}": '-80px'
         # Change the button status
-        $('.toggle-button').attr 'data-status', 'closed'
+        $('#toggle').attr 'data-status', 'closed'
         # Change the icon
         switch buttonPlacement
           when 'top'
-            changeIcon '.toggle-button', 'fa-angle-double-up', 'fa-angle-double-down'
+            changeIcon '#toggle', 'fa-angle-double-up', 'fa-angle-double-down'
           when 'bottom'
-            changeIcon '.toggle-button', 'fa-angle-double-down', 'fa-angle-double-up'
+            changeIcon '#toggle', 'fa-angle-double-down', 'fa-angle-double-up'
       return
     when 'advanced'
       # Animated it
@@ -50,7 +50,7 @@ action = (type) ->
             flag   : 'advanced'
           success: (info) ->
             # Set the data from ajax
-            $('.advanced-panel .top-container').html info
+            $('.advanced-panel .left-container').append info
             notice "This section is still in development!"
             return
       else if status is 'advanced'
@@ -62,20 +62,20 @@ action = (type) ->
       return
     when 'refresh'
       # Animated it
-      $('.refresh-button').addClass 'fa-spin'
+      $('#refresh').addClass 'fa-spin'
       # Refresh the values
       output 'uptime', 'refresh'
       output 'time', 'refresh'
       output 'ping'
       # Stop animation after 1s
       setTimeout (->
-        $('.refresh-button').removeClass 'fa-spin'
+        $('#refresh').removeClass 'fa-spin'
         return
       ), 1000
       return
     when 'twitter'
       # Animated it
-      animateElement '.twitter-button'
+      animateElement '#twitter'
       # The action
       # Get the current uptime
       uptime = ''
@@ -94,18 +94,18 @@ action = (type) ->
       return
     when 'google-plus'
       # Animated it
-      animateElement '.google-plus-button'
+      animateElement '#google-plus'
       # The action
       notice "Feature still in development"
       return
     when 'facebook'
       # Animated it
-      animateElement '.facebook-button'
+      animateElement '#facebook'
       # The action
       notice "Feature still in development"
       return
     when 'screenshot'
-      screenshotButton = $('.screenshot-button')
+      screenshotButton = $('#screenshot')
       # Animated it
       animateElement screenshotButton
       # Check the button status

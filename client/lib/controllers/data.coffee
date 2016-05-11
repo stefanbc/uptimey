@@ -12,10 +12,6 @@ output = (type, setFlag) ->
           # Add the image as background-image on body
           $('body').css 'backgroundImage', "url(#{image[0]})"
           return
-      # Set the copyright
-      copyrightText = "Made with <a href='#{projectLink}' target='_blank'>Uptimey</a>. "
-      copyrightText += "Image from <a href='http://unsplash.com' target='_blank'>Unsplash</a>."
-      $('#copy').html copyrightText   
     when 'location'
       $.ajax data,
         method : 'GET'
