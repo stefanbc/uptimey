@@ -110,11 +110,38 @@ h2 {
 .blink {
     @include animation('blink 2s infinite');
 }
+.fa {
+    margin-right: 15px;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.text-center {
+  text-align: center;
+}
+.text-justify {
+  text-align: justify;
+}
+.text-nowrap {
+  white-space: nowrap;
+}
+.text-lowercase {
+  text-transform: lowercase;
+}
+.text-uppercase {
+  text-transform: uppercase;
+}
+.text-capitalize {
+  text-transform: capitalize;
+}
 
 //
 // Layout and UI
 // --------------------------------------------------
-#main-container {
+.main-container {
 	background: $color_2;
 	height: 100%;
 	width: 100%;
@@ -128,7 +155,7 @@ header {
     &.top-menu {
         @extend %horizontal-align-center;
         top: -80px;
-        .button-block {
+        .action-block {
             margin-top: 25px;
             &:after {
                 @extend %border;
@@ -139,7 +166,7 @@ header {
     &.bottom-menu {
         @extend %horizontal-align-center;
         bottom: -80px;
-        .button-block {
+        .action-block {
             margin-bottom: 25px;
             &:before {
                 @extend %border;
@@ -157,7 +184,7 @@ header {
             }
         }
     }
-    .button {
+    .action {
         cursor: pointer;
         margin: 0 30px;
         position: relative;
@@ -222,7 +249,7 @@ header {
     position: absolute;
     @extend %absolute-center;
     &#default-panel {
-        #date {
+        #date-wrapper {
             .row {
                 margin-bottom: 20px;
                 .val {
@@ -232,11 +259,10 @@ header {
                 }
             }
         }
-        #time-location {
+        #time-location-wrapper {
             #time-wrapper {
                 .fa {
                     font-size: 3em;
-                    margin-right: 15px;
                 }
                 .fa-sun-o {
                     color: #ffd900;
@@ -250,28 +276,26 @@ header {
             }
             #location-wrapper {
                 font-size: 1.5em;
-                cursor: pointer;
-                &:hover {
-                    text-decoration: underline;
-                }
-                .fa {
-                    margin-right: 15px;
+                #location {
+                    cursor: pointer;
+                    &:hover {
+                        text-decoration: underline;
+                    }
                 }
             }
         }
-        #uptime {
+        #uptime-wrapper {
             h2 {
                 margin-bottom: -25px;
             }
-            .col-md-4 {
+            .uptime-columns {
                 padding-top: 15px;
-                &:first-child:before {
-                    @extend %border;
+                &:before {
                     margin-bottom: 25px;
                 }
+                &:first-child:before,
                 &:nth-child(3):before {
                     @extend %border;
-                    margin-bottom: 25px;
                 }
                 .val {
                     display: block;
@@ -279,7 +303,6 @@ header {
                     padding-bottom: 10px;
                 }
             }
-            
         }
     }
     &#advanced-panel {

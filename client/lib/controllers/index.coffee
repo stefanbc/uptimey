@@ -38,7 +38,7 @@ $ ->
   ), 1000 * 60 * 5
 
   ### Click action on each top button ###
-  $('header span.button').each ->
+  $('header span.action').each ->
     $(this).on 'click', ->
       buttonAction = $(this).attr('data-action')
       action buttonAction

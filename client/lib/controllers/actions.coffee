@@ -9,7 +9,7 @@ action = (type) ->
       # Check the status
       if status is 'closed'
         # Animate the container (bring it down)
-        $('.button-container').animate "#{buttonPlacement}": 0
+        $('.action-container').animate "#{buttonPlacement}": 0
         # Change the button status
         $('#toggle').attr 'data-status', 'open'
         # Change the icon
@@ -20,7 +20,7 @@ action = (type) ->
             changeIcon '#toggle', 'fa-angle-double-up', 'fa-angle-double-down'
       else if status is 'open'
         # Animate the container (bring it up)
-        $('.button-container').animate "#{buttonPlacement}": '-80px'
+        $('.action-container').animate "#{buttonPlacement}": '-80px'
         # Change the button status
         $('#toggle').attr 'data-status', 'closed'
         # Change the icon
