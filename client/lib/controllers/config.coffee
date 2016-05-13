@@ -38,29 +38,28 @@ config = ->
       $.each config.buttons[0], (index, value) ->
         if value is false
           buttonRules = "display: none"
-          addCSSRule sheet, ".#{index}-button", buttonRules
+          addCSSRule sheet, "##{index}", buttonRules
+          $("##{index}").parent().remove()
         return
       
       if config.default_view is 'advanced'
         action 'advanced'
       
       if config.menu_placement isnt 'top'
-        containerRules = "overflow: hidden";
-        addCSSRule sheet, '.container', containerRules
-        $('.button-container').removeClass('top-menu').addClass("#{config.menu_placement}-menu")
-        $('.button-container').attr 'data-position', "#{config.menu_placement}"
+        $('.action-container').removeClass('top-menu').addClass("#{config.menu_placement}-menu")
+        $('.action-container').attr 'data-position', "#{config.menu_placement}"
         switch config.menu_placement
           when 'bottom'
-            changeIcon '.toggle-button', 'fa-angle-double-down', 'fa-angle-double-up'
-            $('.button-container .toggle-button').insertBefore('.button-container .button-block')
+            changeIcon '#toggle', 'fa-angle-double-down', 'fa-angle-double-up'
+            $('.action-container #toggle').insertBefore('.action-container .action-block')
       
       if config.remove_menu is true
         menuRules = "display: none"
-        addCSSRule sheet, '.button-container', menuRules
+        addCSSRule sheet, '.action-container', menuRules
         
       if config.show_location is false
         locationRules = "display: none"
-        addCSSRule sheet, '.location-inner', locationRules
+        addCSSRule sheet, '#location-wrapper', locationRules
         
       if config.show_menu_always is true
         action 'toggle'

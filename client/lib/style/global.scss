@@ -112,6 +112,7 @@ h2 {
 }
 .fa {
     margin-right: 15px;
+    @extend %transition;
 }
 .text-left {
   text-align: left;
@@ -181,6 +182,7 @@ header {
             padding: 0;
             li {
                 display: inline-block;
+                margin: 0;
             }
         }
     }
@@ -250,48 +252,33 @@ header {
     @extend %absolute-center;
     &#default-panel {
         #date-wrapper {
-            .row {
-                margin-bottom: 20px;
-                .val {
-                    display: block;
-                    font-size: 2.5em;
-                    padding-bottom: 10px;
-                }
+            .val {
+                display: block;
+                font-size: 2.5em;
+                padding-bottom: 10px;
+                line-height: 1;
             }
-        }
-        #time-location-wrapper {
-            #time-wrapper {
-                .fa {
-                    font-size: 3em;
-                }
-                .fa-sun-o {
-                    color: #ffd900;
-                }
-                .fa-moon-o {
-                    color: #3498db;
-                }
-                .val {
-                    font-size: 4em;
-                }
-            }
-            #location-wrapper {
-                font-size: 1.5em;
-                #location {
-                    cursor: pointer;
-                    &:hover {
-                        text-decoration: underline;
-                    }
-                }
+            &:after {
+                margin-top: 25px;
+                @extend %border;
             }
         }
         #uptime-wrapper {
+            margin-bottom: 25px;
             h2 {
                 margin-bottom: -25px;
+                letter-spacing: normal;
             }
             .uptime-columns {
                 padding-top: 15px;
+                line-height: 1.3;
                 &:before {
                     margin-bottom: 25px;
+                }
+                &:nth-child(2):before {
+                    content: "";
+                    height: 1px;
+                    display: block;
                 }
                 &:first-child:before,
                 &:nth-child(3):before {
@@ -301,6 +288,25 @@ header {
                     display: block;
                     font-size: 6em;
                     padding-bottom: 10px;
+                }
+            }
+            &:after {
+                margin-top: 25px;
+                @extend %border;
+            }
+        }
+        #time-location-wrapper {
+            font-size: 1.5em;
+            .fa-sun-o {
+                color: #ffd900;
+            }
+            .fa-moon-o {
+                color: #3498db;
+            }
+            #location {
+                cursor: pointer;
+                &:hover {
+                    text-decoration: underline;
                 }
             }
         }

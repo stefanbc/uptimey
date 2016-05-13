@@ -38,7 +38,7 @@ output = (type, setFlag) ->
                 return
             return
           # We only animate the whole container once
-          $('.location-inner').addClass 'fadeIn'
+          $('#location-wrapper').addClass 'fadeIn'
           return
     when 'uptime'
       $.ajax data,
@@ -57,7 +57,7 @@ output = (type, setFlag) ->
           $('#minutes').text(uptime[2]).addClass 'fadeIn'
           $('#minutes').attr 'data-value', uptime[2]
           # We only animate the whole container once
-          $('.bottom-container').addClass 'fadeIn'
+          $('#uptime-wrapper').addClass 'fadeIn'
           return
     when 'time'
       $.ajax data,
@@ -81,15 +81,13 @@ output = (type, setFlag) ->
             ttime   = moment(time[1], 'h:m a').format('X')
             # Check if the current time is between sunset, sunrise and set the icon
             if ttime >= sunrise and ttime <= sunset
-              $('.time .fa').removeClass 'fa-moon-o fa-circle-o'
-              $('.time .fa').addClass 'fa-sun-o'
+              changeIcon "#time-wrapper .fa", "fa-moon-o fa-circle-o", "fa-sun-o"
             else
-              $('.time .fa').removeClass 'fa-sun-o fa-circle-o'
-              $('.time .fa').addClass 'fa-moon-o'
+              changeIcon "#time-wrapper .fa", "fa-sun-o fa-circle-o", "fa-moon-o"
             return
           ), 3000
           # We only animate the whole container once
-          $('.top-container').addClass 'fadeIn'
+          $('#info-wrapper').addClass 'fadeIn'
           return
     when 'ping'
       $.ajax data,

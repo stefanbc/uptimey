@@ -1,33 +1,32 @@
 section.container.panel#default-panel
-  .row
-    .one-half.column#date-wrapper
-      .row
-        .twelve.columns#current-wrapper
-          span.label Current date on server
-          span.val#current
-      .row
-        .twelve.columns#since-wrapper
-          span.label Server is active since
-          span.val#since
-    .one-half.column.text-right#time-location-wrapper
-      .row
-        .twelve.columns#time-wrapper
-          span.fa.fa-circle-o
-          span.val#time
-      .row
-        .twelve.columns#location-wrapper
-          span.fa.fa-map-marker
-          span.val#location
   .row.text-center#uptime-wrapper
     h2 Your server's uptime until now...
     .twelve.columns
       .row
         .four.columns.uptime-columns#days-wrapper
           span.val#days
-          span.label.text-uppercase days
+          span.label.text-capitalize days
         .four.columns.uptime-columns#hours-wrapper
           span.val#hours
-          span.label.text-uppercase hours
+          span.label.text-capitalize hours
         .four.columns.uptime-columns#minutes-wrapper
           span.val#minutes
-          span.label.text-uppercase minutes
+          span.label.text-capitalize minutes
+  .row.text-center#info-wrapper
+    .twelve.columns#date-wrapper
+      .row
+        .one-half.column#since-wrapper
+          span.label Server is active since
+          span.val#since
+        .one-half.column#current-wrapper
+          span.label Current date on server
+          span.val#current
+    .twelve.columns#time-location-wrapper
+      .row
+        .one-half.column#time-wrapper
+          span.fa.fa-circle-o
+          span.val#time
+        .one-half.column#location-wrapper
+          span.fa.fa-map-marker
+          span.val#location
+  
