@@ -47,10 +47,10 @@ $ ->
   
   $('#axis-wrapper ul li span').each ->
     $(this).hover (->
-      changeIcon this, 'fa-circle-thin', 'fa-circle'
+      changeIcon this, 'fa-dot-circle-o', 'fa-circle'
       return
     ), ->
-      changeIcon this, 'fa-circle', 'fa-circle-thin'
+      changeIcon this, 'fa-circle', 'fa-dot-circle-o'
       return
   
   ### Click action for location ###

@@ -86,10 +86,10 @@ header {
         @extend %absolute-horizontal-center;
         top: -80px;
         .action-block {
-            margin-top: 25px;
+            margin-top: 20px;
             &:after {
                 @extend %border-horizontal;
-                margin-top: 25px;
+                margin-top: 20px;
             }
         }
     }
@@ -97,10 +97,10 @@ header {
         @extend %absolute-horizontal-center;
         bottom: -80px;
         .action-block {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             &:before {
                 @extend %border-horizontal;
-                margin-bottom: 25px;
+                margin-bottom: 20px;
             }
         }
     }
@@ -177,6 +177,13 @@ header {
     position: absolute;
     @extend %absolute-center;
     &#default-panel {
+        #current-wrapper {
+            margin-bottom: 20px;
+            &:after {
+                @extend %border-horizontal;
+                margin-top: 20px;
+            } 
+        }
         .middle-wrapper {
             @extend %vertical-align-center;
             #time-location-wrapper {
@@ -195,6 +202,7 @@ header {
             }
             #axis-wrapper {
                 ul {
+                    position: relative;
                     &:before {
                         position: absolute;
                         top: 0;
@@ -209,6 +217,13 @@ header {
                         }   
                     }
                 }
+            }
+        }
+        #since-wrapper {
+            margin-top: 20px;
+            &:before {
+                @extend %border-horizontal;
+                margin-bottom: 20px;
             }
         }
         
