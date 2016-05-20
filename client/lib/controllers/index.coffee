@@ -44,7 +44,15 @@ $ ->
       action buttonAction
       return
     return
-
+  
+  $('#axis-wrapper ul li span').each ->
+    $(this).hover (->
+      changeIcon this, 'fa-circle-thin', 'fa-circle'
+      return
+    ), ->
+      changeIcon this, 'fa-circle', 'fa-circle-thin'
+      return
+  
   ### Click action for location ###
   $('#location').on 'click', ->
     latlong = $(this).attr('data-latlong')

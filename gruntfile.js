@@ -18,7 +18,7 @@ module.exports = function(grunt) {
                     sourcemap : 'none'
                 },
                 files: {
-                    'client/bin/css/global.min.css' : 'client/lib/style/*.scss'
+                    'client/bin/css/global.min.css' : 'client/lib/style/main.scss'
                 }
             }
         },

@@ -1,7 +1,30 @@
 section.container.panel#default-panel
-  .row.text-center#uptime-wrapper
-    h2 Your server's uptime until now...
-    .twelve.columns
+  .row.text-center.date-wrapper
+    .twelve.columns#current-wrapper
+      span.label Current date on server
+      span.val#current
+  .row.text-center.middle-wrapper
+    .four.columns#time-location-wrapper
+      .row
+        .twelve.columns#time-wrapper
+          span.fa.fa-circle-o
+          span.val#time
+      .row
+        .twelve.columns#location-wrapper
+          span.fa.fa-map-marker
+          span.val#location
+    .four.columns#axis-wrapper
+      .row
+        .twelve.columns
+          mixin point(value)
+            li(id='#{value}')
+              span.fa.fa-circle-thin
+          - var n = 0
+          ul
+            while n < 12
+              +point(n++)
+    .four.columns#uptime-wrapper
+      | Your server's uptime until now is ...
       .row
         .four.columns.uptime-columns#days-wrapper
           span.val#days
@@ -12,21 +35,7 @@ section.container.panel#default-panel
         .four.columns.uptime-columns#minutes-wrapper
           span.val#minutes
           span.label.text-capitalize minutes
-  .row.text-center#info-wrapper
-    .twelve.columns#date-wrapper
-      .row
-        .one-half.column#since-wrapper
-          span.label Server is active since
-          span.val#since
-        .one-half.column#current-wrapper
-          span.label Current date on server
-          span.val#current
-    .twelve.columns#time-location-wrapper
-      .row
-        .one-half.column#time-wrapper
-          span.fa.fa-circle-o
-          span.val#time
-        .one-half.column#location-wrapper
-          span.fa.fa-map-marker
-          span.val#location
-  
+  .row.text-center.date-wrapper
+    .twelve.columns#since-wrapper
+      span.label Server is active since
+      span.val#since

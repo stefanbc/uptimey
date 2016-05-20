@@ -13,7 +13,10 @@ animateElement = (element) ->
 
 ### Change button icon ###
 changeIcon = (element, removedClass, addedClass) ->
-  $(element).removeClass(removedClass).addClass(addedClass)
+  if element is 'this'
+    $(this).removeClass(removedClass).addClass(addedClass)
+  else
+    $(element).removeClass(removedClass).addClass(addedClass)
 
 ### Check if variable is number ###
 isNumber = (obj) ->
