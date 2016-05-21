@@ -2,7 +2,7 @@ section.container.panel#default-panel
   .row.text-center.date-wrapper
     .twelve.columns#current-wrapper
       span.label Current date on server
-      span.val#current
+      h4.val#current
   .row.text-center.middle-wrapper
     .four.columns#time-location-wrapper
       .row
@@ -21,7 +21,7 @@ section.container.panel#default-panel
               span.fa.fa-dot-circle-o
           - var n = 0
           ul
-            while n < 12
+            while n < 10
               +point(n++)
     .four.columns#uptime-wrapper
       | Your server's uptime until now is ...
@@ -38,4 +38,4 @@ section.container.panel#default-panel
   .row.text-center.date-wrapper
     .twelve.columns#since-wrapper
       span.label Server is active since
-      span.val#since
+      h4.val#since

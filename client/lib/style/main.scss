@@ -181,12 +181,18 @@ header {
             margin-bottom: 20px;
             &:after {
                 @extend %border-horizontal;
-                margin-top: 20px;
+                width: 50%;
+                margin: 20px auto 0 auto;
             } 
         }
         .middle-wrapper {
             @extend %vertical-align-center;
             #time-location-wrapper {
+                margin-top: 20%;
+                background: $color_2;
+                border-radius: 6px;
+                padding: 5px;
+                position: relative;
                 .fa-sun-o {
                     color: #ffd900;
                 }
@@ -199,6 +205,13 @@ header {
                         text-decoration: underline;
                     }
                 }
+                &:after {
+                    position: absolute;
+                    top: 45%;
+                    right: -120px;
+                    width: 120px;
+                    @extend %border-horizontal;
+                }
             }
             #axis-wrapper {
                 ul {
@@ -206,6 +219,7 @@ header {
                     &:before {
                         position: absolute;
                         top: 0;
+                        z-index: -1;
                         height: 100%;
                         @extend %border-vertical;
                         @extend %absolute-horizontal-center;
@@ -218,12 +232,27 @@ header {
                     }
                 }
             }
+            #uptime-wrapper {
+                margin-bottom: 20%;
+                background: $color_2;
+                border-radius: 6px;
+                padding: 5px;
+                position: relative;
+                &:before {
+                    position: absolute;
+                    top: 45%;
+                    left: -120px;
+                    width: 120px;
+                    @extend %border-horizontal;
+                }
+            }
         }
         #since-wrapper {
             margin-top: 20px;
             &:before {
                 @extend %border-horizontal;
-                margin-bottom: 20px;
+                width: 50%;
+                margin: 0 auto 20px auto;
             }
         }
         
