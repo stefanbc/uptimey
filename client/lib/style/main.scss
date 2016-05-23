@@ -187,7 +187,7 @@ header {
             margin-bottom: 20px;
             &:after {
                 @extend %border-horizontal;
-                width: 50%;
+                width: 35%;
                 margin: 20px auto 0 auto;
             } 
         }
@@ -257,7 +257,7 @@ header {
             margin-top: 20px;
             &:before {
                 @extend %border-horizontal;
-                width: 50%;
+                width: 35%;
                 margin: 0 auto 20px auto;
             }
         }

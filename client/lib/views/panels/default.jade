@@ -6,7 +6,7 @@ section.container.panel#default-panel
   .row.text-center.middle-wrapper
     .four.columns#left-wrapper
       .row
-        .twelve.columns#uptime-wrapper
+        .nine.columns.u-pull-right#uptime-wrapper
           | Your server's uptime is ...
           .row
             .four.columns.uptime-columns#days-wrapper
@@ -19,7 +19,7 @@ section.container.panel#default-panel
               span.val#minutes
               span.label.text-capitalize minutes
       .row
-        .twelve.columns#since-time-wrapper
+        .nine.columns.u-pull-right#since-time-wrapper
           span.fa.fa-circle-o
           span.val#since-time
     .four.columns#axis-wrapper
@@ -34,11 +34,11 @@ section.container.panel#default-panel
               +point(n++)
     .four.columns#right-wrapper
       .row
-        .twelve.columns#current-time-wrapper
+        .nine.columns#current-time-wrapper
           span.fa.fa-circle-o
           span.val#current-time
       .row
-        .twelve.columns#location-wrapper
+        .nine.columns#location-wrapper
           span.fa.fa-map-marker
           span.val#location
   .row.text-center.date-wrapper

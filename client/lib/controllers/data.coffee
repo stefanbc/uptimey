@@ -69,7 +69,8 @@ output = (type, setFlag) ->
           # Set blinking time
           outputTime = time[1].split(':');
           $('#current-time').html("#{outputTime[0]}<span class='blink'>:</span>#{outputTime[1]}").addClass 'fadeIn'
-          $('#since').text(time[2]).addClass 'fadeIn'
+          $('#since-time').text(time[2]).addClass 'fadeIn'
+          $('#since').text(time[3]).addClass 'fadeIn'
           # Format the times
           setTimeout (->
             sunrise = moment(SUNRISE, 'h:m a').format('X')

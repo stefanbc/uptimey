@@ -135,18 +135,21 @@ switch($action){
         // Pretty server time
         if ($configTime['use_24h_clock']) {
             $currentTime = date("G:i ");
+            $sinceTime = date("G:i ", time() - $_SESSION['uptimeSeconds']);
         } else {
             $currentTime = date("g:i ");
+            $sinceTime = date("g:i ", time() - $_SESSION['uptimeSeconds']);
         }
         if ($configTime['show_am_pm']) {
             $currentTime .= date("a");
+            $sinceTime .= date("a");
         }
         // What's the date the server went online
         $sinceDate = date("F j, Y", time() - $_SESSION['uptimeSeconds']);
         // Return the server times
-        echo $currentDate . ';' . $currentTime . ';' . $sinceDate;
+        echo $currentDate . ';' . $currentTime . ';' . $sinceTime  . ';' . $sinceDate;
         // Set the session
-        $_SESSION['time'] = $currentDate . ';' . $currentTime . ';' . $sinceDate . ';session;';
+        $_SESSION['time'] = $currentDate . ';' . $currentTime . ';' . $sinceTime  . ';' . $sinceDate . ';session;';
         // Set last time the request was sent
         if (empty($flag)) {
             $_SESSION['last'] = time();
