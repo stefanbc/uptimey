@@ -1,3 +1,5 @@
+@import './_variables.scss';
+
 //
 // Extends
 // --------------------------------------------------
@@ -60,4 +62,9 @@
 %vertical-align-center {
     display: flex;
     align-items: center;
+}
+%axis-cell {
+    background: $color_2;
+    padding: 10px;
+    border-radius: 6px;
 }

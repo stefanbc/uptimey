@@ -37,8 +37,6 @@ output = (type, setFlag) ->
                 SUNSET  = weather.sunset
                 return
             return
-          # We only animate the whole container once
-          $('#location-wrapper').addClass 'fadeIn'
           return
     when 'uptime'
       $.ajax data,
@@ -56,8 +54,6 @@ output = (type, setFlag) ->
           $('#hours').attr 'data-value', uptime[1]
           $('#minutes').text(uptime[2]).addClass 'fadeIn'
           $('#minutes').attr 'data-value', uptime[2]
-          # We only animate the whole container once
-          $('#uptime-wrapper').addClass 'fadeIn'
           return
     when 'time'
       $.ajax data,
@@ -72,7 +68,7 @@ output = (type, setFlag) ->
           $('#current').text(time[0]).addClass 'fadeIn'
           # Set blinking time
           outputTime = time[1].split(':');
-          $('#time').html("#{outputTime[0]}<span class='blink'>:</span>#{outputTime[1]}").addClass 'fadeIn'
+          $('#current-time').html("#{outputTime[0]}<span class='blink'>:</span>#{outputTime[1]}").addClass 'fadeIn'
           $('#since').text(time[2]).addClass 'fadeIn'
           # Format the times
           setTimeout (->
@@ -81,13 +77,11 @@ output = (type, setFlag) ->
             ttime   = moment(time[1], 'h:m a').format('X')
             # Check if the current time is between sunset, sunrise and set the icon
             if ttime >= sunrise and ttime <= sunset
-              changeIcon "#time-wrapper .fa", "fa-moon-o fa-circle-o", "fa-sun-o"
+              changeIcon "#current-time-wrapper .fa", "fa-moon-o fa-circle-o", "fa-sun-o"
             else
-              changeIcon "#time-wrapper .fa", "fa-sun-o fa-circle-o", "fa-moon-o"
+              changeIcon "#current-time-wrapper .fa", "fa-sun-o fa-circle-o", "fa-moon-o"
             return
           ), 3000
-          # We only animate the whole container once
-          $('#info-wrapper').addClass 'fadeIn'
           return
     when 'ping'
       $.ajax data,

@@ -43,6 +43,12 @@ ul {
     margin-right: 10px;
     @extend %transition;
 }
+.fa-sun-o {
+    color: #ffd900;
+}
+.fa-moon-o {
+    color: #3498db;
+}
 .text-left {
   text-align: left;
 }
@@ -186,31 +192,24 @@ header {
             } 
         }
         .middle-wrapper {
-            @extend %vertical-align-center;
-            #time-location-wrapper {
-                margin-top: 20%;
-                background: $color_2;
-                border-radius: 6px;
-                padding: 5px;
+            #uptime-wrapper {
                 position: relative;
-                .fa-sun-o {
-                    color: #ffd900;
+                margin: 40px 0 165px 0;
+                @extend %axis-cell;
+                &:after {
+                    @include axis-line('right');
                 }
-                .fa-moon-o {
-                    color: #3498db;
-                }
-                #location {
-                    cursor: pointer;
-                    &:hover {
-                        text-decoration: underline;
+                .uptime-columns {
+                    .val {
+                        display: block;
                     }
                 }
+            }
+            #since-time-wrapper {
+                position: relative;
+                @extend %axis-cell;
                 &:after {
-                    position: absolute;
-                    top: 45%;
-                    right: -120px;
-                    width: 120px;
-                    @extend %border-horizontal;
+                    @include axis-line('right');
                 }
             }
             #axis-wrapper {
@@ -232,18 +231,25 @@ header {
                     }
                 }
             }
-            #uptime-wrapper {
-                margin-bottom: 20%;
-                background: $color_2;
-                border-radius: 6px;
-                padding: 5px;
+            #current-time-wrapper {
                 position: relative;
+                margin: 110px 0 90px 0;
+                @extend %axis-cell;
                 &:before {
-                    position: absolute;
-                    top: 45%;
-                    left: -120px;
-                    width: 120px;
-                    @extend %border-horizontal;
+                    @include axis-line('left');
+                }
+            }
+            #location-wrapper {
+                position: relative;
+                @extend %axis-cell;
+                &:before {
+                    @include axis-line('left');
+                }
+                #location {
+                    cursor: pointer;
+                    &:hover {
+                        text-decoration: underline;
+                    }
                 }
             }
         }
