@@ -2,9 +2,9 @@
 projectLink = 'https://github.com/stefanbc/uptimey'
 
 ### Set the global files ###
-data     = './client/lib/models/data.php'
-config   = './client/bin/config.js'
-settings = './client/bin/settings.json'
+data     = './lib/models/data.php'
+config   = './bin/js/config.js'
+settings = './bin/js/settings.json'
 
 ### Set the global vars###
 moment   = require('moment');

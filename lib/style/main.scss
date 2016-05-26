@@ -194,7 +194,7 @@ header {
         .middle-wrapper {
             #uptime-wrapper {
                 position: relative;
-                margin: 40px 0 165px 0;
+                margin: 33px 0 170px 0;
                 @extend %axis-cell;
                 &:after {
                     @include axis-line('right');

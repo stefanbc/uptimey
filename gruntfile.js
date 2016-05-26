@@ -4,13 +4,27 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        
+        clean: {
+            build: {
+                src: [
+                    'bin/css/style.min.css',
+                    'bin/js/app.min.js'
+                ]
+            },
+            test: {
+                src: ['bin/js/app.min.js']
+            }
+        },
+        
         jade: {
             compile: {
                 files: {
-                    'index.html': 'client/lib/views/index.jade'
+                    'index.html': 'lib/views/index.jade'
                 }
             }
         },
+        
         sass: {
             dist: {
                 options: {
@@ -18,54 +32,59 @@ module.exports = function(grunt) {
                     sourcemap : 'none'
                 },
                 files: {
-                    'client/bin/css/global.min.css' : 'client/lib/style/main.scss'
+                    'bin/css/style.min.css' : 'lib/style/main.scss'
                 }
             }
         },
+        
         coffee: {
             compileJoined: {
                 options: {
                     join : true
                 },
                 files: {
-                    'client/bin/app.min.js': 
+                    'bin/js/app.min.js': 
                     [
-                        'client/lib/helpers/*.coffee', 
-                        'client/lib/controllers/*.coffee'
+                        'lib/helpers/*.coffee', 
+                        'lib/controllers/*.coffee'
                     ]
                 }
             }  
         },
+        
         uglify: {
             js: {
                 files: {
-                    'client/bin/app.min.js': ['client/bin/app.min.js']
+                    'bin/js/app.min.js': ['bin/js/app.min.js']
                 }
             }
         },
+        
         jshint: {
-            files: ['gruntfile.js', 'client/bin/app.min.js'],
+            files: ['gruntfile.js', 'bin/js/app.min.js'],
             options: {
                 globals: {
                     jQuery: true
                 }
             }
         },
+        
         watch: {
             options: {
                 atBegin: true
             },
             files: [
-                'client/lib/controllers/*.coffee',
-                'client/lib/helpers/*coffee',
-                'client/lib/style/*.scss',
-                'client/lib/views/*.jade',
-                'client/lib/views/panels/*.jade'
+                'lib/helpers/*.coffee',
+                'lib/controllers/*.coffee',
+                'lib/style/*.scss',
+                'lib/views/*.jade',
+                'lib/views/panels/*.jade'
             ],
-            tasks: ['jade', 'sass', 'coffee', 'uglify']
+            tasks: ['clean:build', 'jade', 'sass', 'coffee', 'uglify']
         }
     });
     
+    grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-jade');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-coffee');
@@ -73,6 +92,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
     
-    grunt.registerTask('test', ['coffee', 'jshint', 'uglify']);
-    grunt.registerTask('default', ['jade', 'sass', 'coffee', 'jshint', 'uglify']);
+    grunt.registerTask('test', ['clean:test', 'coffee', 'jshint', 'uglify']);
+    grunt.registerTask('default', ['clean:build', 'jade', 'sass', 'coffee', 'jshint', 'uglify']);
 };

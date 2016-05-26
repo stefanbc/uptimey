@@ -36,13 +36,13 @@
 @mixin axis-line($type) {
     @if $type == left {
         position: absolute;
-        top: 45%;
+        top: 50%;
         left: -180px;
         width: 180px;
         @extend %border-horizontal;
     } @else if $type == right {
         position: absolute;
-        top: 45%;
+        top: 50%;
         right: -180px;
         width: 180px;
         @extend %border-horizontal;
