@@ -3,6 +3,28 @@
 if (!isset($_SERVER['HTTP_X_REQUESTED_WITH']) || strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) !== 'xmlhttprequest')
     die('No direct access allowed!');
 
+// If it's been less than a minute between request, kill the execution but display last saved uptime or picture
+session_start();
+if (!empty($_SESSION['last']) && time() - $_SESSION['last'] < 60 && empty($flag)) {
+    if ($action == 'image')
+        echo $_SESSION['image'];
+    elseif ($action == 'location')
+        echo $_SESSION['location'];
+    elseif ($action == 'uptime')
+        echo $_SESSION['uptime'];
+    elseif ($action == 'time')
+        echo $_SESSION['time'];
+    die();
+}
+
+
+
+
+
+
+
+
+
 function readConfig($returnObject = false, $property){
     $file       = file_get_contents('../../bin/settings.json');
     $jsonObject = json_decode($file, true);
@@ -19,19 +41,7 @@ $action = $_REQUEST['action'];
 // Get flag if it's set for exception
 $flag = $_REQUEST['flag'];
 
-// If it's been less than a minute between request, kill the execution but display last saved uptime or picture
-session_start();
-if (!empty($_SESSION['last']) && time() - $_SESSION['last'] < 60 && empty($flag)) {
-    if ($action == 'image')
-        echo $_SESSION['image'];
-    elseif ($action == 'location')
-        echo $_SESSION['location'];
-    elseif ($action == 'uptime')
-        echo $_SESSION['uptime'];
-    elseif ($action == 'time')
-        echo $_SESSION['time'];
-    die();
-}
+
 
 $configTimezone = readConfig(false, 'display_timezone');
 if (isset($configTimezone) && !empty($configTimezone)) {

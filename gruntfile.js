@@ -18,7 +18,7 @@ module.exports = function(grunt) {
         },
         
         jade: {
-            compile: {
+            build: {
                 files: {
                     'index.html': 'lib/views/index.jade'
                 }
@@ -26,19 +26,27 @@ module.exports = function(grunt) {
         },
         
         sass: {
-            dist: {
+            build: {
                 options: {
                     style     : 'compressed',
                     sourcemap : 'none'
                 },
                 files: {
-                    'bin/css/style.min.css' : 'lib/style/main.scss'
+                    'bin/css/style.min.css' : 'lib/style/index.scss'
+                }
+            },
+            dev: {
+                options: {
+                    style     : 'expanded'
+                },
+                files: {
+                    'bin/css/style.min.css' : 'lib/style/index.scss'
                 }
             }
         },
         
         coffee: {
-            compileJoined: {
+            build: {
                 options: {
                     join : true
                 },
@@ -53,7 +61,7 @@ module.exports = function(grunt) {
         },
         
         uglify: {
-            js: {
+            build: {
                 files: {
                     'bin/js/app.min.js': ['bin/js/app.min.js']
                 }
@@ -80,7 +88,7 @@ module.exports = function(grunt) {
                 'lib/views/*.jade',
                 'lib/views/panels/*.jade'
             ],
-            tasks: ['clean:build', 'jade', 'sass', 'coffee', 'uglify']
+            tasks: ['clean:build', 'jade', 'sass:dev', 'coffee', 'uglify']
         }
     });
     
@@ -93,5 +101,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     
     grunt.registerTask('test', ['clean:test', 'coffee', 'jshint', 'uglify']);
-    grunt.registerTask('default', ['clean:build', 'jade', 'sass', 'coffee', 'jshint', 'uglify']);
+    grunt.registerTask('default', ['clean:build', 'jade', 'sass:build', 'coffee', 'jshint', 'uglify']);
 };

@@ -3,7 +3,6 @@ projectLink = 'https://github.com/stefanbc/uptimey'
 
 ### Set the global files ###
 data     = './lib/models/data.php'
-config   = './bin/js/config.js'
 settings = './bin/js/settings.json'
 
 ### Set the global vars###
