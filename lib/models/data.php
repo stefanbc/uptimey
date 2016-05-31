@@ -17,14 +17,6 @@ if (!empty($_SESSION['last']) && time() - $_SESSION['last'] < 60 && empty($flag)
     die();
 }
 
-
-
-
-
-
-
-
-
 function readConfig($returnObject = false, $property){
     $file       = file_get_contents('../../bin/settings.json');
     $jsonObject = json_decode($file, true);
@@ -35,6 +27,10 @@ function readConfig($returnObject = false, $property){
         return $jsonObject[$property];
     }
 }
+
+
+
+
 
 // Get the type of request
 $action = $_REQUEST['action'];

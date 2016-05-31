@@ -103,10 +103,10 @@ header {
         }
     }
 }
-.panel {
+.layout {
     position: absolute;
     @extend %absolute-center;
-    &#default-panel {
+    &#default-layout {
         #current-wrapper {
             margin-bottom: 20px;
             &:after {
@@ -187,7 +187,7 @@ header {
         }
         
     }
-    &#advanced-panel {
+    &#advanced-layout {
         display: none;
     }
 }
