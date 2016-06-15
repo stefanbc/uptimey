@@ -53,7 +53,7 @@
     opacity: 0;
   }
 }
-header.top-menu .action-block:after, header.bottom-menu .action-block:before, .panel#default-panel #current-wrapper:after, .panel#default-panel .middle-wrapper #uptime-wrapper:after, .panel#default-panel .middle-wrapper #since-time-wrapper:after, .panel#default-panel .middle-wrapper #current-time-wrapper:before, .panel#default-panel .middle-wrapper #location-wrapper:before, .panel#default-panel #since-wrapper:before {
+header.top-menu .action-block:after, header.bottom-menu .action-block:before, .layout#default-layout #current-wrapper:after, .layout#default-layout .middle-wrapper #uptime-wrapper:after, .layout#default-layout .middle-wrapper #since-time-wrapper:after, .layout#default-layout .middle-wrapper #current-time-wrapper:before, .layout#default-layout .middle-wrapper #location-wrapper:before, .layout#default-layout #since-wrapper:before {
   content: "";
   height: 2px;
   background: -moz-linear-gradient(left, transparent 0%, white 50%, transparent 100%);
@@ -66,7 +66,7 @@ header.top-menu .action-block:after, header.bottom-menu .action-block:before, .p
   display: block;
 }
 
-.panel#default-panel .middle-wrapper #axis-wrapper ul:before {
+.layout#default-layout .middle-wrapper #axis-wrapper ul:before {
   content: "";
   width: 2px;
   background: -moz-linear-gradient(top, transparent 0%, white 50%, transparent 100%);
@@ -87,7 +87,7 @@ a, .fa, header .action, .humane, .humane-libnotify {
   transition: all 0.5s ease;
 }
 
-header.top-menu, header.bottom-menu, .panel#default-panel .middle-wrapper #axis-wrapper ul:before {
+header.top-menu, header.bottom-menu, .layout#default-layout .middle-wrapper #axis-wrapper ul:before {
   left: 50%;
   -webkit-transform: translateX(-50%);
   -moz-transform: translateX(-50%);
@@ -96,7 +96,7 @@ header.top-menu, header.bottom-menu, .panel#default-panel .middle-wrapper #axis-
   transform: translateX(-50%);
 }
 
-.panel {
+.layout {
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
@@ -106,7 +106,7 @@ header.top-menu, header.bottom-menu, .panel#default-panel .middle-wrapper #axis-
   transform: translate(-50%, -50%);
 }
 
-.panel#default-panel .middle-wrapper #uptime-wrapper, .panel#default-panel .middle-wrapper #since-time-wrapper, .panel#default-panel .middle-wrapper #current-time-wrapper, .panel#default-panel .middle-wrapper #location-wrapper {
+.layout#default-layout .middle-wrapper #uptime-wrapper, .layout#default-layout .middle-wrapper #since-time-wrapper, .layout#default-layout .middle-wrapper #current-time-wrapper, .layout#default-layout .middle-wrapper #location-wrapper {
   background: rgba(0, 0, 0, 0.6);
   padding: 10px;
   border-radius: 6px;
@@ -282,84 +282,84 @@ header .action#screenshot:hover {
   color: #f7d61c;
 }
 
-.panel {
+.layout {
   position: absolute;
 }
-.panel#default-panel #current-wrapper {
+.layout#default-layout #current-wrapper {
   margin-bottom: 20px;
 }
-.panel#default-panel #current-wrapper:after {
+.layout#default-layout #current-wrapper:after {
   width: 35%;
   margin: 20px auto 0 auto;
 }
-.panel#default-panel .middle-wrapper #uptime-wrapper {
+.layout#default-layout .middle-wrapper #uptime-wrapper {
   position: relative;
   margin: 33px 0 170px 0;
 }
-.panel#default-panel .middle-wrapper #uptime-wrapper:after {
+.layout#default-layout .middle-wrapper #uptime-wrapper:after {
   position: absolute;
   top: 50%;
   right: -180px;
   width: 180px;
 }
-.panel#default-panel .middle-wrapper #uptime-wrapper .uptime-columns .val {
+.layout#default-layout .middle-wrapper #uptime-wrapper .uptime-columns .val {
   display: block;
 }
-.panel#default-panel .middle-wrapper #since-time-wrapper {
+.layout#default-layout .middle-wrapper #since-time-wrapper {
   position: relative;
 }
-.panel#default-panel .middle-wrapper #since-time-wrapper:after {
+.layout#default-layout .middle-wrapper #since-time-wrapper:after {
   position: absolute;
   top: 50%;
   right: -180px;
   width: 180px;
 }
-.panel#default-panel .middle-wrapper #axis-wrapper ul {
+.layout#default-layout .middle-wrapper #axis-wrapper ul {
   position: relative;
 }
-.panel#default-panel .middle-wrapper #axis-wrapper ul:before {
+.layout#default-layout .middle-wrapper #axis-wrapper ul:before {
   position: absolute;
   top: 0;
   z-index: -1;
   height: 100%;
 }
-.panel#default-panel .middle-wrapper #axis-wrapper ul li .fa {
+.layout#default-layout .middle-wrapper #axis-wrapper ul li .fa {
   margin: 0;
   cursor: pointer;
 }
-.panel#default-panel .middle-wrapper #current-time-wrapper {
+.layout#default-layout .middle-wrapper #current-time-wrapper {
   position: relative;
   margin: 110px 0 90px 0;
 }
-.panel#default-panel .middle-wrapper #current-time-wrapper:before {
+.layout#default-layout .middle-wrapper #current-time-wrapper:before {
   position: absolute;
   top: 50%;
   left: -180px;
   width: 180px;
 }
-.panel#default-panel .middle-wrapper #location-wrapper {
+.layout#default-layout .middle-wrapper #location-wrapper {
   position: relative;
 }
-.panel#default-panel .middle-wrapper #location-wrapper:before {
+.layout#default-layout .middle-wrapper #location-wrapper:before {
   position: absolute;
   top: 50%;
   left: -180px;
   width: 180px;
 }
-.panel#default-panel .middle-wrapper #location-wrapper #location {
+.layout#default-layout .middle-wrapper #location-wrapper #location {
   cursor: pointer;
 }
-.panel#default-panel .middle-wrapper #location-wrapper #location:hover {
+.layout#default-layout .middle-wrapper #location-wrapper #location:hover {
   text-decoration: underline;
 }
-.panel#default-panel #since-wrapper {
+.layout#default-layout #since-wrapper {
   margin-top: 20px;
 }
-.panel#default-panel #since-wrapper:before {
+.layout#default-layout #since-wrapper:before {
   width: 35%;
   margin: 0 auto 20px auto;
 }
-.panel#advanced-panel {
+.layout#advanced-layout {
   display: none;
 }
 
