@@ -1,10 +1,8 @@
 doctype html
 html(lang='en')
-  include ./head.jade
+  include ./_head.jade
   body
     .main-container
-      include ./header.jade
-      include ./layouts/new.jade
-      //- include ./layouts/default.jade
-      //- include ./layouts/advanced.jade
-    include ./footer.jade
+      //- include ./_header.jade
+      include ./_layout.jade
+    include ./_footer.jade

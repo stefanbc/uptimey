@@ -1,7 +1,7 @@
 Settings
 ===
 
-If you want to modify the way uptimey behaves and looks you can use the `client/bin/settings.json` file. This file once modified will adjust various things.
+If you want to change the way uptimey behaves and looks you can use the `/bin/settings.json` file. This file once modified will adjust various things.
 
 Below are the things that can be modified and the explanation to each one of them.
 

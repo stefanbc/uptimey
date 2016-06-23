@@ -13,23 +13,21 @@ header {
     font-size: 1.5em;
     z-index: 10;
     &.top-menu {
-        @extend %absolute-horizontal-center;
+        @include absolute-horizontal-center;
         top: -80px;
         .action-block {
             margin-top: 20px;
             &:after {
-                @extend %border-horizontal;
                 margin-top: 20px;
             }
         }
     }
     &.bottom-menu {
-        @extend %absolute-horizontal-center;
+        @include absolute-horizontal-center;
         bottom: -80px;
         .action-block {
             margin-bottom: 20px;
             &:before {
-                @extend %border-horizontal;
                 margin-bottom: 20px;
             }
         }
@@ -46,7 +44,7 @@ header {
         cursor: pointer;
         margin: 0 30px;
         position: relative;
-        @extend %transition;
+        @include transition;
         &:after {
             content: attr(data-action);
             position: absolute;
@@ -105,90 +103,9 @@ header {
 }
 .layout {
     position: absolute;
-    @extend %absolute-center;
+    @include absolute-center;
     &#default-layout {
-        #current-wrapper {
-            margin-bottom: 20px;
-            &:after {
-                @extend %border-horizontal;
-                width: 35%;
-                margin: 20px auto 0 auto;
-            } 
-        }
-        .middle-wrapper {
-            #uptime-wrapper {
-                position: relative;
-                margin: 33px 0 170px 0;
-                @extend %axis-cell;
-                &:after {
-                    @include axis-line('right');
-                }
-                .uptime-columns {
-                    .val {
-                        display: block;
-                    }
-                }
-            }
-            #since-time-wrapper {
-                position: relative;
-                @extend %axis-cell;
-                &:after {
-                    @include axis-line('right');
-                }
-            }
-            #axis-wrapper {
-                ul {
-                    position: relative;
-                    &:before {
-                        position: absolute;
-                        top: 0;
-                        z-index: -1;
-                        height: 100%;
-                        @extend %border-vertical;
-                        @extend %absolute-horizontal-center;
-                    }
-                    li {
-                        .fa {
-                            margin: 0;
-                            cursor: pointer;
-                        }   
-                    }
-                }
-            }
-            #current-time-wrapper {
-                position: relative;
-                margin: 110px 0 90px 0;
-                @extend %axis-cell;
-                &:before {
-                    @include axis-line('left');
-                }
-            }
-            #location-wrapper {
-                position: relative;
-                @extend %axis-cell;
-                &:before {
-                    @include axis-line('left');
-                }
-                #location {
-                    cursor: pointer;
-                    &:hover {
-                        text-decoration: underline;
-                    }
-                }
-            }
-        }
-        #since-wrapper {
-            margin-top: 20px;
-            &:before {
-                @extend %border-horizontal;
-                width: 35%;
-                margin: 0 auto 20px auto;
-            }
-        }
         
-    }
-    &#advanced-layout {
-        display: none;
     }
 }
 footer {
