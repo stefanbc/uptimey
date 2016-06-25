@@ -1,17 +1,6 @@
 ### Output the data requested ###
 output = (type, setFlag) ->
   switch type
-    when 'image'
-      $.ajax data,
-        method : 'GET'
-        data   : 
-          action : type
-        success: (image) ->
-          # Split the output
-          image = image.split(';')
-          # Add the image as background-image on body
-          $('body').css 'backgroundImage', "url(#{image[0]})"
-          return
     when 'location'
       $.ajax data,
         method : 'GET'
@@ -84,21 +73,3 @@ output = (type, setFlag) ->
             return
           ), 3000
           return
-    when 'ping'
-      $.ajax data,
-        method : 'GET'
-        data   :
-          action : type
-        error  : (jqXHR, status) ->
-          notice status
-        success: (ping) ->
-          notice ping
-      break
-  # After the animation is done remove the class so
-  # we can animate again on next iteration
-  $('.val').each ->
-    $(this).on 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', ->
-      $(this).removeClass 'fadeIn'
-      return
-    return
-  return

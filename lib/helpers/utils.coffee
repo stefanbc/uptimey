@@ -1,9 +1,3 @@
-### Show a notice upon request ###
-notice = (text) ->
-  humane.log text,
-    timeout      : 5000
-    baseCls      : 'humane-libnotify'
-
 ### Animate element ###
 animateElement = (element) ->
   $(element).addClass 'pulse'

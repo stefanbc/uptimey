@@ -6,8 +6,6 @@ data     = './lib/models/data.php'
 settings = './bin/js/settings.json'
 
 ### Set the global vars###
-moment   = require('moment');
-humane   = require('humane');
 LOCATION = ''
 SUNRISE  = ''
 SUNSET   = ''

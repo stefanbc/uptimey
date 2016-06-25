@@ -2,7 +2,6 @@
 // Layout and UI
 // --------------------------------------------------
 .main-container {
-	background: $color_2;
 	height: 100%;
 	width: 100%;
 	position: relative;
@@ -105,7 +104,11 @@ header {
     position: absolute;
     @include absolute-center;
     &#default-layout {
-        
+        #server {
+            svg {
+                
+            }
+        }
     }
 }
 footer {

@@ -130,10 +130,3 @@ action = (type) ->
           screenshotButton.removeAttr('href').removeAttr 'download'
         ), 3000
       return
-    when 'clear'
-      # Clear the session
-      $.ajax data,
-        method : 'GET'
-        data   : 
-          action : 'clear'
-      return

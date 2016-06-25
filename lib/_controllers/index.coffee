@@ -9,8 +9,6 @@ init = ->
   $('.val').addClass 'animated'
   $('.button').addClass 'animated'
   
-  # Get the image
-  output 'image'
   # Get the location
   output 'location'
   # Get the uptime
@@ -45,23 +43,9 @@ $ ->
       return
     return
   
-  $('#axis-wrapper ul li span').each ->
-    $(this).hover (->
-      changeIcon this, 'fa-dot-circle-o', 'fa-circle'
-      return
-    ), ->
-      changeIcon this, 'fa-circle', 'fa-dot-circle-o'
-      return
-  
   ### Click action for location ###
   $('#location').on 'click', ->
     latlong = $(this).attr('data-latlong')
     window.location.href = "https://www.google.com/maps/place/#{latlong}"
     return
   return
-
-#   ### Clear everything on refresh of close ###
-#   $(window).bind 'beforeunload', ->
-#     action 'clear'
-#     return
-#   return

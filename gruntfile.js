@@ -9,7 +9,8 @@ module.exports = function(grunt) {
             build: {
                 src: [
                     './bin/css/*',
-                    './bin/js/app.min.js'
+                    './bin/js/app.min.js',
+                    './bin/index.html'
                 ]
             },
             test: {
