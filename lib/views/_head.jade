@@ -2,6 +2,6 @@ head
   title #{project_name} - #{project_oneliner}
   include ./_meta.jade
   link(rel="prefetch shortcut icon" href='./img/favicon.ico?v=#{project_version}', type='image/x-icon')
-  - var stylesheets = ['//fonts.googleapis.com/css?family=Lato:400,300,700', '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css', '//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css', '//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css', '//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css', 'css/style.min.css'];
+  - var stylesheets = ['//fonts.googleapis.com/css?family=Work+Sans:200,300,400,600,700', '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css', '//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css', '//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css', '//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css', 'css/style.min.css'];
   each val in stylesheets
     link(rel='prefetch stylesheet' href='#{val}', type='text/css')

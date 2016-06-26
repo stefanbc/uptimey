@@ -104,9 +104,26 @@ header {
     position: absolute;
     @include absolute-center;
     &#default-layout {
-        #server {
+        #server,
+        #branch {
+            $main-icon-size: 128px;
+
+            width: $main-icon-size;
+            height: $main-icon-size;
             svg {
-                
+                width: $main-icon-size;
+                height: $main-icon-size;
+                path,
+                line,
+                circle {
+                    fill: none;
+                    stroke: $color_1;
+                    stroke-linecap: round;
+                    stroke-linejoin: round;
+                    stroke-miterlimit: 10;
+                    stroke-width: 2;
+                    stroke-opacity: 1;
+                }
             }
         }
     }

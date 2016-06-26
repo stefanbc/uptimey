@@ -63,7 +63,7 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  font-family: Raleway, sans-serif;
+  font-family: "Work Sans", sans-serif;
   font-weight: 200;
   color: #fcfdfe;
 }
@@ -209,7 +209,7 @@ header .action:after {
   position: absolute;
   visibility: hidden;
   color: #fcfdfe;
-  font-family: Raleway, sans-serif;
+  font-family: "Work Sans", sans-serif;
   font-weight: 200;
   font-size: 0.5em;
   line-height: 30px;
@@ -258,6 +258,30 @@ header .action#screenshot:hover {
   -o-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+}
+.layout#default-layout #server,
+.layout#default-layout #branch {
+  width: 128px;
+  height: 128px;
+}
+.layout#default-layout #server svg,
+.layout#default-layout #branch svg {
+  width: 128px;
+  height: 128px;
+}
+.layout#default-layout #server svg path,
+.layout#default-layout #server svg line,
+.layout#default-layout #server svg circle,
+.layout#default-layout #branch svg path,
+.layout#default-layout #branch svg line,
+.layout#default-layout #branch svg circle {
+  fill: none;
+  stroke: #fcfdfe;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+  stroke-width: 2;
+  stroke-opacity: 1;
 }
 
 footer {
