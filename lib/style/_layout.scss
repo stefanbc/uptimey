@@ -104,25 +104,39 @@ header {
     position: absolute;
     @include absolute-center;
     &#default-layout {
-        #server,
-        #branch {
+        #server {
+            $wrapper-width: 530px;
+            $wrapper-height: 340px;
             $main-icon-size: 128px;
 
-            width: $main-icon-size;
-            height: $main-icon-size;
+            // width: $wrapper-width;
+            height: $wrapper-height;
+            margin: 0 auto;
             svg {
-                width: $main-icon-size;
-                height: $main-icon-size;
+                // width: $main-icon-size;
+                height: $wrapper-height;
                 path,
                 line,
-                circle {
+                circle,
+                ellipse {
                     fill: none;
                     stroke: $color_1;
                     stroke-linecap: round;
                     stroke-linejoin: round;
                     stroke-miterlimit: 10;
                     stroke-width: 2;
-                    stroke-opacity: 1;
+                    stroke-opacity: 1;                  
+                }
+                ellipse {
+                    fill: $color_1;
+                }
+                #icon-wrapper {
+                    transform: matrix(2,0,0,2,190,110);
+                }
+                #branches-wrapper {
+                    .serverBranch {
+                        stroke-dasharray: 6 6;
+                    }
                 }
             }
         }

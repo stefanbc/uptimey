@@ -259,22 +259,17 @@ header .action#screenshot:hover {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-.layout#default-layout #server,
-.layout#default-layout #branch {
-  width: 128px;
-  height: 128px;
+.layout#default-layout #server {
+  height: 340px;
+  margin: 0 auto;
 }
-.layout#default-layout #server svg,
-.layout#default-layout #branch svg {
-  width: 128px;
-  height: 128px;
+.layout#default-layout #server svg {
+  height: 340px;
 }
 .layout#default-layout #server svg path,
 .layout#default-layout #server svg line,
 .layout#default-layout #server svg circle,
-.layout#default-layout #branch svg path,
-.layout#default-layout #branch svg line,
-.layout#default-layout #branch svg circle {
+.layout#default-layout #server svg ellipse {
   fill: none;
   stroke: #fcfdfe;
   stroke-linecap: round;
@@ -282,6 +277,15 @@ header .action#screenshot:hover {
   stroke-miterlimit: 10;
   stroke-width: 2;
   stroke-opacity: 1;
+}
+.layout#default-layout #server svg ellipse {
+  fill: #fcfdfe;
+}
+.layout#default-layout #server svg #icon-wrapper {
+  transform: matrix(2, 0, 0, 2, 190, 110);
+}
+.layout#default-layout #server svg #branches-wrapper .serverBranch {
+  stroke-dasharray: 6 6;
 }
 
 footer {
