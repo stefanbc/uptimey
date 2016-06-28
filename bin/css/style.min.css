@@ -260,11 +260,13 @@ header .action#screenshot:hover {
   transform: translate(-50%, -50%);
 }
 .layout#default-layout #server {
-  height: 340px;
+  width: 525px;
+  height: 525px;
   margin: 0 auto;
 }
 .layout#default-layout #server svg {
-  height: 340px;
+  width: 525px;
+  height: 525px;
 }
 .layout#default-layout #server svg path,
 .layout#default-layout #server svg line,
@@ -282,7 +284,7 @@ header .action#screenshot:hover {
   fill: #fcfdfe;
 }
 .layout#default-layout #server svg #icon-wrapper {
-  transform: matrix(2, 0, 0, 2, 190, 110);
+  transform: matrix(2, 0, 0, 2, 201, 183);
 }
 .layout#default-layout #server svg #branches-wrapper .serverBranch {
   stroke-dasharray: 6 6;

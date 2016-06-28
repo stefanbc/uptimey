@@ -105,16 +105,15 @@ header {
     @include absolute-center;
     &#default-layout {
         #server {
-            $wrapper-width: 530px;
-            $wrapper-height: 340px;
-            $main-icon-size: 128px;
+            $server-width: 525px;
+            $server-height: 525px;
 
-            // width: $wrapper-width;
-            height: $wrapper-height;
+            width: $server-width;
+            height: $server-height;
             margin: 0 auto;
             svg {
-                // width: $main-icon-size;
-                height: $wrapper-height;
+                width: $server-width;
+                height: $server-height;
                 path,
                 line,
                 circle,
@@ -131,7 +130,7 @@ header {
                     fill: $color_1;
                 }
                 #icon-wrapper {
-                    transform: matrix(2,0,0,2,190,110);
+                    transform: matrix(2,0,0,2,201,183);
                 }
                 #branches-wrapper {
                     .serverBranch {
