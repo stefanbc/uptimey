@@ -260,13 +260,14 @@ header .action#screenshot:hover {
   transform: translate(-50%, -50%);
 }
 .layout#default-layout #server {
-  width: 525px;
-  height: 525px;
+  width: 530px;
+  height: 360px;
   margin: 0 auto;
+  position: relative;
 }
 .layout#default-layout #server svg {
-  width: 525px;
-  height: 525px;
+  width: 530px;
+  height: 360px;
 }
 .layout#default-layout #server svg path,
 .layout#default-layout #server svg line,
@@ -284,10 +285,27 @@ header .action#screenshot:hover {
   fill: #fcfdfe;
 }
 .layout#default-layout #server svg #icon-wrapper {
-  transform: matrix(2, 0, 0, 2, 201, 183);
+  transform: matrix(2, 0, 0, 2, 201, 103);
 }
 .layout#default-layout #server svg #branches-wrapper .serverBranch {
   stroke-dasharray: 6 6;
+}
+.layout#default-layout #server .cell {
+  position: absolute;
+  width: 100px;
+  height: 45px;
+}
+.layout#default-layout #server .cell.top {
+  border-bottom: 2px solid #fcfdfe;
+}
+.layout#default-layout #server .cell.bottom {
+  border-top: 2px solid #fcfdfe;
+}
+.layout#default-layout #server .cell.left {
+  border-right: 2px solid #fcfdfe;
+}
+.layout#default-layout #server .cell.right {
+  border-left: 2px solid #fcfdfe;
 }
 
 footer {

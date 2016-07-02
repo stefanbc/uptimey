@@ -105,12 +105,13 @@ header {
     @include absolute-center;
     &#default-layout {
         #server {
-            $server-width: 525px;
-            $server-height: 525px;
+            $server-width: 530px;
+            $server-height: 360px;
 
             width: $server-width;
             height: $server-height;
             margin: 0 auto;
+            position: relative;
             svg {
                 width: $server-width;
                 height: $server-height;
@@ -130,12 +131,29 @@ header {
                     fill: $color_1;
                 }
                 #icon-wrapper {
-                    transform: matrix(2,0,0,2,201,183);
+                    transform: matrix(2,0,0,2,201,103);
                 }
                 #branches-wrapper {
                     .serverBranch {
                         stroke-dasharray: 6 6;
                     }
+                }
+            }
+            .cell {
+                position: absolute;
+                width: 100px;
+                height: 45px;
+                &.top {
+                    border-bottom: 2px solid $color_1;
+                }
+                &.bottom {
+                    border-top: 2px solid $color_1;
+                }
+                &.left {
+                    border-right: 2px solid $color_1;
+                }
+                &.right {
+                    border-left: 2px solid $color_1;
                 }
             }
         }
