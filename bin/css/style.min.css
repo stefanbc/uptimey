@@ -292,8 +292,7 @@ header .action#screenshot:hover {
 }
 .layout#default-layout #server .cell {
   position: absolute;
-  width: 100px;
-  height: 45px;
+  text-align: center;
 }
 .layout#default-layout #server .cell.top {
   border-bottom: 2px solid #fcfdfe;
@@ -306,6 +305,21 @@ header .action#screenshot:hover {
 }
 .layout#default-layout #server .cell.right {
   border-left: 2px solid #fcfdfe;
+}
+.layout#default-layout #server .cell.small {
+  width: 100px;
+  height: 45px;
+  line-height: 45px;
+}
+.layout#default-layout #server .cell.medium {
+  width: 150px;
+  height: 68px;
+  line-height: 68px;
+}
+.layout#default-layout #server .cell.large {
+  width: 200px;
+  height: 90px;
+  line-height: 90px;
 }
 
 footer {

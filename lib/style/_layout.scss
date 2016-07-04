@@ -141,8 +141,7 @@ header {
             }
             .cell {
                 position: absolute;
-                width: 100px;
-                height: 45px;
+                text-align: center;
                 &.top {
                     border-bottom: 2px solid $color_1;
                 }
@@ -154,6 +153,21 @@ header {
                 }
                 &.right {
                     border-left: 2px solid $color_1;
+                }
+                &.small {
+                    width: 100px;
+                    height: 45px;
+                    line-height: 45px;
+                }
+                &.medium {
+                    width: 150px;
+                    height: 68px;
+                    line-height: 68px;
+                }
+                &.large {
+                    width: 200px;
+                    height: 90px;
+                    line-height: 90px;
                 }
             }
         }

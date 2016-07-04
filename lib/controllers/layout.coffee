@@ -41,48 +41,56 @@
         if !branchesObject.hasOwnProperty(key)
           continue
         obj = branchesObject[key]
-        poz = obj['end'].split ','
+        pos = obj['end'].split ','
         branches.path(obj['path']).attr 'class', 'serverBranch'
         end = branches.ellipse(3, 3).attr(
-          cx: poz[0]
-          cy: poz[1]
+          cx: pos[0]
+          cy: pos[1]
         )
         @drawCell(end.bbox(), '', obj['cellSize'])
               
       return
 
-    drawCell: (poz, branch, cellSize) ->
+    drawCell: (pos, branch, cellSize) ->
 
-      x = poz.cx
-      y = poz.cy
+      x = pos.cx
+      y = pos.cy
       containerHeight = @$serverWrapper.height()
-      containerWidth = @$serverWrapper.width()
-      cellWidth = 100
-      cellHeight = 45
+      containerWidth  = @$serverWrapper.width()
       cellSpacer = 20
-      cellType = 'none'
+
+      switch cellSize
+        when 'small'
+          cellWidth  = 100
+          cellHeight = 45
+        when 'medium'
+          cellWidth  = 150
+          cellHeight = 68
+        when 'large'
+          cellWidth  = 200
+          cellHeight = 90
 
       sectionHeight = containerHeight / 5
       sectionWidth = containerWidth / 3
 
       if y <= sectionHeight and x >= sectionWidth
-        cellType = 'top'
         x = x - (cellWidth / 2)
-        y = (y - cellHeight) - cellSpacer      
+        y = (y - cellHeight) - cellSpacer
+        cellPosition = 'top' 
       else if x >= y
-        cellType = 'right'
         x = x + cellSpacer
         y = y - (cellHeight / 2)
+        cellPosition = 'right'
       else if y >= sectionHeight and x >= sectionWidth
-        cellType = 'bottom'
         x = x - (cellWidth / 2)
         y = y + cellSpacer
+        cellPosition = 'bottom'
       else if x <= y
-        cellType = 'left'
         x = (x - cellWidth) - cellSpacer
         y = y - (cellHeight / 2)
+        cellPosition = 'left'
 
-      $("<div class='cell #{cellType} #{cellSize}'>INFORMATION</div>").css(
+      $("<div class='cell #{cellPosition} #{cellSize}'>INFORMATION</div>").css(
         top  : "#{y}px"
         left : "#{x}px"
       ).appendTo @$serverWrapper
