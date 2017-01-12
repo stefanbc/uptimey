@@ -1,7 +1,8 @@
 uptimey 
 =======
 
-[![Build Status](https://travis-ci.org/stefanbc/uptimey.svg?branch=master)](https://travis-ci.org/stefanbc/uptimey) [![Dependency Status](https://www.versioneye.com/user/projects/572c7efaa0ca35004cf77288/badge.svg?style=flat)](https://www.versioneye.com/user/projects/572c7efaa0ca35004cf77288)
+[![Build Status](https://travis-ci.org/stefanbc/uptimey.svg?branch=master)](https://travis-ci.org/stefanbc/uptimey) [![Dependency Status](https://www.versioneye.com/user/projects/572c7efaa0ca35004cf77288/badge.svg?style=flat)](https://www.versioneye.com/user/projects/572c7efaa0ca35004cf77288) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.svg)](http://gruntjs.com/)
+
 
 If you're proud of your server uptime, because you put a lot of time into configuring it, then you can showcase it with **uptimey** - a beautiful Server Uptime Monitor!
 
