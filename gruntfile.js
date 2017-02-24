@@ -110,9 +110,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
-    grunt.registerTask('test', ['clean:test', 'jshint', 'uglify']);
-    grunt.registerTask('prod', ['clean:build', 'sass:build', 'autoprefixer', 'cssmin:build', 'jshint', 'uglify']);
-    grunt.registerTask('dev', ['clean:build', 'sass:dev', 'autoprefixer', 'cssmin:dev', 'jshint', 'uglify']);
+    grunt.registerTask('test', ['clean', 'jshint', 'uglify']);
+    grunt.registerTask('prod', ['clean', 'sass:build', 'autoprefixer', 'cssmin:build', 'jshint', 'uglify']);
+    grunt.registerTask('dev', ['clean', 'sass:dev', 'autoprefixer', 'cssmin:dev', 'jshint', 'uglify']);
     grunt.registerTask('default', ['clean', 'sass:build', 'autoprefixer', 'cssmin:build', 'jshint', 'uglify']);
 
     grunt.registerTask('server', 'Start a custom web server', function() {
