@@ -8,54 +8,62 @@ module.exports = function(grunt) {
         clean: {
             build: {
                 src: [
-                    './dist/css/*',
-                    './dist/js/app.min.js',
-                    './dist/index.html'
+                    './public/styles/*',
+                    './public/scripts/*'
                 ]
-            },
-            test: {
-                src: ['./dist/js/app.min.js']
-            }
-        },
-
-        jade: {
-            build: {
-                files: {
-                    './dist/index.html': './app/templates/index.jade'
-                }
             }
         },
 
         sass: {
             build: {
                 options: {
-                    style     : 'compressed',
                     sourcemap : 'none'
                 },
                 files: {
-                    './dist/css/style.min.css' : './app/styles/index.scss'
+                    './public/styles/uptimey.min.css' : './app/styles/main.scss'
                 }
             },
             dev: {
-                options: {
-                    style     : 'expanded'
-                },
                 files: {
-                    './dist/css/style.min.css' : './app/styles/index.scss'
+                    './public/styles/uptimey.min.css' : './app/styles/main.scss'
                 }
             }
         },
 
-        coffee: {
+        autoprefixer: {
             build: {
                 options: {
-                    join : true
+                    browsers : ['last 2 versions']
                 },
                 files: {
-                    './dist/js/app.min.js':
-                    [
-                        './app/helpers/*.coffee',
-                        './app/controllers/*.coffee'
+                    './public/styles/uptimey.min.css' : './public/styles/uptimey.min.css'
+                },
+            },
+        },
+
+        cssmin: {
+            build: {
+                files: {
+                    './public/styles/uptimey.min.css': './public/styles/uptimey.min.css',
+                    './public/styles/vendor.min.css': [
+                        './bower_components/normalize-css/normalize.css',
+                        './bower_components/animate.css/animate.css',
+                        './bower_components/skeleton/css/skeleton.css',
+                        './bower_components/humane-js/themes/libnotify.css'
+                    ]
+                }
+            },
+            dev: {
+                options: {
+                    sourceMap: true
+                },
+                files: {
+                    './public/styles/uptimey.min.css': './public/styles/uptimey.min.css',
+                    './public/styles/vendor.min.css': [
+                        './bower_components/normalize-css/normalize.css',
+                        './bower_components/animate.css/animate.css',
+                        './bower_components/skeleton/css/skeleton.css',
+                        './bower_components/humane-js/themes/libnotify.css'
                     ]
                 }
             }
@@ -64,13 +72,15 @@ module.exports = function(grunt) {
         uglify: {
             build: {
                 files: {
-                    './dist/js/app.min.js': ['./dist/js/app.min.js']
+                    './public/scripts/uptimey.min.js': [
+                        './app/controllers/index.js'
+                    ]
                 }
             }
         },
 
         jshint: {
-            files: ['gruntfile.js', './dist/js/app.min.js'],
+            files: ['Gruntfile.js', './public/scripts/uptimey.min.js'],
             options: {
                 globals: {
                     jQuery: true
@@ -80,26 +90,33 @@ module.exports = function(grunt) {
 
         watch: {
             options: {
-                atBegin: true
+                atBegin: true,
+                livereload: true
             },
             files: [
-                './app/helpers/*.coffee',
-                './app/controllers/*.coffee',
-                './app/styles/*.scss',
-                './app/templates/*.jade'
+                './app/controllers/**/*.js',
+                './app/styles/**/*.scss',
+                './app/templates/**/*.pug',
             ],
-            tasks: ['clean:build', 'jade', 'sass:dev', 'coffee', 'uglify']
+            tasks: ['clean:build', 'sass:dev', 'autoprefixer:build', 'cssmin:dev', 'jshint', 'uglify']
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-jade');
     grunt.loadNpmTasks('grunt-contrib-sass');
-    grunt.loadNpmTasks('grunt-contrib-coffee');
+    grunt.loadNpmTasks('grunt-autoprefixer');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
-    grunt.registerTask('test', ['clean:test', 'coffee', 'jshint', 'uglify']);
-    grunt.registerTask('default', ['clean:build', 'jade', 'sass:build', 'coffee', 'jshint', 'uglify']);
+    grunt.registerTask('test', ['clean:test', 'jshint', 'uglify']);
+    grunt.registerTask('prod', ['clean:build', 'sass:build', 'autoprefixer', 'cssmin:build', 'jshint', 'uglify']);
+    grunt.registerTask('dev', ['clean:build', 'sass:dev', 'autoprefixer', 'cssmin:dev', 'jshint', 'uglify']);
+    grunt.registerTask('default', ['clean', 'sass:build', 'autoprefixer', 'cssmin:build', 'jshint', 'uglify']);
+
+    grunt.registerTask('server', 'Start a custom web server', function() {
+        grunt.log.writeln('Started web server on port 3000');
+        require('./app/index.js').listen(3000);
+    });
 };

@@ -1,0 +1,10 @@
+head
+    title #{title}
+
+    include ./meta.pug
+
+    link(rel="prefetch shortcut icon" href='/public/images/favicon.ico', type='image/x-icon')
+
+    - var stylesheets = ['//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600', '/vendor/font-awesome/css/font-awesome.min.css', '/public/styles/vendor.min.css', '/public/styles/uptimey.min.css'];
+    each val in stylesheets
+        link(rel='stylesheet' href=val, type='text/css')

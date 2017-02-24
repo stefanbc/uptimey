@@ -1,0 +1,55 @@
+//
+// Global
+// --------------------------------------------------
+
+html,
+body {
+    height: 100%;
+}
+
+html {
+    font-size: $font-size-root;
+}
+
+body {
+    background-color: $color-grey1;
+    font-family: $font-family-base;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+    font-weight: 300;
+}
+
+a,
+button {
+    outline: none;
+    text-decoration: none;
+    @include transition();
+
+    &:hover,
+    &:active,
+    &:focus,
+    &:visited,
+    &:focus:active {
+        outline: none;
+    }
+
+    &:hover,
+    &:focus {
+        text-decoration: underline;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-bottom: 0;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}

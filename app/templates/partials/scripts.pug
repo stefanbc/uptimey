@@ -1,0 +1,6 @@
+- var scripts = ['/vendor/jquery/dist/jquery.min.js', '/vendor/lodash/dist/lodash.min.js', '/vendor/humane-js/humane.min.js', '/public/scripts/uptimey.min.js'];
+each val in scripts
+    script(src=val, type='text/javascript')
+
+if livereload
+    script(src='//localhost:35729/livereload.js', type='text/javascript')

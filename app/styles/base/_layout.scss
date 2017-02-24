@@ -1,0 +1,15 @@
+//
+// Layout and UI
+// --------------------------------------------------
+.layout {
+    padding-top: 100px;
+
+    label {
+        font-weight: 300;
+        margin-bottom: 0;
+    }
+
+    .blink {
+        @include animation('blink 2s infinite');
+    }
+}

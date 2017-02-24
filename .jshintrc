@@ -1,0 +1,27 @@
+{
+    "predef": [
+        "document",
+        "window",
+        "-Promise",
+        "require", "module",
+        "$", "jQuery",
+        "Faker", "Modernizr"
+    ],
+    "browser": true,
+    "boss": false,
+    "curly": true,
+    "debug": false,
+    "devel": true,
+    "eqeqeq": true,
+    "evil": true,
+    "forin": false,
+    "immed": false,
+    "noarg": true,
+    "nonew": false,
+    "plusplus": false,
+    "undef": true,
+    "strict": false,
+    "eqnull": true,
+    "esversion": 6,
+    "unused": true
+}

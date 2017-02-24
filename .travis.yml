@@ -4,8 +4,10 @@ node_js:
   - "4"
   - "0.12"
   - "0.10"
-before_install: 
+before_install:
   - npm install -g grunt-cli
   - gem install sass
-install: npm install
+install:
+  - npm install
+  - bower install
 before_script: grunt
