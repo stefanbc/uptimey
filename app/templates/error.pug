@@ -1,5 +1,8 @@
 extends layout
 
 block content
-  h1= message
-  h2= error.status
+    .row
+        .twelve.columns
+            .error-wrapper.text-center
+                h1= message
+                h2= error.status

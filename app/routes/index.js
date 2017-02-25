@@ -8,8 +8,8 @@ const abstract = require('../models/abstract');
 router.get('/', function(req, res, next) {
     abstract.getServerLocation((serverLocation) => {
         return res.render('index', {
-            layoutId       : 'index',
-            initialData    : abstract.gatherData({
+            layoutId    : 'index',
+            initialData : abstract.gatherData({
                 serverLocation : serverLocation
             })
         });

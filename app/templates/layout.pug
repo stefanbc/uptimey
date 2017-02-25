@@ -4,5 +4,6 @@ html(lang='en')
     body
         .container
             include ./partials/header.pug
-            block content
+            section(class='layout' id=layoutId)
+                block content
         include ./partials/footer.pug
