@@ -12,6 +12,10 @@ html {
 }
 
 body {
+    // background-image: url(https://source.unsplash.com/user/nasa/daily);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     background-color: $color-grey1;
     font-family: $font-family-base;
     font-size: $font-size-base;
