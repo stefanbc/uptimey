@@ -76,3 +76,23 @@ block content
                                     span#current-location
                                         a(href=`https://www.google.com/maps/place/${initialData.serverLocation.latitude},${ initialData.serverLocation.longitude}` target='_blank')
                                             | #{initialData.serverLocation.city}, #{initialData.serverLocation.region_name}, #{initialData.serverLocation.country_name}
+    .row
+        .twelve.columns
+            .box.box-lg
+                .box-inner-wrapper
+                    header
+                        span.icon
+                            i.fa.fa-server
+                        label Advanced info about server
+                    section
+                        .box-content
+                            .box-content-value
+                                .advanced-wrapper
+                                    #server-hostname
+                                    #server-type
+                                    #platform-release
+                                    #server-arch
+                                    #server-cpu
+                                    #server-total-mem
+                                    #server-local-ip
+                                    #server-public-ip

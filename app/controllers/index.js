@@ -83,6 +83,10 @@
                 });
             }, 1000 * 60);
 
+            $.getJSON('/api/advanced', function (data) {
+                indexController.parseData(data);
+            });
+
         }
 
     });

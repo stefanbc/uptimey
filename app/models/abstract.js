@@ -6,7 +6,7 @@ const osUptime = require('os-uptime')();
 const moment = require('moment');
 const internalIp = require('internal-ip').v4();
 const publicIp = require('public-ip').v4();
-const iplocation = require('iplocation');
+const ipLocation = require('iplocation');
 
 /**
  *  Abstract module with all methods
@@ -39,8 +39,8 @@ module.exports = {
             serverType      : os.type(),
             platformRelease : os.release(),
             serverArch      : os.arch(),
-            serverCPU       : os.cpus()[0].model,
-            serverTotalMem  : os.totalmem(),
+            serverCpu       : os.cpus()[0].model,
+            serverTotalMem  : Math.floor(os.totalmem() / 1024^2),
             serverLocalIp   : data.serverLocalIp,
             serverPublicIp  : data.serverPublicIp
         };
@@ -98,7 +98,7 @@ module.exports = {
      */
     getServerLocation(callback, next) {
         publicIp.then(ip => {
-            iplocation(ip, (error, data) => {
+            ipLocation(ip, (error, data) => {
                 if (callback) {
                     callback(data);
                 }
