@@ -6,9 +6,31 @@
     &#index {
         .box {
             background-color: $color-white;
-            border: 2px solid $color-grey2;
+            border-radius: 4px;
             padding: 20px;
             color: $color-grey3;
+
+            &.box-sm {
+                margin-bottom: 20px;
+            }
+
+            header {
+                margin-bottom: 20px;
+
+                label {
+                    display: inline-block;
+                    margin-left: 10px;
+                }
+            }
+
+            section {
+                .box-content-value {
+                    div {
+                        display: inline-block;
+                        margin: 0 10px;
+                    }
+                }
+            }
         }
     }
 }

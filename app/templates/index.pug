@@ -2,80 +2,84 @@ extends layout
 
 block content
     .row
-        .one-half.column
-            .box.box-sm
-                .box-inner-wrapper
-                    header
-                        span.icon
-                            i.fa.fa-calendar
-                        label Current date on server
-                    section
-                        .box-content.text-center
-                            .box-content-value
-                                .current-date-wrapper
-                                    span#current-date #{initialData.currentDate}
-        .one-half.column
-            .box.box-sm
-                .box-inner-wrapper
-                    header
-                        span.icon
-                            i.fa.fa-calendar
-                        label Server is active since
-                    section
-                        .box-content.text-center
-                            .box-content-value
-                                .active-date-wrapper
-                                    span#active-date #{initialData.activeDate}
-    .row
-        .one-third.column
-            .box.box-lg
-                .box-inner-wrapper
-                    header
-                        span.icon
-                            i.fa.fa-clock-o
-                        label Current time on server
-                    section
-                        .box-content
-                            .box-content-value
-                                .time-wrapper
-                                    span#current-hour #{initialData.serverTime.currentHour}
-                                    span.blink :
-                                    span#current-minutes #{initialData.serverTime.currentMinutes}
-                                    span#current-period #{initialData.serverTime.currentPeriod}
-        .one-third.column
-            .box.box-lg
-                .box-inner-wrapper
-                    header
-                        span.icon
-                            i.fa.fa-server
-                        label Your current server uptime is
-                    section
-                        .box-content
-                            .box-content-value
-                                .uptime-wrapper
-                                    #uptime-days
-                                        span #{initialData.serverUptime.uptimeDays}
-                                        label days
-                                    #uptime-hours
-                                        span #{initialData.serverUptime.uptimeHours}
-                                        label hours
-                                    #uptime-minutes
-                                        span #{initialData.serverUptime.uptimeMinutes}
-                                        label minutes
-        .one-third.column
-            .box.box-lg
-                .box-inner-wrapper
-                    header
-                        span.icon
-                            i.fa.fa-map-marker
-                        label Current server location
-                    section
-                        .box-content
-                            .box-content-value
-                                .location-wrapper
-                                    span#current-location
-                                        a(href=`https://www.google.com/maps/place/${initialData.serverLocation.latitude},${ initialData.serverLocation.longitude}` target='_blank')
-                                            | #{initialData.serverLocation.city}, #{initialData.serverLocation.region_name}, #{initialData.serverLocation.country_name}
+        .five.columns
+            .row
+                .twelve.columns
+                    .box.box-lg
+                        .box-inner-wrapper
+                            header
+                                span.icon
+                                    i.fa.fa-server
+                                label Your current server uptime is
+                            section
+                                .box-content.text-center
+                                    .box-content-value
+                                        .uptime-wrapper
+                                            #uptime-days
+                                                span #{initialData.serverUptime.uptimeDays}
+                                                label days
+                                            #uptime-hours
+                                                span #{initialData.serverUptime.uptimeHours}
+                                                label hours
+                                            #uptime-minutes
+                                                span #{initialData.serverUptime.uptimeMinutes}
+                                                label minutes
+        .seven.columns
+            .row
+                .one-half.column
+                    .box.box-sm
+                        .box-inner-wrapper
+                            header
+                                span.icon
+                                    i.fa.fa-calendar
+                                label Current date on server
+                            section
+                                .box-content.text-center
+                                    .box-content-value
+                                        .current-date-wrapper
+                                            span#current-date #{initialData.currentDate}
+                .one-half.column
+                    .box.box-sm
+                        .box-inner-wrapper
+                            header
+                                span.icon
+                                    i.fa.fa-calendar
+                                label Server is active since
+                            section
+                                .box-content.text-center
+                                    .box-content-value
+                                        .active-date-wrapper
+                                            span#active-date #{initialData.activeDate}
+            .row
+                .one-half.column
+                    .box.box-sm
+                        .box-inner-wrapper
+                            header
+                                span.icon
+                                    i.fa.fa-clock-o
+                                label Current time on server
+                            section
+                                .box-content.text-center
+                                    .box-content-value
+                                        .time-wrapper
+                                            span#current-hour #{initialData.serverTime.currentHour}
+                                            span.blink :
+                                            span#current-minutes #{initialData.serverTime.currentMinutes}
+                                            span#current-period #{initialData.serverTime.currentPeriod}
+                .one-half.column
+                    .box.box-sm
+                        .box-inner-wrapper
+                            header
+                                span.icon
+                                    i.fa.fa-map-marker
+                                label Current server location
+                            section
+                                .box-content.text-center
+                                    .box-content-value
+                                        .location-wrapper
+                                            span#current-location
+                                                a(href=`https://www.google.com/maps/place/${initialData.serverLocation.latitude},${ initialData.serverLocation.longitude}` target='_blank')
+                                                    | #{initialData.serverLocation.city}, #{initialData.serverLocation.region_name}, #{initialData.serverLocation.country_name}
     .row
         .twelve.columns
             .box.box-lg

@@ -40,31 +40,6 @@
          */
         normalizeString: function(string) {
             return string.split(/(?=[A-Z])/).join('-').toLowerCase();
-        },
-
-        /**
-         * Animate an element
-         * @param  {Object} element
-         */
-        animateElement: function(element) {
-            $(element).addClass('pulse');
-                return $(element).on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-                $(this).removeClass('pulse');
-            });
-        },
-
-        /**
-         * Changes clases on an element
-         * @param  {Object} element
-         * @param  {String} removedClass
-         * @param  {String} addedClass
-         */
-        toggleClass: function(element, removedClass, addedClass) {
-            if (element === 'this') {
-                return $(this).removeClass(removedClass).addClass(addedClass);
-            } else {
-                return $(element).removeClass(removedClass).addClass(addedClass);
-            }
         }
 
     };
@@ -80,11 +55,15 @@
                 $.getJSON('/api', function (data) {
                     indexController.parseData(data);
                     window.humane.log("Data updated!");
+                }).fail(function() {
+                    window.humane.log("Server is not responding!");
                 });
             }, 1000 * 60);
 
             $.getJSON('/api/advanced', function (data) {
                 indexController.parseData(data);
+            }).fail(function() {
+                window.humane.log("Server is not responding!");
             });
 
         }
