@@ -1,10 +1,8 @@
 /**
  * Required packages
  */
-const os = require('os');
 const osUptime = require('os-uptime')();
 const moment = require('moment');
-const internalIp = require('internal-ip').v4();
 const publicIp = require('public-ip').v4();
 const ipLocation = require('iplocation');
 
@@ -25,24 +23,6 @@ module.exports = {
             serverTime     : this.getServerTime(),
             serverUptime   : this.getServerUptime(),
             serverLocation : data.serverLocation
-        };
-    },
-
-    /**
-     * Advanced data method. Gathers all advanced data
-     * and returns is as an object. The data param is optional.
-     * @param  {Object} data
-     */
-    gatherAdvancedData(data = {}) {
-        return {
-            serverHostname  : os.hostname(),
-            serverType      : os.type(),
-            platformRelease : os.release(),
-            serverArch      : os.arch(),
-            serverCpu       : os.cpus()[0].model,
-            serverTotalMem  : Math.floor(os.totalmem() / 1024^2),
-            serverLocalIp   : data.serverLocalIp,
-            serverPublicIp  : data.serverPublicIp
         };
     },
 
@@ -103,25 +83,6 @@ module.exports = {
                     callback(data);
                 }
             });
-        }).catch(next);
-    },
-
-    /**
-     * Retrives the current server internal Ip and external Ip.
-     * Passes the data using a callback function.
-     * @param  {Function} callback
-     * @param  {Function} next
-     */
-    getIpObject(callback, next) {
-        publicIp.then(ip => {
-            let ipObject = {
-                localIp  : internalIp,
-                publicIp : ip
-            };
-
-            if (callback) {
-                callback(ipObject);
-            }
         }).catch(next);
     }
 };

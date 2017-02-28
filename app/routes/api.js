@@ -3,6 +3,7 @@
  */
 const router = require('express').Router();
 const abstract = require('../models/abstract');
+const advanced = require('../models/advanced');
 
 /* GET api page. */
 router.get('/', function(req, res) {
@@ -10,9 +11,9 @@ router.get('/', function(req, res) {
 });
 
 router.get('/advanced', function(req, res, next) {
-    abstract.getIpObject((ipObject) => {
+    advanced.getIpObject((ipObject) => {
         return res.json(
-            abstract.gatherAdvancedData({
+            advanced.gatherAdvancedData({
                 serverLocalIp  : ipObject.localIp,
                 serverPublicIp : ipObject.publicIp
             })
