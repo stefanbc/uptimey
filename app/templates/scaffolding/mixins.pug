@@ -1,0 +1,26 @@
+//- Mixin for generating a row
+mixin row
+    .row
+        if block
+            block
+
+//- Mixin for generating a column
+mixin column(column)
+    div(class=`${column} columns`)
+        if block
+            block
+
+//- Mixin for generating a box
+mixin box(size, icon, label, contentWrapper)
+    div(class=`box box-${size}`)
+        .box-inner-wrapper
+            header
+                span.icon
+                    i(class=`fa fa-${icon}`)
+                label= label
+            section
+                .box-content.text-center
+                    .box-content-value
+                        div(class=`${contentWrapper}-wrapper`)
+                            if block
+                                block
