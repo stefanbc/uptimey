@@ -7,20 +7,20 @@
         .box {
             background-color: $color-white;
             border-radius: 4px;
-            padding: 20px;
+            padding: 20px 15px;
             color: $color-grey3;
 
             &.box-sm {
                 margin-bottom: 20px;
             }
 
-            header {
-                margin-bottom: 20px;
+            footer {
+                padding-top: 10px;
+                margin-top: 15px;
+                border-top: 1px solid #efefef;
+                text-align: center;
+                text-transform: uppercase;
 
-                label {
-                    display: inline-block;
-                    margin-left: 10px;
-                }
             }
 
             section {
@@ -28,9 +28,11 @@
                     font-size: 2rem;
                     line-height: 2rem;
 
-                    div {
-                        display: inline-block;
-                        margin: 0 10px;
+                    .data-wrapper {
+                        > span {
+                            display: inline-block;
+                            margin: 0 10px;
+                        }
                     }
                 }
             }

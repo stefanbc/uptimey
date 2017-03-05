@@ -14,13 +14,29 @@ mixin column(column)
 mixin box(size, icon, label, contentWrapper)
     div(class=`box box-${size}`)
         .box-inner-wrapper
-            header
-                span.icon
-                    i(class=`fa fa-${icon}`)
-                label= label
             section
                 .box-content.text-center
                     .box-content-value
-                        div(class=`${contentWrapper}-wrapper`)
+                        div(class='data-wrapper' id=`${contentWrapper}-wrapper`)
                             if block
                                 block
+            footer
+                label= label
+
+//- Mixin for outputing data from the API
+mixin output(id, value, label)
+    if block
+        span(id=id)
+            block
+    else
+        if label
+            span(id=id)
+                span= value
+                label= label
+        else
+            span(id=id)= value
+
+//- Mixin for generating an icon element
+mixin icon(icon)
+    span.icon
+        i(class=`fa fa-${icon}`)

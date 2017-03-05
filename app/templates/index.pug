@@ -4,44 +4,41 @@ block content
 
     +row
         +column('five')
-            +box('lg', 'server', 'Your current server uptime is', 'uptime')
-                #uptime-days
-                    span #{initialData.serverUptime.uptimeDays}
-                    label days
-                #uptime-hours
-                    span #{initialData.serverUptime.uptimeHours}
-                    label hours
-                #uptime-minutes
-                    span #{initialData.serverUptime.uptimeMinutes}
-                    label minutes
+            +box('lg', 'server', 'server uptime', 'uptime')
+                +output('uptime-days', initialData.serverUptime.uptimeDays, 'days')
+                +output('uptime-hours', initialData.serverUptime.uptimeHours, 'hours')
+                +output('uptime-minutes', initialData.serverUptime.uptimeMinutes, 'minutes')
         +column('seven')
             +row
                 +column('six')
-                    +box('sm', 'calendar', 'Current date on server', 'current-date')
-                        span#current-date #{initialData.currentDate}
+                    +box('sm', 'calendar', 'date on server', 'current-date')
+                        +output('current-date', initialData.currentDate)
                 +column('six')
-                    +box('sm', 'calendar', 'Server is active since', 'active-date')
-                        span#active-date #{initialData.activeDate}
+                    +box('sm', 'calendar', 'server is active since', 'active-date')
+                        +output('active-date', initialData.activeDate)
             +row
                 +column('six')
-                    +box('sm', 'clock-o', 'Current time on server', 'time')
-                        span#current-hour #{initialData.serverTime.currentHour}
+                    +box('sm', 'clock-o', 'time on server', 'time')
+                        +output('current-hours', initialData.serverTime.currentHour)
                         span.blink :
-                        span#current-minutes #{initialData.serverTime.currentMinutes}
-                        span#current-period #{initialData.serverTime.currentPeriod}
+                        +output('current-minutes', initialData.serverTime.currentMinutes)
+                        +output('current-period', initialData.serverTime.currentPeriod)
                 +column('six')
-                    +box('sm', 'map-marker', 'Current server location', 'location')
-                        span#current-location
+                    +box('sm', 'map-marker', 'server location', 'location')
+                        +output('current-location')
                             a(href=`https://www.google.com/maps/place/${initialData.serverLocation.latitude},${ initialData.serverLocation.longitude}` target='_blank')
                                 | #{initialData.serverLocation.city}, #{initialData.serverLocation.region_name}, #{initialData.serverLocation.country_name}
     +row
         +column('twelve')
-            +box('lg', 'server', 'Advanced info about the server', 'advanced')
-                #server-hostname
-                #server-type
-                #platform-release
-                #server-arch
-                #server-cpu
-                #server-total-mem
-                #server-local-ip
-                #server-public-ip
+            +box('lg', 'server', 'advanced info', 'advanced')
+                +row
+                    +column('seven')
+                        +output('server-hostname')
+                        +output('server-type')
+                        +output('platform-release')
+                        +output('server-cpu')
+                        +output('server-arch')
+                        +output('server-total-mem')
+                    +column('five')
+                        +output('server-local-ip')
+                        +output('server-public-ip')
