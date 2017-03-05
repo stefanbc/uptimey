@@ -19,7 +19,7 @@ block content
             +row
                 +column('six')
                     +box('sm', 'clock-o', 'time on server', 'time')
-                        +output('current-hours', initialData.serverTime.currentHour)
+                        +output('current-hour', initialData.serverTime.currentHour)
                         span.blink :
                         +output('current-minutes', initialData.serverTime.currentMinutes)
                         +output('current-period', initialData.serverTime.currentPeriod)
