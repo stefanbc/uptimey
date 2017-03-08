@@ -5,37 +5,90 @@
 .layout {
     &#index {
         .box {
-            background-color: $color-white;
-            border-radius: 4px;
+            height: 100%;
+            border: 1px solid rgba($color-white, .2);
             padding: 20px 15px;
-            color: $color-grey3;
+            color: $color-grey1;
 
             &.box-sm {
                 margin-bottom: 20px;
             }
 
-            footer {
-                padding-top: 10px;
-                margin-top: 15px;
-                border-top: 1px solid #efefef;
-                text-align: center;
-                text-transform: uppercase;
+            .box-inner-wrapper {
+                height: 100%;
+                width: 100%;
+                align-items: center;
+                justify-content: center;
+                flex-wrap: wrap;
 
-            }
+                section {
+                    width: 100%;
+                    align-self: flex-end;
 
-            section {
-                .box-content-value {
-                    font-size: 2rem;
-                    line-height: 2rem;
+                    .box-content-value {
+                        font-size: 2rem;
+                        line-height: 2rem;
 
-                    .data-wrapper {
-                        > span {
-                            display: inline-block;
-                            margin: 0 10px;
+                        .data-wrapper {
+
+                            &#time-wrapper {
+                                > span {
+                                    margin: 0 2px;
+                                    text-transform: uppercase;
+                                }
+                            }
+
+                            &#uptime-wrapper {
+                                > span {
+                                    font-size: 4.5rem;
+                                    line-height: 4.5rem;
+                                    width: 70px;
+
+                                    label {
+                                        display: block;
+                                        text-transform: uppercase;
+                                        font-size: initial;
+                                        line-height: initial;
+                                    }
+                                }
+                            }
+
+                            &#advanced-wrapper {
+                                font-size: initial;
+                                line-height: initial;
+                            }
+
+                            > span {
+                                display: inline-block;
+                                margin: 0 10px;
+                            }
                         }
                     }
                 }
+
+                footer {
+                    width: 100%;
+                    align-self: flex-end;
+                    padding-top: 10px;
+                    margin-top: 15px;
+                    border-top: 1px solid rgba($color-white, .2);
+                    color: rgba($color-white, .6);
+
+                    label {
+                        letter-spacing: 2px;
+                    }
+                }
             }
+        }
+
+        .section-header {
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba($color-white, .2);
+            color: rgba($color-white, .6);
+            font-size: $font-size-base;
+            line-height: $line-height-base;
+            letter-spacing: 2px;
         }
     }
 }

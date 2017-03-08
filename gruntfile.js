@@ -33,7 +33,7 @@ module.exports = function(grunt) {
         autoprefixer: {
             build: {
                 options: {
-                    browsers : ['last 2 versions']
+                    browsers : ['last 4 versions']
                 },
                 files: {
                     './public/styles/uptimey.min.css' : './public/styles/uptimey.min.css'
@@ -47,9 +47,7 @@ module.exports = function(grunt) {
                     './public/styles/uptimey.min.css': './public/styles/uptimey.min.css',
                     './public/styles/vendor.min.css': [
                         './bower_components/normalize-css/normalize.css',
-                        './bower_components/animate.css/animate.css',
-                        './bower_components/skeleton/css/skeleton.css',
-                        './bower_components/humane-js/themes/libnotify.css'
+                        './bower_components/spectre.css/dist/spectre.css'
                     ]
                 }
             },
@@ -61,9 +59,7 @@ module.exports = function(grunt) {
                     './public/styles/uptimey.min.css': './public/styles/uptimey.min.css',
                     './public/styles/vendor.min.css': [
                         './bower_components/normalize-css/normalize.css',
-                        './bower_components/animate.css/animate.css',
-                        './bower_components/skeleton/css/skeleton.css',
-                        './bower_components/humane-js/themes/libnotify.css'
+                        './bower_components/spectre.css/dist/spectre.css'
                     ]
                 }
             }

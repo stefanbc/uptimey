@@ -12,11 +12,7 @@ html {
 }
 
 body {
-    // background-image: url(https://source.unsplash.com/user/nasa/daily);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    background-color: #297FCB;
+    background-color: $color-black;
     font-family: $font-family-base;
     font-size: $font-size-base;
     line-height: $line-height-base;
@@ -43,6 +39,14 @@ button {
     }
 }
 
+a {
+    color: $color-white;
+
+    &:hover {
+        color: $color-white;
+    }
+}
+
 h1,
 h2,
 h3,
@@ -56,4 +60,9 @@ ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+
+    li {
+        margin-top: 0;
+        margin-bottom: .5rem;
+    }
 }

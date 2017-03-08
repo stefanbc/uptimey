@@ -3,42 +3,44 @@ extends layout
 block content
 
     +row
-        +column('five')
-            +box('lg', 'server', 'server uptime', 'uptime')
+        +column(5, 'mt-10 mb-10')
+            +box('lg', 'server uptime', 'uptime')
                 +output('uptime-days', initialData.serverUptime.uptimeDays, 'days')
                 +output('uptime-hours', initialData.serverUptime.uptimeHours, 'hours')
                 +output('uptime-minutes', initialData.serverUptime.uptimeMinutes, 'minutes')
-        +column('seven')
+        +column(7)
             +row
-                +column('six')
-                    +box('sm', 'calendar', 'date on server', 'current-date')
+                +column(6)
+                    +box('sm', 'date on server', 'current-date')
                         +output('current-date', initialData.currentDate)
-                +column('six')
-                    +box('sm', 'calendar', 'server is active since', 'active-date')
+                +column(6)
+                    +box('sm', 'server is active since', 'active-date')
                         +output('active-date', initialData.activeDate)
-            +row
-                +column('six')
-                    +box('sm', 'clock-o', 'time on server', 'time')
+                +column(6)
+                    +box('sm', 'time on server', 'time')
                         +output('current-hour', initialData.serverTime.currentHour)
                         span.blink :
                         +output('current-minutes', initialData.serverTime.currentMinutes)
                         +output('current-period', initialData.serverTime.currentPeriod)
-                +column('six')
-                    +box('sm', 'map-marker', 'server location', 'location')
+                +column(6)
+                    +box('sm', 'server location', 'location')
                         +output('current-location')
                             a(href=`https://www.google.com/maps/place/${initialData.serverLocation.latitude},${ initialData.serverLocation.longitude}` target='_blank')
-                                | #{initialData.serverLocation.city}, #{initialData.serverLocation.region_name}, #{initialData.serverLocation.country_name}
-    +row
-        +column('twelve')
-            +box('lg', 'server', 'advanced info', 'advanced')
+                                | #{initialData.serverLocation.city}, #{initialData.serverLocation.country_name}
+        +column(12, 'pt-5')
+            +box('lg', 'advanced info', 'advanced')
                 +row
-                    +column('seven')
-                        +output('server-hostname')
-                        +output('server-type')
-                        +output('platform-release')
-                        +output('server-cpu')
-                        +output('server-arch')
-                        +output('server-total-mem')
-                    +column('five')
-                        +output('server-local-ip')
-                        +output('server-public-ip')
+                    +column(8)
+                        .section-header.text-uppercase Server info
+                        +row
+                            +column(5, 'text-right')
+                                +list(false, 'Hostname', 'Server type', 'Release', 'CPU', 'Architecture', 'Total memory')
+                            +column(7, 'text-left')
+                                +list(true, 'server-hostname', 'server-type', 'platform-release', 'server-cpu', 'server-arch', 'server-total-mem')
+                    +column(4)
+                        .section-header.text-uppercase Networking info
+                        +row
+                            +column(6, 'text-right')
+                                +list(false, 'Local Ip', 'External Ip')
+                            +column(6, 'text-left')
+                                +list(true, 'server-local-ip', 'server-public-ip')

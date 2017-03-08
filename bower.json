@@ -21,12 +21,10 @@
     "tests"
   ],
   "dependencies": {
-    "skeleton": "^2.0.4",
     "font-awesome": "^4.7.0",
-    "animate.css": "^3.5.2",
     "normalize-css": "^5.0.0",
     "jquery": "^3.1.1",
     "lodash": "^4.17.4",
-    "humane-js": "humane#^3.2.2"
+    "spectre.css": "^0.2.7"
   }
 }

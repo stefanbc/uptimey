@@ -1,40 +1,54 @@
 //- Mixin for generating a row
 mixin row
-    .row
+    .columns
         if block
             block
 
 //- Mixin for generating a column
-mixin column(column)
-    div(class=`${column} columns`)
+mixin column(column, extraClasses = '')
+    div(class=`column col-${column} col-md-12 ${extraClasses}`)
         if block
             block
 
 //- Mixin for generating a box
-mixin box(size, icon, label, contentWrapper)
-    div(class=`box box-${size}`)
-        .box-inner-wrapper
+mixin box(size, label, contentWrapper, extraClasses = '')
+    div(class=`box rounded box-${size} ${extraClasses}`)
+        .box-inner-wrapper.flex.text-center
             section
-                .box-content.text-center
+                .box-content
                     .box-content-value
                         div(class='data-wrapper' id=`${contentWrapper}-wrapper`)
                             if block
                                 block
-            footer
+            footer.text-uppercase
                 label= label
 
 //- Mixin for outputing data from the API
-mixin output(id, value, label)
+mixin output(id, value, label, advanced = false)
     if block
         span(id=id)
             block
     else
         if label
             span(id=id)
-                span= value
-                label= label
+                if advanced
+                    label
+                        | #{label} :
+                    span= value
+                else
+                    span= value
+                    label= label
         else
             span(id=id)= value
+
+mixin list(output, ...listItems)
+    ul
+        each item in listItems
+            if output
+                li
+                    +output(item)
+            else
+                li= item
 
 //- Mixin for generating an icon element
 mixin icon(icon)

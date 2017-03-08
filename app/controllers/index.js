@@ -54,16 +54,13 @@
             setInterval(function () {
                 $.getJSON('/api', function (data) {
                     indexController.parseData(data);
-                    window.humane.log("Data updated!");
                 }).fail(function() {
-                    window.humane.log("Server is not responding!");
                 });
             }, 1000 * 60);
 
             $.getJSON('/api/advanced', function (data) {
                 indexController.parseData(data);
             }).fail(function() {
-                window.humane.log("Server is not responding!");
             });
 
         }
