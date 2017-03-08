@@ -33,14 +33,14 @@ block content
                     +column(8)
                         .section-header.text-uppercase Server info
                         +row
-                            +column(5, 'text-right')
-                                +list(false, 'Hostname', 'Server type', 'Release', 'CPU', 'Architecture', 'Total memory')
+                            +column(5, 'text-right text-uppercase')
+                                +list(false, 'server type', 'release', 'cpu', 'architecture', 'total memory')
                             +column(7, 'text-left')
-                                +list(true, 'server-hostname', 'server-type', 'platform-release', 'server-cpu', 'server-arch', 'server-total-mem')
+                                +list(true, 'server-type', 'platform-release', 'server-cpu', 'server-arch', 'server-total-mem')
                     +column(4)
-                        .section-header.text-uppercase Networking info
+                        .section-header.text-uppercase Network
                         +row
-                            +column(6, 'text-right')
-                                +list(false, 'Local Ip', 'External Ip')
+                            +column(6, 'text-right text-uppercase')
+                                +list(false, 'hostname', 'local ip', 'external ip')
                             +column(6, 'text-left')
-                                +list(true, 'server-local-ip', 'server-public-ip')
+                                +list(true, 'server-hostname', 'server-local-ip', 'server-public-ip')

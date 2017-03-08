@@ -45,7 +45,7 @@ mixin list(output, ...listItems)
     ul
         each item in listItems
             if output
-                li
+                li.text-ellipsis
                     +output(item)
             else
                 li= item
