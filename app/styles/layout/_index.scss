@@ -51,8 +51,16 @@
                         }
 
                         &#advanced-wrapper {
-                            font-size: $font-md;
-                            line-height: $line-height-md;
+                            font-size: $font-sm;
+                            line-height: $line-height-sm;
+
+                            ul {
+                                height: 100%;
+                            }
+
+                            .list-labels {
+                                color: rgba($color-white, .6);
+                            }
                         }
 
                         > span {

@@ -20,8 +20,8 @@ body {
     color: $color-grey1;
 }
 
-a,
-button {
+a {
+    color: $color-white;
     outline: none;
     text-decoration: none;
     @include transition();
@@ -31,20 +31,13 @@ button {
     &:focus,
     &:visited,
     &:focus:active {
+        color: $color-white;
         outline: none;
     }
 
     &:hover,
     &:focus {
         text-decoration: underline;
-    }
-}
-
-a {
-    color: $color-white;
-
-    &:hover {
-        color: $color-white;
     }
 }
 

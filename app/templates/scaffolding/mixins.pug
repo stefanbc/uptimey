@@ -1,16 +1,16 @@
-//- Mixin for generating a row
+//- Generates a row
 mixin row
     .columns
         if block
             block
 
-//- Mixin for generating a column
+//- Generates a column
 mixin column(column, extraClasses = '')
     div(class=`column col-${column} col-md-12 ${extraClasses}`)
         if block
             block
 
-//- Mixin for generating a box
+//- Generates a box
 mixin box(size, label, contentWrapper, extraClasses = '')
     div(class=`box rounded box-${size} ${extraClasses}`)
         .box-inner-wrapper.flex.text-center
@@ -20,10 +20,11 @@ mixin box(size, label, contentWrapper, extraClasses = '')
                         div(class='data-wrapper' id=`${contentWrapper}-wrapper`)
                             if block
                                 block
-            footer.text-uppercase
-                label= label
+            if label
+                footer.text-uppercase
+                    label= label
 
-//- Mixin for outputing data from the API
+//- Outputs data from the API
 mixin output(id, value, label, advanced = false)
     if block
         span(id=id)
@@ -41,6 +42,7 @@ mixin output(id, value, label, advanced = false)
         else
             span(id=id)= value
 
+//- Generates an unordered list
 mixin list(id = '', extraClasses = '', output, ...listItems)
     ul(id=id class=extraClasses)
         each item in listItems

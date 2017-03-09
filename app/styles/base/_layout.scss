@@ -10,9 +10,23 @@
         .blink {
             @include animation('blink 2s infinite');
         }
+
+        .loading {
+            &:after {
+                border-bottom-color: $color-white;
+                border-left-color: $color-white;
+            }
+        }
     }
 
     .copyright {
+        max-width: 960px;
+        margin: 0 auto;
+        font-size: $font-sm;
 
+        a {
+            cursor: pointer;
+            text-decoration: underline;
+        }
     }
 }
