@@ -60,6 +60,7 @@
 
             $.getJSON('/api/advanced', function (data) {
                 indexController.parseData(data);
+                $('#server-info, #network-info').removeClass('loading');
             }).fail(function() {
             });
 

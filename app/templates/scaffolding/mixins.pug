@@ -41,8 +41,8 @@ mixin output(id, value, label, advanced = false)
         else
             span(id=id)= value
 
-mixin list(output, ...listItems)
-    ul
+mixin list(id = '', extraClasses = '', output, ...listItems)
+    ul(id=id class=extraClasses)
         each item in listItems
             if output
                 li.text-ellipsis

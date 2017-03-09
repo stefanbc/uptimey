@@ -34,13 +34,13 @@ block content
                         .section-header.text-uppercase Server info
                         +row
                             +column(6, 'text-right text-uppercase')
-                                +list(false, 'platform', 'release', 'processor', 'architecture', 'total memory')
+                                +list('' , '', false, 'platform', 'release', 'processor', 'architecture', 'total memory')
                             +column(6, 'text-left')
-                                +list(true, 'server-type', 'platform-release', 'server-cpu', 'server-arch', 'server-total-mem')
+                                +list('server-info', 'loading', true, 'server-type', 'platform-release', 'server-cpu', 'server-arch', 'server-total-mem')
                     +column(6)
                         .section-header.text-uppercase Network
                         +row
                             +column(6, 'text-right text-uppercase')
-                                +list(false, 'hostname', 'local ip', 'external ip', 'network mask', 'mac')
+                                +list('', '', false, 'hostname', 'local ip', 'external ip', 'network mask', 'mac')
                             +column(6, 'text-left')
-                                +list(true, 'server-hostname', 'server-local-ip', 'server-public-ip', 'server-mask', 'server-mac')
+                                +list('network-info', 'loading', true, 'server-hostname', 'server-local-ip', 'server-public-ip', 'server-mask', 'server-mac')
