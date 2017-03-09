@@ -6,6 +6,16 @@ $font-family-base: 'Source Sans Pro', sans-serif;
 $font-size-root: 12px;
 $font-size-base: 12px;
 
+$font-sm: 14px;
+$font-md: 16px;
+$font-lg: 24px;
+$font-xl: 54px;
+
 $font-weight: 300;
 
-$line-height-base: 12px;
+$line-height-base: $font-size-base;
+
+$line-height-sm: $font-sm;
+$line-height-md: $font-md;
+$line-height-lg: $font-lg;
+$line-height-xl: $font-xl;

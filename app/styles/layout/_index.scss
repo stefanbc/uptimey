@@ -25,43 +25,40 @@
                     width: 100%;
                     align-self: flex-end;
 
-                    .box-content-value {
-                        font-size: 2rem;
-                        line-height: 2rem;
+                    .data-wrapper {
+                        font-size: $font-lg;
+                        line-height: $line-height-lg;
 
-                        .data-wrapper {
-
-                            &#time-wrapper {
-                                > span {
-                                    margin: 0 2px;
-                                    text-transform: uppercase;
-                                }
-                            }
-
-                            &#uptime-wrapper {
-                                > span {
-                                    font-size: 4.5rem;
-                                    line-height: 4.5rem;
-                                    width: 70px;
-
-                                    label {
-                                        display: block;
-                                        text-transform: uppercase;
-                                        font-size: initial;
-                                        line-height: initial;
-                                    }
-                                }
-                            }
-
-                            &#advanced-wrapper {
-                                font-size: initial;
-                                line-height: initial;
-                            }
-
+                        &#time-wrapper {
                             > span {
-                                display: inline-block;
-                                margin: 0 10px;
+                                margin: 0 2px;
+                                text-transform: uppercase;
                             }
+                        }
+
+                        &#uptime-wrapper {
+                            > span {
+                                font-size: $font-xl;
+                                line-height: $line-height-xl;
+                                width: 70px;
+
+                                label {
+                                    display: block;
+                                    text-transform: uppercase;
+                                    font-size: $font-md;
+                                    line-height: $line-height-md;
+                                }
+                            }
+                        }
+
+                        &#advanced-wrapper {
+                            font-size: $font-md;
+                            line-height: $line-height-md;
+                        }
+
+                        > span {
+                            display: inline-block;
+                            margin: 0 10px;
                         }
                     }
                 }

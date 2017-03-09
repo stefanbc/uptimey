@@ -27,20 +27,20 @@ block content
                         +output('current-location')
                             a(href=`https://www.google.com/maps/place/${initialData.serverLocation.latitude},${ initialData.serverLocation.longitude}` target='_blank')
                                 | #{initialData.serverLocation.city}, #{initialData.serverLocation.country_name}
-        +column(12, 'pt-5')
+        +column(12, 'pt-0')
             +box('lg', 'advanced info', 'advanced')
                 +row
-                    +column(8)
+                    +column(6)
                         .section-header.text-uppercase Server info
                         +row
-                            +column(5, 'text-right text-uppercase')
-                                +list(false, 'server type', 'release', 'cpu', 'architecture', 'total memory')
-                            +column(7, 'text-left')
+                            +column(6, 'text-right text-uppercase')
+                                +list(false, 'platform', 'release', 'processor', 'architecture', 'total memory')
+                            +column(6, 'text-left')
                                 +list(true, 'server-type', 'platform-release', 'server-cpu', 'server-arch', 'server-total-mem')
-                    +column(4)
+                    +column(6)
                         .section-header.text-uppercase Network
                         +row
                             +column(6, 'text-right text-uppercase')
-                                +list(false, 'hostname', 'local ip', 'external ip')
+                                +list(false, 'hostname', 'local ip', 'external ip', 'network mask', 'mac')
                             +column(6, 'text-left')
-                                +list(true, 'server-hostname', 'server-local-ip', 'server-public-ip')
+                                +list(true, 'server-hostname', 'server-local-ip', 'server-public-ip', 'server-mask', 'server-mac')
