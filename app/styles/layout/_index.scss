@@ -9,10 +9,6 @@
             border: 1px solid rgba($color-white, .2);
             padding: 20px 15px;
 
-            &.box-sm {
-                margin-bottom: 20px;
-            }
-
             .box-inner-wrapper {
                 height: 100%;
                 width: 100%;
@@ -44,8 +40,8 @@
                                 label {
                                     display: block;
                                     text-transform: uppercase;
-                                    font-size: $font-md;
-                                    line-height: $line-height-md;
+                                    font-size: $font-sm;
+                                    line-height: $line-height-sm;
                                 }
                             }
                         }
