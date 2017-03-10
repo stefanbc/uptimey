@@ -2,13 +2,13 @@
  * Required packages
  */
 const router = require('express').Router();
-const abstract = require('../models/abstract');
+const basic = require('../models/basic');
 const advanced = require('../models/advanced');
 
 /* GET api endpoint. */
 router.get('/', function(req, res, next) {
     if (req.xhr) {
-        res.json(abstract.gatherData());
+        res.json(basic.gatherData());
     } else {
         next(new Error("Permission denied"));
     }

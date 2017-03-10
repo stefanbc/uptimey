@@ -3,9 +3,7 @@
         "document",
         "window",
         "-Promise",
-        "require", "module",
-        "$", "jQuery",
-        "Faker", "Modernizr"
+        "require", "module"
     ],
     "browser": true,
     "boss": false,

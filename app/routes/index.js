@@ -2,14 +2,14 @@
  * Required packages
  */
 const router = require('express').Router();
-const abstract = require('../models/abstract');
+const basic = require('../models/basic');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    abstract.getServerLocation((serverLocation) => {
+    basic.getServerLocation((serverLocation) => {
         return res.render('index', {
             layoutId    : 'index',
-            initialData : abstract.gatherData({
+            initialData : basic.gatherData({
                 serverLocation : serverLocation
             })
         });

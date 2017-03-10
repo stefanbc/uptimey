@@ -47,7 +47,8 @@ module.exports = function(grunt) {
                     './public/styles/uptimey.min.css': './public/styles/uptimey.min.css',
                     './public/styles/vendor.min.css': [
                         './bower_components/normalize-css/normalize.css',
-                        './bower_components/spectre.css/dist/spectre.css'
+                        './bower_components/spectre.css/dist/spectre.css',
+                        './bower_components/animate.css/animate.css'
                     ]
                 }
             },
@@ -59,27 +60,31 @@ module.exports = function(grunt) {
                     './public/styles/uptimey.min.css': './public/styles/uptimey.min.css',
                     './public/styles/vendor.min.css': [
                         './bower_components/normalize-css/normalize.css',
-                        './bower_components/spectre.css/dist/spectre.css'
-                    ]
-                }
-            }
-        },
-
-        uglify: {
-            build: {
-                files: {
-                    './public/scripts/uptimey.min.js': [
-                        './app/controllers/index.js'
+                        './bower_components/spectre.css/dist/spectre.css',
+                        './bower_components/animate.css/animate.css'
                     ]
                 }
             }
         },
 
         jshint: {
-            files: ['Gruntfile.js', './public/scripts/uptimey.min.js'],
+            files: [
+                'Gruntfile.js',
+                './app/helpers/**/*.js',
+                './app/controllers/**/*.js'
+            ],
             options: {
-                globals: {
-                    jQuery: true
+                jshintrc: true
+            }
+        },
+
+        browserify: {
+            build: {
+                files: {
+                    './public/scripts/uptimey.min.js': [
+                        './app/helpers/**/*.js',
+                        './app/controllers/**/*.js'
+                    ]
                 }
             }
         },
@@ -91,10 +96,11 @@ module.exports = function(grunt) {
             },
             files: [
                 './app/controllers/**/*.js',
+                './app/helpers/**/*.js',
                 './app/styles/**/*.scss',
                 './app/templates/**/*.pug',
             ],
-            tasks: ['clean:build', 'sass:dev', 'autoprefixer:build', 'cssmin:dev', 'jshint', 'uglify']
+            tasks: ['clean:build', 'sass:dev', 'autoprefixer:build', 'cssmin:dev', 'browserify', 'jshint']
         }
     });
 
@@ -102,13 +108,14 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-browserify');
+    // grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
-    grunt.registerTask('test', ['clean', 'jshint', 'uglify']);
-    grunt.registerTask('dev', ['clean', 'sass:dev', 'autoprefixer', 'cssmin:dev', 'jshint', 'uglify']);
-    grunt.registerTask('default', ['clean', 'sass:build', 'autoprefixer', 'cssmin:build', 'jshint', 'uglify']);
+    grunt.registerTask('test', ['clean', 'jshint']);
+    grunt.registerTask('dev', ['clean', 'sass:dev', 'autoprefixer', 'cssmin:dev', 'jshint', 'browserify']);
+    grunt.registerTask('default', ['clean', 'sass:build', 'autoprefixer', 'cssmin:build', 'jshint', 'browserify']);
 
     grunt.registerTask('server', 'Start a custom web server', function() {
         grunt.log.writeln('Started web server on port 3000');
