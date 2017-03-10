@@ -1,9 +1,10 @@
-module.exports({
+module.exports = {
+
     /**
      * Normalizes a string
      * @param  {String} string
      */
-    normalizeString: function(string) {
+    normalizeString(string) {
         return string.split(/(?=[A-Z])/).join('-').toLowerCase();
     }
-});
+};
