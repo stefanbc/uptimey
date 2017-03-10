@@ -8,6 +8,7 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const RateLimit = require('express-rate-limit');
+const helmet = require('helmet');
 const app = express();
 
 // ROUTES
@@ -38,6 +39,9 @@ let limiter = new RateLimit({
 
 //  apply to all requests
 app.use(limiter);
+app.use(helmet({
+    noCache: false
+}));
 
 // STATIC FILES
 // =============================================================================

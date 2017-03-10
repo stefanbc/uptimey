@@ -30,6 +30,7 @@
     "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-uglify": "^2.1.0",
     "grunt-contrib-watch": "^1.0.0",
+    "helmet": "^3.5.0",
     "humem": "^0.1.1",
     "internal-ip": "^1.2.0",
     "iplocation": "^2.0.1",
