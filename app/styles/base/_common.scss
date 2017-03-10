@@ -20,6 +20,10 @@ body {
     color: $color-grey1;
 }
 
+::selection {
+    background: $color-grey1;
+}
+
 a {
     color: $color-white;
     outline: none;

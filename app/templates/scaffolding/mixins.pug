@@ -5,8 +5,8 @@ mixin row
             block
 
 //- Generates a column
-mixin column(column, extraClasses = '')
-    div(class=`column col-${column} col-md-12 ${extraClasses}`)
+mixin column(column, small, extraClasses = '')
+    div(class=`column col-${column} col-md-${small} ${extraClasses}`)
         if block
             block
 

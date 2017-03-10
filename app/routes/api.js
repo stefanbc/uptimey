@@ -5,7 +5,7 @@ const router = require('express').Router();
 const abstract = require('../models/abstract');
 const advanced = require('../models/advanced');
 
-/* GET api page. */
+/* GET api endpoint. */
 router.get('/', function(req, res, next) {
     if (req.xhr) {
         res.json(abstract.gatherData());
@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
     }
 });
 
-/* GET advanced api page. */
+/* GET advanced api endpoint. */
 router.get('/advanced', function(req, res, next) {
     if (req.xhr) {
         advanced.getIpObject((ipObject) => {

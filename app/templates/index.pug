@@ -3,44 +3,44 @@ extends layout
 block content
 
     +row
-        +column(5, 'mt-10 mb-10')
+        +column(5, 12, 'mt-10 mb-10')
             +box('lg', 'server uptime', 'uptime')
                 +output('uptime-days', initialData.serverUptime.uptimeDays, 'days')
                 +output('uptime-hours', initialData.serverUptime.uptimeHours, 'hours')
                 +output('uptime-minutes', initialData.serverUptime.uptimeMinutes, 'minutes')
-        +column(7)
+        +column(7, 12)
             +row
-                +column(6)
+                +column(6, 12)
                     +box('sm', 'date on server', 'current-date')
                         +output('current-date', initialData.currentDate)
-                +column(6)
+                +column(6, 12)
                     +box('sm', 'server is active since', 'active-date')
                         +output('active-date', initialData.activeDate)
-                +column(6)
+                +column(6, 12)
                     +box('sm', 'time on server', 'time')
                         +output('current-hour', initialData.serverTime.currentHour)
                         span.blink :
                         +output('current-minutes', initialData.serverTime.currentMinutes)
                         +output('current-period', initialData.serverTime.currentPeriod)
-                +column(6)
+                +column(6, 12)
                     +box('sm', 'server location', 'location')
                         +output('current-location')
                             a(href=`https://www.google.com/maps/place/${initialData.serverLocation.latitude},${ initialData.serverLocation.longitude}` target='_blank')
                                 | #{initialData.serverLocation.city}, #{initialData.serverLocation.country_name}
-        +column(12, 'pt-0')
+        +column(12, 12, 'pt-0')
             +box('lg', 'advanced info', 'advanced')
                 +row
-                    +column(6)
+                    +column(6, 12)
                         .section-header.text-uppercase Server info
                         +row
-                            +column(6, 'text-right text-uppercase')
+                            +column(6, 6, 'text-right text-uppercase')
                                 +list('' , 'list-labels', false, 'platform', 'release', 'processor', 'architecture', 'total memory')
-                            +column(6, 'text-left')
+                            +column(6, 6, 'text-left')
                                 +list('server-info', 'loading', true, 'server-type', 'platform-release', 'server-cpu', 'server-arch', 'server-total-mem')
-                    +column(6)
+                    +column(6, 12)
                         .section-header.text-uppercase Network
                         +row
-                            +column(6, 'text-right text-uppercase')
+                            +column(6, 6, 'text-right text-uppercase')
                                 +list('', 'list-labels', false, 'hostname', 'local ip', 'external ip', 'network mask', 'mac')
-                            +column(6, 'text-left')
+                            +column(6, 6, 'text-left')
                                 +list('network-info', 'loading', true, 'server-hostname', 'server-local-ip', 'server-public-ip', 'server-mask', 'server-mac')
