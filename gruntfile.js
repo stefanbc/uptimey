@@ -71,7 +71,8 @@ module.exports = function(grunt) {
             files: [
                 'Gruntfile.js',
                 './app/helpers/**/*.js',
-                './app/controllers/**/*.js'
+                './app/controllers/**/*.js',
+                './app/app.js',
             ],
             options: {
                 jshintrc: true
@@ -83,7 +84,8 @@ module.exports = function(grunt) {
                 files: {
                     './public/scripts/uptimey.min.js': [
                         './app/helpers/**/*.js',
-                        './app/controllers/**/*.js'
+                        './app/controllers/**/*.js',
+                        './app/app.js',
                     ]
                 }
             }
@@ -107,6 +109,7 @@ module.exports = function(grunt) {
             files: [
                 './app/controllers/**/*.js',
                 './app/helpers/**/*.js',
+                './app/app.js',
                 './app/styles/**/*.scss',
                 './app/templates/**/*.pug',
             ],

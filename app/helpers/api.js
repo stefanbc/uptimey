@@ -2,6 +2,9 @@ const $ = require('jquery');
 const _ = require('lodash');
 const common = require('./common');
 
+/**
+ * Helper for API interaction
+ */
 module.exports = {
 
     /**

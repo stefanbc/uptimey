@@ -1,0 +1,44 @@
+//
+// Toasts
+// --------------------------------------------------
+.container {
+    .toasts-wormhole {
+        position: relative;
+
+        .toast {
+            position: absolute;
+            width: auto;
+            background: none;
+
+            &.toast-tl {
+                top: 10px;
+                left: 10px;
+            }
+
+            &.toast-tc {
+                @include absolute-horizontal-center;
+                top: 10px;
+            }
+
+            &.toast-tr {
+                top: 10px;
+                right: 10px;
+            }
+
+            &.toast-bl {
+                bottom: 10px;
+                left: 10px;
+            }
+
+            &.toast-bc {
+                @include absolute-horizontal-center;
+                bottom: 10px;
+            }
+
+            &.toast-br {
+                top: 10px;
+                right: 10px;
+            }
+        }
+    }
+}

@@ -1,3 +1,6 @@
+/**
+ * Common helper with different methods
+ */
 module.exports = {
 
     /**
