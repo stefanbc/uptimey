@@ -91,16 +91,6 @@ module.exports = function(grunt) {
             }
         },
 
-        uglify: {
-            build: {
-                files: {
-                    './public/scripts/uptimey.min.js': [
-                        './public/scripts/uptimey.min.js'
-                    ]
-                }
-            }
-        },
-
         watch: {
             options: {
                 atBegin: true,
@@ -123,7 +113,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-browserify');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.registerTask('test', ['clean', 'jshint']);
