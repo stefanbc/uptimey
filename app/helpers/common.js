@@ -2,7 +2,6 @@
  * Common helper with different methods
  */
 module.exports = {
-
     /**
      * Normalizes a string
      * @param  {String} string
