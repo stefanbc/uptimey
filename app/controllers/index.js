@@ -2,6 +2,7 @@ const $ = require('jquery');
 const _ = require('lodash');
 const api = require('../helpers/api');
 const toasts = require('../helpers/toasts');
+const common = require('../helpers/common');
 
 /**
  * Controller for the index route
@@ -14,6 +15,7 @@ module.exports = {
         _.bindAll(this);
 
         this.gatherData();
+        // this.handleData();
     },
 
     /**
@@ -46,6 +48,17 @@ module.exports = {
             });
 
         }
+
+    },
+
+    handleData() {
+
+        $('.list-value').on('click', function() {
+            let element = $(this);
+            common.copyText(element, function() {
+                toasts.init('success', 'Text copied to clipboard');
+            });
+        });
 
     }
 };

@@ -8,5 +8,25 @@ module.exports = {
      */
     normalizeString(string) {
         return string.split(/(?=[A-Z])/).join('-').toLowerCase();
+    },
+
+    /**
+     * Copys element text to clipboard
+     * @param {Object} element
+     */
+    copyText(element, callback) {
+        let text = element,
+            selection = window.getSelection(),
+            range = document.createRange();
+
+        range.selectNodeContents(text);
+        selection.removeAllRanges();
+        selection.addRange(range);
+
+        document.execCommand('copy');
+
+        if (callback) {
+            callback();
+        }
     }
 };

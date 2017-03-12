@@ -58,6 +58,23 @@
                             .list-labels {
                                 color: rgba($color-white, .6);
                             }
+
+                            .list-value {
+                                cursor: pointer;
+
+                                .action {
+                                    @include transition;
+                                    opacity: 0;
+                                    visibility: hidden;
+                                }
+
+                                &:hover {
+                                    .action {
+                                        opacity: 1;
+                                        visibility: visible;
+                                    }
+                                }
+                            }
                         }
 
                         > span {

@@ -43,12 +43,15 @@ mixin output(id, value, label, advanced = false)
             span(id=id)= value
 
 //- Generates an unordered list
-mixin list(id = '', extraClasses = '', output, ...listItems)
+mixin list(id = '', extraClasses = '', output, enableCopy, ...listItems)
     ul(id=id class=extraClasses)
         each item in listItems
             if output
-                li.text-ellipsis
+                li.list-value
                     +output(item)
+                    if enableCopy
+                        span.ml-10.action.copy-icon
+                            +icon('clipboard')
             else
                 li= item
 
