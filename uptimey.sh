@@ -24,7 +24,7 @@ else
 
     case "init"
         echo ""
-        if test $argv[2] = "latest"
+        if test $argv[2] -eq "latest"
             echo "Getting the latest uptimey version"
             and git pull
         end
@@ -34,7 +34,6 @@ else
         and rm -rf node_modules
         and rm -rf bower_components
         and rm -rf .sass-cache
-        and rm npm-debug.log
         and npm cache clean
 
         and npm install --production
