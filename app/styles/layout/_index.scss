@@ -89,7 +89,7 @@
                     align-self: flex-end;
                     padding-top: 10px;
                     margin-top: 15px;
-                    border-top: 1px solid rgba($color-white, .2);
+                    border-top: 1px solid rgba($color-white, .1);
                     color: rgba($color-white, .6);
 
                     label {
@@ -102,7 +102,7 @@
         .section-header {
             padding-bottom: 10px;
             margin-bottom: 15px;
-            border-bottom: 1px solid rgba($color-white, .2);
+            border-bottom: 1px solid rgba($color-white, .1);
             color: rgba($color-white, .6);
             font-size: $font-size-base;
             line-height: $line-height-base;
