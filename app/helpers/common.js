@@ -14,7 +14,7 @@ module.exports = {
      * Copys element text to clipboard
      * @param {Object} element
      */
-    copyText(element, callback) {
+    copyToClipboard(element, callback) {
         let text = element,
             selection = window.getSelection(),
             range = document.createRange();

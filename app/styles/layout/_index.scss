@@ -60,9 +60,9 @@
                             }
 
                             .list-value {
-                                cursor: pointer;
 
                                 .action {
+                                    cursor: pointer;
                                     @include transition;
                                     opacity: 0;
                                     visibility: hidden;

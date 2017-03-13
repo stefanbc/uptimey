@@ -27,11 +27,11 @@ mixin box(size, label, contentWrapper, extraClasses = '')
 //- Outputs data from the API
 mixin output(id, value, label, advanced = false)
     if block
-        span(id=id)
+        span(class='data-value' id=id)
             block
     else
         if label
-            span(id=id)
+            span(class='data-value' id=id)
                 if advanced
                     label
                         | #{label} :
@@ -40,7 +40,7 @@ mixin output(id, value, label, advanced = false)
                     span= value
                     label= label
         else
-            span(id=id)= value
+            span(class='data-value' id=id)= value
 
 //- Generates an unordered list
 mixin list(id = '', extraClasses = '', output, enableCopy, ...listItems)
@@ -50,7 +50,7 @@ mixin list(id = '', extraClasses = '', output, enableCopy, ...listItems)
                 li.list-value
                     +output(item)
                     if enableCopy
-                        span.ml-10.action.copy-icon
+                        span.ml-10.action.copy-action
                             +icon('clipboard')
             else
                 li= item

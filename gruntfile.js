@@ -6,7 +6,7 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
 
         clean: {
-            build: {
+            prod: {
                 src: [
                     './public/styles/*',
                     './public/scripts/*'
@@ -15,7 +15,7 @@ module.exports = function(grunt) {
         },
 
         sass: {
-            build: {
+            prod: {
                 options: {
                     sourcemap : 'none'
                 },
@@ -31,7 +31,7 @@ module.exports = function(grunt) {
         },
 
         autoprefixer: {
-            build: {
+            prod: {
                 options: {
                     browsers : ['last 4 versions']
                 },
@@ -42,7 +42,7 @@ module.exports = function(grunt) {
         },
 
         cssmin: {
-            build: {
+            prod: {
                 files: {
                     './public/styles/uptimey.min.css': './public/styles/uptimey.min.css',
                     './public/styles/vendor.min.css': [
@@ -134,7 +134,19 @@ module.exports = function(grunt) {
         },
 
         uglify: {
-            build: {
+            dev: {
+                options: {
+                    mangle: {},
+                    screwIE8: true,
+                    sourceMap: true,
+                },
+                files: {
+                    './public/scripts/uptimey.min.js': [
+                        './public/scripts/uptimey.min.js'
+                    ]
+                }
+            },
+            prod: {
                 options: {
                     mangle: {},
                     screwIE8: true,
@@ -142,7 +154,7 @@ module.exports = function(grunt) {
                     compress: {
                         drop_console: true
                     },
-                    sourceMap: true,
+                    sourceMap: false,
                 },
                 files: {
                     './public/scripts/uptimey.min.js': [
@@ -171,7 +183,7 @@ module.exports = function(grunt) {
                 'cssmin:dev',
                 'browserify:dev',
                 'jshint:dev',
-                'uglify'
+                'uglify:dev'
             ]
         }
     });
@@ -193,16 +205,16 @@ module.exports = function(grunt) {
         'cssmin:dev',
         'jshint:dev',
         'browserify:dev',
-        'uglify'
+        'uglify:dev'
     ]);
     grunt.registerTask('default', [
         'clean',
-        'sass:build',
+        'sass:prod',
         'autoprefixer',
-        'cssmin:build',
+        'cssmin:prod',
         'jshint:prod',
         'browserify:prod',
-        'uglify'
+        'uglify:prod'
     ]);
 
     grunt.registerTask('server', 'Start a custom web server', function() {

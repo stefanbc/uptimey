@@ -15,7 +15,6 @@ module.exports = {
         _.bindAll(this);
 
         this.gatherData();
-        // this.handleData();
     },
 
     /**
@@ -43,22 +42,19 @@ module.exports = {
                 api.bindData(data);
                 $('#server-info, #network-info').removeClass('loading');
 
+                $('.list-value').find('.copy-action').on('click', function() {
+                    let element = $(this).parent().find('.data-value');
+
+                    common.copyToClipboard(element[0], function() {
+                        toasts.init('success', 'Value copied to clipboard');
+                    });
+                });
+
             }).fail(function() {
                 toasts.init('error', 'Server is not responding!');
             });
 
         }
-
-    },
-
-    handleData() {
-
-        $('.list-value').on('click', function() {
-            let element = $(this);
-            common.copyText(element, function() {
-                toasts.init('success', 'Text copied to clipboard');
-            });
-        });
 
     }
 };
