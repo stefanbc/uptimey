@@ -24,11 +24,6 @@ else
 
     case "init"
         echo ""
-        if test $argv[2] -eq "latest"
-            echo "Getting the latest uptimey version"
-            and git pull
-        end
-        and echo ""
 
         and echo "Installing dependencies"
         and rm -rf node_modules

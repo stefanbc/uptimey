@@ -68,24 +68,85 @@ module.exports = function(grunt) {
         },
 
         jshint: {
-            files: [
-                'Gruntfile.js',
-                './app/helpers/**/*.js',
-                './app/controllers/**/*.js',
-                './app/app.js',
-            ],
             options: {
                 jshintrc: true
+            },
+            dev: {
+                options: {
+                    debug: true
+                },
+                src: [
+                    './app/helpers/**/*.js',
+                    './app/controllers/**/*.js',
+                    './app/app.js',
+                ]
+            },
+            prod: {
+                options: {
+                    debug: false
+                },
+                src: [
+                    'Gruntfile.js',
+                    './app/helpers/**/*.js',
+                    './app/controllers/**/*.js',
+                    './app/app.js',
+                ]
             }
         },
 
         browserify: {
-            build: {
+            dev: {
+                options: {
+                    browserifyOptions: { debug: true },
+                    transform: [
+                        ['babelify', {
+                            presets: ['es2015'],
+                            sourceMaps: true
+                        }]
+                    ]
+                },
                 files: {
                     './public/scripts/uptimey.min.js': [
                         './app/helpers/**/*.js',
                         './app/controllers/**/*.js',
                         './app/app.js',
+                    ]
+                }
+            },
+            prod: {
+                options: {
+                    browserifyOptions: { debug: false },
+                    transform: [
+                        ['babelify', {
+                            presets: ['es2015'],
+                            sourceMaps: false
+                        }]
+                    ]
+                },
+                files: {
+                    './public/scripts/uptimey.min.js': [
+                        './app/helpers/**/*.js',
+                        './app/controllers/**/*.js',
+                        './app/app.js',
+                    ]
+                }
+            }
+        },
+
+        uglify: {
+            build: {
+                options: {
+                    mangle: {},
+                    screwIE8: true,
+                    preserveComments: false,
+                    compress: {
+                        drop_console: true
+                    },
+                    sourceMap: true,
+                },
+                files: {
+                    './public/scripts/uptimey.min.js': [
+                        './public/scripts/uptimey.min.js'
                     ]
                 }
             }
@@ -103,7 +164,15 @@ module.exports = function(grunt) {
                 './app/styles/**/*.scss',
                 './app/templates/**/*.pug',
             ],
-            tasks: ['clean:build', 'sass:dev', 'autoprefixer:build', 'cssmin:dev', 'browserify', 'jshint']
+            tasks: [
+                'clean',
+                'sass:dev',
+                'autoprefixer',
+                'cssmin:dev',
+                'browserify:dev',
+                'jshint:dev',
+                'uglify'
+            ]
         }
     });
 
@@ -113,11 +182,28 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-browserify');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
-    grunt.registerTask('test', ['clean', 'jshint']);
-    grunt.registerTask('dev', ['clean', 'sass:dev', 'autoprefixer', 'cssmin:dev', 'jshint', 'browserify']);
-    grunt.registerTask('default', ['clean', 'sass:build', 'autoprefixer', 'cssmin:build', 'jshint', 'browserify']);
+    grunt.registerTask('test', ['clean', 'jshint:dev']);
+    grunt.registerTask('dev', [
+        'clean',
+        'sass:dev',
+        'autoprefixer',
+        'cssmin:dev',
+        'jshint:dev',
+        'browserify:dev',
+        'uglify'
+    ]);
+    grunt.registerTask('default', [
+        'clean',
+        'sass:build',
+        'autoprefixer',
+        'cssmin:build',
+        'jshint:prod',
+        'browserify:prod',
+        'uglify'
+    ]);
 
     grunt.registerTask('server', 'Start a custom web server', function() {
         grunt.log.writeln('Started web server on port 3000');
