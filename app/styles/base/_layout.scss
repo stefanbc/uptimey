@@ -5,7 +5,6 @@
     .layout {
         max-width: 960px;
         margin: 0 auto;
-        padding-top: 60px;
 
         .blink {
             @include animation('blink 2s infinite');
