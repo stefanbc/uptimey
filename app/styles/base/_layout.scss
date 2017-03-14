@@ -17,6 +17,19 @@
                 border-left-color: $color-white;
             }
         }
+
+        // Fix for Safari's interpretation
+        // of the the flex specification
+        .col-flex,
+        .box-flex {
+            display: flex;
+            flex-direction: column;
+
+            .box,
+            .box-inner-wrapper {
+                flex: 1;
+            }
+        }
     }
 
     .copyright {

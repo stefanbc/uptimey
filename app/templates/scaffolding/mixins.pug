@@ -6,13 +6,13 @@ mixin row
 
 //- Generates a column
 mixin column(column, small, extraClasses = '')
-    div(class=`column col-${column} col-md-${small} ${extraClasses}`)
+    div(class=`column col-${column} col-md-${small} col-flex ${extraClasses}`)
         if block
             block
 
 //- Generates a box
 mixin box(size, label, contentWrapper, extraClasses = '')
-    div(class=`box rounded box-${size} ${extraClasses}`)
+    div(class=`box rounded box-${size} box-flex ${extraClasses}`)
         .box-inner-wrapper.flex.text-center
             section
                 .box-content
