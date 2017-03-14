@@ -28,5 +28,7 @@ module.exports = {
         if (callback) {
             callback();
         }
+
+        selection.removeAllRanges();
     }
 };
