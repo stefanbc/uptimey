@@ -2,6 +2,7 @@ const $ = require('jquery');
 const _ = require('lodash');
 const api = require('../helpers/api');
 const toasts = require('../helpers/toasts');
+const notes = require('../helpers/notes');
 const common = require('../helpers/common');
 
 /**
@@ -41,6 +42,8 @@ module.exports = {
 
                 api.bindData(data);
                 $('#server-info, #network-info').removeClass('loading');
+
+                notes.init('error', 'Current value', $('.box'));
 
                 $('.list-value').find('.copy-action').on('click', function() {
                     let element = $(this).parent().find('.data-value');

@@ -38,17 +38,6 @@ module.exports = {
     },
 
     /**
-     * Generate a warning toast
-     * @param {String} msg
-     * @param {String} position
-     */
-    warning(msg, position) {
-        let toast = this.buildToast('warning', msg, position);
-
-        this.wormHole.append(toast);
-    },
-
-    /**
      * Generate an error toast
      * @param {String} msg
      * @param {String} position

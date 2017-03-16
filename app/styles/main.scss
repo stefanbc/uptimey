@@ -7,8 +7,8 @@
 
 // Base files
 @import "base/_colors.scss";
-@import "base/_mixins.scss";
-@import "base/_common.scss";
+@import "helpers/_mixins.scss";
+@import "base/_base.scss";
 
 // Layout files
 @import "base/_layout.scss";
@@ -16,7 +16,8 @@
 
 // Utils
 @import "base/_media.scss";
-@import "base/_utils.scss";
+@import "helpers/_utils.scss";
 
 // Misc
 @import "helpers/_toasts.scss";
+@import "helpers/_notes.scss";

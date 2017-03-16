@@ -7,17 +7,13 @@
 
         .toast {
             position: absolute;
+            z-index: 999;
             width: auto;
             background: none;
 
             &.toast-tl {
                 top: 10px;
                 left: 10px;
-            }
-
-            &.toast-tc {
-                @include absolute-horizontal-center;
-                top: 10px;
             }
 
             &.toast-tr {
@@ -28,11 +24,6 @@
             &.toast-bl {
                 bottom: 10px;
                 left: 10px;
-            }
-
-            &.toast-bc {
-                @include absolute-horizontal-center;
-                bottom: 10px;
             }
 
             &.toast-br {

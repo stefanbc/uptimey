@@ -1,0 +1,50 @@
+//
+// nNtes
+// --------------------------------------------------
+.note {
+    position: absolute;
+
+    &:before {
+        content: '';
+        display: block;
+        border-style: solid;
+        border-width: 0 14px 14px 0;
+    }
+
+    &:after {
+        font-size: $font-size-base;
+        line-height: $line-height-base;
+    }
+
+    &.note-tl {
+        top: 0;
+        left: 0;
+    }
+
+    &.note-tr {
+        top: 0;
+        right: 0;
+    }
+
+    &.note-bl {
+        bottom: 0;
+        left: 0;
+    }
+
+    &.note-br {
+        top: 0;
+        right: 0;
+    }
+
+    &.note-success {
+        &:before {
+            border-color: transparent $color-green1 transparent transparent;
+        }
+    }
+
+    &.note-danger {
+        &:before {
+            border-color: transparent $color-red1 transparent transparent;
+        }
+    }
+}
