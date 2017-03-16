@@ -6,7 +6,7 @@ const _ = require('lodash');
  */
 module.exports = {
 
-    notesDefaultParent: $('.box'),
+    notesDefaultParent: $('.layout .box'),
     defaultPosition: 'tr',
 
     /**
@@ -16,7 +16,7 @@ module.exports = {
      * @param {Object} parent
      * @param {String} position
      */
-    init(type, msg, parent, position = this.defaultPosition) {
+    init(type, msg, parent = this.notesDefaultParent, position = this.defaultPosition) {
         _.bindAll(this);
 
         this[type](msg, parent, position);

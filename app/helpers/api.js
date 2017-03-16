@@ -1,6 +1,7 @@
 const $ = require('jquery');
 const _ = require('lodash');
 const common = require('./common');
+// const notes = require('./notes');
 
 /**
  * Helper for API interaction
@@ -28,5 +29,23 @@ module.exports = {
                 $.each(value, _.bind(updateValues, this));
             }
         }
-    }
+    },
+
+    /**
+     * Binds the data to each box
+     * @param {Object} data
+     * @param {Array} dataBoxes
+     */
+    // bindDataBoxes(data, dataBoxes) {
+    //     $.each(data, function(key, value) {
+    //         let normalizeKey = common.normalizeString(key);
+
+    //         if(_.isEmpty(value)) {
+
+    //         }
+
+    //         console.log(data);
+    //         console.log(dataBoxes);
+    //     });
+    // }
 };

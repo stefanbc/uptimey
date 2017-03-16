@@ -12,12 +12,12 @@ mixin column(column, small, extraClasses = '')
 
 //- Generates a box
 mixin box(size, label, contentWrapper, extraClasses = '')
-    div(class=`box rounded box-${size} box-flex ${extraClasses}`)
+    div(class=`box rounded box-${size} box-flex ${extraClasses}` id=`${contentWrapper}-box`)
         .box-inner-wrapper.flex.text-center
             section
                 .box-content
                     .box-content-value
-                        div(class='data-wrapper' id=`${contentWrapper}-wrapper`)
+                        div(class='data-wrapper' id=`${contentWrapper}-data-wrapper`)
                             if block
                                 block
             if label

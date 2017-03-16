@@ -27,14 +27,14 @@
                         font-size: $font-lg;
                         line-height: $line-height-lg;
 
-                        &#time-wrapper {
+                        &#time-data-wrapper {
                             > span {
                                 margin: 0 2px;
                                 text-transform: uppercase;
                             }
                         }
 
-                        &#uptime-wrapper {
+                        &#uptime-data-wrapper {
                             > span {
                                 font-size: $font-xl;
                                 line-height: $line-height-xl;
@@ -49,7 +49,7 @@
                             }
                         }
 
-                        &#advanced-wrapper {
+                        &#advanced-data-wrapper {
                             font-size: $font-sm;
                             line-height: $line-height-sm;
 

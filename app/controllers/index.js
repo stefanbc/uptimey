@@ -33,7 +33,10 @@ module.exports = {
                     toasts.init('success', 'Data has been updated!');
 
                 }).fail(function() {
+
+                    notes.init('error', 'Failed to update data!');
                     toasts.init('error', 'Server is not responding!');
+
                 });
 
             }, 1000 * 60);
@@ -42,8 +45,6 @@ module.exports = {
 
                 api.bindData(data);
                 $('#server-info, #network-info').removeClass('loading');
-
-                notes.init('error', 'Current value', $('.box'));
 
                 $('.list-value').find('.copy-action').on('click', function() {
                     let element = $(this).parent().find('.data-value');
@@ -54,7 +55,10 @@ module.exports = {
                 });
 
             }).fail(function() {
+
+                notes.init('error', 'Failed to update data!');
                 toasts.init('error', 'Server is not responding!');
+
             });
 
         }
