@@ -35,6 +35,13 @@ module.exports = {
     },
 
     /**
+     * Retrives the current layout
+     */
+    getCurrentLayout() {
+        return $('body').find('section.layout').attr('id');
+    },
+
+    /**
      * Gather all data boxes and return them as an array
      */
     getAllDataBoxes() {

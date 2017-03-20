@@ -43,8 +43,8 @@ mixin output(id, value, label, advanced = false)
             span(class='data-value' id=id)= value
 
 //- Generates an unordered list
-mixin list(id = '', extraClasses = '', output, enableCopy, ...listItems)
-    ul(id=id class=extraClasses)
+mixin list(id = '', output, enableCopy, ...listItems)
+    ul(id=id class=output ? "list-values loading" : "list-labels")
         each item in listItems
             if output
                 li.list-value
