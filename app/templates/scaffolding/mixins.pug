@@ -50,11 +50,11 @@ mixin list(id = '', extraClasses = '', output, enableCopy, ...listItems)
                 li.list-value
                     +output(item)
                     if enableCopy
-                        .action.copy-action.ml-10
+                        span.action.copy-action.ml-10
                             +icon('clippy')
             else
                 li= item
 
 //- Mixin for generating an icon element
 mixin icon(icon)
-    .icon!= octicons[icon].toSVG()
+    span.icon!= octicons[icon].toSVG()

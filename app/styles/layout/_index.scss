@@ -62,8 +62,11 @@
                             }
 
                             .list-value {
+                                position: relative;
 
                                 .action {
+                                    position: absolute;
+                                    @include absolute-vertical-center;
                                     cursor: pointer;
                                     @include transition;
                                     opacity: 0;
