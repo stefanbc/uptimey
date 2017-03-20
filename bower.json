@@ -21,7 +21,6 @@
     "tests"
   ],
   "dependencies": {
-    "font-awesome": "^4.7.0",
     "normalize-css": "^5.0.0",
     "spectre.css": "^0.2.7",
     "animate.css": "^3.5.2"
