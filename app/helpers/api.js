@@ -8,40 +8,45 @@ const toasts = require('./toasts');
  * Helper for API interaction
  */
 module.exports = {
-
     /**
      * Makes an API call using the provided params
      * @param {String} url
-     * @param {Boolean} notice
+     * @param {Boolean} updateNotice
      * @param {Function} callback
      */
-    get(url, notice) {
+    get(url, updateNotice, callback) {
 
         let normalizeUrl = this.buildUrl(url);
 
-        $.getJSON(normalizeUrl, _.bind(function (data) {
+        $.ajax({
+            dataType: "json",
+            url: normalizeUrl,
+            success: _.bind((data) => {
 
-            this.bindData(data);
+                this.bindData(data);
 
-            if (notice) {
-                toasts.init('success', 'Data has been updated!');
-            }
+                if (updateNotice) {
+                    notes.clearAll();
+                    toasts.init('success', 'Data has been updated!');
+                }
 
-            $('ul.list-values').removeClass('loading');
+                let listValues = $('ul.list-values');
 
-            $('.list-value').find('.copy-action').on('click', function() {
-                let element = $(this).parent().find('.data-value');
+                if (listValues.hasClass('loading')) {
+                    listValues.removeClass('loading');
+                }
 
-                common.copyToClipboard(element[0], function() {
-                    toasts.init('success', 'Value copied to clipboard');
-                });
-            });
+                if (callback) {
+                    callback();
+                }
 
-        }, this)).fail(function() {
+            }, this),
+            error: _.bind(() => {
 
-            notes.init('error', 'Failed to update data!');
-            toasts.init('error', 'Server is not responding!');
+                notes.init('error', 'Failed to update data!');
+                toasts.init('error', 'Server is not responding!');
 
+            }, this)
         });
 
     },
@@ -50,7 +55,7 @@ module.exports = {
      * Binds data
      * @param  {Object} data
      */
-    bindData: function(data) {
+    bindData(data) {
         $.each(data, _.bind(updateValues, this));
 
         // Recursive function to update values
@@ -63,8 +68,6 @@ module.exports = {
                 } else {
                     $(selector).text(value);
                 }
-
-                notes.clearAll();
 
             } else {
                 $.each(value, _.bind(updateValues, this));
@@ -79,22 +82,4 @@ module.exports = {
     buildUrl(string) {
         return `/api${string ? '/' + string : ''}`;
     }
-
-    /**
-     * Binds the data to each box
-     * @param {Object} data
-     * @param {Array} dataBoxes
-     */
-    // bindDataBoxes(data, dataBoxes) {
-    //     $.each(data, function(key, value) {
-    //         let normalizeKey = common.normalizeString(key);
-
-    //         if(_.isEmpty(value)) {
-
-    //         }
-
-    //         console.log(data);
-    //         console.log(dataBoxes);
-    //     });
-    // }
 };

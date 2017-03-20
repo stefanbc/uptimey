@@ -1,6 +1,7 @@
 const _ = require('lodash');
 const api = require('../helpers/api');
 const common = require('../helpers/common');
+const events = require('../helpers/events');
 
 /**
  * Controller for the index route
@@ -12,18 +13,23 @@ module.exports = {
     /**
      * Init method
      */
-    init: function() {
+    init() {
         _.bindAll(this);
 
         if ( common.getCurrentLayout() === 'index' ) {
 
-            setInterval(function () {
+            setInterval(() => {
 
                 api.get('basic', true);
 
             }, this.updateTimeout);
 
-            api.get('advanced', false);
+            api.get('advanced', false, () => {
+                events.registerEvent({
+                    ev: 'click',
+                    selector: '.list-value'
+                });
+            });
 
         }
     }

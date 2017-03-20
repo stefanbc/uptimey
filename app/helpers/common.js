@@ -1,4 +1,5 @@
 const $ = require('jquery');
+const toasts = require('./toasts');
 
 /**
  * Common helper with different methods
@@ -16,7 +17,7 @@ module.exports = {
      * Copys element text to clipboard
      * @param {Object} element
      */
-    copyToClipboard(element, callback) {
+    copyToClipboard(element) {
         let text = element,
             selection = window.getSelection(),
             range = document.createRange();
@@ -27,9 +28,7 @@ module.exports = {
 
         document.execCommand('copy');
 
-        if (callback) {
-            callback();
-        }
+        toasts.init('success', 'Value copied to clipboard');
 
         selection.removeAllRanges();
     },
