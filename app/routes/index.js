@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
             initialData : basic.gatherData({
                 serverLocation : serverLocation
             }),
-            octicons: octicons
+            octicons    : octicons
         });
     }, next);
 });
