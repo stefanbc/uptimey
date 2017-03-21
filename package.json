@@ -22,6 +22,7 @@
     "debug": "~2.6.0",
     "express": "~4.14.1",
     "express-rate-limit": "^2.6.0",
+    "getos": "^2.8.4",
     "helmet": "^3.5.0",
     "humem": "^0.1.1",
     "internal-ip": "^1.2.0",

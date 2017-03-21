@@ -10,7 +10,6 @@ const ipLocation = require('iplocation');
  *  Abstract module with all methods
  */
 module.exports = {
-
     /**
      * Main data method. Gathers all data and returns
      * is as an object. The data param is optional.
@@ -18,16 +17,31 @@ module.exports = {
      */
     gatherData(data = {}) {
         return {
-            currentDate    : this.getCurrentDate(),
-            activeDate     : this.getServerActiveDate(),
-            serverTime     : this.getServerTime(),
-            serverUptime   : this.getServerUptime(),
-            serverLocation : data.serverLocation
+            uptime      : this.getUptime(),
+            currentDate : this.getCurrentDate(),
+            activeDate  : this.getActiveDate(),
+            time        : this.getTime(),
+            location    : data.location
         };
     },
 
     /**
-     * Returns the current server date.
+     * Calculates the current uptime, using the difference
+     * between the current time and the OS time.
+     */
+    getUptime() {
+        let diffSeconds = moment().diff(osUptime, 'seconds'),
+            calcMinutes = diffSeconds / 60,
+            calcHours   = calcMinutes / 60,
+            days        = Math.floor(calcHours / 24),
+            hours       = Math.floor(calcHours - (days * 24)),
+            minutes     = Math.floor(calcMinutes - (days * 60 * 24) - (hours * 60));
+
+        return { days, hours, minutes };
+    },
+
+    /**
+     * Returns the current date.
      */
     getCurrentDate() {
         return moment().format('MMMM DD, YYYY');
@@ -36,47 +50,28 @@ module.exports = {
     /**
      * Returns the date when the server became active.
      */
-    getServerActiveDate() {
+    getActiveDate() {
         return moment(osUptime).format('MMMM DD, YYYY');
     },
 
     /**
-     * Returns the current server time.
+     * Returns the current time.
      */
-    getServerTime() {
+    getTime() {
         return {
-            currentHour    : moment().format('HH'),
-            currentMinutes : moment().format('mm'),
-            currentPeriod  : moment().format('a')
+            hour    : moment().format('HH'),
+            minutes : moment().format('mm'),
+            period  : moment().format('a')
         };
     },
 
     /**
-     * Calculates the current uptime for the server,
-     * using the difference between the current time and the OS time.
-     */
-    getServerUptime() {
-        let diffSeconds = moment().diff(osUptime, 'seconds'),
-            calcMinutes = diffSeconds / 60,
-            calcHours   = calcMinutes / 60,
-            days        = Math.floor(calcHours / 24),
-            hours       = Math.floor(calcHours - (days * 24)),
-            minutes     = Math.floor(calcMinutes - (days * 60 * 24) - (hours * 60));
-
-        return {
-            uptimeDays    : days,
-            uptimeHours   : hours,
-            uptimeMinutes : minutes
-        };
-    },
-
-    /**
-     * Retrives the current server location after it receives the
-     * public IP of the server. Passes the data using a callback function.
+     * Retrives the current location after it receives the
+     * public IP. Passes the data using a callback function.
      * @param  {Function} callback
      * @param  {Function} next
      */
-    getServerLocation(callback, next) {
+    getLocation(callback, next) {
         publicIp.then(ip => {
             ipLocation(ip, (error, data) => {
                 if (callback) {

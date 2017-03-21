@@ -5,7 +5,7 @@ const common = require('./common');
 /**
  * Register actions
  */
-module.export = {
+module.exports = {
     /**
      * Register an action
      * @param {Object} options

@@ -7,15 +7,19 @@ const octicons = require("octicons");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    basic.getServerLocation((serverLocation) => {
+
+    basic.getLocation((location) => {
+
         return res.render('index', {
-            layoutId    : 'index',
-            initialData : basic.gatherData({
-                serverLocation : serverLocation
+            layoutId : 'index',
+            data     : basic.gatherData({
+                location : location
             }),
-            octicons    : octicons
+            octicons : octicons
         });
+
     }, next);
+
 });
 
 module.exports = router;

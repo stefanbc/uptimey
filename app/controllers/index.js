@@ -26,7 +26,7 @@ module.exports = {
 
             api.get('advanced', false, () => {
                 actions.register({
-                    ev: 'click',
+                    ev: 'copy',
                     selector: '.list-value'
                 });
             });

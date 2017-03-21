@@ -16,18 +16,24 @@ router.get('/basic', function(req, res, next) {
 
 /* GET advanced api endpoint. */
 router.get('/advanced', function(req, res, next) {
+
     if (req.xhr) {
+
         advanced.getIpObject((ipObject) => {
+
             return res.json(
                 advanced.gatherAdvancedData({
-                    serverLocalIp  : ipObject.localIp,
-                    serverPublicIp : ipObject.publicIp
+                    localIp  : ipObject.localIp,
+                    publicIp : ipObject.publicIp
                 })
             );
+
         }, next);
+
     } else {
         next(new Error("Permission denied"));
     }
+
 });
 
 module.exports = router;

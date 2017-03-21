@@ -2,11 +2,12 @@
  * Required packages
  */
 const os = require('os');
+const osName = require('os-name');
+const getos = require('getos');
+const humem = require('humem');
 const internalIp = require('internal-ip').v4();
 const publicIp = require('public-ip').v4();
 const netmask = require('ipmask')();
-const humem = require('humem');
-const osName = require('os-name');
 
 /**
  *  Abstract module with all methods
@@ -20,17 +21,48 @@ module.exports = {
      */
     gatherAdvancedData(data = {}) {
         return {
-            serverHostname  : os.hostname(),
-            serverType      : osName(os.platform(), os.release()),
-            platformRelease : os.release(),
-            serverArch      : os.arch(),
-            serverCpu       : this.parseCPUModel(),
-            serverTotalMem  : humem.totalmem,
-            serverLocalIp   : data.serverLocalIp,
-            serverPublicIp  : data.serverPublicIp,
-            serverMask      : netmask.netmask,
-            serverMac       : netmask.mac
+            platform     : this.getPlatform(),
+            release      : this.getRelease(),
+            processor    : this.parseCPUModel(),
+            architecture : os.arch(),
+            totalMem     : humem.totalmem,
+            hostname     : os.hostname(),
+            localIp      : data.localIp,
+            publicIp     : data.publicIp,
+            networkMask  : netmask.netmask,
+            mac          : netmask.mac
         };
+    },
+
+    getPlatform() {
+        getos((e, os) => {
+            console.log(os);
+        });
+        if (os.platform() === 'linux') {
+
+        } else {
+            return osName(os.platform(), os.release());
+        }
+    },
+
+    getRelease() {
+        return os.release();
+    },
+
+    /**
+     * Parses the CPU model retrived by the os module
+     */
+    parseCPUModel() {
+        let model = os.cpus()[0].model,
+            split = model.split('@'),
+            modelName = split[0].trim(),
+            frequency = split[1].trim();
+
+        modelName = modelName.split('-');
+        modelName = modelName[0].replace('CPU', '')
+                    .replace(/\(.*?\)/g, '');
+
+        return `${frequency} ${modelName}`;
     },
 
     /**
@@ -50,21 +82,5 @@ module.exports = {
                 callback(ipObject);
             }
         }).catch(next);
-    },
-
-    /**
-     * Parses the CPU model retrived by the os module
-     */
-    parseCPUModel() {
-        let model = os.cpus()[0].model,
-            split = model.split('@'),
-            modelName = split[0].trim(),
-            frequency = split[1].trim();
-
-        modelName = modelName.split('-');
-        modelName = modelName[0].replace('CPU', '')
-                    .replace(/\(.*?\)/g, '');
-
-        return `${frequency} ${modelName}`;
     }
 };
