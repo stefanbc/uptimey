@@ -1,5 +1,5 @@
-const $ = require('jquery');
 const _ = require('lodash');
+const $ = require('jquery');
 const common = require('./common');
 const notes = require('./notes');
 const toasts = require('./toasts');

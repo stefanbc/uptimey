@@ -1,7 +1,7 @@
 const _ = require('lodash');
 const api = require('../helpers/api');
 const common = require('../helpers/common');
-const events = require('../helpers/events');
+const actions = require('../helpers/actions');
 
 /**
  * Controller for the index route
@@ -25,7 +25,7 @@ module.exports = {
             }, this.updateTimeout);
 
             api.get('advanced', false, () => {
-                events.registerEvent({
+                actions.register({
                     ev: 'click',
                     selector: '.list-value'
                 });
