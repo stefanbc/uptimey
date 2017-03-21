@@ -2,6 +2,9 @@ const _ = require('lodash');
 const $ = require('jquery');
 const common = require('./common');
 
+/**
+ * Register actions
+ */
 module.export = {
     /**
      * Register an action
