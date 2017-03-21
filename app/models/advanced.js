@@ -6,6 +6,7 @@ const internalIp = require('internal-ip').v4();
 const publicIp = require('public-ip').v4();
 const netmask = require('ipmask')();
 const humem = require('humem');
+const osName = require('os-name');
 
 /**
  *  Abstract module with all methods
@@ -20,7 +21,7 @@ module.exports = {
     gatherAdvancedData(data = {}) {
         return {
             serverHostname  : os.hostname(),
-            serverType      : os.type(),
+            serverType      : osName(os.platform(), os.release()),
             platformRelease : os.release(),
             serverArch      : os.arch(),
             serverCpu       : this.parseCPUModel(),
