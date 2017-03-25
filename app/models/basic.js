@@ -59,9 +59,9 @@ module.exports = {
      */
     getTime() {
         return {
-            hour    : moment().format('HH'),
-            minutes : moment().format('mm'),
-            period  : moment().format('a')
+            hh : moment().format('HH'),
+            mm : moment().format('mm'),
+            p  : moment().format('a')
         };
     },
 

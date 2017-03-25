@@ -11,13 +11,13 @@ mixin column(column, small, extraClasses = '')
             block
 
 //- Generates a box
-mixin box(size, label, contentWrapper, extraClasses = '')
-    div(class=`box rounded box-${size} box-flex ${extraClasses}` id=`${contentWrapper}-box`)
+mixin box(size, label, wrapper, extraClasses = '')
+    div(class=`box rounded box-${size} box-flex ${extraClasses}` id=`${wrapper}-box`)
         .box-inner-wrapper.flex.text-center
             section
                 .box-content
                     .box-content-value
-                        div(class='data-wrapper' id=`${contentWrapper}-data-wrapper`)
+                        div(class='data-wrapper' id=`${wrapper}-data`)
                             if block
                                 block
             if label
@@ -27,11 +27,11 @@ mixin box(size, label, contentWrapper, extraClasses = '')
 //- Outputs data from the API
 mixin output(id, value, label, advanced = false)
     if block
-        span(class='data-value' id=id)
+        span(class='output' id=id)
             block
     else
         if label
-            span(class='data-value' id=id)
+            span(class='output' id=id)
                 if advanced
                     label
                         | #{label} :
@@ -40,7 +40,7 @@ mixin output(id, value, label, advanced = false)
                     span= value
                     label= label
         else
-            span(class='data-value' id=id)= value
+            span(class='output' id=id)= value
 
 //- Generates an unordered list
 mixin list(id = '', output, enableCopy, ...listItems)

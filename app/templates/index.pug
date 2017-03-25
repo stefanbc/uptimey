@@ -18,13 +18,13 @@ block content
                         +output('active-date', data.activeDate)
                 +column(6, 12)
                     +box('sm', 'time on server', 'time')
-                        +output('current-hour', data.time.hour)
+                        +output('hh', data.time.hh)
                         span.blink :
-                        +output('current-minutes', data.time.minutes)
-                        +output('current-period', data.time.period)
+                        +output('mm', data.time.mm)
+                        +output('p', data.time.p)
                 +column(6, 12)
                     +box('sm', 'server location', 'location')
-                        +output('current-location')
+                        +output('location')
                             a(href=`https://www.google.com/maps/place/${data.location.latitude},${ data.location.longitude}` target='_blank')
                                 | #{data.location.city}, #{data.location.country_name}
         +column(12, 12, 'pt-0')

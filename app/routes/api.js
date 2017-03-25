@@ -7,11 +7,13 @@ const advanced = require('../models/advanced');
 
 /* GET api endpoint. */
 router.get('/basic', function(req, res, next) {
+
     if (req.xhr) {
         res.json(basic.gatherData());
     } else {
         next(new Error("Permission denied"));
     }
+
 });
 
 /* GET advanced api endpoint. */
