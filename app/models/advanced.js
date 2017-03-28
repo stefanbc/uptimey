@@ -21,8 +21,8 @@ module.exports = {
      */
     gatherAdvancedData(data = {}) {
         return {
-            platform     : this.getPlatform(),
-            release      : this.getRelease(),
+            platform     : this.getOs('platform'),
+            release      : this.getOs('release'),
             processor    : this.parseCPUModel(),
             architecture : os.arch(),
             totalMem     : humem.totalmem,
@@ -34,19 +34,33 @@ module.exports = {
         };
     },
 
-    getPlatform() {
-        getos((e, os) => {
-            console.log(os);
-        });
-        if (os.platform() === 'linux') {
+    /**
+     * Returns data about OS distribution and release
+     * @param {String} type
+     */
+    getOs(type) {
+        let platform = os.platform(),
+            release = os.release(),
+            output;
 
-        } else {
-            return osName(os.platform(), os.release());
+        switch (type) {
+            case 'platform':
+                if (platform === 'linux') {
+                    output = getos((e, os) => { return os.dist; });
+                } else {
+                    output = osName(platform, release);
+                }
+            break;
+            case 'release':
+                if (platform === 'linux') {
+                    output = getos((e, os) => { return os.release; });
+                } else {
+                    output = release;
+                }
+            break;
         }
-    },
 
-    getRelease() {
-        return os.release();
+        return output;
     },
 
     /**
