@@ -59,7 +59,7 @@ module.exports = {
      */
     getTime() {
         return {
-            hh : moment().format('HH'),
+            hh : moment().format('hh'),
             mm : moment().format('mm'),
             p  : moment().format('a')
         };
