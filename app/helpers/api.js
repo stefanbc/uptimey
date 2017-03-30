@@ -12,9 +12,10 @@ module.exports = {
      * Makes an API call using the provided params
      * @param {String} url
      * @param {Boolean} updateNotice
+     * @param {Boolean} shouldUpdate
      * @param {Function} callback
      */
-    get(url, updateNotice, callback) {
+    get(url, updateNotice, shouldUpdate, callback) {
 
         let normalizeUrl = this.buildUrl(url);
 
@@ -23,7 +24,7 @@ module.exports = {
             url: normalizeUrl,
             success: _.bind((data) => {
 
-                this.bindData(data);
+                this.bindData(data, shouldUpdate);
 
                 if (updateNotice) {
                     notes.clearAll();
@@ -43,6 +44,8 @@ module.exports = {
             }, this),
             error: _.bind(() => {
 
+                this.getUpdatableData();
+
                 notes.init('error', 'Failed to update data!');
                 toasts.init('error', 'Server is not responding!');
 
@@ -55,7 +58,7 @@ module.exports = {
      * Binds data
      * @param  {Object} data
      */
-    bindData(data) {
+    bindData(data, shouldUpdate) {
         $.each(data, _.bind(updateValues, this));
 
         // Recursive function to update values
@@ -63,10 +66,14 @@ module.exports = {
             if (typeof value !== 'object') {
                 let selector = '#' + common.normalizeString(key);
 
-                if($(selector).find('span').length === 1) {
+                if ($(selector).find('span').length === 1) {
                     $(selector).find('span').text(value);
                 } else {
                     $(selector).text(value);
+                }
+
+                if (shouldUpdate) {
+                    $(selector).data('data-should-update', true);
                 }
 
             } else {
@@ -81,5 +88,19 @@ module.exports = {
      */
     buildUrl(string) {
         return `/api${string ? '/' + string : ''}`;
+    },
+
+    getUpdatableData() {
+        let outputKeys = [];
+
+        $.each('.data-wrapper .output', function() {
+            if ($(this).data('data-should-update')) {
+                outputKeys.push($(this).attr('id'));
+            }
+        });
+
+        console.log(outputKeys);
+
+        return outputKeys;
     }
 };

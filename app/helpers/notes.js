@@ -6,7 +6,7 @@ const $ = require('jquery');
  */
 module.exports = {
 
-    notesDefaultParent: $('.layout .box'),
+    notesDefaultParent: $('.box'),
     defaultPosition: 'tr',
 
     /**

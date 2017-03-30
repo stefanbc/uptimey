@@ -20,11 +20,11 @@ module.exports = {
 
             setInterval(() => {
 
-                api.get('basic', true);
+                api.get('basic', true, true);
 
             }, this.updateTimeout);
 
-            api.get('advanced', false, () => {
+            api.get('advanced', false, false, () => {
                 actions.register({
                     ev: 'copy',
                     selector: '.list-value'
