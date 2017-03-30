@@ -4,6 +4,9 @@
 const os = require('os');
 const osName = require('os-name');
 const getos = require('getos');
+const macosRelease = require('macos-release');
+const winRelease = require('win-release');
+
 const humem = require('humem');
 const internalIp = require('internal-ip').v4();
 const publicIp = require('public-ip').v4();
@@ -21,8 +24,7 @@ module.exports = {
      */
     gatherAdvancedData(data = {}) {
         return {
-            platform     : this.getOs('platform'),
-            release      : this.getOs('release'),
+            os           : this.getOS(),
             processor    : this.parseCPUModel(),
             architecture : os.arch(),
             totalMem     : humem.totalmem,
@@ -38,29 +40,24 @@ module.exports = {
      * Returns data about OS distribution and release
      * @param {String} type
      */
-    getOs(type) {
-        let platform = os.platform(),
-            release = os.release(),
-            output;
+    getOS() {
+        let getPlatform = os.platform(),
+            dist, release;
 
-        switch (type) {
-            case 'platform':
-                if (platform === 'linux') {
-                    output = getos((e, os) => { return os.dist; });
-                } else {
-                    output = osName(platform, release);
-                }
-            break;
-            case 'release':
-                if (platform === 'linux') {
-                    output = getos((e, os) => { return os.release; });
-                } else {
-                    output = release;
-                }
-            break;
+        if (getPlatform === 'linux') {
+            dist = getos((e, os) => { return os.dist; });
+            release = getos((e, os) => { return os.release; });
+        } else if (getPlatform === 'darwin') {
+            release = macosRelease().version;
+        } else if (getPlatform === 'win32') {
+            release = winRelease();
         }
 
-        return output;
+        if (getPlatform === 'darwin' || getPlatform === 'win32') {
+            dist = osName();
+        }
+
+        return { dist, release };
     },
 
     /**
