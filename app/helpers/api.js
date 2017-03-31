@@ -12,10 +12,10 @@ module.exports = {
      * Makes an API call using the provided params
      * @param {String} url
      * @param {Boolean} updateNotice
-     * @param {Boolean} shouldUpdate
+     * @param {Boolean} updatable
      * @param {Function} callback
      */
-    get(url, updateNotice, shouldUpdate, callback) {
+    get(url, updateNotice, updatable, callback) {
 
         let normalizeUrl = this.buildUrl(url);
 
@@ -24,7 +24,7 @@ module.exports = {
             url: normalizeUrl,
             success: _.bind((data) => {
 
-                this.bindData(data, shouldUpdate);
+                this.bindData(data, updatable);
 
                 if (updateNotice) {
                     notes.clearAll();
@@ -44,9 +44,7 @@ module.exports = {
             }, this),
             error: _.bind(() => {
 
-                this.getUpdatableData();
-
-                notes.init('error', 'Failed to update data!');
+                this.bindDataNotes();
                 toasts.init('error', 'Server is not responding!');
 
             }, this)
@@ -58,7 +56,7 @@ module.exports = {
      * Binds data
      * @param  {Object} data
      */
-    bindData(data, shouldUpdate) {
+    bindData(data, updatable) {
         $.each(data, _.bind(updateValues, this));
 
         // Recursive function to update values
@@ -72,8 +70,8 @@ module.exports = {
                     $(selector).text(value);
                 }
 
-                if (shouldUpdate) {
-                    $(selector).data('data-should-update', true);
+                if (updatable) {
+                    $(selector).data('data-updatable', true);
                 }
 
             } else {
@@ -90,17 +88,18 @@ module.exports = {
         return `/api${string ? '/' + string : ''}`;
     },
 
-    getUpdatableData() {
-        let outputKeys = [];
+    bindDataNotes() {
+        let outputBoxes = $('.data-wrapper .output');
 
-        $.each('.data-wrapper .output', function() {
-            if ($(this).data('data-should-update')) {
-                outputKeys.push($(this).attr('id'));
+        $.each(outputBoxes, function () {
+            let updatable = $(this).data('data-updatable'),
+                key = $(this).attr('id'),
+                selector = $(`#${key}`).parents('.box');
+
+            if (updatable) {
+                notes.clearAll();
+                notes.init('error', 'Failed to update data!', selector);
             }
         });
-
-        console.log(outputKeys);
-
-        return outputKeys;
     }
 };

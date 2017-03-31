@@ -38,22 +38,5 @@ module.exports = {
      */
     getCurrentLayout() {
         return $('body').find('section.layout').attr('id');
-    },
-
-    /**
-     * Gather all data boxes and return them as an array
-     */
-    getAllDataBoxes() {
-        let dataBoxes = $('.layout .box'),
-            dataBoxesArray = [];
-
-        $.each(dataBoxes, function() {
-            let id = $(this).attr('id'),
-                splitId = id.split('-box');
-
-            dataBoxesArray.push(splitId[0]);
-        });
-
-        return dataBoxesArray;
     }
 };
