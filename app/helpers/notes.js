@@ -31,7 +31,9 @@ module.exports = {
     success(msg, parent, position) {
         let note = this.buildNote('success', msg, position);
 
-        parent.append(note);
+        if (!this.checkForNote(parent)) {
+            parent.append(note);
+        }
     },
 
     /**
@@ -43,7 +45,9 @@ module.exports = {
     error(msg, parent, position) {
         let note = this.buildNote('danger', msg, position);
 
-        parent.append(note);
+        if (!this.checkForNote(parent)) {
+            parent.append(note);
+        }
     },
 
     /**
@@ -56,6 +60,14 @@ module.exports = {
         let note = `<div class="note note-${type} note-${position} tooltip tooltip-bottom" data-tooltip="${msg}"></div>`;
 
         return note;
+    },
+
+    /**
+     *
+     * @param {String} selector
+     */
+    checkForNote(selector) {
+        return (selector.find('.note').length !== 0) ? true : false;
     },
 
     /**

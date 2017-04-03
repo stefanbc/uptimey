@@ -97,7 +97,6 @@ module.exports = {
                 selector = $(`#${key}`).parents('.box');
 
             if (updatable) {
-                notes.clearAll();
                 notes.init('error', 'Failed to update data!', selector);
             }
         });
