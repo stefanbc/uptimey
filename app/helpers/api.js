@@ -88,6 +88,9 @@ module.exports = {
         return `/api${string ? '/' + string : ''}`;
     },
 
+    /**
+     * Binds notes to all data
+     */
     bindDataNotes() {
         let outputBoxes = $('.data-wrapper .output');
 
