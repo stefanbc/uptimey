@@ -1,10 +1,10 @@
-include ./scaffolding/mixins.pug
+include ./scaffolding/mixins
 doctype html
 html(lang="en")
-    include ./partials/head.pug
+    include ./partials/head
     body
         .container
-            include ./partials/header.pug
+            include ./partials/header
             section.layout(id=layoutId)
                 block content
-            include ./partials/footer.pug
+            include ./partials/footer
