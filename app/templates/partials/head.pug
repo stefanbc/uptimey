@@ -3,8 +3,8 @@ head
 
     include ./meta.pug
 
-    link(rel="prefetch shortcut icon" href='/public/images/favicon.ico', type='image/x-icon')
+    link(rel="prefetch shortcut icon" href="/public/images/favicon.ico" type="image/x-icon")
 
-    - var stylesheets = ['//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600', '/public/styles/vendor.min.css', '/public/styles/uptimey.min.css'];
+    -var stylesheets = ["//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600", "/public/styles/vendor.min.css", "/public/styles/uptimey.min.css"];
     each val in stylesheets
-        link(rel='stylesheet' href=val, type='text/css')
+        link(rel="stylesheet" href=val type="text/css")

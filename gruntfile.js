@@ -94,6 +94,15 @@ module.exports = function(grunt) {
             }
         },
 
+        puglint: {
+            default: {
+                options: {
+                    extends: '.pug-lintrc'
+                },
+                src: ['./app/templates/**/*.pug']
+            }
+        },
+
         browserify: {
             dev: {
                 options: {
@@ -183,6 +192,7 @@ module.exports = function(grunt) {
                 'cssmin:dev',
                 'browserify:dev',
                 'jshint:dev',
+                'puglint',
                 'uglify:dev'
             ]
         }
@@ -193,17 +203,19 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-puglint');
     grunt.loadNpmTasks('grunt-browserify');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
-    grunt.registerTask('test', ['clean', 'jshint:dev']);
+    grunt.registerTask('test', ['clean', 'jshint:dev', 'puglint']);
     grunt.registerTask('dev', [
         'clean',
         'sass:dev',
         'autoprefixer',
         'cssmin:dev',
         'jshint:dev',
+        'puglint',
         'browserify:dev',
         'uglify:dev'
     ]);
@@ -213,6 +225,7 @@ module.exports = function(grunt) {
         'autoprefixer',
         'cssmin:prod',
         'jshint:prod',
+        'puglint',
         'browserify:prod',
         'uglify:prod'
     ]);

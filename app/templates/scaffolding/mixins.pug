@@ -17,30 +17,30 @@ mixin box(size, label, wrapper, extraClasses = '')
             section
                 .box-content
                     .box-content-value
-                        div(class='data-wrapper' id=`${wrapper}-data`)
+                        .data-wrapper(id=`${wrapper}-data`)
                             if block
                                 block
             if label
                 footer.text-uppercase
-                    label= label
+                    label=label
 
 //- Outputs data from the API
 mixin output(id, value, label, advanced = false)
     if block
-        span(class='output' id=id)
+        span.output(id=id)
             block
     else
         if label
-            span(class='output' id=id)
+            span.output(id=id)
                 if advanced
                     label
                         | #{label} :
-                    span= value
+                    span=value
                 else
-                    span= value
-                    label= label
+                    span=value
+                    label=label
         else
-            span(class='output' id=id)= value
+            span.output(id=id)=value
 
 //- Generates an unordered list
 mixin list(id = '', output, enableCopy, ...listItems)
@@ -53,8 +53,8 @@ mixin list(id = '', output, enableCopy, ...listItems)
                         span.action.copy-action.ml-10
                             +icon('clippy')
             else
-                li= item
+                li=item
 
 //- Mixin for generating an icon element
 mixin icon(icon)
-    span.icon!= octicons[icon].toSVG()
+    span.icon!=octicons[icon].toSVG()
