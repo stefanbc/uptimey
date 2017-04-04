@@ -21,7 +21,7 @@ module.exports = {
      * @param {String} selector
      */
     copy(selector) {
-        $(selector).find('.copy-action').on('click', function() {
+        $(selector).find('.copy-action').on('click', function () {
             let element = $(this).parent().find('.output');
 
             common.copyToClipboard(element[0]);

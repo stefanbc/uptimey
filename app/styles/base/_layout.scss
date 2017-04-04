@@ -1,6 +1,7 @@
 //
 // Layout and UI
 // --------------------------------------------------
+
 .container {
     .layout {
         max-width: 960px;
@@ -11,7 +12,7 @@
         }
 
         .loading {
-            &:after {
+            &::after {
                 border-bottom-color: $color-white;
                 border-left-color: $color-white;
             }

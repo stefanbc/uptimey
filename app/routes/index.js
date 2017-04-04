@@ -6,16 +6,16 @@ const basic = require('../models/basic');
 const octicons = require("octicons");
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
 
     basic.getLocation((location) => {
 
         return res.render('index', {
             layoutId : 'index',
             data     : basic.gatherData({
-                location : location
+                location
             }),
-            octicons : octicons
+            octicons
         });
 
     }, next);

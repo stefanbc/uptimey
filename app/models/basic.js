@@ -75,7 +75,7 @@ module.exports = {
         publicIp.then(ip => {
             ipLocation(ip, (error, data) => {
                 if (callback) {
-                    callback(data);
+                    return callback(data);
                 }
             });
         }).catch(next);

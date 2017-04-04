@@ -14,12 +14,10 @@ mixin column(column, small, extraClasses = '')
 mixin box(size, label, wrapper, extraClasses = '')
     div(class=`box rounded box-${size} box-flex ${extraClasses}` id=`${wrapper}-box`)
         .box-inner-wrapper.flex.text-center
-            section
-                .box-content
-                    .box-content-value
-                        .data-wrapper(id=`${wrapper}-data`)
-                            if block
-                                block
+            section.box-content-wrapper
+                div(class=`data-wrapper ${wrapper}-content`)
+                    if block
+                        block
             if label
                 footer.text-uppercase
                     label=label

@@ -90,7 +90,7 @@ module.exports = {
             };
 
             if (callback) {
-                callback(ipObject);
+                return callback(ipObject);
             }
         }).catch(next);
     }

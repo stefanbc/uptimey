@@ -1,4 +1,4 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
     require('time-grunt')(grunt);
 
@@ -67,31 +67,11 @@ module.exports = function(grunt) {
             }
         },
 
-        jshint: {
+        eslint: {
             options: {
-                jshintrc: true
+                configFile: './.eslintrc.js',
             },
-            dev: {
-                options: {
-                    debug: true
-                },
-                src: [
-                    './app/helpers/**/*.js',
-                    './app/controllers/**/*.js',
-                    './app/app.js',
-                ]
-            },
-            prod: {
-                options: {
-                    debug: false
-                },
-                src: [
-                    'Gruntfile.js',
-                    './app/helpers/**/*.js',
-                    './app/controllers/**/*.js',
-                    './app/app.js',
-                ]
-            }
+            target: ['./app/**/*.js']
         },
 
         puglint: {
@@ -99,7 +79,7 @@ module.exports = function(grunt) {
                 options: {
                     extends: '.pug-lintrc'
                 },
-                src: ['./app/templates/**/*.pug']
+                src: ['./app/**/*.pug']
             }
         },
 
@@ -179,11 +159,9 @@ module.exports = function(grunt) {
                 livereload: true
             },
             files: [
-                './app/controllers/**/*.js',
-                './app/helpers/**/*.js',
-                './app/app.js',
-                './app/styles/**/*.scss',
-                './app/templates/**/*.pug',
+                './app/**/*.js',
+                './app/**/*.scss',
+                './app/**/*.pug',
             ],
             tasks: [
                 'clean',
@@ -191,7 +169,7 @@ module.exports = function(grunt) {
                 'autoprefixer',
                 'cssmin:dev',
                 'browserify:dev',
-                'jshint:dev',
+                'eslint',
                 'puglint',
                 'uglify:dev'
             ]
@@ -202,19 +180,19 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-eslint');
     grunt.loadNpmTasks('grunt-puglint');
     grunt.loadNpmTasks('grunt-browserify');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
-    grunt.registerTask('test', ['clean', 'jshint:dev', 'puglint']);
+    grunt.registerTask('test', ['clean', 'eslint', 'puglint']);
     grunt.registerTask('dev', [
         'clean',
         'sass:dev',
         'autoprefixer',
         'cssmin:dev',
-        'jshint:dev',
+        'eslint',
         'puglint',
         'browserify:dev',
         'uglify:dev'
@@ -224,13 +202,13 @@ module.exports = function(grunt) {
         'sass:prod',
         'autoprefixer',
         'cssmin:prod',
-        'jshint:prod',
+        'eslint',
         'puglint',
         'browserify:prod',
         'uglify:prod'
     ]);
 
-    grunt.registerTask('server', 'Start a custom web server', function() {
+    grunt.registerTask('server', 'Start a custom web server', function () {
         grunt.log.writeln('Started web server on port 3000');
         require('./app/index.js').listen(3000);
     });

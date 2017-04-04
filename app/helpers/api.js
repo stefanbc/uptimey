@@ -38,7 +38,7 @@ module.exports = {
                 }
 
                 if (callback) {
-                    callback();
+                    return callback();
                 }
 
             }, this),
@@ -57,8 +57,6 @@ module.exports = {
      * @param  {Object} data
      */
     bindData(data, updatable) {
-        $.each(data, _.bind(updateValues, this));
-
         // Recursive function to update values
         function updateValues(key, value) {
             if (typeof value !== 'object') {
@@ -78,6 +76,8 @@ module.exports = {
                 $.each(value, _.bind(updateValues, this));
             }
         }
+
+        $.each(data, _.bind(updateValues, this));
     },
 
     /**

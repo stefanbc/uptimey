@@ -3,115 +3,113 @@
 // --------------------------------------------------
 
 .layout {
-    &#index {
-        .box {
-            position: relative;
-            cursor: default;
+    .box {
+        position: relative;
+        cursor: default;
+        height: 100%;
+        border: 1px solid rgba($color-white, .2);
+        padding: 20px 15px;
+
+        .box-inner-wrapper {
             height: 100%;
-            border: 1px solid rgba($color-white, .2);
-            padding: 20px 15px;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
 
-            .box-inner-wrapper {
-                height: 100%;
+            section {
                 width: 100%;
-                align-items: center;
-                justify-content: center;
-                flex-wrap: wrap;
+                align-self: flex-end;
+                padding: 10px 0;
 
-                section {
-                    width: 100%;
-                    align-self: flex-end;
-                    padding: 10px 0;
+                .data-wrapper {
+                    font-size: $font-lg;
+                    line-height: $line-height-lg;
 
-                    .data-wrapper {
-                        font-size: $font-lg;
-                        line-height: $line-height-lg;
-
-                        &#time-data {
-                            > span {
-                                margin: 0 2px;
-                                text-transform: uppercase;
-                            }
-                        }
-
-                        &#uptime-data {
-                            > span {
-                                font-size: $font-xl;
-                                line-height: $line-height-xl;
-                                width: 70px;
-
-                                label {
-                                    display: block;
-                                    text-transform: uppercase;
-                                    font-size: $font-sm;
-                                    line-height: $line-height-sm;
-                                }
-                            }
-                        }
-
-                        &#advanced-data {
-                            font-size: $font-sm;
-                            line-height: $line-height-sm;
-
-                            ul {
-                                height: 100%;
-                            }
-
-                            .list-labels {
-                                color: rgba($color-white, .6);
-                            }
-
-                            .list-value {
-                                position: relative;
-
-                                .action {
-                                    position: absolute;
-                                    @include absolute-vertical-center;
-                                    cursor: pointer;
-                                    @include transition;
-                                    opacity: 0;
-                                    visibility: hidden;
-                                }
-
-                                &:hover {
-                                    .action {
-                                        opacity: 1;
-                                        visibility: visible;
-                                    }
-                                }
-                            }
-                        }
-
+                    &.time-content {
                         > span {
-                            display: inline-block;
-                            margin: 0 10px;
+                            margin: 0 2px;
+                            text-transform: uppercase;
                         }
                     }
-                }
 
-                footer {
-                    width: 100%;
-                    align-self: flex-end;
-                    padding-top: 10px;
-                    margin-top: 15px;
-                    border-top: 1px solid rgba($color-white, .1);
-                    color: rgba($color-white, .6);
+                    &.uptime-content {
+                        > span {
+                            font-size: $font-xl;
+                            line-height: $line-height-xl;
+                            width: 70px;
 
-                    label {
-                        letter-spacing: 2px;
+                            label {
+                                display: block;
+                                text-transform: uppercase;
+                                font-size: $font-sm;
+                                line-height: $line-height-sm;
+                            }
+                        }
+                    }
+
+                    &.advanced-content {
+                        font-size: $font-sm;
+                        line-height: $line-height-sm;
+
+                        ul {
+                            height: 100%;
+                        }
+
+                        .list-labels {
+                            color: rgba($color-white, .6);
+                        }
+
+                        .list-value {
+                            position: relative;
+
+                            .action {
+                                position: absolute;
+                                @include absolute-vertical-center;
+                                cursor: pointer;
+                                @include transition;
+                                opacity: 0;
+                                visibility: hidden;
+                            }
+
+                            &:hover {
+                                .action {
+                                    opacity: 1;
+                                    visibility: visible;
+                                }
+                            }
+                        }
+                    }
+
+                    > span {
+                        display: inline-block;
+                        margin: 0 10px;
                     }
                 }
             }
-        }
 
-        .section-header {
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-            border-bottom: 1px solid rgba($color-white, .1);
-            color: rgba($color-white, .6);
-            font-size: $font-size-base;
-            line-height: $line-height-base;
-            letter-spacing: 2px;
+            footer {
+                width: 100%;
+                align-self: flex-end;
+                padding-top: 10px;
+                margin-top: 15px;
+                border-top: 1px solid rgba($color-white, .1);
+                color: rgba($color-white, .6);
+
+                label {
+                    letter-spacing: 2px;
+                }
+            }
         }
+    }
+
+    .section-header {
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+        border-bottom: 1px solid rgba($color-white, .1);
+        color: rgba($color-white, .6);
+        font-size: $font-size-base;
+        line-height: $line-height-base;
+        letter-spacing: 2px;
     }
 }

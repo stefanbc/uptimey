@@ -3,21 +3,21 @@
 // --------------------------------------------------
 
 // Variables
-@import "base/_variables.scss";
+@import 'base/variables';
 
 // Base files
-@import "base/_colors.scss";
-@import "helpers/_mixins.scss";
-@import "base/_base.scss";
+@import 'base/colors';
+@import 'helpers/mixins';
+@import 'base/base';
 
 // Layout files
-@import "base/_layout.scss";
-@import "layout/_index.scss";
+@import 'base/layout';
+@import 'layout/index';
 
 // Utils
-@import "base/_media.scss";
-@import "helpers/_utils.scss";
+@import 'base/media';
+@import 'helpers/utils';
 
 // Misc
-@import "helpers/_toasts.scss";
-@import "helpers/_notes.scss";
+@import 'helpers/toasts';
+@import 'helpers/notes';
