@@ -35,7 +35,9 @@
     .copyright {
         max-width: 960px;
         margin: 0 auto;
-        font-size: $font-sm;
+        font-size: $font-size-root;
+        color: rgba($color-white, .6);
+        cursor: default;
 
         a {
             text-decoration: underline;
