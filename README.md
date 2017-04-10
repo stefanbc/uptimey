@@ -1,44 +1,34 @@
-uptimey
-=======
+# uptimey
 
 [![Build Status](https://travis-ci.org/stefanbc/uptimey.svg?branch=master)](https://travis-ci.org/stefanbc/uptimey) [![Dependency Status](https://dependencyci.com/github/stefanbc/uptimey/badge)](https://dependencyci.com/github/stefanbc/uptimey) [![Code Climate](https://codeclimate.com/github/stefanbc/uptimey/badges/gpa.svg)](https://codeclimate.com/github/stefanbc/uptimey)
 
-Thist tool
+![Screenshot](http://i.imgur.com/bxBd87M.png)
 
+## Prerequisites
 
-If you're proud of your server uptime, because you put a lot of time into configuring it, then you can showcase it with **uptimey** - a beautiful server uptime monitor!
+You will need the following things properly installed on your computer.
 
-Just clone the repo on your web server and then access your server's host followed by `/uptimey`, in your browser. Simple as that!
+* [Git](http://git-scm.com/)
+* [Node.js](http://nodejs.org/) (with NPM)
+* [Bower](http://bower.io/)
 
+## Installation
 
-![Screenshot](https://i.imgur.com/sbvuMBB.png)
+* `git clone git@github.com:stefanbc/uptimey.git` this repository
+* `cd uptimey`
+* `npm install`
+* `bower install`
 
-Requirements
---
+## Running / Development
 
-* PHP 5.5^
-* Internet enabled server
+* `npm start`
+* Visit your app at [http://localhost:3000](http://localhost:3000).
 
-Developers
---
+### Running Tests
 
-Make sure you have Node 0.10^ and npm installed. You'll need to have Grunt and Sass installed. Use these commands:
+* `grunt test`
 
-```
-npm install -g grunt-cli
-gem install sass
-```
+### Building
 
-You can then install all the project dependencies using:
-
-```
-npm install
-```
-
-Available Grunt tasks:
-
-* `grunt` - will build the whole project.
-* `grunt watch` - will watch for any file modifications and will build. Will also build on start.
-* `grunt test` - will test the main app js file using `jshint` (more tests are coming soon).
-
-For local development you can use Vagrant and you can check if the build passes using Travis-CI.
+* `grunt dev` (development)
+* `grunt` (production)
