@@ -33,7 +33,6 @@ else
 
         and npm install --production
         and bower install
-        and grunt
         and echo ""
 
         and echo "Starting uptimey"
