@@ -1,12 +1,11 @@
+os:
+  - linux
+  - osx
 language: node_js
 node_js:
   - "7"
   - "6"
 before_install:
   - npm install -g grunt-cli
-  - npm install -g bower
-  - gem install sass
 install:
   - npm install
-  - bower install
-before_script: grunt test
