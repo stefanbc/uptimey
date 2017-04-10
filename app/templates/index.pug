@@ -28,7 +28,7 @@ block content
                             a(href=`https://www.google.com/maps/place/${data.location.latitude},${ data.location.longitude}` target='_blank')
                                 if data.location.city
                                     | #{data.location.city},
-                                | #{data.location.country_name}
+                                | #{' ' + data.location.country_name}
         +column(12, 12, 'pt-0')
             +box('lg', 'advanced info', 'advanced')
                 +row
