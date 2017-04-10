@@ -42,10 +42,10 @@ module.exports = {
      */
     getOS() {
         let getPlatform = os.platform(),
-            dist, release;
+            tempDist, dist, release;
 
         if (getPlatform === 'linux') {
-            dist = getos((e, os) => { return os.dist; });
+            tempDist = getos((e, os) => { return os.dist; });
             release = getos((e, os) => { return os.release; });
         } else if (getPlatform === 'darwin') {
             release = macosRelease().version;
@@ -53,14 +53,12 @@ module.exports = {
             release = winRelease();
         }
 
-        if (getPlatform === 'darwin') {
-            dist = osName();
+        if (getPlatform === 'darwin' || getPlatform === 'win32') {
+            tempDist = osName();
         }
 
-        if (getPlatform === 'win32') {
-            let tempDist = osName().split(' ');
-            dist = tempDist[0];
-        }
+        tempDist = tempDist.split(' ');
+        dist = tempDist[0];
 
         return { dist, release };
     },
