@@ -28,7 +28,7 @@ a {
     color: $color-white;
     outline: none;
     text-decoration: none;
-    @include transition();
+    @include transition('color');
 
     &:hover,
     &:active,

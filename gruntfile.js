@@ -74,6 +74,13 @@ module.exports = function (grunt) {
             target: ['./app/**/*.js']
         },
 
+        sasslint: {
+            options: {
+                configFile: './.sass-lint.yml',
+            },
+            target: ['./app/styles/**/*.scss']
+        },
+
         puglint: {
             default: {
                 options: {
@@ -165,13 +172,14 @@ module.exports = function (grunt) {
             ],
             tasks: [
                 'clean',
+                'sasslint',
                 'sass:dev',
                 'autoprefixer',
                 'cssmin:dev',
-                'browserify:dev',
                 'eslint',
-                'puglint',
-                'uglify:dev'
+                'browserify:dev',
+                'uglify:dev',
+                'puglint'
             ]
         }
     });
@@ -181,31 +189,34 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-eslint');
+    grunt.loadNpmTasks('grunt-sass-lint');
     grunt.loadNpmTasks('grunt-puglint');
     grunt.loadNpmTasks('grunt-browserify');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
-    grunt.registerTask('test', ['clean', 'eslint', 'puglint']);
+    grunt.registerTask('test', ['eslint', 'sasslint', 'puglint']);
     grunt.registerTask('dev', [
         'clean',
+        'sasslint',
         'sass:dev',
         'autoprefixer',
         'cssmin:dev',
         'eslint',
-        'puglint',
         'browserify:dev',
-        'uglify:dev'
+        'uglify:dev',
+        'puglint'
     ]);
     grunt.registerTask('default', [
         'clean',
+        'sasslint',
         'sass:prod',
         'autoprefixer',
         'cssmin:prod',
         'eslint',
-        'puglint',
         'browserify:prod',
-        'uglify:prod'
+        'uglify:prod',
+        'puglint'
     ]);
 
     grunt.registerTask('server', 'Start a custom web server', function () {

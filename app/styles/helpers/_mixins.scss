@@ -18,8 +18,8 @@
     100% { opacity: 0; }
 }
 
-@mixin transition {
-    transition: all .5s ease;
+@mixin transition($type) {
+    transition: $type .5s ease-in-out;
 }
 
 @mixin absolute-horizontal-center {

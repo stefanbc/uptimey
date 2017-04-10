@@ -67,7 +67,7 @@
                                 position: absolute;
                                 @include absolute-vertical-center;
                                 cursor: pointer;
-                                @include transition;
+                                @include transition('opacity');
                                 opacity: 0;
                                 visibility: hidden;
                             }
