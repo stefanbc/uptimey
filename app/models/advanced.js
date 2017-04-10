@@ -53,8 +53,13 @@ module.exports = {
             release = winRelease();
         }
 
-        if (getPlatform === 'darwin' || getPlatform === 'win32') {
+        if (getPlatform === 'darwin') {
             dist = osName();
+        }
+
+        if (getPlatform === 'win32') {
+            let tempDist = osName().split(' ');
+            dist = tempDist[0];
         }
 
         return { dist, release };

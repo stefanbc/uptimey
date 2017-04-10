@@ -6,19 +6,26 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
 
         clean: {
-            prod: {
+            default: {
                 src: [
-                    './public/styles/*',
-                    './public/scripts/*'
+                    './public/scripts/*',
+                    './public/styles/*'
                 ]
-            }
+            },
+            scripts: { src: ['./public/scripts/*'] },
+            styles: { src: ['./public/styles/*'] }
+        },
+
+        sasslint: {
+            options: {
+                configFile: './.sass-lint.yml',
+            },
+            target: ['./app/styles/**/*.scss']
         },
 
         sass: {
             prod: {
-                options: {
-                    sourcemap : 'none'
-                },
+                options: { sourcemap : 'none' },
                 files: {
                     './public/styles/uptimey.min.css' : './app/styles/main.scss'
                 }
@@ -32,9 +39,7 @@ module.exports = function (grunt) {
 
         autoprefixer: {
             prod: {
-                options: {
-                    browsers : ['last 4 versions']
-                },
+                options: { browsers : ['last 4 versions'] },
                 files: {
                     './public/styles/uptimey.min.css' : './public/styles/uptimey.min.css'
                 },
@@ -53,9 +58,7 @@ module.exports = function (grunt) {
                 }
             },
             dev: {
-                options: {
-                    sourceMap: true
-                },
+                options: { sourceMap: true },
                 files: {
                     './public/styles/uptimey.min.css': './public/styles/uptimey.min.css',
                     './public/styles/vendor.min.css': [
@@ -72,22 +75,6 @@ module.exports = function (grunt) {
                 configFile: './.eslintrc.js',
             },
             target: ['./app/**/*.js']
-        },
-
-        sasslint: {
-            options: {
-                configFile: './.sass-lint.yml',
-            },
-            target: ['./app/styles/**/*.scss']
-        },
-
-        puglint: {
-            default: {
-                options: {
-                    extends: '.pug-lintrc'
-                },
-                src: ['./app/**/*.pug']
-            }
         },
 
         browserify: {
@@ -160,27 +147,43 @@ module.exports = function (grunt) {
             }
         },
 
+        puglint: {
+            default: {
+                options: {
+                    extends: '.pug-lintrc'
+                },
+                src: ['./app/**/*.pug']
+            }
+        },
+
         watch: {
             options: {
                 atBegin: true,
                 livereload: true
             },
-            files: [
-                './app/**/*.js',
-                './app/**/*.scss',
-                './app/**/*.pug',
-            ],
-            tasks: [
-                'clean',
-                'sasslint',
-                'sass:dev',
-                'autoprefixer',
-                'cssmin:dev',
-                'eslint',
-                'browserify:dev',
-                'uglify:dev',
-                'puglint'
-            ]
+            scripts: {
+                files: ['./app/**/*.js'],
+                tasks: [
+                    'clean:scripts',
+                    'eslint',
+                    'browserify:dev',
+                    'uglify:dev'
+                ]
+            },
+            styles: {
+                files: ['./app/**/*.scss'],
+                tasks: [
+                    'clean:styles',
+                    'sasslint',
+                    'sass:dev',
+                    'autoprefixer',
+                    'cssmin:dev'
+                ]
+            },
+            templates: {
+                files: ['./app/**/*.pug'],
+                tasks: ['puglint']
+            }
         }
     });
 
@@ -218,9 +221,4 @@ module.exports = function (grunt) {
         'uglify:prod',
         'puglint'
     ]);
-
-    grunt.registerTask('server', 'Start a custom web server', function () {
-        grunt.log.writeln('Started web server on port 3000');
-        require('./app/index.js').listen(3000);
-    });
 };
