@@ -11,6 +11,7 @@ router.get('/', function (req, res, next) {
     basic.getLocation((location) => {
 
         return res.render('index', {
+            title    : 'uptimey - simple uptime monitor',
             layoutId : 'index',
             data     : basic.gatherData({
                 location
