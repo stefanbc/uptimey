@@ -38,7 +38,7 @@ module.exports = {
                 }
 
                 if (callback) {
-                    return callback();
+                    return callback(data);
                 }
 
             }, this),

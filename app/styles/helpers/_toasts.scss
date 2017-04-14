@@ -10,7 +10,14 @@
             position: absolute;
             z-index: 999;
             width: auto;
-            background: none;
+
+            &.toast-success {
+                background: rgba($color-green1, .3);
+            }
+
+            &.toast-warning {
+                background: rgba($color-red1, .3);
+            }
 
             &.toast-tl {
                 top: 10px;

@@ -1,5 +1,8 @@
 head
-    title=`uptimey - ${data.uptime.days} days ${data.uptime.hours} hours ${data.uptime.minutes} minutes`
+    if error
+        title='uptimey - simple uptime server monitor'
+    else
+        title=`uptimey - ${data.uptime.days} days ${data.uptime.hours} hours ${data.uptime.minutes} minutes`
 
     include ./meta
 

@@ -1,8 +1,8 @@
 {
   "name": "uptimey",
   "title": "uptimey",
-  "description": "Beautiful server uptime monitor",
-  "version": "0.4.1",
+  "description": "simple server uptime monitor",
+  "version": "1.0.0",
   "author": "\"stefanbc\" Stefan Cosma (http://stefancosma.xyz/)",
   "repository": "stefanbc/uptimey",
   "license": "MIT",

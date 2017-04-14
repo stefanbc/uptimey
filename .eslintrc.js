@@ -72,6 +72,7 @@ module.exports = {
         'no-var': 'error',
         'require-yield': 'error',
         'space-before-function-paren': ['error', { anonymous: 'always', named: 'never', asyncArrow: 'always' }],
-        'object-shorthand': ['error', 'always', { avoidExplicitReturnArrows: true }]
+        'object-shorthand': ['error', 'always', { avoidExplicitReturnArrows: true }],
+        'no-console': ["error", { allow: ["warn", "error"] }]
     }
 };

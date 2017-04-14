@@ -38,5 +38,15 @@ module.exports = {
      */
     getCurrentLayout() {
         return $('body').find('section.layout').attr('id');
+    },
+
+    /**
+     * New title
+     * @param {String} text
+     */
+    updateTitle(text) {
+        let title = $('title');
+
+        title.text(text);
     }
 };

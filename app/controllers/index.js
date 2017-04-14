@@ -20,7 +20,13 @@ module.exports = {
 
             setInterval(() => {
 
-                api.get('basic', true, true);
+                api.get('basic', true, true, (data) => {
+                    let days = `${data.uptime.days} days`,
+                        hours = `${data.uptime.hours} hours`,
+                        minutes = `${data.uptime.minutes} minutes`;
+
+                    common.updateTitle(`uptimey - ${days} ${hours} ${minutes}`);
+                });
 
             }, this.updateTimeout);
 
