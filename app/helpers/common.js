@@ -48,5 +48,17 @@ module.exports = {
         let title = $('title');
 
         title.text(text);
+    },
+
+    /**
+     * Adds leading zero to
+     * @param {String} number
+     */
+    pad(number) {
+        if (number < 10) {
+            return `0${number}`;
+        } else {
+            return number;
+        }
     }
 };

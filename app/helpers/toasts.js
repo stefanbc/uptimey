@@ -6,7 +6,7 @@ const $ = require('jquery');
  */
 module.exports = {
 
-    wormHole: $('.container .toasts-wormhole'),
+    wormHole: '.container .toasts-wormhole',
     defaultPosition: 'tr',
 
     /**
@@ -34,7 +34,7 @@ module.exports = {
     success(msg, position) {
         let toast = this.buildToast('success', msg, position);
 
-        this.wormHole.append(toast);
+        $(this.wormHole).append(toast);
     },
 
     /**
@@ -45,7 +45,7 @@ module.exports = {
     error(msg, position) {
         let toast = this.buildToast('danger', msg, position);
 
-        this.wormHole.append(toast);
+        $(this.wormHole).append(toast);
     },
 
     /**
@@ -64,13 +64,13 @@ module.exports = {
      * Clears all toasts in the wormhole
      */
     clearAll() {
-        this.wormHole.find('.toast').remove();
+        $(this.wormHole).find('.toast').remove();
     },
 
     /**
      * Hides a toast in the wormhole
      */
     hide() {
-        this.wormHole.find('.toast').removeClass('fadeInDown').addClass('fadeOutUp');
+        $(this.wormHole).find('.toast').removeClass('fadeInDown').addClass('fadeOutUp');
     }
 };

@@ -48,7 +48,7 @@ mixin list(id = '', output, enableCopy, ...listItems)
                 li.list-value
                     +output(item)
                     if enableCopy
-                        span.action.copy-action.ml-10
+                        span.action.copy-action.ml-10.tooltip.tooltip-right(data-tooltip="Copy")
                             +icon('clippy')
             else
                 li=item

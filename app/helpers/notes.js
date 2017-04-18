@@ -6,7 +6,7 @@ const $ = require('jquery');
  */
 module.exports = {
 
-    notesDefaultParent: $('.box'),
+    notesDefaultParent: '.box',
     defaultPosition: 'tr',
 
     /**
@@ -74,6 +74,6 @@ module.exports = {
      * Clears all notes
      */
     clearAll() {
-        this.notesDefaultParent.find('.note').remove();
+        $(this.notesDefaultParent).find('.note').remove();
     }
 };
