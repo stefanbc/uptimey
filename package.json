@@ -38,7 +38,7 @@
     "morgan": "~1.7.0",
     "octicons": "^5.0.1",
     "os-name": "^2.0.1",
-    "os-uptime": "stefanbc/node-os-uptime#master",
+    "os-uptime": "^2.0.0",
     "public-ip": "^2.3.3",
     "pug": "~2.0.0-beta10",
     "win-release": "^1.1.1"
