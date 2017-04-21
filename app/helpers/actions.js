@@ -42,7 +42,7 @@ module.exports = {
     insertIcon(selector, action, icon) {
         let actionIcon = $(selector).find(`.${action}-action`);
 
-        actionIcon.addClass('tooltip tooltip-right').data('data-tooltip', action);
+        actionIcon.addClass('tooltip tooltip-right').attr('data-tooltip', action);
 
         $(selector).on('mouseenter mouseleave', (ev) => {
             let type = ev.type;

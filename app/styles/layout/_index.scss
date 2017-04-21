@@ -72,6 +72,7 @@
                                 visibility: hidden;
 
                                 &::after {
+                                    text-transform: capitalize;
                                     font-size: 12px;
                                     line-height: 12px;
                                 }
