@@ -49,10 +49,5 @@ mixin list(id = '', output, enableCopy, ...listItems)
                     +output(item)
                     if enableCopy
                         span.action.copy-action.ml-10.tooltip.tooltip-right(data-tooltip="Copy")
-                            +icon('clippy')
             else
                 li=item
-
-//- Mixin for generating an icon element
-mixin icon(icon)
-    span.icon!=octicons[icon].toSVG()

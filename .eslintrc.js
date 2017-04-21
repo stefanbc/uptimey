@@ -73,6 +73,6 @@ module.exports = {
         'require-yield': 'error',
         'space-before-function-paren': ['error', { anonymous: 'always', named: 'never', asyncArrow: 'always' }],
         'object-shorthand': ['error', 'always', { avoidExplicitReturnArrows: true }],
-        'no-console': ["error", { allow: ["warn", "error"] }]
+        'no-console': ["warn", { allow: ["warn", "error"] }]
     }
 };
