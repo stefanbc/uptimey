@@ -16,7 +16,6 @@ const netmask = require('ipmask')();
  *  Abstract module with all methods
  */
 module.exports = {
-
     /**
      * Advanced data method. Gathers all advanced data
      * and returns is as an object. The data param is optional.
@@ -38,7 +37,6 @@ module.exports = {
 
     /**
      * Returns data about OS distribution and release
-     * @param {String} type
      */
     getOS() {
         let getPlatform = os.platform(),

@@ -63,7 +63,7 @@ module.exports = {
     },
 
     /**
-     *
+     * Checks for the existance of a note
      * @param {String} selector
      */
     checkForNote(selector) {

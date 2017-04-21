@@ -5,7 +5,7 @@ const osUptime = require('os-uptime')();
 const moment = require('moment');
 const publicIp = require('public-ip').v4();
 const ipLocation = require('iplocation');
-const common = require('../helpers/common');
+const utils = require('../helpers/utils');
 
 /**
  *  Abstract module with all methods
@@ -39,9 +39,9 @@ module.exports = {
             minutes     = Math.floor(calcMinutes - (days * 60 * 24) - (hours * 60));
 
         return {
-            days    : common.pad(days),
-            hours   : common.pad(hours),
-            minutes : common.pad(minutes)
+            days    : utils.pad(days),
+            hours   : utils.pad(hours),
+            minutes : utils.pad(minutes)
         };
     },
 

@@ -1,5 +1,6 @@
 const _ = require('lodash');
 const api = require('../helpers/api');
+const utils = require('../helpers/utils');
 const common = require('../helpers/common');
 const actions = require('../helpers/actions');
 
@@ -16,7 +17,7 @@ module.exports = {
     init() {
         _.bindAll(this);
 
-        if ( common.getCurrentLayout() === 'index' ) {
+        if ( utils.getCurrentLayout() === 'index' ) {
 
             setInterval(() => {
 

@@ -1,6 +1,6 @@
 const _ = require('lodash');
 const $ = require('jquery');
-const common = require('./common');
+const utils = require('./utils');
 const notes = require('./notes');
 const toasts = require('./toasts');
 
@@ -53,14 +53,15 @@ module.exports = {
     },
 
     /**
-     * Binds data
-     * @param  {Object} data
+     * Binds data to DOM elements
+     * @param {Object} data
+     * @param {Boolean} updatable
      */
     bindData(data, updatable) {
         // Recursive function to update values
         function updateValues(key, value) {
             if (typeof value !== 'object') {
-                let selector = '#' + common.normalizeString(key);
+                let selector = '#' + utils.normalizeString(key);
 
                 if ($(selector).find('span').length === 1) {
                     $(selector).find('span').text(value);

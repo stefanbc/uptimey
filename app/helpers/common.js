@@ -2,19 +2,11 @@ const $ = require('jquery');
 const toasts = require('./toasts');
 
 /**
- * Common helper with different methods
+ * Common helpers
  */
 module.exports = {
     /**
-     * Normalizes a string
-     * @param  {String} string
-     */
-    normalizeString(string) {
-        return string.split(/(?=[A-Z])/).join('-').toLowerCase();
-    },
-
-    /**
-     * Copys element text to clipboard
+     * Copies an elements text to clipboard
      * @param {Object} element
      */
     copyToClipboard(element) {
@@ -34,14 +26,7 @@ module.exports = {
     },
 
     /**
-     * Retrives the current layout
-     */
-    getCurrentLayout() {
-        return $('body').find('section.layout').attr('id');
-    },
-
-    /**
-     * New title
+     * Sets a new title
      * @param {String} text
      */
     updateTitle(text) {
@@ -49,16 +34,4 @@ module.exports = {
 
         title.text(text);
     },
-
-    /**
-     * Adds leading zero to
-     * @param {String} number
-     */
-    pad(number) {
-        if (number < 10) {
-            return `0${number}`;
-        } else {
-            return number;
-        }
-    }
 };
