@@ -8,37 +8,59 @@ const toasts = require('./toasts');
  * Helper for API interaction
  */
 module.exports = {
+
+    updateTimeout: 1000 * 60,
+
     /**
      * Makes an API call using the provided params
-     * @param {String} url
-     * @param {Boolean} updateNotice
-     * @param {Boolean} updatable
-     * @param {Function} callback
+     *
+     * Available options are:
+     * {String} url
+     * {Boolean} updates
+     * {Function} callback
+     *
+     * @param {Object} options
      */
-    get(url, updateNotice, updatable, callback) {
+    get(options) {
 
-        let normalizeUrl = this.buildUrl(url);
+        _.bindAll(this);
+
+        if (options.updates) {
+
+            setInterval(() => {
+                this._ajax(options);
+            }, this.updateTimeout);
+
+        } else {
+            this._ajax(options);
+        }
+
+    },
+
+    /**
+     * Makes an Ajax call with the passed options
+     * @param {Object} options
+     */
+    _ajax(options) {
+
+        let normalizeUrl = this.buildUrl(options.route);
 
         $.ajax({
             dataType: "json",
             url: normalizeUrl,
             success: _.bind((data) => {
 
-                this.bindData(data, updatable);
+                this.bindData(data, options.updates);
 
-                if (updateNotice) {
+                if (options.updates) {
                     notes.clearAll();
                     toasts.init('success', 'Data has been updated!');
                 }
 
-                let listValues = $('ul.list-values');
+                $('ul.list-values').removeClass('loading');
 
-                if (listValues.hasClass('loading')) {
-                    listValues.removeClass('loading');
-                }
-
-                if (callback) {
-                    return callback(data);
+                if (options.callback) {
+                    return options.callback(data);
                 }
 
             }, this),

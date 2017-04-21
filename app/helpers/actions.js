@@ -24,13 +24,13 @@ module.exports = {
     copy(selector) {
         let actionIcon = $(selector).find('.copy-action');
 
-        actionIcon.on('click', () => {
+        this.insertIcon(selector, 'copy', 'clippy');
+
+        actionIcon.on('click', function () {
             let element = $(this).parent().find('.output');
 
             common.copyToClipboard(element[0]);
         });
-
-        this.insertIcon(selector, 'copy', 'clippy');
     },
 
     /**
