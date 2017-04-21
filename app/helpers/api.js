@@ -1,5 +1,6 @@
 const _ = require('lodash');
 const $ = require('jquery');
+const moment = require('moment');
 const utils = require('./utils');
 const notes = require('./notes');
 const toasts = require('./toasts');
@@ -66,7 +67,9 @@ module.exports = {
             }, this),
             error: _.bind(() => {
 
+                this.requestTimer();
                 this.bindDataNotes();
+
                 toasts.init('error', 'Server is not responding!');
 
             }, this)
@@ -77,9 +80,9 @@ module.exports = {
     /**
      * Binds data to DOM elements
      * @param {Object} data
-     * @param {Boolean} updatable
+     * @param {Boolean} updates
      */
-    bindData(data, updatable) {
+    bindData(data, updates) {
         // Recursive function to update values
         function updateValues(key, value) {
             if (typeof value !== 'object') {
@@ -91,8 +94,8 @@ module.exports = {
                     $(selector).text(value);
                 }
 
-                if (updatable) {
-                    $(selector).data('data-updatable', true);
+                if (updates) {
+                    $(selector).data('data-updates', true);
                 }
 
             } else {
@@ -104,6 +107,23 @@ module.exports = {
     },
 
     /**
+     * Binds notes to all data
+     */
+    bindDataNotes() {
+        let outputBoxes = $('.data-wrapper .output');
+
+        $.each(outputBoxes, function () {
+            let updates = $(this).data('data-updates'),
+                key = $(this).attr('id'),
+                selector = $(`#${key}`).parents('.box');
+
+            if (updates) {
+                notes.init('error', 'Failed to update data!', selector);
+            }
+        });
+    },
+
+    /**
      * Builds an url for API calls
      * @param {String} string
      */
@@ -112,19 +132,25 @@ module.exports = {
     },
 
     /**
-     * Binds notes to all data
+     * Request timer when connection to server is down
      */
-    bindDataNotes() {
-        let outputBoxes = $('.data-wrapper .output');
+    requestTimer() {
+        let interval = 1000,
+            duration = moment.duration(this.updateTimeout * 1000, 'milliseconds'),
+            counter = setInterval(() => {
 
-        $.each(outputBoxes, function () {
-            let updatable = $(this).data('data-updatable'),
-                key = $(this).attr('id'),
-                selector = $(`#${key}`).parents('.box');
+                duration = moment.duration(duration.asMilliseconds() - interval, 'milliseconds');
 
-            if (updatable) {
-                notes.init('error', 'Failed to update data!', selector);
-            }
-        });
+                let output = moment(duration.asMilliseconds()).format('ss');
+
+                $('.request-timer-wrapper').removeClass('hide');
+                $('.request-timer').text(output);
+
+                if (output === '00') {
+                    clearInterval(counter);
+                    $('.request-timer-wrapper').addClass('hide');
+                }
+
+            }, interval);
     }
 };
