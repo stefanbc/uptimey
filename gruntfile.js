@@ -1,77 +1,224 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
     require('time-grunt')(grunt);
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        jade: {
-            compile: {
-                files: {
-                    'index.html': 'client/lib/views/index.jade'
-                }
-            }
+
+        clean: {
+            default: {
+                src: [
+                    './public/scripts/*',
+                    './public/styles/*'
+                ]
+            },
+            scripts: { src: ['./public/scripts/*'] },
+            styles: { src: ['./public/styles/*'] }
         },
+
+        sasslint: {
+            options: {
+                configFile: './.sass-lint.yml',
+            },
+            target: ['./app/styles/**/*.scss']
+        },
+
         sass: {
-            dist: {
-                options: {
-                    style     : 'compressed',
-                    sourcemap : 'none'
-                },
+            prod: {
+                options: { sourcemap : 'none' },
                 files: {
-                    'client/bin/css/global.min.css' : 'client/lib/style/*.scss'
+                    './public/styles/uptimey.min.css' : './app/styles/main.scss'
+                }
+            },
+            dev: {
+                files: {
+                    './public/styles/uptimey.min.css' : './app/styles/main.scss'
                 }
             }
         },
-        coffee: {
-            compileJoined: {
-                options: {
-                    join : true
-                },
+
+        autoprefixer: {
+            prod: {
+                options: { browsers : ['last 4 versions'] },
                 files: {
-                    'client/bin/app.min.js': 
-                    [
-                        'client/lib/helpers/*.coffee', 
-                        'client/lib/controllers/*.coffee'
+                    './public/styles/uptimey.min.css' : './public/styles/uptimey.min.css'
+                },
+            },
+        },
+
+        cssmin: {
+            prod: {
+                files: {
+                    './public/styles/uptimey.min.css': './public/styles/uptimey.min.css',
+                    './public/styles/vendor.min.css': [
+                        './bower_components/normalize-css/normalize.css',
+                        './bower_components/spectre.css/dist/spectre.css',
+                        './bower_components/animate.css/animate.css'
                     ]
                 }
-            }  
-        },
-        uglify: {
-            js: {
+            },
+            dev: {
+                options: { sourceMap: true },
                 files: {
-                    'client/bin/app.min.js': ['client/bin/app.min.js']
+                    './public/styles/uptimey.min.css': './public/styles/uptimey.min.css',
+                    './public/styles/vendor.min.css': [
+                        './bower_components/normalize-css/normalize.css',
+                        './bower_components/spectre.css/dist/spectre.css',
+                        './bower_components/animate.css/animate.css'
+                    ]
                 }
             }
         },
-        jshint: {
-            files: ['gruntfile.js', 'client/bin/app.min.js'],
+
+        eslint: {
             options: {
-                globals: {
-                    jQuery: true
+                configFile: './.eslintrc.js',
+            },
+            target: ['./app/**/*.js']
+        },
+
+        browserify: {
+            dev: {
+                options: {
+                    browserifyOptions: { debug: true },
+                    transform: [
+                        ['babelify', {
+                            presets: ['es2015'],
+                            sourceMaps: true
+                        }]
+                    ]
+                },
+                files: {
+                    './public/scripts/uptimey.min.js': [
+                        './app/helpers/**/*.js',
+                        './app/controllers/**/*.js',
+                        './app/app.js',
+                    ]
+                }
+            },
+            prod: {
+                options: {
+                    browserifyOptions: { debug: false },
+                    transform: [
+                        ['babelify', {
+                            presets: ['es2015'],
+                            sourceMaps: false
+                        }]
+                    ]
+                },
+                files: {
+                    './public/scripts/uptimey.min.js': [
+                        './app/helpers/**/*.js',
+                        './app/controllers/**/*.js',
+                        './app/app.js',
+                    ]
                 }
             }
         },
+
+        uglify: {
+            dev: {
+                options: {
+                    mangle: {},
+                    screwIE8: true,
+                    sourceMap: true,
+                },
+                files: {
+                    './public/scripts/uptimey.min.js': [
+                        './public/scripts/uptimey.min.js'
+                    ]
+                }
+            },
+            prod: {
+                options: {
+                    mangle: {},
+                    screwIE8: true,
+                    preserveComments: false,
+                    compress: {
+                        drop_console: true
+                    },
+                    sourceMap: false,
+                },
+                files: {
+                    './public/scripts/uptimey.min.js': [
+                        './public/scripts/uptimey.min.js'
+                    ]
+                }
+            }
+        },
+
+        puglint: {
+            default: {
+                options: {
+                    extends: '.pug-lintrc'
+                },
+                src: ['./app/**/*.pug']
+            }
+        },
+
         watch: {
             options: {
-                atBegin: true
+                atBegin: true,
+                livereload: true
             },
-            files: [
-                'client/lib/controllers/*.coffee',
-                'client/lib/helpers/*coffee',
-                'client/lib/style/*.scss',
-                'client/lib/views/*.jade'
-            ],
-            tasks: ['jade', 'sass', 'coffee', 'uglify']
+            scripts: {
+                files: ['./app/**/*.js'],
+                tasks: [
+                    'clean:scripts',
+                    'eslint',
+                    'browserify:dev',
+                    'uglify:dev'
+                ]
+            },
+            styles: {
+                files: ['./app/**/*.scss'],
+                tasks: [
+                    'clean:styles',
+                    'sasslint',
+                    'sass:dev',
+                    'autoprefixer',
+                    'cssmin:dev'
+                ]
+            },
+            templates: {
+                files: ['./app/**/*.pug'],
+                tasks: ['puglint']
+            }
         }
     });
-    
-    grunt.loadNpmTasks('grunt-contrib-jade');
+
+    grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-sass');
-    grunt.loadNpmTasks('grunt-contrib-coffee');
+    grunt.loadNpmTasks('grunt-autoprefixer');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-eslint');
+    grunt.loadNpmTasks('grunt-sass-lint');
+    grunt.loadNpmTasks('grunt-puglint');
+    grunt.loadNpmTasks('grunt-browserify');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    
-    grunt.registerTask('test', ['coffee', 'jshint', 'uglify']);
-    grunt.registerTask('default', ['jade', 'sass', 'coffee', 'jshint', 'uglify']);
+
+    grunt.registerTask('test', ['eslint', 'sasslint', 'puglint']);
+    grunt.registerTask('dev', [
+        'clean',
+        'sasslint',
+        'sass:dev',
+        'autoprefixer',
+        'cssmin:dev',
+        'eslint',
+        'browserify:dev',
+        'uglify:dev',
+        'puglint'
+    ]);
+    grunt.registerTask('default', [
+        'clean',
+        'sasslint',
+        'sass:prod',
+        'autoprefixer',
+        'cssmin:prod',
+        'eslint',
+        'browserify:prod',
+        'uglify:prod',
+        'puglint'
+    ]);
 };

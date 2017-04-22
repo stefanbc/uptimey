@@ -1,0 +1,66 @@
+//
+// Global
+// --------------------------------------------------
+
+html,
+body {
+    height: 100%;
+}
+
+html {
+    font-size: $font-size-root;
+}
+
+body {
+    background-color: $color-black;
+    font-family: $font-family-base;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+    font-weight: $font-weight-root;
+    color: $color-grey1;
+}
+
+::selection {
+    background: $color-grey1;
+}
+
+a {
+    color: $color-white;
+    outline: none;
+    text-decoration: none;
+    @include transition('color');
+
+    &:hover,
+    &:active,
+    &:focus,
+    &:visited,
+    &:focus:active {
+        color: $color-white;
+        outline: none;
+    }
+
+    &:hover,
+    &:focus {
+        text-decoration: underline;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-bottom: 0;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+        margin-top: 0;
+        margin-bottom: .5rem;
+    }
+}

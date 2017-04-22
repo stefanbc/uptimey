@@ -1,0 +1,9 @@
+footer(class=(layoutId === 'error') ? "copyright text-center" : "copyright text-right")
+    +row
+        +column(6, 6, 'pt-0 text-left')
+            .request-timer-wrapper.hide
+                | Request to server failed. Will retry in #[span.request-timer] seconds.
+        +column(6, 6, 'pt-0')
+            | data provided by #[a(href="https://github.com/stefanbc/uptimey" target="_blank") @uptimey].
+
+include ./scripts

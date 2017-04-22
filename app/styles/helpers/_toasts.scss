@@ -1,0 +1,43 @@
+//
+// Toasts
+// --------------------------------------------------
+
+.container {
+    .toasts-wormhole {
+        position: relative;
+
+        .toast {
+            position: fixed;
+            z-index: 999;
+            width: auto;
+
+            &.toast-success {
+                background: rgba($color-green1, .3);
+            }
+
+            &.toast-warning {
+                background: rgba($color-red1, .3);
+            }
+
+            &.toast-tl {
+                top: 10px;
+                left: 10px;
+            }
+
+            &.toast-tr {
+                top: 10px;
+                right: 10px;
+            }
+
+            &.toast-bl {
+                bottom: 10px;
+                left: 10px;
+            }
+
+            &.toast-br {
+                top: 10px;
+                right: 10px;
+            }
+        }
+    }
+}

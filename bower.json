@@ -1,0 +1,28 @@
+{
+  "name": "uptimey",
+  "description": "Beautiful Server Uptime Monitor",
+  "main": "",
+  "authors": [
+    "\"stefanbc\" Stefan Cosma (http://stefancosma.xyz/)"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "server",
+    "monitor",
+    "uptime",
+    "beautiful"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize-css": "^5.0.0",
+    "spectre.css": "^0.2.7",
+    "animate.css": "^3.5.2"
+  }
+}

@@ -1,0 +1,48 @@
+extends layout
+
+block content
+    +row
+        +column(5, 12, 'mt-10 mb-10')
+            +box('lg', 'server uptime', 'uptime')
+                +output('days', data.uptime.days, 'days')
+                +output('hours', data.uptime.hours, 'hours')
+                +output('minutes', data.uptime.minutes, 'minutes')
+        +column(7, 12)
+            +row
+                +column(6, 12)
+                    +box('sm', 'date on server', 'current-date')
+                        +output('current-date', data.currentDate)
+                +column(6, 12)
+                    +box('sm', 'server is active since', 'active-date')
+                        +output('active-date', data.activeDate)
+                +column(6, 12)
+                    +box('sm', 'time on server', 'time')
+                        +output('hh', data.time.hh)
+                        span.blink :
+                        +output('mm', data.time.mm)
+                        +output('p', data.time.p)
+                +column(6, 12)
+                    +box('sm', 'server location', 'location')
+                        +output('location')
+                            if data.location
+                                a(href=`https://www.google.com/maps/place/${data.location.latitude},${ data.location.longitude}` target='_blank')
+                                    if data.location.city
+                                        | #{data.location.city},
+                                    | #{' ' + data.location.country_name}
+        +column(12, 12, 'pt-0')
+            +box('lg', 'advanced info', 'advanced')
+                +row
+                    +column(6, 12)
+                        .section-header.text-uppercase Server info
+                        +row
+                            +column(6, 6, 'text-right text-uppercase')
+                                +list('' , false, false, 'platform', 'release', 'processor', 'architecture', 'total memory')
+                            +column(6, 6, 'text-left')
+                                +list('server-info', true, true, 'dist', 'release', 'processor', 'architecture', 'total-mem')
+                    +column(6, 12)
+                        .section-header.text-uppercase Network
+                        +row
+                            +column(6, 6, 'text-right text-uppercase')
+                                +list('', false, false, 'hostname', 'local ip', 'public ip', 'network mask', 'mac')
+                            +column(6, 6, 'text-left')
+                                +list('network-info', true, true, 'hostname', 'local-ip', 'public-ip', 'network-mask', 'mac')

@@ -1,54 +1,56 @@
-uptimey 
-=======
+# uptimey
+> Simple server uptime monitor
 
-[![Build Status](https://travis-ci.org/stefanbc/uptimey.svg?branch=master)](https://travis-ci.org/stefanbc/uptimey) [![Dependency Status](https://www.versioneye.com/user/projects/572c7efaa0ca35004cf77288/badge.svg?style=flat)](https://www.versioneye.com/user/projects/572c7efaa0ca35004cf77288) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.svg)](http://gruntjs.com/)
+[![Build Status](https://travis-ci.org/stefanbc/uptimey.svg?branch=master)](https://travis-ci.org/stefanbc/uptimey) [![Dependency Status](https://dependencyci.com/github/stefanbc/uptimey/badge)](https://dependencyci.com/github/stefanbc/uptimey) [![Code Climate](https://codeclimate.com/github/stefanbc/uptimey/badges/gpa.svg)](https://codeclimate.com/github/stefanbc/uptimey)
 
+With uptimey you can easily monitor your server's uptime. It will output usefull data that you might need during your day, while you intereact with your server. Don't believe me, check out the screenshot bellow.
 
-If you're proud of your server uptime, because you put a lot of time into configuring it, then you can showcase it with **uptimey** - a beautiful Server Uptime Monitor!
+**Import note:** it works on systems that run macOS, Linux and Windows.
 
-Just clone the repo on your web server and then access your server's host followed by `/uptimey`, in your browser. Simple as that!
+![Screenshot](http://i.imgur.com/bxBd87M.png)
 
-Features
---
+## Prerequisites
 
-* The background image is a random image from [Unsplash](https://unsplash.com)!
-* Works on Linux, Windows, Mac OS servers.
-* Automatically gathers data from the server.
-* Knows if it's nighttime or daytime.
-* Knows the aprox server location (based on IP).
-* Tweet your awesome uptime!
-* Screenshot the server uptime and show it to your devops buddies! :)
-* Configure it to your liking. You can modify the `client/bin/settings.json` file. Checkout the [SETTINGS.md](SETTINGS.md) file for more info on how to change the parameters.
+You will need the following things properly installed on your computer.
 
-![Screenshot](https://i.imgur.com/sbvuMBB.png)
+* [Git](http://git-scm.com/)
+* [Node.js](http://nodejs.org/) (with NPM)
+* [Bower](http://bower.io/)
 
-Requirements
---
+## Installation
 
-* Apache server
-* PHP
-* Access to the Internet
+* `git clone git@github.com:stefanbc/uptimey.git` this repository
+* `cd uptimey`
+* `npm install`
+* `bower install`
 
-Developers
---
+Alternatively you can use the sh script inside the repo, after you've cloned it. Make sure it has execution permissions.
 
-Make sure you have Node and npm installed. You'll need to have Grunt and Sass installed. Use these commands:
+Eg. `./uptimey.sh init` or `./uptimey.sh help`
 
-```
-npm install -g grunt-cli
-gem install sass
-```
+## Running
 
-You can then install all the project dependencies using:
+* `npm start`
+* Open [http://localhost:3000](http://localhost:3000) and behold uptimey in all it's simple glory.
 
-```
-npm install
-```
+## Development
 
-Available Grunt tasks:
+You'll need to have Grunt and Sass installed. Use these commands:
 
-* `grunt` - will build the whole project.
-* `grunt watch` - will watch for any file modifications and will build. Will also build on start.
-* `grunt test` - will test the main app js file using `jshint` (more tests are coming soon).
+* `npm install -g grunt-cli`
+* `gem install sass`
 
-For local development you can use Vagrant and you can check if the build passes using Travis-CI.
+### Running Tests
+
+* `grunt test`
+
+### Building
+
+* `grunt dev` (development)
+* `grunt` (production)
+
+## Meta
+
+Stefan Cosma – [@stefanbc](https://twitter.com/stefanbc) – uptimey@stefancosma.xyz
+
+Distributed under the MIT license. See ``LICENSE`` for more information.
