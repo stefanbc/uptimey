@@ -10,11 +10,10 @@ engines:
     enabled: true
   fixme:
     enabled: true
-  scss-lint:
-    enabled: true
 ratings:
   paths:
   - "**.js"
   - "**.scss"
+  - "**.pug"
 exclude_paths:
-- bin/
+- public/
