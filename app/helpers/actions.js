@@ -1,6 +1,6 @@
 const _ = require('lodash');
 const $ = require('jquery');
-const octicons = require("octicons");
+const toasts = require('./toasts');
 const common = require('./common');
 
 /**
@@ -24,42 +24,32 @@ module.exports = {
     copy(selector) {
         let actionIcon = $(selector).find('.copy-action');
 
-        this.insertIcon(selector, 'copy', 'clippy');
+        common.insertIcon(selector, 'copy', 'clippy');
 
-        actionIcon.on('click', function () {
-            let element = $(this).parent().find('.output');
+        actionIcon.on('click', (ev) => {
+            let element = $(ev.currentTarget).parent().find('.output');
 
-            common.copyToClipboard(element[0]);
+            this.copyToClipboard(element[0]);
         });
     },
 
     /**
-     * Inserts an icon within the desired element
-     * @param {Object} selector
-     * @param {String} action
-     * @param {String} icon
+     * Copies an elements text to clipboard
+     * @param {Object} element
      */
-    insertIcon(selector, action, icon) {
-        let actionIcon = $(selector).find(`.${action}-action`);
+    copyToClipboard(element) {
+        let text = element,
+            selection = window.getSelection(),
+            range = document.createRange();
 
-        actionIcon.addClass('tooltip tooltip-right').attr('data-tooltip', action);
+        range.selectNodeContents(text);
+        selection.removeAllRanges();
+        selection.addRange(range);
 
-        $(selector).on('mouseenter mouseleave', (ev) => {
-            let type = ev.type;
+        document.execCommand('copy');
 
-            if (type === 'mouseenter') {
-                actionIcon.append(this.generateIcon(icon));
-            } else if (type === 'mouseleave') {
-                actionIcon.find('.icon').remove();
-            }
-        });
+        toasts.init('success', 'Value copied to clipboard');
+
+        selection.removeAllRanges();
     },
-
-    /**
-     * Outputs the correct markup for the oction
-     * @param {String} icon
-     */
-    generateIcon(icon) {
-        return `<span class="icon">${octicons[icon].toSVG()}</span>`;
-    }
 };

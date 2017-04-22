@@ -1,37 +1,37 @@
 const $ = require('jquery');
-const toasts = require('./toasts');
+const octicons = require("octicons");
 
 /**
  * Common helpers
  */
 module.exports = {
     /**
-     * Copies an elements text to clipboard
-     * @param {Object} element
+     * Inserts an icon within the desired element
+     * @param {Object} selector
+     * @param {String} action
+     * @param {String} icon
      */
-    copyToClipboard(element) {
-        let text = element,
-            selection = window.getSelection(),
-            range = document.createRange();
+    insertIcon(selector, action, icon) {
+        let actionIcon = $(selector).find(`.${action}-action`);
 
-        range.selectNodeContents(text);
-        selection.removeAllRanges();
-        selection.addRange(range);
+        actionIcon.addClass('tooltip tooltip-right').attr('data-tooltip', action);
 
-        document.execCommand('copy');
+        $(selector).on('mouseenter mouseleave', (ev) => {
+            let type = ev.type;
 
-        toasts.init('success', 'Value copied to clipboard');
-
-        selection.removeAllRanges();
+            if (type === 'mouseenter') {
+                actionIcon.append(this.generateIcon(icon));
+            } else if (type === 'mouseleave') {
+                actionIcon.find('.icon').remove();
+            }
+        });
     },
 
     /**
-     * Sets a new title
-     * @param {String} text
+     * Outputs the correct markup for the oction
+     * @param {String} icon
      */
-    updateTitle(text) {
-        let title = $('title');
-
-        title.text(text);
-    },
+    generateIcon(icon) {
+        return `<span class="icon">${octicons[icon].toSVG()}</span>`;
+    }
 };

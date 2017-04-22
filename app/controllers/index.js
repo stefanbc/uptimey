@@ -1,6 +1,6 @@
+const $ = require('jquery');
 const api = require('../helpers/api');
 const utils = require('../helpers/utils');
-const common = require('../helpers/common');
 const actions = require('../helpers/actions');
 
 /**
@@ -21,7 +21,7 @@ module.exports = {
                         hours = `${data.uptime.hours} hours`,
                         minutes = `${data.uptime.minutes} minutes`;
 
-                    common.updateTitle(`uptimey - ${days} ${hours} ${minutes}`);
+                    $('title').text(`uptimey - ${days} ${hours} ${minutes}`);
                 }
             });
 
