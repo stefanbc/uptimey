@@ -7,7 +7,6 @@
 const express = require('express');
 const path = require('path');
 const logger = require('morgan');
-const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const RateLimit = require('express-rate-limit');
 const helmet = require('helmet');
@@ -31,7 +30,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(logger('dev'));
-app.use(cookieParser());
 
 let limiter = new RateLimit({
     windowMs: 1*60*1000, // 1 minute

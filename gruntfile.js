@@ -52,7 +52,7 @@ module.exports = function (grunt) {
                     './public/styles/uptimey.min.css': './public/styles/uptimey.min.css',
                     './public/styles/vendor.min.css': [
                         './bower_components/normalize-css/normalize.css',
-                        './bower_components/spectre.css/dist/spectre.css',
+                        './bower_components/spectre/docs/dist/spectre.css',
                         './bower_components/animate.css/animate.css'
                     ]
                 }
@@ -63,7 +63,7 @@ module.exports = function (grunt) {
                     './public/styles/uptimey.min.css': './public/styles/uptimey.min.css',
                     './public/styles/vendor.min.css': [
                         './bower_components/normalize-css/normalize.css',
-                        './bower_components/spectre.css/dist/spectre.css',
+                        './bower_components/spectre/docs/dist/spectre.css',
                         './bower_components/animate.css/animate.css'
                     ]
                 }

@@ -44,3 +44,13 @@
         }
     }
 }
+
+.tooltip {
+    &::after {
+        border: 1px solid rgba($color-white, .2);
+        background: transparent;
+        text-transform: capitalize;
+        font-size: $font-size-base;
+        line-height: $line-height-base;
+    }
+}
