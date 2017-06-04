@@ -26,7 +26,7 @@ module.exports = {
             os           : this.getOS(),
             processor    : this.parseCPUModel(),
             architecture : os.arch(),
-            totalMem     : humem.totalmem,
+            totalMem     : this.parseTotalMem(),
             hostname     : os.hostname(),
             localIp      : data.localIp,
             publicIp     : data.publicIp,
@@ -75,6 +75,15 @@ module.exports = {
                     .replace(/\(.*?\)/g, '');
 
         return `${frequency} ${modelName}`;
+    },
+
+    parseTotalMem() {
+        let humemTotalMem = humem.totalmem,
+            split = humemTotalMem.split(' '),
+            round = Math.floor(split[0]),
+            output = `${round} ${split[1]}`;
+
+        return output;
     },
 
     /**
