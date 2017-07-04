@@ -11,7 +11,7 @@ module.exports = {
      * Init method
      */
     init() {
-        if ( utils.getCurrentLayout() === 'index' ) {
+        if (utils.isCurrentLayout('index')) {
 
             api.get({
                 route   : 'basic',

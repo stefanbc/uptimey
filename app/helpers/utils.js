@@ -13,10 +13,10 @@ module.exports = {
     },
 
     /**
-     * Retrives the current layout
+     * Checks the current layout
      */
-    getCurrentLayout() {
-        return $('body').find('section.layout').attr('id');
+    isCurrentLayout(layout) {
+        return $('body').find('section.layout').attr('id') === layout;
     },
 
     /**

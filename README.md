@@ -3,7 +3,7 @@
 
 [![Build Status](https://travis-ci.org/stefanbc/uptimey.svg?branch=master)](https://travis-ci.org/stefanbc/uptimey) [![Dependency Status](https://dependencyci.com/github/stefanbc/uptimey/badge)](https://dependencyci.com/github/stefanbc/uptimey) [![Code Climate](https://codeclimate.com/github/stefanbc/uptimey/badges/gpa.svg)](https://codeclimate.com/github/stefanbc/uptimey)
 
-With uptimey you can easily monitor your server's uptime. It will output usefull data that you might need during your day, while you intereact with your server. Don't believe me, check out the screenshot bellow.
+With **uptimey** you can easily monitor your server's uptime. It will output usefull data that you might need during your day, while you intereact with your server. Don't believe me, check out the screenshot bellow.
 
 **Import note:** it works on systems that run macOS, Linux and Windows.
 
@@ -32,6 +32,13 @@ Eg. `./uptimey.sh init` or `./uptimey.sh help`
 
 * `npm start`
 * Open [http://localhost:3000](http://localhost:3000) and behold uptimey in all it's simple glory.
+
+or alternatively you can keep it alive permanantly by using these commands:
+
+* `npm install pm2 -g`
+* `pm2 start npm -- start`
+
+For more info checkout the [pm2 repo](https://github.com/Unitech/pm2).
 
 ## Development
 

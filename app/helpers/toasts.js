@@ -8,6 +8,7 @@ module.exports = {
 
     wormHole: '.container .toasts-wormhole',
     defaultPosition: 'tr',
+    clearTimeout: 6000,
 
     /**
      * The main method for generating a toast
@@ -16,14 +17,12 @@ module.exports = {
      * @param {String} position
      */
     init(type, msg, position = this.defaultPosition) {
-        _.bindAll(this);
-
         this.clearAll();
         this[type](msg, position);
 
         _.delay(() => {
             this.hide();
-        }, 6000);
+        }, this.clearTimeout);
     },
 
     /**
@@ -32,9 +31,7 @@ module.exports = {
      * @param {String} position
      */
     success(msg, position) {
-        let toast = this.buildToast('success', msg, position);
-
-        $(this.wormHole).append(toast);
+        $(this.wormHole).append(this.toastTemplate('success', msg, position));
     },
 
     /**
@@ -43,9 +40,7 @@ module.exports = {
      * @param {String} position
      */
     error(msg, position) {
-        let toast = this.buildToast('danger', msg, position);
-
-        $(this.wormHole).append(toast);
+        $(this.wormHole).append(this.toastTemplate('danger', msg, position));
     },
 
     /**
@@ -54,10 +49,8 @@ module.exports = {
      * @param {String} msg
      * @param {String} position
      */
-    buildToast(type, msg, position) {
-        let toast = `<div class="toast toast-${type} toast-${position} animated fadeInDown">${msg}</div>`;
-
-        return toast;
+    toastTemplate(type, msg, position) {
+        return `<div class="toast toast-${type} toast-${position} animated fadeInDown">${msg}</div>`;
     },
 
     /**

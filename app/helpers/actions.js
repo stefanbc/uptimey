@@ -1,4 +1,3 @@
-const _ = require('lodash');
 const $ = require('jquery');
 const toasts = require('./toasts');
 const common = require('./common');
@@ -12,8 +11,6 @@ module.exports = {
      * @param {Object} options
      */
     register(options) {
-        _.bindAll(this);
-
         this[options.ev](options.selector);
     },
 
@@ -43,8 +40,7 @@ module.exports = {
             range = document.createRange();
 
         range.selectNodeContents(text);
-        selection.removeAllRanges();
-        selection.addRange(range);
+        selection.removeAllRanges().addRange(range);
 
         document.execCommand('copy');
 

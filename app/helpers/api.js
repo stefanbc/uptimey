@@ -24,8 +24,6 @@ module.exports = {
      */
     get(options) {
 
-        _.bindAll(this);
-
         if (options.updates) {
 
             setInterval(() => {
@@ -49,7 +47,7 @@ module.exports = {
         $.ajax({
             dataType: "json",
             url: normalizeUrl,
-            success: _.bind((data) => {
+            success: (data) => {
 
                 this.bindData(data, options.updates);
 
@@ -64,15 +62,15 @@ module.exports = {
                     return options.callback(data);
                 }
 
-            }, this),
-            error: _.bind(() => {
+            },
+            error: () => {
 
                 this.requestTimer();
                 this.bindDataNotes();
 
                 toasts.init('error', 'Server is not responding!');
 
-            }, this)
+            }
         });
 
     },
@@ -84,26 +82,28 @@ module.exports = {
      */
     bindData(data, updates) {
         // Recursive function to update values
-        function updateValues(key, value) {
-            if (typeof value !== 'object') {
-                let selector = '#' + utils.normalizeString(key);
+        let updateValues = (value, key) => {
 
-                if ($(selector).find('span').length === 1) {
-                    $(selector).find('span').text(value);
+            if (typeof value !== 'object') {
+
+                let selector = $(`#${utils.normalizeString(key)}`);
+
+                if (selector.find('span').length === 1) {
+                    selector.find('span').text(value);
                 } else {
-                    $(selector).text(value);
+                    selector.text(value);
                 }
 
                 if (updates) {
-                    $(selector).data('data-updates', true);
+                    selector.data('data-updates', true);
                 }
 
             } else {
-                $.each(value, _.bind(updateValues, this));
+                _.forEach(value, updateValues);
             }
-        }
+        };
 
-        $.each(data, _.bind(updateValues, this));
+        _.forEach(data, updateValues);
     },
 
     /**
@@ -112,7 +112,7 @@ module.exports = {
     bindDataNotes() {
         let outputBoxes = $('.data-wrapper .output');
 
-        $.each(outputBoxes, function () {
+        _.forEach(outputBoxes, () => {
             let updates = $(this).data('data-updates'),
                 key = $(this).attr('id'),
                 selector = $(`#${key}`).parents('.box');

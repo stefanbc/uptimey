@@ -1,4 +1,3 @@
-const _ = require('lodash');
 const $ = require('jquery');
 
 /**
@@ -17,8 +16,6 @@ module.exports = {
      * @param {String} position
      */
     init(type, msg, parent = this.notesDefaultParent, position = this.defaultPosition) {
-        _.bindAll(this);
-
         this[type](msg, parent, position);
     },
 
@@ -29,10 +26,8 @@ module.exports = {
      * @param {String} position
      */
     success(msg, parent, position) {
-        let note = this.buildNote('success', msg, position);
-
         if (!this.checkForNote(parent)) {
-            parent.append(note);
+            parent.append(this.noteTemplate('success', msg, position));
         }
     },
 
@@ -43,10 +38,8 @@ module.exports = {
      * @param {String} position
      */
     error(msg, parent, position) {
-        let note = this.buildNote('danger', msg, position);
-
         if (!this.checkForNote(parent)) {
-            parent.append(note);
+            parent.append(this.noteTemplate('danger', msg, position));
         }
     },
 
@@ -56,10 +49,8 @@ module.exports = {
      * @param {String} msg
      * @param {String} position
      */
-    buildNote(type, msg, position) {
-        let note = `<div class="note note-${type} note-${position} tooltip tooltip-bottom" data-tooltip="${msg}"></div>`;
-
-        return note;
+    noteTemplate(type, msg, position) {
+        return `<div class="note note-${type} note-${position} tooltip tooltip-bottom" data-tooltip="${msg}"></div>`;
     },
 
     /**
