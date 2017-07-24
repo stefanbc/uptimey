@@ -1,6 +1,6 @@
-const $ = require('jquery');
-const toasts = require('./toasts');
-const common = require('./common');
+import $ from 'jquery';
+import toasts from './toasts';
+import common from './common';
 
 /**
  * Register actions

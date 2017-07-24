@@ -1,5 +1,5 @@
-const $ = require('jquery');
-const octicons = require("octicons");
+import $ from 'jquery';
+import octicons from "octicons";
 
 /**
  * Common helpers

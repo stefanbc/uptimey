@@ -1,9 +1,10 @@
 /**
  * Required packages
  */
-const router = require('express').Router();
 const basic = require('../models/basic');
 const advanced = require('../models/advanced');
+
+const router = require('express').Router();
 
 /* GET api endpoint. */
 router.get('/basic', function (req, res, next) {

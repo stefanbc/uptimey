@@ -1,11 +1,12 @@
 /**
  * Required packages
  */
-const osUptime = require('os-uptime')();
+const utils = require('../helpers/utils');
+
 const moment = require('moment');
+const osUptime = require('os-uptime')();
 const publicIp = require('public-ip').v4();
 const ipLocation = require('iplocation');
-const utils = require('../helpers/utils');
 
 /**
  *  Abstract module with all methods

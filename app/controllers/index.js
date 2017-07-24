@@ -1,7 +1,7 @@
-const $ = require('jquery');
-const api = require('../helpers/api');
-const utils = require('../helpers/utils');
-const actions = require('../helpers/actions');
+import $ from 'jquery';
+import api from '../helpers/api';
+import utils from '../helpers/utils';
+import actions from '../helpers/actions';
 
 /**
  * Controller for the index route

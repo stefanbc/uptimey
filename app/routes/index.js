@@ -1,8 +1,9 @@
 /**
  * Required packages
  */
-const router = require('express').Router();
 const basic = require('../models/basic');
+
+const router = require('express').Router();
 
 /* GET home page. */
 router.get('/', function (req, res, next) {

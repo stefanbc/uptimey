@@ -71,8 +71,7 @@ module.exports = {
             frequency = split[1].trim();
 
         modelName = modelName.split('-');
-        modelName = modelName[0].replace('CPU', '')
-                    .replace(/\(.*?\)/g, '');
+        modelName = modelName[0].replace('CPU', '').replace(/\(.*?\)/g, '');
 
         return `${frequency} ${modelName}`;
     },

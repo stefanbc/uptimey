@@ -1,6 +1,7 @@
 module.exports = function (grunt) {
 
     require('time-grunt')(grunt);
+    require('load-grunt-tasks')(grunt);
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -26,13 +27,17 @@ module.exports = function (grunt) {
         sass: {
             prod: {
                 options: { sourcemap : 'none' },
-                files: {
-                    './public/styles/uptimey.min.css' : './app/styles/main.scss'
+                dist: {
+                    files: {
+                        './public/styles/uptimey.min.css' : './app/styles/main.scss'
+                    }
                 }
             },
             dev: {
-                files: {
-                    './public/styles/uptimey.min.css' : './app/styles/main.scss'
+                dist: {
+                    files: {
+                        './public/styles/uptimey.min.css' : './app/styles/main.scss'
+                    }
                 }
             }
         },
@@ -171,7 +176,7 @@ module.exports = function (grunt) {
                 ]
             },
             styles: {
-                files: ['./app/**/*.scss'],
+                files: ['./app/styles/**/*.scss'],
                 tasks: [
                     'clean:styles',
                     'sasslint',
@@ -181,21 +186,21 @@ module.exports = function (grunt) {
                 ]
             },
             templates: {
-                files: ['./app/**/*.pug'],
+                files: ['./app/templates/**/*.pug'],
                 tasks: ['puglint']
             }
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-sass-lint');
+    grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-eslint');
-    grunt.loadNpmTasks('grunt-sass-lint');
-    grunt.loadNpmTasks('grunt-puglint');
     grunt.loadNpmTasks('grunt-browserify');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-puglint');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.registerTask('test', ['eslint', 'sasslint', 'puglint']);

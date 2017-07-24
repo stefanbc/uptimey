@@ -1,5 +1,5 @@
-const $ = require('jquery');
-const index = require('./controllers/index');
+import $ from 'jquery';
+import index from './controllers/index';
 
 // The only thing that should be in a DOMReady
 $(function () {

@@ -1,5 +1,5 @@
-const _ = require('lodash');
-const $ = require('jquery');
+import _ from 'lodash';
+import $ from 'jquery';
 
 /**
  * Helper for generating toasts

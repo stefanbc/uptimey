@@ -1,9 +1,9 @@
-const _ = require('lodash');
-const $ = require('jquery');
-const moment = require('moment');
-const utils = require('./utils');
-const notes = require('./notes');
-const toasts = require('./toasts');
+import _ from 'lodash';
+import $ from 'jquery';
+import moment from 'moment';
+import utils from './utils';
+import notes from './notes';
+import toasts from './toasts';
 
 /**
  * Helper for API interaction
