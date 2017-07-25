@@ -26,18 +26,14 @@ module.exports = function (grunt) {
 
         sass: {
             prod: {
-                options: { sourcemap : 'none' },
-                dist: {
-                    files: {
-                        './public/styles/uptimey.min.css' : './app/styles/main.scss'
-                    }
+                options: { sourceMap : 'none' },
+                files: {
+                    './public/styles/uptimey.min.css' : './app/styles/main.scss'
                 }
             },
             dev: {
-                dist: {
-                    files: {
-                        './public/styles/uptimey.min.css' : './app/styles/main.scss'
-                    }
+                files: {
+                    './public/styles/uptimey.min.css' : './app/styles/main.scss'
                 }
             }
         },
