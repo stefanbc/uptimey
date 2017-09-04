@@ -42,10 +42,9 @@ For more info checkout the [pm2 repo](https://github.com/Unitech/pm2).
 
 ## Development
 
-You'll need to have Grunt and Sass installed. Use these commands:
+You'll need to have Grunt installed. Use these commands:
 
 * `npm install -g grunt-cli`
-* `gem install sass`
 
 ### Running Tests
 
