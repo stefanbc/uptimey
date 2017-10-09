@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import index from './controllers/index';
+import index from './components/pages/index';
 
 // The only thing that should be in a DOMReady
 $(function () {

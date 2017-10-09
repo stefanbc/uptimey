@@ -12,7 +12,6 @@
 
 // Layout files
 @import 'base/layout';
-@import 'layout/index';
 
 // Utils
 @import 'base/media';
@@ -21,3 +20,6 @@
 // Misc
 @import 'helpers/toasts';
 @import 'helpers/notes';
+
+// Components
+@import 'components/pages/index';

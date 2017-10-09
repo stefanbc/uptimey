@@ -21,8 +21,8 @@
     "tests"
   ],
   "dependencies": {
-    "normalize-css": "^6.0.0",
-    "spectre": "^0.2.14",
+    "normalize-css": "^7.0.0",
+    "spectre": "^0.4.0",
     "animate.css": "^3.5.2"
   }
 }
