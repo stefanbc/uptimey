@@ -1,10 +1,10 @@
-include ./scaffolding/mixins
+include mixins
 doctype html
 html(lang="en")
-    include ./partials/head
+    include ../partials/head
     body
         .container
             .toasts-wormhole
             section.layout(id=layoutId)
                 block content
-            include ./partials/footer
+            include ../partials/footer

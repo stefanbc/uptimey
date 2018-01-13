@@ -10,7 +10,7 @@ router.get('/', function (req, res, next) {
 
     basic.getLocation((location) => {
 
-        return res.render('index', {
+        return res.render('components/pages/index', {
             layoutId : 'index',
             data     : basic.gatherData({
                 location

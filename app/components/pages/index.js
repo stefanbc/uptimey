@@ -1,7 +1,7 @@
 import $ from 'jquery';
-import api from '../helpers/api';
-import utils from '../helpers/utils';
-import actions from '../helpers/actions';
+import api from '../../helpers/api';
+import utils from '../../helpers/utils';
+import actions from '../../helpers/actions';
 
 /**
  * Controller for the index route
