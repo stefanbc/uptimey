@@ -33,6 +33,7 @@ npm-debug.log
 # Sass
 .sass-cache
 *.map
+none
 
 # misc
 .DS_STORE
