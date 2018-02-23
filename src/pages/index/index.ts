@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import { ApiProvider } from '../../providers/api';
 import { UtilsProvider } from '../../providers/utils';
 import { ActionsProvider } from '../../providers/actions';
@@ -6,7 +5,7 @@ import { ActionsProvider } from '../../providers/actions';
 /**
  * Controller for the index route
  */
-export class IndexRoute {
+export class IndexPage {
 
     /**
      * Init method

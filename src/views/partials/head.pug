@@ -4,8 +4,10 @@ head
     else
         title=`uptimey - ${data.uptime.days} days ${data.uptime.hours} hours ${data.uptime.minutes} minutes`
 
+    base(href="/")
+
     include ./meta
 
-    -var stylesheets = ["//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600", "/public/styles/vendor.min.css", "/public/styles/uptimey.min.css"];
+    -var stylesheets = ["//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600", "dist/vendor.bundle.css", "dist/app.bundle.css"];
     each val in stylesheets
         link(rel="stylesheet" href=val type="text/css")

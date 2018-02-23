@@ -1,10 +1,10 @@
-import $ from 'jquery';
 import octicons from "octicons";
 
 /**
  * Common helpers
  */
-module.exports = {
+export class CommonProvider {
+
     /**
      * Inserts an icon within the desired element
      * @param {Object} selector
@@ -25,7 +25,7 @@ module.exports = {
                 actionIcon.find('.icon').remove();
             }
         });
-    },
+    }
 
     /**
      * Outputs the correct markup for the oction
@@ -34,4 +34,4 @@ module.exports = {
     generateIcon(icon) {
         return `<span class="icon">${octicons[icon].toSVG()}</span>`;
     }
-};
+}

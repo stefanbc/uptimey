@@ -1,5 +1,3 @@
-import $ from 'jquery';
-
 /**
  * Utils helpers with different methods
  */
@@ -30,4 +28,4 @@ export class UtilsProvider {
             return number;
         }
     }
-};
+}

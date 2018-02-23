@@ -1,13 +1,12 @@
-import $ from 'jquery';
-import toasts from './toasts';
-import common from './common';
+import { ToastsProvider } from './toasts';
+import { CommonProvider } from './common';
 
 /**
  * Register actions
  */
 export class ActionsProvider {
 
-    constructor() { }
+    constructor(public toasts: ToastsProvider, public common: CommonProvider) { }
 
     /**
      * Register an action
@@ -24,7 +23,7 @@ export class ActionsProvider {
     copy(selector) {
         let actionIcon = $(selector).find('.copy-action');
 
-        common.insertIcon(selector, 'copy', 'clippy');
+        this.common.insertIcon(selector, 'copy', 'clippy');
 
         actionIcon.on('click', (ev) => {
             let element = $(ev.currentTarget).parent().find('.output');
@@ -47,8 +46,8 @@ export class ActionsProvider {
 
         document.execCommand('copy');
 
-        toasts.init('success', 'Value copied to clipboard');
+        this.toasts.init('success', 'Value copied to clipboard');
 
         selection.removeAllRanges();
     }
-};
+}

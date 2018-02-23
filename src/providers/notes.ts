@@ -1,12 +1,10 @@
-import $ from 'jquery';
-
 /**
  * Helper for generating notes
  */
-module.exports = {
+export class NotesProvider {
 
-    notesDefaultParent: '.box',
-    defaultPosition: 'tr',
+    notesDefaultParent: '.box';
+    defaultPosition: 'tr';
 
     /**
      * The main method for generating a note
@@ -17,7 +15,7 @@ module.exports = {
      */
     init(type, msg, parent = this.notesDefaultParent, position = this.defaultPosition) {
         this[type](msg, parent, position);
-    },
+    }
 
     /**
      * Generate a success note
@@ -29,7 +27,7 @@ module.exports = {
         if (!this.checkForNote(parent)) {
             parent.append(this.noteTemplate('success', msg, position));
         }
-    },
+    }
 
     /**
      * Generate an error note
@@ -41,7 +39,7 @@ module.exports = {
         if (!this.checkForNote(parent)) {
             parent.append(this.noteTemplate('danger', msg, position));
         }
-    },
+    }
 
     /**
      * Build a note and animate it
@@ -51,7 +49,7 @@ module.exports = {
      */
     noteTemplate(type, msg, position) {
         return `<div class="note note-${type} note-${position} tooltip tooltip-bottom" data-tooltip="${msg}"></div>`;
-    },
+    }
 
     /**
      * Checks for the existance of a note
@@ -59,7 +57,7 @@ module.exports = {
      */
     checkForNote(selector) {
         return (selector.find('.note').length !== 0) ? true : false;
-    },
+    }
 
     /**
      * Clears all notes
@@ -67,4 +65,4 @@ module.exports = {
     clearAll() {
         $(this.notesDefaultParent).find('.note').remove();
     }
-};
+}

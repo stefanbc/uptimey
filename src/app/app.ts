@@ -1,3 +1,3 @@
-import { IndexRoute } from '../pages/index/index';
+import { IndexPage } from '../pages/index/index';
 
-IndexRoute();
+IndexPage();

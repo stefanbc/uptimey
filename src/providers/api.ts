@@ -1,9 +1,9 @@
 import _ from 'lodash';
-import $ from 'jquery';
 import moment from 'moment';
-import utils from './utils';
-import notes from './notes';
-import toasts from './toasts';
+
+import { UtilsProvider } from './utils';
+import { NotesProvider } from './notes';
+import { ToastsProvider } from './toasts';
 
 /**
  * Helper for API interaction
@@ -12,7 +12,8 @@ export class ApiProvider {
 
     updateTimeout = 1000 * 60;
 
-    constructor() { }
+    constructor(public utils: UtilsProvider, public notes: NotesProvider, public toasts: ToastsProvider) { }
+
     /**
      * Makes an API call using the provided params
      *
@@ -53,8 +54,8 @@ export class ApiProvider {
                 this.bindData(data, options.updates);
 
                 if (options.updates) {
-                    notes.clearAll();
-                    toasts.init('success', 'Data has been updated!');
+                    this.notes.clearAll();
+                    this.toasts.init('success', 'Data has been updated!');
                 }
 
                 $('ul.list-values').removeClass('loading');
@@ -69,7 +70,7 @@ export class ApiProvider {
                 this.requestTimer();
                 this.bindDataNotes();
 
-                toasts.init('error', 'Server is not responding!');
+                this.toasts.init('error', 'Server is not responding!');
 
             }
         });
@@ -87,7 +88,7 @@ export class ApiProvider {
 
             if (typeof value !== 'object') {
 
-                let selector = $(`#${utils.normalizeString(key)}`);
+                let selector = $(`#${this.utils.normalizeString(key)}`);
 
                 if (selector.find('span').length === 1) {
                     selector.find('span').text(value);
@@ -119,7 +120,7 @@ export class ApiProvider {
                 selector = $(`#${key}`).parents('.box');
 
             if (updates) {
-                notes.init('error', 'Failed to update data!', selector);
+                this.notes.init('error', 'Failed to update data!', selector);
             }
         });
     }
@@ -154,4 +155,4 @@ export class ApiProvider {
 
             }, interval);
     }
-};
+}

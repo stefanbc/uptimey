@@ -1,14 +1,13 @@
 import _ from 'lodash';
-import $ from 'jquery';
 
 /**
  * Helper for generating toasts
  */
-module.exports = {
+export class ToastsProvider {
 
-    wormHole: '.container .toasts-wormhole',
-    defaultPosition: 'tr',
-    clearTimeout: 6000,
+    wormHole: '.container .toasts-wormhole';
+    defaultPosition: 'tr';
+    clearTimeout: 6000;
 
     /**
      * The main method for generating a toast
@@ -23,7 +22,7 @@ module.exports = {
         _.delay(() => {
             this.hide();
         }, this.clearTimeout);
-    },
+    }
 
     /**
      * Generate a success toast
@@ -32,7 +31,7 @@ module.exports = {
      */
     success(msg, position) {
         $(this.wormHole).append(this.toastTemplate('success', msg, position));
-    },
+    }
 
     /**
      * Generate an error toast
@@ -41,7 +40,7 @@ module.exports = {
      */
     error(msg, position) {
         $(this.wormHole).append(this.toastTemplate('danger', msg, position));
-    },
+    }
 
     /**
      * Build a toast and animate it
@@ -51,14 +50,14 @@ module.exports = {
      */
     toastTemplate(type, msg, position) {
         return `<div class="toast toast-${type} toast-${position} animated fadeInDown">${msg}</div>`;
-    },
+    }
 
     /**
      * Clears all toasts in the wormhole
      */
     clearAll() {
         $(this.wormHole).find('.toast').remove();
-    },
+    }
 
     /**
      * Hides a toast in the wormhole
@@ -66,4 +65,4 @@ module.exports = {
     hide() {
         $(this.wormHole).find('.toast').removeClass('fadeInDown').addClass('fadeOutUp');
     }
-};
+}
