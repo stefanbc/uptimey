@@ -1,16 +1,18 @@
 import $ from 'jquery';
-import api from '../../helpers/api';
-import utils from '../../helpers/utils';
-import actions from '../../helpers/actions';
+import { ApiProvider } from '../../providers/api';
+import { UtilsProvider } from '../../providers/utils';
+import { ActionsProvider } from '../../providers/actions';
 
 /**
  * Controller for the index route
  */
-module.exports = {
+export class IndexRoute {
+
     /**
      * Init method
      */
-    init() {
+    constructor(public api: ApiProvider, public utils: UtilsProvider, public actions: ActionsProvider) {
+
         if (utils.isCurrentLayout('index')) {
 
             api.get({
@@ -37,5 +39,6 @@ module.exports = {
             });
 
         }
+
     }
 };

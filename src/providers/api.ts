@@ -8,10 +8,11 @@ import toasts from './toasts';
 /**
  * Helper for API interaction
  */
-module.exports = {
+export class ApiProvider {
 
-    updateTimeout: 1000 * 60,
+    updateTimeout = 1000 * 60;
 
+    constructor() { }
     /**
      * Makes an API call using the provided params
      *
@@ -34,7 +35,7 @@ module.exports = {
             this._ajax(options);
         }
 
-    },
+    }
 
     /**
      * Makes an Ajax call with the passed options
@@ -73,7 +74,7 @@ module.exports = {
             }
         });
 
-    },
+    }
 
     /**
      * Binds data to DOM elements
@@ -104,7 +105,7 @@ module.exports = {
         };
 
         _.forEach(data, updateValues);
-    },
+    }
 
     /**
      * Binds notes to all data
@@ -121,7 +122,7 @@ module.exports = {
                 notes.init('error', 'Failed to update data!', selector);
             }
         });
-    },
+    }
 
     /**
      * Builds an url for API calls
@@ -129,7 +130,7 @@ module.exports = {
      */
     buildUrl(string) {
         return `/api${string ? '/' + string : ''}`;
-    },
+    }
 
     /**
      * Request timer when connection to server is down

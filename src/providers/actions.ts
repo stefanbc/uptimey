@@ -5,14 +5,17 @@ import common from './common';
 /**
  * Register actions
  */
-module.exports = {
+export class ActionsProvider {
+
+    constructor() { }
+
     /**
      * Register an action
      * @param {Object} options
      */
     register(options) {
         this[options.ev](options.selector);
-    },
+    }
 
     /**
      * Copy action
@@ -28,7 +31,7 @@ module.exports = {
 
             this.copyToClipboard(element[0]);
         });
-    },
+    }
 
     /**
      * Copies an elements text to clipboard
@@ -47,5 +50,5 @@ module.exports = {
         toasts.init('success', 'Value copied to clipboard');
 
         selection.removeAllRanges();
-    },
+    }
 };

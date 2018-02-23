@@ -1,23 +1,23 @@
-const $ = require('jquery');
+import $ from 'jquery';
 
 /**
  * Utils helpers with different methods
  */
-module.exports = {
+export class UtilsProvider {
     /**
      * Normalizes a string
      * @param  {String} string
      */
     normalizeString(string) {
         return string.split(/(?=[A-Z])/).join('-').toLowerCase();
-    },
+    }
 
     /**
      * Checks the current layout
      */
     isCurrentLayout(layout) {
         return $('body').find('section.layout').attr('id') === layout;
-    },
+    }
 
     /**
      * Adds leading zero to

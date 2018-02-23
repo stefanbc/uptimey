@@ -11,32 +11,27 @@ With **uptimey** you can easily monitor your server's uptime. It will output use
 
 ## Prerequisites
 
-You will need the following things properly installed on your computer.
+You will need the following things properly installed on your machine.
 
 * [Git](http://git-scm.com/)
-* [Node.js](http://nodejs.org/) (with NPM)
-* [Bower](http://bower.io/)
+* [Node.js](http://nodejs.org/)
+* [Yarn](https://yarnpkg.com/en/)
 
 ## Installation
 
 * `git clone git@github.com:stefanbc/uptimey.git` this repository
 * `cd uptimey`
-* `npm install`
-* `bower install`
-
-Alternatively you can use the sh script inside the repo, after you've cloned it. Make sure it has execution permissions.
-
-Eg. `./uptimey.sh init` or `./uptimey.sh help`
+* `yarn install`
 
 ## Running
 
-* `npm start`
+* `yarn start`
 * Open [http://localhost:3000](http://localhost:3000) and behold uptimey in all it's simple glory.
 
 or alternatively you can keep it alive permanantly by using these commands:
 
-* `npm install pm2 -g`
-* `pm2 start npm -- start`
+* `yarn add pm2 -g`
+* `pm2 start yarn -- start`
 
 For more info checkout the [pm2 repo](https://github.com/Unitech/pm2).
 
