@@ -6,14 +6,14 @@ engines:
       languages:
         javascript:
           mass_threshold: 60
-  eslint:
+  tslint:
     enabled: true
   fixme:
     enabled: true
 ratings:
   paths:
-  - "**.js"
+  - "**.ts"
   - "**.scss"
   - "**.pug"
 exclude_paths:
-- public/
+- dist/

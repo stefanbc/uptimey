@@ -1,39 +1,39 @@
 /**
  * Required packages
  */
-const os = require('os');
-const osName = require('os-name');
-const getos = require('getos');
-const macosRelease = require('macos-release');
-const winRelease = require('win-release');
-
-const humem = require('humem');
-const internalIp = require('internal-ip').v4();
-const publicIp = require('public-ip').v4();
-const netmask = require('ipmask')();
+import os from 'os';
+import osName from 'os-name';
+import getos from 'getos';
+import macosRelease from 'macos-release';
+import winRelease from 'win-release';
+import humem from 'humem';
+import internalIp from 'internal-ip';
+import publicIp from 'public-ip';
+import netmask from 'ipmask';
 
 /**
  *  Abstract module with all methods
  */
-module.exports = {
+export class AdvancedModel {
+
     /**
      * Advanced data method. Gathers all advanced data
      * and returns is as an object. The data param is optional.
      * @param  {Object} data
      */
-    gatherAdvancedData(data = {}) {
+    gatherAdvancedData(data: any) {
         return {
-            os           : this.getOS(),
-            processor    : this.parseCPUModel(),
-            architecture : os.arch(),
-            totalMem     : this.parseTotalMem(),
-            hostname     : os.hostname(),
-            localIp      : data.localIp,
-            publicIp     : data.publicIp,
-            networkMask  : netmask.netmask,
-            mac          : netmask.mac
+            os: this.getOS(),
+            processor: this.parseCPUModel(),
+            architecture: os.arch(),
+            totalMem: this.parseTotalMem(),
+            hostname: os.hostname(),
+            localIp: data.localIp,
+            publicIp: data.publicIp,
+            networkMask: netmask.netmask,
+            mac: netmask.mac
         };
-    },
+    }
 
     /**
      * Returns data about OS distribution and release
@@ -59,7 +59,7 @@ module.exports = {
         dist = tempDist[0];
 
         return { dist, release };
-    },
+    }
 
     /**
      * Parses the CPU model retrived by the os module
@@ -74,7 +74,7 @@ module.exports = {
         modelName = modelName[0].replace('CPU', '').replace(/\(.*?\)/g, '');
 
         return `${frequency} ${modelName}`;
-    },
+    }
 
     parseTotalMem() {
         let humemTotalMem = humem.totalmem,
@@ -83,7 +83,7 @@ module.exports = {
             output = `${round} ${split[1]}`;
 
         return output;
-    },
+    }
 
     /**
      * Retrives the current server internal Ip and external Ip.
@@ -94,8 +94,8 @@ module.exports = {
     getIpObject(callback, next) {
         publicIp.then(ip => {
             let ipObject = {
-                localIp  : internalIp,
-                publicIp : ip
+                localIp: internalIp,
+                publicIp: ip
             };
 
             if (callback) {

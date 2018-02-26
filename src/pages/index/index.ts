@@ -2,15 +2,9 @@ import { ApiProvider } from '../../providers/api';
 import { UtilsProvider } from '../../providers/utils';
 import { ActionsProvider } from '../../providers/actions';
 
-/**
- * Controller for the index route
- */
 export class IndexPage {
 
-    /**
-     * Init method
-     */
-    constructor(public api: ApiProvider, public utils: UtilsProvider, public actions: ActionsProvider) {
+    constructor(private api?: ApiProvider, private utils?: UtilsProvider, private actions?: ActionsProvider) {
 
         if (utils.isCurrentLayout('index')) {
 
@@ -22,7 +16,7 @@ export class IndexPage {
                         hours = `${data.uptime.hours} hours`,
                         minutes = `${data.uptime.minutes} minutes`;
 
-                    $('title').text(`uptimey - ${days} ${hours} ${minutes}`);
+                    document.title = `uptimey - ${days} ${hours} ${minutes}`;
                 }
             });
 
