@@ -13,8 +13,8 @@ export class NotesProvider {
      * @param {Object} parent
      * @param {String} position
      */
-    init(type, msg, parent = this.notesDefaultParent, position = this.defaultPosition) {
-        this[type](msg, parent, position);
+    init(type: string, msg: string, parent = this.notesDefaultParent, position = this.defaultPosition) {
+        // this[type](msg, parent, position);
     }
 
     /**
@@ -23,9 +23,9 @@ export class NotesProvider {
      * @param {Object} parent
      * @param {String} position
      */
-    success(msg, parent, position) {
+    success(msg: string, parent: string, position: string) {
         if (!this.checkForNote(parent)) {
-            parent.append(this.noteTemplate('success', msg, position));
+            // parent.append(this.noteTemplate('success', msg, position));
         }
     }
 
@@ -35,9 +35,9 @@ export class NotesProvider {
      * @param {Object} parent
      * @param {String} position
      */
-    error(msg, parent, position) {
+    error(msg: string, parent: string, position: string) {
         if (!this.checkForNote(parent)) {
-            parent.append(this.noteTemplate('danger', msg, position));
+            // parent.append(this.noteTemplate('danger', msg, position));
         }
     }
 
@@ -47,7 +47,7 @@ export class NotesProvider {
      * @param {String} msg
      * @param {String} position
      */
-    noteTemplate(type, msg, position) {
+    noteTemplate(type: string, msg: string, position: string) {
         return `<div class="note note-${type} note-${position} tooltip tooltip-bottom" data-tooltip="${msg}"></div>`;
     }
 
@@ -55,14 +55,14 @@ export class NotesProvider {
      * Checks for the existance of a note
      * @param {String} selector
      */
-    checkForNote(selector) {
-        return (selector.find('.note').length !== 0) ? true : false;
+    checkForNote(selector: string) {
+        // return (selector.find('.note').length !== 0) ? true : false;
     }
 
     /**
      * Clears all notes
      */
     clearAll() {
-        $(this.notesDefaultParent).find('.note').remove();
+        // $(this.notesDefaultParent).find('.note').remove();
     }
 }

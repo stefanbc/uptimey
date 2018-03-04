@@ -1,5 +1,5 @@
-import _ from 'lodash';
-import moment from 'moment';
+import * as _ from 'lodash';
+import * as moment from 'moment';
 
 import { UtilsProvider } from './utils';
 import { NotesProvider } from './notes';
@@ -129,7 +129,7 @@ export class ApiProvider {
      * Builds an url for API calls
      * @param {String} string
      */
-    buildUrl(string) {
+    buildUrl(string: string) {
         return `/api${string ? '/' + string : ''}`;
     }
 

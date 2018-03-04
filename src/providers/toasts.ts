@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import * as _ from 'lodash';
 
 /**
  * Helper for generating toasts
@@ -15,9 +15,9 @@ export class ToastsProvider {
      * @param {String} msg
      * @param {String} position
      */
-    init(type, msg, position = this.defaultPosition) {
+    init(type: string, msg: string, position = this.defaultPosition) {
         this.clearAll();
-        this[type](msg, position);
+        // this[type](msg, position);
 
         _.delay(() => {
             this.hide();
@@ -29,8 +29,8 @@ export class ToastsProvider {
      * @param {String} msg
      * @param {String} position
      */
-    success(msg, position) {
-        $(this.wormHole).append(this.toastTemplate('success', msg, position));
+    success(msg: string, position: string) {
+        // $(this.wormHole).append(this.toastTemplate('success', msg, position));
     }
 
     /**
@@ -38,8 +38,8 @@ export class ToastsProvider {
      * @param {String} msg
      * @param {String} position
      */
-    error(msg, position) {
-        $(this.wormHole).append(this.toastTemplate('danger', msg, position));
+    error(msg: string, position: string) {
+        // $(this.wormHole).append(this.toastTemplate('danger', msg, position));
     }
 
     /**
@@ -48,7 +48,7 @@ export class ToastsProvider {
      * @param {String} msg
      * @param {String} position
      */
-    toastTemplate(type, msg, position) {
+    toastTemplate(type: string, msg: string, position: string) {
         return `<div class="toast toast-${type} toast-${position} animated fadeInDown">${msg}</div>`;
     }
 
@@ -56,13 +56,13 @@ export class ToastsProvider {
      * Clears all toasts in the wormhole
      */
     clearAll() {
-        $(this.wormHole).find('.toast').remove();
+        // $(this.wormHole).find('.toast').remove();
     }
 
     /**
      * Hides a toast in the wormhole
      */
     hide() {
-        $(this.wormHole).find('.toast').removeClass('fadeInDown').addClass('fadeOutUp');
+        // $(this.wormHole).find('.toast').removeClass('fadeInDown').addClass('fadeOutUp');
     }
 }

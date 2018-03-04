@@ -14,7 +14,7 @@ export class UtilsProvider {
      * Checks the current layout
      */
     isCurrentLayout(layout: string) {
-        return $('body').find('section.layout').attr('id') === layout;
+        // return $('body').find('section.layout').attr('id') === layout;
     }
 
     /**

@@ -9,8 +9,8 @@ export class IndexPage {
         if (utils.isCurrentLayout('index')) {
 
             api.get({
-                route   : 'basic',
-                updates : true,
+                route: 'basic',
+                updates: true,
                 callback(data) {
                     let days = `${data.uptime.days} days`,
                         hours = `${data.uptime.hours} hours`,
@@ -21,8 +21,8 @@ export class IndexPage {
             });
 
             api.get({
-                route   : 'advanced',
-                updates : false,
+                route: 'advanced',
+                updates: false,
                 callback() {
                     actions.register({
                         ev: 'copy',
