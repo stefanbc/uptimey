@@ -8,7 +8,9 @@
   "license": "MIT",
   "scripts": {
     "start": "node ./server",
-    "test": "grunt test"
+    "test": "grunt test",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "pre-commit": [
     "test"
@@ -41,7 +43,8 @@
     "os-uptime": "^2.0.0",
     "public-ip": "^2.3.3",
     "pug": "~2.0.0-beta10",
-    "win-release": "^1.1.1"
+    "win-release": "^1.1.1",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.24.0",
@@ -58,5 +61,6 @@
     "grunt-puglint": "^1.0.0",
     "grunt-sass-lint": "^0.2.2",
     "time-grunt": "^1.3.0"
-  }
+  },
+  "snyk": true
 }
